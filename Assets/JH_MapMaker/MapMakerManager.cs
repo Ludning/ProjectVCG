@@ -5,21 +5,22 @@ using UnityEngine.UI;
 
 public class MapMakerManager : MonoBehaviour
 {
-    public GameObject[] Objects;
-    public float _gridSize;
-    public float _rotateAmount;
+    public GameObject[] Objects;                   // 맵에 배치 할 프리팹들
 
-    private bool _gridOn;
-    private GameObject _pendingObject;           // 오브젝트 보류
-    private Vector3 _pos;                       // 위치 저장하기 위해
-    private RaycastHit _hit;
-    
-    [SerializeField] private Toggle GridToggle;
-    [SerializeField] private LayerMask LayerMask;
+    private bool _gridOn = true;                   // 스냅 기능 사용 여부
+    private GameObject _pendingObject;             // 마우스를 따라 다니며 배치 대기 중인 오브젝트
+    private Vector3 _pos;                          // 마우스 위치 값 저장
+    private RaycastHit _hit;                       // 히트 정보 저장
+
+    [SerializeField] private float RotateAmount;   // R 키입력 시 오브젝트가 회전하는 각도
+    [SerializeField] private float GridSize = 1f;       // 그리드 크기 (1 권장)
+    [SerializeField] private Toggle GridToggle;    // 토글 UI 
+    [SerializeField] private LayerMask LayerMask;  // 레이캐스트에 사용할 레이어 마스크
 
     void Update()
     {
-        if(_pendingObject != null)
+        // 배치 대기 중인 오브젝트가 있을 때 (캔버스에서 1,2,3 중 하나 버튼 누르면 됨)
+        if (_pendingObject != null)
         {
             if (_gridOn)
             {
@@ -27,12 +28,11 @@ public class MapMakerManager : MonoBehaviour
                     RoundToNearestGrid(_pos.x),
                     RoundToNearestGrid(_pos.y),
                     RoundToNearestGrid(_pos.z)
-                    );
+                );
             }
             else
             {
                 _pendingObject.transform.position = _pos; // null 이면 마우스 위치 값 적용
-
             }
             if (Input.GetMouseButtonDown(0))
             {
@@ -44,6 +44,7 @@ public class MapMakerManager : MonoBehaviour
             }
         }
     }
+
     public void PlaceObject()
     {
         _pendingObject = null;
@@ -51,11 +52,11 @@ public class MapMakerManager : MonoBehaviour
 
     public void RotateObject()
     {
-        _pendingObject.transform.Rotate(Vector3.up, _rotateAmount);
+        _pendingObject.transform.Rotate(Vector3.up, RotateAmount);
     }
 
     // 물리 관련
-    private void FixedUpdate() 
+    private void FixedUpdate()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // 마우스 위치 반환
 
@@ -66,32 +67,18 @@ public class MapMakerManager : MonoBehaviour
     }
 
     // 선택
-    public void SelectObject (int idx)
+    public void SelectObject(int idx)
     {
         _pendingObject = Instantiate(Objects[idx], _pos, transform.rotation);
     }
 
     public void ToggleGrid()
     {
-        if (GridToggle.isOn)
-        {
-            _gridOn = true;
-        } else
-        {
-            _gridOn = false;
-        }
+        _gridOn = GridToggle.isOn;
     }
 
     private float RoundToNearestGrid(float pos)
     {
-        float xDiff = pos % _gridSize;
-        pos -= xDiff;
-        if(xDiff > (_gridSize / 2))
-        {
-            pos += _gridSize;
-        }
-        return pos;
+        return Mathf.Round(pos / GridSize) * GridSize;
     }
 }
-
-

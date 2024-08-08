@@ -1743,12 +1743,13 @@ MonoBehaviour:
   - {fileID: 8518090718205645175, guid: e7cdc267892f3704fb5ab01d03ba1230, type: 3}
   - {fileID: 4671667550907524294, guid: 19071f008e6dde84185582ae4bf552fa, type: 3}
   - {fileID: 7919892964689788210, guid: 764667661957fa445aaf0e4c83a9cb55, type: 3}
-  _gridSize: 0.5
-  _rotateAmount: 45
+  RotateAmount: 45
+  GridSize: 1
   GridToggle: {fileID: 1220914019}
   LayerMask:
     serializedVersion: 2
     m_Bits: 64
+  LerpSpeed: 10
 --- !u!4 &1936628002
 Transform:
   m_ObjectHideFlags: 0
