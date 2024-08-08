@@ -7,6 +7,7 @@ public enum UIType
 public enum TileType
 {
     Plane,
+    food,
     Kitchen,
     Customer,
     Wall,

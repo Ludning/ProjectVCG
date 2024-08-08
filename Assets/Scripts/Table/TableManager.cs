@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.UIElements;
 
 public class TableManager : MonoBehaviour
 {
@@ -14,13 +15,18 @@ public class TableManager : MonoBehaviour
         //초기화 더 할꺼임
         //TODO
     }
-
-    public TileType GetTileType(int x, int y)
+    public Vector2 GetTilePosition(Vector2Int position)
     {
-        return map[x + y].TileType;
+        //TODO
+        return Vector2.zero;
     }
-    public ItemBase GetTileItem(int x, int y)
+
+    public TileType GetTileType(Vector2Int position)
     {
-        return map[x + y].Item;
+        return map[position.x + position.y].TileType;
+    }
+    public ItemBase GetTileItem(Vector2Int position)
+    {
+        return map[position.x + position.y].Item;
     }
 }

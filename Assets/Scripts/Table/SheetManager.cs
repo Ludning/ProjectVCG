@@ -6,8 +6,6 @@ public class SheetManager : MonoBehaviour
 {
     [SerializeField]
     private StageManager Stage;
-    [SerializeField]
-    private TableManager Table;
     private List<BlockLogicBase> _blockLogicBases = new List<BlockLogicBase>();
 
     private bool IsRun = true;
@@ -32,7 +30,7 @@ public class SheetManager : MonoBehaviour
         //TODO
         Vector2Int targetPosition = new Vector2Int();
         //TODO
-        result = blockLogic.IsExecutable(Table, targetPosition);
+        result = blockLogic.IsExecutable(Stage);
 
         if (result == false)
         {
