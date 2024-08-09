@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +14,9 @@ public class MapMakerManager : MonoBehaviour
     private Vector3 _pos;                          // 마우스 위치 값 저장
     private RaycastHit _hit;                       // 히트 정보 저장
 
+    [SerializeField] private GameObject GroundObj;
     [SerializeField] private Button CloneBtn;
+    [SerializeField] private GameObject RootObj;
     [SerializeField] private float RotateAmount;   // R 키입력 시 오브젝트가 회전하는 각도
     [SerializeField] private float GridSize = 1f;       // 그리드 크기 (1 권장)
     [SerializeField] private Toggle GridToggle;    // 토글 UI 
@@ -24,18 +27,27 @@ public class MapMakerManager : MonoBehaviour
         if (Objects != null && CloneBtn != null)
         {
             // CloneBtn이 씬에 배치된 오브젝트라고 가정합니다.
-            GameObject buttonGameObject = CloneBtn.gameObject;
-
+            int idx = 0;
             foreach (GameObject objPrefab in Objects)
             {
-                // Objects 배열의 각 프리팹을 인스턴스화
-                GameObject objInstance = Instantiate(objPrefab);
+                // 버튼 프리팹 생성
+                GameObject newButton = Instantiate(CloneBtn.gameObject, RootObj.transform);
+                newButton.GetComponentInChildren<TextMeshProUGUI>().text = (idx + 1).ToString();
+                // 
+                Button newButtonGameObject = newButton.GetComponent<Button>();
 
-                // 인스턴스화된 오브젝트를 CloneBtn의 자식으로 설정
-                objInstance.transform.SetParent(buttonGameObject.transform);
+                int capturedIdx = idx; // 클로저 문제를 피하기 위해 지역 변수로 캡처
+
+                newButtonGameObject.onClick.AddListener(() => SelectObject(capturedIdx));
+                idx++;
+
+                // 프리팹을 인스턴스화
+                GameObject objInstance = Instantiate(objPrefab, newButton.transform);
+                objInstance.transform.localScale = new Vector3(100, 100, 100);
+
+                // 인스턴스화된 오브젝트를 새로 생성된 버튼의 자식으로 설정
 
                 // 필요에 따라 추가적인 작업 수행
-                objInstance.transform.localPosition = Vector3.zero; // 자식의 위치를 부모의 중심으로 설정
                 objInstance.name = "Child_" + objPrefab.name; // 이름 변경 등
             }
         }
@@ -49,7 +61,7 @@ public class MapMakerManager : MonoBehaviour
             {
                 PendingObject.transform.position = new Vector3(
                     RoundToNearestGrid(_pos.x),
-                    RoundToNearestGrid(_pos.y),
+                    .5f,
                     RoundToNearestGrid(_pos.z)
                 );
             }
@@ -65,7 +77,8 @@ public class MapMakerManager : MonoBehaviour
             {
                 RotateObject();
             }
-        } else
+        }
+        else
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
@@ -84,7 +97,11 @@ public class MapMakerManager : MonoBehaviour
 
     public void PlaceObject()
     {
+        Vector3 currentPosition = PendingObject.transform.localPosition;
+        currentPosition.y = 0.5f;
+        PendingObject.transform.localPosition = currentPosition;
         PendingObject = null;
+
     }
 
     public void RotateObject()
@@ -106,7 +123,7 @@ public class MapMakerManager : MonoBehaviour
     // 선택
     public void SelectObject(int idx)
     {
-        PendingObject = Instantiate(Objects[idx], _pos, transform.rotation);
+        PendingObject = Instantiate(Objects[idx], _pos, transform.rotation,GroundObj.transform);
     }
 
     public void ToggleGrid()
