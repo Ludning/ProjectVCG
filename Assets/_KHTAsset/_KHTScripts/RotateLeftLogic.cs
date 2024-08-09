@@ -7,21 +7,35 @@ public class RotateLeftLogic : BlockLogicBase
 {
     Rotate rotate = Rotate.Left;
 
-    Quaternion playerCurrentRot = Quaternion.identity;
     Quaternion playerTargetRot = Quaternion.identity;
     public override bool IsExecutable(StageManager owner)
     {
-        Quaternion playerCurrentRot = owner.Controller.transform.rotation;
-        Quaternion playerTargetRot = owner.Controller.transform.rotation * GetRotationQuaternion();
+        playerTargetRot = owner.Controller.transform.rotation * GetRotationQuaternion();
         return true;
     }
 
     public override bool Execute(StageManager owner)
     {
-        owner.Controller.transform.rotation = Quaternion.Slerp(playerCurrentRot, playerTargetRot, 0.1f);
+        Quaternion playerCurrentRot = owner.Controller.transform.rotation;
+        owner.Controller.transform.rotation = Quaternion.Lerp(playerCurrentRot, playerTargetRot, 0.1f);
 
-        owner.Controller.SetPLayerForward(Direction.Down);
-        return true;
+        if (Quaternion.Angle(playerCurrentRot,playerTargetRot)<0.1f)
+        {
+            Vector3 direction = playerTargetRot * Vector3.forward;
+            Debug.Log($"direction{direction}");
+            if (Vector3.Dot(direction, Vector3.forward) > 0.99f)
+                owner.Controller.PlayerForward = Vector2Int.up;
+            else if (Vector3.Dot(direction, Vector3.back) > 0.99f)
+                owner.Controller.PlayerForward = Vector2Int.down;
+            else if (Vector3.Dot(direction, Vector3.left) > 0.99f)
+                owner.Controller.PlayerForward = Vector2Int.left;
+            else if (Vector3.Dot(direction, Vector3.right) > 0.99f)
+                owner.Controller.PlayerForward = Vector2Int.right;
+
+            return true;
+        }
+        return false;
+        
     }
 
     public Quaternion GetRotationQuaternion()
