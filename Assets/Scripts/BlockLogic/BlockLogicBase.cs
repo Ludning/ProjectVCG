@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class BlockLogicBase : MonoBehaviour
@@ -13,7 +10,7 @@ public class BlockLogicBase : MonoBehaviour
         TileType tileType = table.GetTileType(position.x, position.y);
         ItemBase item = table.GetTileItem(position.x, position.y);
 
-        if (tileType != TileType.Plane || item != null)
+        if (tileType != TileType.Floor || item != null)
         {
             return false;
         }
