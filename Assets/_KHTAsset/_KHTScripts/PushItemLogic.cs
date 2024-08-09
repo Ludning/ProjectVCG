@@ -4,7 +4,7 @@ using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 using UnityEngine.UIElements;
 
-public class GetItemLogic : BlockLogicBase
+public class PushItemLogic : BlockLogicBase
 {
     public override bool IsExecutable(StageManager owner)
     {
