@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,11 +13,33 @@ public class MapMakerManager : MonoBehaviour
     private Vector3 _pos;                          // 마우스 위치 값 저장
     private RaycastHit _hit;                       // 히트 정보 저장
 
+    [SerializeField] private Button CloneBtn;
     [SerializeField] private float RotateAmount;   // R 키입력 시 오브젝트가 회전하는 각도
     [SerializeField] private float GridSize = 1f;       // 그리드 크기 (1 권장)
     [SerializeField] private Toggle GridToggle;    // 토글 UI 
     [SerializeField] private LayerMask LayerMask;  // 레이캐스트에 사용할 레이어 마스크
 
+    private void Start()
+    {
+        if (Objects != null && CloneBtn != null)
+        {
+            // CloneBtn이 씬에 배치된 오브젝트라고 가정합니다.
+            GameObject buttonGameObject = CloneBtn.gameObject;
+
+            foreach (GameObject objPrefab in Objects)
+            {
+                // Objects 배열의 각 프리팹을 인스턴스화
+                GameObject objInstance = Instantiate(objPrefab);
+
+                // 인스턴스화된 오브젝트를 CloneBtn의 자식으로 설정
+                objInstance.transform.SetParent(buttonGameObject.transform);
+
+                // 필요에 따라 추가적인 작업 수행
+                objInstance.transform.localPosition = Vector3.zero; // 자식의 위치를 부모의 중심으로 설정
+                objInstance.name = "Child_" + objPrefab.name; // 이름 변경 등
+            }
+        }
+    }
     void Update()
     {
         // 배치 대기 중인 오브젝트가 있을 때 (캔버스에서 1,2,3 중 하나 버튼 누르면 됨)
