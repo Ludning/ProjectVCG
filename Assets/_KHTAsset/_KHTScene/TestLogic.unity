@@ -4141,7 +4141,8 @@ MonoBehaviour:
   RotateRightButton: {fileID: 468092449}
   SetItemButton: {fileID: 1409650946}
   ClearButton: {fileID: 582344014}
-  CookPrefab: {fileID: 0}
+  CookPrefab: {fileID: 7038036788328824224, guid: b1b3157957b34794d8a4ea61f979f409,
+    type: 3}
   MovePrefab: {fileID: 7038036788328824224, guid: e797e3399fe2dbf4b8dc64a954a220ea,
     type: 3}
   PushItemPrefab: {fileID: 7038036788328824224, guid: 6d7d6d89eb00db04cb2e011178c6d434,
