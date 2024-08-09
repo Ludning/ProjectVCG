@@ -6,6 +6,7 @@ public class PlayerInventory : MonoBehaviour
 {
     int MaxCount = 10;
     Stack<ItemBase> itemStack = new Stack<ItemBase>();
+    [SerializeField] Transform inventoryParent;
     public Vector3 ItemStackPosition
     {
         get
@@ -18,19 +19,18 @@ public class PlayerInventory : MonoBehaviour
     {
         if(itemStack.Count < MaxCount)
         {
-            item.transform.SetParent(transform);
+            item.transform.SetParent(inventoryParent);
             item.transform.position = ItemStackPosition;
             itemStack.Push(item);
         }
         
     }
 
-    public ItemBase PopItem(Vector3 position)
+    public ItemBase PopItem(Vector2Int position)
     {
         var item = itemStack.Pop();
         item.transform.SetParent(null);
-        item.transform.position = position;
+        //item.transform.position = position;
         return item;
-
     }
 }

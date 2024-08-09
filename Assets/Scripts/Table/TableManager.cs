@@ -6,27 +6,46 @@ using UnityEngine.UIElements;
 
 public class TableManager : MonoBehaviour
 {
-    private TileBase[] map = new TileBase[100];
-    public TileBase[] Map => map;
+    [SerializeField]
+    private Dictionary<Vector2Int, TileBase> map;
+    public Dictionary<Vector2Int, TileBase> Map => map;
+
+    public Vector2Int startPosition;
 
     public void Init()
     {
-        map = new TileBase[100];
+        //map = new TileBase[100];
         //초기화 더 할꺼임
         //TODO
     }
-    public Vector2 GetTilePosition(Vector2Int position)
+    public void Init(Dictionary<Vector2Int, TileBase> mapDictionary)
     {
-        //TODO
-        return Vector2.zero;
+        map = mapDictionary;
+    }
+    
+    public Vector3 GetTilePosition(Vector2Int position)
+    {
+        if (Map.TryGetValue(position, out TileBase tileBase))
+        {
+            return tileBase.transform.position + Vector3.up * 1.5f;
+        }
+        return Vector3.zero;
     }
 
     public TileType GetTileType(Vector2Int position)
     {
-        return map[position.x + position.y].TileType;
+        if (Map.TryGetValue(position, out TileBase tileBase))
+        {
+            return tileBase.TileType;
+        }
+        return TileType.Empty;
     }
     public ItemBase GetTileItem(Vector2Int position)
     {
-        return map[position.x + position.y].Item;
+        if (Map.TryGetValue(position, out TileBase tileBase))
+        {
+            return tileBase.Item;
+        }
+        return null;
     }
 }

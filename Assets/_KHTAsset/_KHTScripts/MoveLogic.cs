@@ -6,9 +6,9 @@ public class MoveLogic : BlockLogicBase
 {
     public override bool IsExecutable(StageManager owner)
     {
-        //ÀÌµ¿ÀÇ ¿¹½Ã
+        //ì´ë™ì˜ ì˜ˆì‹œ
 
-        //¾ÕÀ¸·Î ÀÌµ¿ÇÏ¸é Ä³¸¯ÅÍ ±âÁØ ¾Õ À§Ä¡¸¦ ¸Å°³º¯¼ö·Î ³Ñ°ÜÁÜ
+        //ì•ìœ¼ë¡œ ì´ë™í•˜ë©´ ìºë¦­í„° ê¸°ì¤€ ì• ìœ„ì¹˜ë¥¼ ë§¤ê°œë³€ìˆ˜ë¡œ ë„˜ê²¨ì¤Œ
         var position = owner.Controller.PlayerForwardPosition;
         TileType tileType = owner.Table.GetTileType(position);
         ItemBase item = owner.Table.GetTileItem(position);
@@ -24,14 +24,17 @@ public class MoveLogic : BlockLogicBase
     {
         var targetPosition = owner.Controller.PlayerForwardPosition;
 
-        owner.Controller.transform.position = Vector2.Lerp(owner.Controller.transform.position, targetPosition, 0.1f);
-
-        var targetWorldPosition = owner.Table.GetTilePosition(targetPosition);
-
-        var distance = Vector2.Distance((Vector2)owner.Controller.transform.position, targetWorldPosition);
+        Vector3 targetWorldPosition = owner.Table.GetTilePosition(targetPosition);
+        Vector3 playerWorldPosition = owner.Controller.transform.position;
+        owner.Controller.transform.position = Vector3.Lerp(owner.Controller.transform.position, targetWorldPosition, 0.1f);
+        float distance = Vector3.Distance(playerWorldPosition, targetWorldPosition);
+        Debug.Log(distance);
+        
         if (distance < 0.1f)
         {
             owner.Controller.transform.position = targetWorldPosition;
+            owner.Controller.PlayerPosition = targetPosition;
+            Debug.Log("End Logic");
             return true;
         }
         return false;

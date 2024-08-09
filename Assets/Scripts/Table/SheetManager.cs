@@ -9,7 +9,24 @@ public class SheetManager : MonoBehaviour
     private List<BlockLogicBase> _blockLogicBases = new List<BlockLogicBase>();
 
     private bool IsRun = true;
+
+    public void AddBlockLogic(BlockLogicBase blockLogic)
+    {
+        _blockLogicBases.Add(blockLogic);
+    }
+    public void ClearBlockLogic()
+    {
+        foreach (var blockLogicBase in _blockLogicBases)
+        {
+            Destroy(blockLogicBase.gameObject);
+        }
+        _blockLogicBases.Clear();
+    }
     
+    public void RunSheetBlock()
+    {
+        StartCoroutine(StartBlockLogics());
+    }
     IEnumerator StartBlockLogics()
     {
         IsRun = true;
@@ -20,6 +37,7 @@ public class SheetManager : MonoBehaviour
             {
                 //TODO
                 //실패로직 이벤트
+                Debug.Log("로직 실패!!");
                 yield break;
             }
         }
@@ -27,9 +45,7 @@ public class SheetManager : MonoBehaviour
     IEnumerator BlockLogic(BlockLogicBase blockLogic)
     {
         bool result = true;
-        //TODO
-        Vector2Int targetPosition = new Vector2Int();
-        //TODO
+        
         result = blockLogic.IsExecutable(Stage);
 
         if (result == false)

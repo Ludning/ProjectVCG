@@ -8,6 +8,13 @@ public class PlayerController : MonoBehaviour
     public Vector2Int PlayerPosition;
     public Vector2Int PlayerForwardPosition => PlayerPosition + PlayerForward;
 
+    public void Init(Vector2Int position, Vector2Int forward)
+    {
+        transform.position = new Vector3(position.x, 1.5f, position.y);
+        PlayerPosition = position;
+        PlayerForward = forward;
+    }
+    
     public void SetPLayerForward(Direction direction)
     {
         switch (direction)

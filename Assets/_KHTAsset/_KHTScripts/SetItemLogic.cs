@@ -16,8 +16,7 @@ public class SetItemLogic : BlockLogicBase
     public override bool Execute(StageManager owner)
     {
         var position = owner.Controller.PlayerForwardPosition;
-        var worldPosition = owner.Table.GetTilePosition(position);
-        var item = owner.Inventory.PopItem(worldPosition);
+        var item = owner.Inventory.PopItem(position);
         item.transform.position = owner.Table.GetTilePosition(position);
         return true;
     }
