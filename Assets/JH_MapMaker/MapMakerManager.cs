@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class MapMakerManager : MonoBehaviour
 {
     public GameObject[] Objects;                   // 맵에 배치 할 프리팹들
+    public GameObject PendingObject;             // 마우스를 따라 다니며 배치 대기 중인 오브젝트
 
     private bool _gridOn = true;                   // 스냅 기능 사용 여부
-    private GameObject _pendingObject;             // 마우스를 따라 다니며 배치 대기 중인 오브젝트
     private Vector3 _pos;                          // 마우스 위치 값 저장
     private RaycastHit _hit;                       // 히트 정보 저장
 
@@ -20,11 +20,11 @@ public class MapMakerManager : MonoBehaviour
     void Update()
     {
         // 배치 대기 중인 오브젝트가 있을 때 (캔버스에서 1,2,3 중 하나 버튼 누르면 됨)
-        if (_pendingObject != null)
+        if (PendingObject != null)
         {
             if (_gridOn)
             {
-                _pendingObject.transform.position = new Vector3(
+                PendingObject.transform.position = new Vector3(
                     RoundToNearestGrid(_pos.x),
                     RoundToNearestGrid(_pos.y),
                     RoundToNearestGrid(_pos.z)
@@ -32,7 +32,7 @@ public class MapMakerManager : MonoBehaviour
             }
             else
             {
-                _pendingObject.transform.position = _pos; // null 이면 마우스 위치 값 적용
+                PendingObject.transform.position = _pos; // null 이면 마우스 위치 값 적용
             }
             if (Input.GetMouseButtonDown(0))
             {
@@ -42,17 +42,31 @@ public class MapMakerManager : MonoBehaviour
             {
                 RotateObject();
             }
+        } else
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                SelectObject(0);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                SelectObject(1);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                SelectObject(2);
+            }
         }
     }
 
     public void PlaceObject()
     {
-        _pendingObject = null;
+        PendingObject = null;
     }
 
     public void RotateObject()
     {
-        _pendingObject.transform.Rotate(Vector3.up, RotateAmount);
+        PendingObject.transform.Rotate(Vector3.up, RotateAmount);
     }
 
     // 물리 관련
@@ -69,7 +83,7 @@ public class MapMakerManager : MonoBehaviour
     // 선택
     public void SelectObject(int idx)
     {
-        _pendingObject = Instantiate(Objects[idx], _pos, transform.rotation);
+        PendingObject = Instantiate(Objects[idx], _pos, transform.rotation);
     }
 
     public void ToggleGrid()
