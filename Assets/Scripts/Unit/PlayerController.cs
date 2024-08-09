@@ -1,21 +1,40 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Vector2Int PlayerForward;
+    public Direction PlayerForwardType;
     public Vector2Int PlayerPosition;
     public Vector2Int PlayerForwardPosition => PlayerPosition + PlayerForward;
 
-    public void Init(Vector2Int position, Vector2Int forward)
+    public Vector2Int PlayerForward
+    {
+        get
+        {
+            switch (PlayerForwardType)
+            {
+                case Direction.Up:
+                    return Vector2Int.up;
+                case Direction.Down:
+                    return Vector2Int.down;
+                case Direction.Left:
+                    return Vector2Int.left;
+                case Direction.Right:
+                    return Vector2Int.right;
+            }
+            return Vector2Int.zero;
+        }
+    }
+
+    public void Init(Vector2Int position, Direction forwardType)
     {
         transform.position = new Vector3(position.x, 1.5f, position.y);
         PlayerPosition = position;
-        PlayerForward = forward;
+        PlayerForwardType = forwardType;
     }
-    
-    public void SetPLayerForward(Direction direction)
+    /*public void SetPLayerForward(Direction direction)
     {
         switch (direction)
         {
@@ -32,8 +51,8 @@ public class PlayerController : MonoBehaviour
                 PlayerForward = Vector2Int.right;
                 break;
         }
-    }
-    public Direction GetPLayerForwardDirection()
+    }*/
+    /*public Direction GetPLayerForwardDirection()
     {
         if (PlayerForward == Vector2Int.up)
             return Direction.Up;
@@ -46,5 +65,5 @@ public class PlayerController : MonoBehaviour
         else
             return Direction.None;
 
-    }
+    }*/
 }

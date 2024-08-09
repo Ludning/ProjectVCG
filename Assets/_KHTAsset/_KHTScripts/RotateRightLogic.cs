@@ -4,37 +4,38 @@ using UnityEngine;
 
 public class RotateRightLogic : BlockLogicBase
 {
-    Rotate rotate = Rotate.Right;
-
-    Quaternion playerCurrentRot = Quaternion.identity;
     Quaternion playerTargetRot = Quaternion.identity;
     public override bool IsExecutable(StageManager owner)
     {
-        Quaternion playerCurrentRot = owner.Controller.transform.rotation;
-        Quaternion playerTargetRot = owner.Controller.transform.rotation * GetRotationQuaternion();
+        playerTargetRot = owner.Controller.transform.rotation * Quaternion.Euler(new Vector3(0, 90, 0));
         return true;
     }
 
     public override bool Execute(StageManager owner)
     {
-        owner.Controller.transform.rotation = Quaternion.Slerp(playerCurrentRot, playerTargetRot, 0.1f);
+        Quaternion playerCurrentRot = owner.Controller.transform.rotation;
+        owner.Controller.transform.rotation = Quaternion.Lerp(playerCurrentRot, playerTargetRot, 0.1f);
 
-        owner.Controller.SetPLayerForward(Direction.Down);
-        return true;
-    }
-
-    public Quaternion GetRotationQuaternion()
-    {
-        Quaternion result = Quaternion.identity;
-        switch (rotate)
+        if (Quaternion.Angle(playerCurrentRot,playerTargetRot)<0.1f)
         {
-            case Rotate.Left:
-                result = Quaternion.Euler(new Vector3(0, -90, 0));
-                break;
-            case Rotate.Right:
-                result = Quaternion.Euler(new Vector3(0, 90, 0));
-                break;
+            switch (owner.Controller.PlayerForwardType)
+            {
+                case Direction.Up:
+                    owner.Controller.PlayerForwardType = Direction.Right;
+                    break;
+                case Direction.Down:
+                    owner.Controller.PlayerForwardType = Direction.Left;
+                    break;
+                case Direction.Left:
+                    owner.Controller.PlayerForwardType = Direction.Up;
+                    break;
+                case Direction.Right:
+                    owner.Controller.PlayerForwardType = Direction.Down;
+                    break;
+            }
+            return true;
         }
-        return result;
+        return false;
+        
     }
 }

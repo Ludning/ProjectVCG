@@ -10,12 +10,12 @@ public class StageManager : MonoBehaviour
     public TableManager Table;
     public MapReader Reader;
 
+    public Direction playerForwardDirection = Direction.Right;
+
     private void Awake()
     {
         Reader.ReadMap();
         
-        
-        
-        Controller.Init(Table.startPosition, Vector2Int.right);
+        Controller.Init(Table.startPosition, playerForwardDirection);
     }
 }
