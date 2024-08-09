@@ -17,3 +17,16 @@ public enum BlockLogicType
 {
     
 }
+public enum Rotate
+{
+    Left,
+    Right,
+}
+public enum Direction
+{
+    None,
+    Up,
+    Down,
+    Left,
+    Right,
+}

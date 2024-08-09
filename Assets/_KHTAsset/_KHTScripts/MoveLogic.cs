@@ -22,12 +22,18 @@ public class MoveLogic : BlockLogicBase
 
     public override bool Execute(StageManager owner)
     {
-        //TODO, 이동 로직의 예시
+        var targetPosition = owner.Controller.PlayerForwardPosition;
 
-        owner.Controller.transform.position = Vector2.Lerp(owner.Controller.transform.position, owner.TargetPosition, 0.1f);
+        owner.Controller.transform.position = Vector2.Lerp(owner.Controller.transform.position, targetPosition, 0.1f);
 
-        //TODO
-        //완료하면 True, 아니면 False
-        return true;
+        var targetWorldPosition = owner.Table.GetTilePosition(targetPosition);
+
+        var distance = Vector2.Distance((Vector2)owner.Controller.transform.position, targetWorldPosition);
+        if (distance < 0.1f)
+        {
+            owner.Controller.transform.position = targetWorldPosition;
+            return true;
+        }
+        return false;
     }
 }
