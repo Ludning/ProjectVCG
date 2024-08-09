@@ -69,7 +69,7 @@ public class TempSheetConnector : MonoBehaviour
                 logicBase = Instantiate(RotateRightPrefab).GetComponent<RotateRightLogic>();
                 break;
             case BlockLogicType.SetItem:
-                logicBase = Instantiate(SetItemPrefab).GetComponent<SetItemLogic>();
+                logicBase = Instantiate(SetItemPrefab).GetComponent<PopItemLogic>();
                 break;
         }
 

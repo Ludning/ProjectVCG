@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SetItemLogic : BlockLogicBase
+public class PopItemLogic : BlockLogicBase
 {
     public override bool IsExecutable(StageManager owner)
     {

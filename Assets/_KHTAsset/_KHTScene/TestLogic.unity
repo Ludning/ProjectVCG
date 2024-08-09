@@ -4144,10 +4144,14 @@ MonoBehaviour:
   CookPrefab: {fileID: 0}
   MovePrefab: {fileID: 7038036788328824224, guid: e797e3399fe2dbf4b8dc64a954a220ea,
     type: 3}
-  PushItemPrefab: {fileID: 0}
-  RotateLeftPrefab: {fileID: 0}
-  RotateRightPrefab: {fileID: 0}
-  SetItemPrefab: {fileID: 0}
+  PushItemPrefab: {fileID: 7038036788328824224, guid: 6d7d6d89eb00db04cb2e011178c6d434,
+    type: 3}
+  RotateLeftPrefab: {fileID: 7038036788328824224, guid: ea1521a4462829a4ca40950d22a2bd9c,
+    type: 3}
+  RotateRightPrefab: {fileID: 7038036788328824224, guid: 0e8ca17bebf686242ba10d747c991aa0,
+    type: 3}
+  SetItemPrefab: {fileID: 7038036788328824224, guid: 23a2ba887e3a463469602b120cedd97c,
+    type: 3}
 --- !u!1 &580035876
 GameObject:
   m_ObjectHideFlags: 0
