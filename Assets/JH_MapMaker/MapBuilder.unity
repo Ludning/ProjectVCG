@@ -1884,17 +1884,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c3e51f3c4e1f444b68df0d75eedd48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Objects:
+  SetObjects:
   - {fileID: 8518090718205645175, guid: e7cdc267892f3704fb5ab01d03ba1230, type: 3}
   - {fileID: 4671667550907524294, guid: 19071f008e6dde84185582ae4bf552fa, type: 3}
   - {fileID: 7919892964689788210, guid: 764667661957fa445aaf0e4c83a9cb55, type: 3}
+  SetHeight: 0.5
   PendingObject: {fileID: 0}
   GroundObj: {fileID: 1803701275}
   CloneBtn: {fileID: 2590600909490519874, guid: 421def32ebafc3948abe00bef83c2a3e,
     type: 3}
   RootObj: {fileID: 1592062122}
   RotateAmount: 90
-  GridSize: 1
+  GridSize: 0.5
   GridToggle: {fileID: 1220914019}
   LayerMask:
     serializedVersion: 2

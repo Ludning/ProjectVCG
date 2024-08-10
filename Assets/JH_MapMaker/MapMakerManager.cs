@@ -7,7 +7,12 @@ using UnityEngine.UI;
 
 public class MapMakerManager : MonoBehaviour
 {
-    public GameObject[] Objects;                   // 맵에 배치 할 프리팹들
+    [Header("[Settings.......]")]
+    public GameObject[] SetObjects;                   // 맵에 배치 할 프리팹들
+    [SerializeField] private float SetHeight;
+
+
+    [Header("[Dont edit]")]
     public GameObject PendingObject;             // 마우스를 따라 다니며 배치 대기 중인 오브젝트
 
     private bool _gridOn = true;                   // 스냅 기능 사용 여부
@@ -24,11 +29,11 @@ public class MapMakerManager : MonoBehaviour
 
     private void Start()
     {
-        if (Objects != null && CloneBtn != null)
+        if (SetObjects != null && CloneBtn != null)
         {
             // CloneBtn이 씬에 배치된 오브젝트라고 가정합니다.
             int idx = 0;
-            foreach (GameObject objPrefab in Objects)
+            foreach (GameObject objPrefab in SetObjects)
             {
                 // 버튼 프리팹 생성
                 GameObject newButton = Instantiate(CloneBtn.gameObject, RootObj.transform);
@@ -61,7 +66,7 @@ public class MapMakerManager : MonoBehaviour
             {
                 PendingObject.transform.position = new Vector3(
                     RoundToNearestGrid(_pos.x),
-                    .5f,
+                    SetHeight,
                     RoundToNearestGrid(_pos.z)
                 );
             }
@@ -98,7 +103,7 @@ public class MapMakerManager : MonoBehaviour
     public void PlaceObject()
     {
         Vector3 currentPosition = PendingObject.transform.localPosition;
-        currentPosition.y = 0.5f;
+        currentPosition.y = SetHeight;
         PendingObject.transform.localPosition = currentPosition;
         PendingObject = null;
 
@@ -123,7 +128,7 @@ public class MapMakerManager : MonoBehaviour
     // 선택
     public void SelectObject(int idx)
     {
-        PendingObject = Instantiate(Objects[idx], _pos, transform.rotation,GroundObj.transform);
+        PendingObject = Instantiate(SetObjects[idx], _pos, transform.rotation,GroundObj.transform);
     }
 
     public void ToggleGrid()
