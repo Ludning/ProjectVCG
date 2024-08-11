@@ -585,6 +585,7 @@ GameObject:
   - component: {fileID: 834304799}
   - component: {fileID: 834304798}
   - component: {fileID: 834304801}
+  - component: {fileID: 834304802}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -660,7 +661,7 @@ Transform:
   m_GameObject: {fileID: 834304797}
   serializedVersion: 2
   m_LocalRotation: {x: 0.45087755, y: 0, z: 0, w: 0.8925859}
-  m_LocalPosition: {x: 0, y: 11.2, z: -6.9}
+  m_LocalPosition: {x: 0, y: 14.5, z: -16.903816}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -711,6 +712,19 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &834304802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834304797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62185c704d7b825409d77e8ee43f3529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
 --- !u!1 &1062496129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1808,8 +1822,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1849,6 +1862,37 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3, y: 1, z: 3}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1833557529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1833557530}
+  m_Layer: 0
+  m_Name: Root
+  m_TagString: tileObj
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1833557530
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833557529}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1884,18 +1928,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c3e51f3c4e1f444b68df0d75eedd48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GridSize: 2
+  SetHeight: 1
   SetObjects:
   - {fileID: 8518090718205645175, guid: e7cdc267892f3704fb5ab01d03ba1230, type: 3}
   - {fileID: 4671667550907524294, guid: 19071f008e6dde84185582ae4bf552fa, type: 3}
   - {fileID: 7919892964689788210, guid: 764667661957fa445aaf0e4c83a9cb55, type: 3}
-  SetHeight: 0.5
+  - {fileID: 8518090718205645175, guid: ff112637121dcbc40984ee84e602c028, type: 3}
   PendingObject: {fileID: 0}
-  GroundObj: {fileID: 1803701275}
+  GroundObj: {fileID: 1833557529}
   CloneBtn: {fileID: 2590600909490519874, guid: 421def32ebafc3948abe00bef83c2a3e,
     type: 3}
   RootObj: {fileID: 1592062122}
   RotateAmount: 90
-  GridSize: 0.5
   GridToggle: {fileID: 1220914019}
   LayerMask:
     serializedVersion: 2
@@ -2012,6 +2057,7 @@ SceneRoots:
   - {fileID: 40117258}
   - {fileID: 1374789537}
   - {fileID: 1803701279}
+  - {fileID: 1833557530}
   - {fileID: 1936628002}
   - {fileID: 684577653}
   - {fileID: 1098732743}

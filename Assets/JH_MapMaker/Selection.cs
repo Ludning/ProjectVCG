@@ -17,18 +17,36 @@ public class Selection : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); //         
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
+
             if (Physics.Raycast(ray, out hit, 1000))
             {
-                if (hit.collider.gameObject.CompareTag("tileObj"))
+                // hit.collider가 null이 아닌지 확인
+                if (hit.collider != null)
                 {
-                    Debug.Log(hit.collider.gameObject.name);
-                    Select(hit.collider.gameObject);
+                    // hit.collider.gameObject가 null이 아닌지 확인
+                    if (hit.collider.gameObject != null)
+                    {
+                        // hit.collider.gameObject.transform.parent가 null이 아닌지 확인
+                        if (hit.collider.gameObject.transform.parent != null)
+                        {
+                            // hit.collider.gameObject.transform.parent.gameObject가 null이 아닌지 확인
+                            if (hit.collider.gameObject.transform.parent.gameObject != null)
+                            {
+                                // 타겟이 tileObj 태그를 가진 부모 오브젝트인지 확인
+                                if (hit.collider.gameObject.transform.parent.gameObject.CompareTag("tileObj"))
+                                {
+                                    Debug.Log(hit.collider.gameObject.name);
+                                    Select(hit.collider.gameObject);
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
-        if(_MapMakerManager != null && Input.GetMouseButtonDown(1))
+        if (_MapMakerManager != null && Input.GetMouseButtonDown(1))
         {
             if(!_MapMakerManager.PendingObject) DeSelect();
         }

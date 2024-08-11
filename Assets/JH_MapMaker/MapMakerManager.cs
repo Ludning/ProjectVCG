@@ -4,12 +4,17 @@ using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+// 배치 할 오브젝트에 컬라이더 설정 필요
+// Plane 의 크기는 Ground 오브젝트 Scale 수정
+// 오브젝트 크기가 작다면 프리팹 Scale값을 수정
 public class MapMakerManager : MonoBehaviour
 {
     [Header("[Settings.......]")]
-    public GameObject[] SetObjects;                   // 맵에 배치 할 프리팹들
+    [SerializeField] private float GridSize = 1f;       // 그리드 크기 
     [SerializeField] private float SetHeight;
+
+
+    public GameObject[] SetObjects;                   // 맵에 배치 할 프리팹들
 
 
     [Header("[Dont edit]")]
@@ -23,7 +28,6 @@ public class MapMakerManager : MonoBehaviour
     [SerializeField] private Button CloneBtn;
     [SerializeField] private GameObject RootObj;
     [SerializeField] private float RotateAmount;   // R 키입력 시 오브젝트가 회전하는 각도
-    [SerializeField] private float GridSize = 1f;       // 그리드 크기 (1 권장)
     [SerializeField] private Toggle GridToggle;    // 토글 UI 
     [SerializeField] private LayerMask LayerMask;  // 레이캐스트에 사용할 레이어 마스크
 
@@ -96,6 +100,30 @@ public class MapMakerManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
                 SelectObject(2);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                SelectObject(3);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha5))
+            {
+                SelectObject(4);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha6))
+            {
+                SelectObject(5);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha7))
+            {
+                SelectObject(6);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha8))
+            {
+                SelectObject(7);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha9))
+            {
+                SelectObject(8);
             }
         }
     }
