@@ -39,41 +39,56 @@ public class NpcManager : SingleTonMono<NpcManager>
     }
     private void Update()
     {
+        // 여러 줄 모두 출력할 때
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
-            GetDialogue("HintMessage");
+
+            GetDialogue("IntroduceBlockRun");
+        }
+
+
+        // 특정 대화만 출력
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+                GetDialogue("HintMessage",0);
         }
     }
-    public void GetDialogue(string msg)
+    public void GetDialogue(string msg, int index = -1)
     {
         if (dialogueDictionary.ContainsKey(msg))
         {
             if (TalkCoroutineRunning != null)
             {
                 StopCoroutine(TalkCoroutineRunning);
+                dialogueText.text = "";
+                dialogueText.DOKill();
             }
-            TalkCoroutineRunning = StartCoroutine(StartTalk(msg, dialogueDictionary[msg]));
+            
+
+            // 인덱스 값이 유효한 경우 해당 인덱스의 메시지만 출력
+            if (index >= 0 && index < dialogueDictionary[msg].Length)
+            {
+                string[] selectedMsg = new string[] { dialogueDictionary[msg][index] };
+                TalkCoroutineRunning = StartCoroutine(StartTalk(msg, selectedMsg));
+            }
+            else
+            {
+                // 인덱스 값이 유효하지 않으면 모든 메시지를 출력
+                TalkCoroutineRunning = StartCoroutine(StartTalk(msg, dialogueDictionary[msg]));
+            }
         }
     }
 
+
     public IEnumerator StartTalk(string key, string[] msg)
     {
-        if (key == "HintMessage")
-        {
+      
             foreach (var line in msg)
             {
                 yield return DisplayTextWithTypingEffect(line);
                 yield return new WaitForSeconds(1f); // Wait time before showing the next hint message
             }
-        }
-        else
-        {
-            foreach (var line in msg)
-            {
-                yield return DisplayTextWithTypingEffect(line);
-                yield return new WaitForSeconds(2f); // Wait time between paragraphs
-            }
-        }
+       
 
         TalkCoroutineRunning = null;
     }
@@ -87,6 +102,6 @@ public class NpcManager : SingleTonMono<NpcManager>
         yield return typingTween.WaitForCompletion();
 
         // Optional: You can add a delay here before allowing the next line to start typing
-        yield return new WaitForSeconds(1f);
+        //yield return new WaitForSeconds(1f);
     }
 }
