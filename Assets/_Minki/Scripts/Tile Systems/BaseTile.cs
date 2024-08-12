@@ -1,50 +1,44 @@
 using System.Collections.Generic;
-using Minki.FoodSystem;
+using FoodSystem;
 using UnityEngine;
 
-namespace Minki.TileSystem
+namespace TileSystem
 {
-    // A Top-Level Class for Tile Item Classes.
+    // 타일 아이템 클래스의 최상위 클래스
     public class BaseTile : MonoBehaviour
     {
-        // Tile Type; Defines What Type of the Tile is.
+        // 타일의 종류
         public TileType TypeName { get; protected set; }
     }
 
     #region Interfaces
     
-    // Can Walk
+    // 이동할 수 있는 타일
     public interface IWalkable
     {
         bool Walk();
     }
 
-    // Can NOT Walk
+    // 이동할 수 없는 타일
     public interface INotWalkable
     {
         bool Walk();
     }
     
-    // Can Lift Food (or Ingredient).
+    // (재료, 음식을) 들어올릴 수 있는 타일
     public interface ILiftable
     {
-        BaseFood Lift(); // Lift Food or Ingredient.
-        void Lift(Queue<BaseFood> inHand); // Lift Food or Ingredient. (If Using Queue<T>)
+        BaseFood Lift(); // (재료, 음식을) 들어올립니다.
+        void Lift(Queue<BaseFood> inHand); // (재료, 음식을) 들어올립니다. (Queue<T>를 사용할 경우)
     }
 
-    // Can Drop Food (or Ingredient).
+    // (재료, 음식을) 내려놓을 수 있는 타일
     public interface IDropable
     {
-        // [Alert]: Player Drops with LIFO(Last In, First Out) Rules.
-        void Drop(BaseFood foodInHand); // Drop Food or Ingredient.
-        void Drop(Queue<BaseFood> foodInHand); // Drop Food or Ingredient. (If Using Queue<T>)
+        // [주의] 플레이어는 후입선출(LIFO; Last In, First Out) 방법으로 내려놓습니다.
+        void Drop(BaseFood foodInHand); // (재료, 음식을) 내려놓습니다.
+        void Drop(Queue<BaseFood> foodInHand); // (재료, 음식을) 내려놓습니다. (Queue<T>를 사용할 경우)
     }
-    
-    // Can Cook
-    // public interface ICookable
-    // {
-    //     GameObject Cook(GameObject[] inHandIngredients);
-    // }
 
     #endregion Interfaces
 }

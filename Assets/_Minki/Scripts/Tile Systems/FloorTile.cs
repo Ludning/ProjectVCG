@@ -1,17 +1,18 @@
-namespace Minki.TileSystem
+namespace TileSystem
 {
-    // Floor Tile; Player Can Move to Floor Tile.
+    // 바닥 타일; 플레이어는 바닥 타일 위로 이동할 수 있습니다.
     public class FloorTile : BaseTile, IWalkable
     {
         private void Awake()
         {
-            // Set Tile's Type.
+            // 시작 전, 타일의 종류를 '바닥'으로 지정합니다.
             TypeName = TileType.Floor;
         }
 
         // Interface Method
         public bool Walk()
         {
+            // TODO: 플레이어의 움직임과 관련한 내용을 이곳에서 작업할 것인가?
             return true;
         }
     }

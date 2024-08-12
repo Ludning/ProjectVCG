@@ -1,11 +1,11 @@
-namespace Minki.TileSystem
+namespace TileSystem
 {
-    // Wall Tile; Player Can NOT Move to Wall Tile.
+    // 벽 타일; 플레이어는 벽 타일 위로 이동할 수 없습니다.
     public class WallTile : BaseTile, INotWalkable
     {
         private void Awake()
         {
-            // Set Tile's Type.
+            // 시작 전, 타일의 종류를 '벽'으로 지정합니다.
             TypeName = TileType.Wall;
         }
         

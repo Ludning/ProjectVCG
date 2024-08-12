@@ -1,39 +1,39 @@
 using System.Collections.Generic;
-using Minki.FoodSystem;
+using FoodSystem;
 using UnityEngine;
 
-namespace Minki.TileSystem
+namespace TileSystem
 {
-    // Plate Tile; Player Can NOT Move to Plate Tile, but Can Lift Food on Plate Tile.
-    public class PlateTile : BaseTile, ILiftable
+    // 서빙 테이블 타일; 플레이어가 손님 테이블 타일에 전달하기 위한 완성된 음식을 가지고 있는 타일입니다.
+    // 플레이어는 서빙 테이블 타일 위로 이동할 수 없으며, 이 타일에 있는 완성된 음식을 들어올릴 수 있습니다.
+    public class ServingTile : BaseTile, ILiftable
     {
-        // A List of Plated Food.
-        // [SerializeField]: Plate Tile can Have Complete Food Already on Start at some Stages(Such as Tutorial).
-        [SerializeField] private BaseFood platedFood;
-        public BaseFood PlatedFood
+        // 완성된 음식 객체
+        // 직렬화: 스테이지에 따라 처음부터 완성된 음식이 존재할 수 있습니다.
+        [SerializeField] private BaseFood servingFood;
+        public BaseFood ServingFood
         {
-            set => platedFood = value;
+            set => servingFood = value;
         }
         
         private void Awake()
         {
-            // Set Tile's Type.
-            TypeName = TileType.Plate;
+            // 시작 전, 타일의 종류를 지정합니다.
+            TypeName = TileType.Serving;
         }
         
         #region Interface Methods
 
-        // This Method will be Called by Player; Player Lifts All the Food on Plate.
+        // 이 함수는 플레이어가 호출합니다.
         public BaseFood Lift()
         {
-            // Player Gets the Plated Food Data.
-            return platedFood;
+            return servingFood; // 플레이어는 완성된 음식의 참조 값을 받습니다.
         }
 
+        // Queue<T>를 사용할 경우
         public void Lift(Queue<BaseFood> inHand)
         {
-            // Player Gets the Plated Food Data into Hand.
-            inHand.Enqueue(platedFood);
+            inHand.Enqueue(servingFood); // 플레이어는 자신의 Queue<BaseFood> 데이터에 완성된 음식의 참조 값을 추가합니다.
         }
         
         #endregion Interface Methods

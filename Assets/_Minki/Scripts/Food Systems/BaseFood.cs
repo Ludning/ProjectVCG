@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Minki.FoodSystem
+namespace FoodSystem
 {
     // [Temporary] Food Systems
     public enum FoodType

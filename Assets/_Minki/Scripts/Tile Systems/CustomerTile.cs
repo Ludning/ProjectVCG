@@ -1,37 +1,47 @@
 using System.Collections.Generic;
-using Minki.FoodSystem;
+using FoodSystem;
 using UnityEngine;
+using UnityEngine.UI;
 
-namespace Minki.TileSystem
+namespace TileSystem
 {
-    // Customer Tile; Player Can NOT move to Customer Tile, but Can Serve Cooked Food in Front of Here.
+    // 손님 테이블 타일; 플레이어가 어떠한 음식을 들고 와야 하는지, 스테이지 클리어 목표를 제시하는 타일입니다.
+    // 플레이어는 손님 테이블 타일 위로 이동할 수 없으며, 이 타일에 들고 있는 음식을 내려놓을 수 있습니다.
     public class CustomerTile : BaseTile, IDropable
     {
+        // 목표 음식
+        // 직렬화: 스테이지 난이도 개발자가 직접 목표를 지정할 수 있습니다.
         [SerializeField] private BaseFood desiredFood;
+
+        // UI: Image; 목표 음식을 이미지로 보여주고자 할 경우
+        [SerializeField] private Image desiredFoodImage;
         
         private void Awake()
         {
-            // Set Tile's Type.
+            // 시작 전, 타일의 종류를 '손님'으로 지정합니다.
             TypeName = TileType.Customer;
+
+            // desiredFoodImage = desiredFood.Image;
         }
 
         #region Interface Methods
         
-        // This Method will be Called by Player; Player Serves the Food in Hand to Customer.
+        // 이 함수는 플레이어가 호출합니다.
         public void Drop(BaseFood foodInHand)
         {
+            // 플레이어가 내려놓는 음식이 목표 음식과 같을 경우,
             if (foodInHand.TypeName == desiredFood.TypeName)
             {
-                // Let GameManager know that Player Cleared this Stage.
+                // 게임의 결과를 관리하는 게임 매니저 등에게, 플레이어가 스테이지를 달성했음을 알립니다.
             }
         }
 
-        // If Using Queue<T>,
+        // Queue<T>를 사용할 경우
         public void Drop(Queue<BaseFood> foodInHand)
         {
             if (foodInHand.Dequeue().TypeName == desiredFood.TypeName)
             {
-                // Let GameManager know that Player Cleared this Stage.
+                
             }
         }
         

@@ -1,7 +1,7 @@
 // using System.Linq;
 // using UnityEngine;
 //
-// namespace Minki.TileSystem
+// namespace TileSystem
 // {
 //     // Kitchen Tile; Player Can NOT Move to Kitchen Tile, but Can Cook Food in Front of Here.
 //     // [ALERT] At ProtoType: Kitchen Tile will do Action of Ingredient Tile.

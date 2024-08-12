@@ -1,6 +1,6 @@
 // using UnityEngine;
 //
-// namespace Minki.TileSystem
+// namespace TileSystem
 // {
 //     public class IngredientTile : BaseTile
 //     {
