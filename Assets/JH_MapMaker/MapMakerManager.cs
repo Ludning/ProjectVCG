@@ -156,7 +156,8 @@ public class MapMakerManager : MonoBehaviour
     // ¼±ÅÃ
     public void SelectObject(int idx)
     {
-        PendingObject = Instantiate(SetObjects[idx], _pos, transform.rotation,GroundObj.transform);
+        if (idx >= SetObjects.Length) return;
+            PendingObject = Instantiate(SetObjects[idx], _pos, transform.rotation,GroundObj.transform);
     }
 
     public void ToggleGrid()

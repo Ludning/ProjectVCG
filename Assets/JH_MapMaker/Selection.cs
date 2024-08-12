@@ -48,7 +48,7 @@ public class Selection : MonoBehaviour
         }
         if (_MapMakerManager != null && Input.GetMouseButtonDown(1))
         {
-            if(!_MapMakerManager.PendingObject) DeSelect();
+            if(!_MapMakerManager.PendingObject && SelectedObj) DeSelect();
         }
     }
 
