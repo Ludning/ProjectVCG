@@ -6,7 +6,7 @@ namespace TileSystem
         private void Awake()
         {
             // 시작 전, 타일의 종류를 '바닥'으로 지정합니다.
-            TypeName = TileType.Floor;
+            TypeName = TileType.Walk;
         }
 
         // Interface Method

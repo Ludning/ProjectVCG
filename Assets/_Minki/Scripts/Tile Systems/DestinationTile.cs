@@ -6,7 +6,7 @@ namespace TileSystem
         private void Awake()
         {
             // 시작 전, 타일의 종류를 '목적지'로 지정합니다.
-            TypeName = TileType.Destination;
+            TypeName = TileType.Pass;
         }
 
         // Interface Method
