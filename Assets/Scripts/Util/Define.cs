@@ -7,11 +7,12 @@ public enum UIType
 public enum TileType
 {
     Empty,
-    Plane,
-    food,
+    Walk,
+    Serving,
     Kitchen,
     Customer,
-    Wall,
+    Blocking,
+    Pass,
 }
 
 public enum BlockLogicType
