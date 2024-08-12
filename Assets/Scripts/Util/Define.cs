@@ -6,19 +6,33 @@ public enum UIType
 
 public enum TileType
 {
-    // [1차 프로토타입 기준]
-    Floor, // 바닥: 플레이어가 이동할 수 있는 가장 기본적인 타일
-    Destination, // 목적지: 플레이어의 최종 목적지; 플레이어가 이동할 수 있는 타일
-    Wall, // 벽: 플레이어가 이동할 수 없는 가장 기본적인 타일
-    Serving, // 서빙: 서빙 테이블 타일로, 완성된 음식이 이 타일에 생성됩니다; 플레이어가 이동할 수 없는 타일
-    Customer, // 손님: 손님 테이블 타일로, 완성된 음식이 담긴 그릇을 이 타일로 옮겨야 합니다; 플레이어가 이동할 수 없는 타일
-
-    // [1차 프로토타입 이후 (예상)]
-    // Ingredient, // [임의 추가 속성] 재료 테이블: 바닥보다 높은, 재료를 구할 수 있는 타일; 2층, 정육면체
-    // Kitchen, // 조리 테이블: 바닥보다 높은, 재료를 사용하여 요리할 수 있는 타일; 2층, 정육면체
+    Empty,
+    Plane,
+    food,
+    Kitchen,
+    Customer,
+    Wall,
 }
 
 public enum BlockLogicType
 {
-    
+    Cook,
+    Move,
+    PushItem,
+    RotateLeft,
+    RotateRight,
+    SetItem
+}
+public enum Rotate
+{
+    Left,
+    Right,
+}
+public enum Direction
+{
+    None,
+    Up,
+    Down,
+    Left,
+    Right,
 }

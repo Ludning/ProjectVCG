@@ -2,25 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.UIElements;
 
 public class TableManager : MonoBehaviour
 {
-    private TileBase[] map = new TileBase[100];
-    public TileBase[] Map => map;
+    [SerializeField]
+    private Dictionary<Vector2Int, TileBase> map;
+    public Dictionary<Vector2Int, TileBase> Map => map;
+
+    public Vector2Int startPosition;
 
     public void Init()
     {
-        map = new TileBase[100];
+        //map = new TileBase[100];
         //초기화 더 할꺼임
         //TODO
     }
-
-    public TileType GetTileType(int x, int y)
+    public void Init(Dictionary<Vector2Int, TileBase> mapDictionary)
     {
-        return map[x + y].TileType;
+        map = mapDictionary;
     }
-    public ItemBase GetTileItem(int x, int y)
+    
+    public Vector3 GetTilePosition(Vector2Int position)
     {
-        return map[x + y].Item;
+        if (Map.TryGetValue(position, out TileBase tileBase))
+        {
+            return tileBase.transform.position + Vector3.up * 1.5f;
+        }
+        return Vector3.zero;
+    }
+
+    public TileType GetTileType(Vector2Int position)
+    {
+        if (Map.TryGetValue(position, out TileBase tileBase))
+        {
+            return tileBase.TileType;
+        }
+        return TileType.Empty;
+    }
+    public ItemBase GetTileItem(Vector2Int position)
+    {
+        if (Map.TryGetValue(position, out TileBase tileBase))
+        {
+            return tileBase.Item;
+        }
+        return null;
     }
 }
