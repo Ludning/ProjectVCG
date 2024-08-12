@@ -20,7 +20,11 @@ public class PlayerInventory : MonoBehaviour
         if(itemStack.Count < MaxCount)
         {
             item.transform.SetParent(inventoryParent);
-            item.transform.position = ItemStackPosition;
+            
+            Debug.Log($"InventoryParent : {inventoryParent.position}");
+            Debug.Log($"ItemStackPosition : {ItemStackPosition}");
+            
+            item.transform.localPosition = ItemStackPosition;
             itemStack.Push(item);
         }
         

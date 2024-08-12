@@ -13,7 +13,7 @@ public class MoveLogic : BlockLogicBase
         TileType tileType = owner.Table.GetTileType(position);
         ItemBase item = owner.Table.GetTileItem(position);
 
-        if (tileType != TileType.Plane || item != null)
+        if (tileType != TileType.Walk || item != null)
         {
             return false;
         }

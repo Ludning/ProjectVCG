@@ -12,7 +12,7 @@ public class PushItemLogic : BlockLogicBase
         TileType tileType = owner.Table.GetTileType(position);
         ItemBase item = owner.Table.GetTileItem(position);
 
-        return (tileType == TileType.food) ? true : false;
+        return (tileType == TileType.Serving) ? true : false;
     }
 
     public override bool Execute(StageManager owner)
