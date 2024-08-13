@@ -9,20 +9,8 @@ namespace TileSystem
     // 플레이어는 손님 테이블 타일 위로 이동할 수 없으며, 이 타일에 들고 있는 음식을 내려놓을 수 있습니다.
     public class CustomerTile : BaseTile, IDropable
     {
-        // 목표 음식
-        // 직렬화: 스테이지 난이도 개발자가 직접 목표를 지정할 수 있습니다.
-        [SerializeField] private BaseFood desiredFood;
-
-        // UI: Image; 목표 음식을 이미지로 보여주고자 할 경우
-        [SerializeField] private Image desiredFoodImage;
-        
-        private void Awake()
-        {
-            // 시작 전, 타일의 종류를 '손님'으로 지정합니다.
-            TypeName = TileType.Customer;
-
-            // desiredFoodImage = desiredFood.Image;
-        }
+        [SerializeField] private BaseFood desiredFood; // 목표 음식
+        [SerializeField] private Image desiredFoodImage; // UI: Image; 목표 음식을 이미지로 보여주고자 할 경우
 
         #region Interface Methods
         

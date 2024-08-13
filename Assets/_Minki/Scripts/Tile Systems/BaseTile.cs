@@ -7,20 +7,15 @@ namespace TileSystem
     // 타일 아이템 클래스의 최상위 클래스
     public class BaseTile : MonoBehaviour
     {
-        // 타일의 종류
-        public TileType TypeName { get; protected set; }
+        // 타일의 종류(타입)
+        [SerializeField] private TileType typeName;
+        public TileType TypeName => typeName;
     }
 
     #region Interfaces
     
     // 이동할 수 있는 타일
     public interface IWalkable
-    {
-        bool Walk();
-    }
-
-    // 이동할 수 없는 타일
-    public interface INotWalkable
     {
         bool Walk();
     }
