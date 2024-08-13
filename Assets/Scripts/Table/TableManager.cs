@@ -48,4 +48,20 @@ public class TableManager : MonoBehaviour
         }
         return null;
     }
+    public bool SetTileItem(Vector2Int position, ItemBase item)
+    {
+        if (Map.TryGetValue(position, out TileBase tileBase))
+        {
+            if (tileBase.Item != null)
+            {
+                Map[position].Item = item;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return false;
+    }
 }

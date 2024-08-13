@@ -8,4 +8,13 @@ public class TileBase : MonoBehaviour
     public TileType TileType;
     
     public ItemBase Item;
+
+    public virtual void OnSetItemExcute()
+    {
+
+    }
+    public virtual void OnItemSpwan()
+    {
+
+    }
 }
