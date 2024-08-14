@@ -3,7 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-// 1. Start 버튼의 이름으로
+// [정리]
+// 1. 챕터창 팝업 오픈 함수 OpenChapter() 게임 시작할 때 호출 해야할 듯? 
+// 2. TODO 스테이지 선택 함수 SelectStage() 스테이지 선택 이후 초기화 로직을 여기서 작성해야 할 듯
+// 3. 스테이지 클리어 했을 때 호출해야하는 함수 ClearStage();
+
+// [기획팀에게 피드백 받아야 하는 내용]
+// 1. 메인메뉴 버튼은 어디에 위치하고 눌렀을 때 UI 어떤 버튼 나오는지 메인메뉴 대략적인 UI배치 필요할듯
+
 
 
 // 스테이지 또는 챕터를 추가할 때 아래 열거형에 반영해야 합니다.
@@ -84,6 +91,11 @@ public class Chapter : MonoBehaviour
         }
         OpenChapterBtn.onClick.AddListener(() => OpenChapter());// 챕터 선택 팝업 열기 버튼 클릭 이벤트 설정        
         NextChapterBtn.onClick.AddListener(() => LastStage());  // 다음 챕터로 이동 버튼 클릭 이벤트 설정
+
+        CloseStage1Popup.onClick.AddListener(() => ActivePopup(ChapterPopup));
+        CloseStage2Popup.onClick.AddListener(() => ActivePopup(ChapterPopup));
+
+
         OnOpenChapter.onClick.AddListener(() => OpenChapter()); // Test 후 삭제
         OnGameClear.onClick.AddListener(() => ClearStage());    // Test 후 삭제
     }
@@ -120,10 +132,7 @@ public class Chapter : MonoBehaviour
 
     public void ActivePopup(GameObject obj = null)
     {
-        // Array of all popup GameObjects
         GameObject[] popups = { ClearPopup, ChapterPopup, StagePopup1, StagePopup2 };
-
-        // Iterate through each popup
         foreach (GameObject popup in popups)
         {
             if(obj == null)
@@ -133,7 +142,6 @@ public class Chapter : MonoBehaviour
             {
                 popup.SetActive(popup == obj);
             }
-            
         }
     }
     // 현재 스테이지를 클리어 했을 때 호출
@@ -231,24 +239,8 @@ public class Chapter : MonoBehaviour
         }
     }
 
-    // 매 프레임마다 호출
     void Update()
     {
-        Debug.Log("현재 챕터: " + _currentChapter);
-        Debug.Log("현재 스테이지: " + _currentStage);
-
-        // 키 입력으로 챕터 선택창 열기
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            OpenChapter();
-        }
-
-        // 키 입력으로 현재 스테이지 클리어 처리
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            ClearStage();
-        }
-
         _currentChapterView.text = $"현재 챕터 : {_currentChapter}";
         _currentStageView.text = $"현재 스테이지 : {_currentStage}";
 
