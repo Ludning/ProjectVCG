@@ -3,107 +3,254 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+// 1. Start 버튼의 이름으로
 
-enum StageIndex {
+
+// 스테이지 또는 챕터를 추가할 때 아래 열거형에 반영해야 합니다.
+enum ChapterIndex
+{
     Chapter1_1,
-    Chapter1_2,
+    Chapter1_2
+}
+
+enum StageIndex
+{
     Serving1,
     Serving2,
     Serving3,
     Serving4
 }
 
-
-// 내가 버튼을 눌렀어 이게 챕터 버튼인가? 아닌가?
-
-// 챕터 버튼이라면?
-    // 어떤 챕터 버튼을 눌럿는가? 챕터 기록
-    // 챕터에 맞는 스테이지 노출
-
-// 챕터 버튼이 아니라면?
-    // 어떤 스테이지인지 기록
-    // 스테이지 오픈 함수
 public class Chapter : MonoBehaviour
 {
+    // 현재 선택된 챕터와 스테이지 이름을 저장
+    private string _currentChapter = null;
+    private string _currentStage = null;
+
+    // UI 요소 참조
+    [Header("Btn_ChapterAndStage")]
+    [SerializeField] private Button[] ChapterBtn;     // 챕터 선택 버튼들
+    [SerializeField] private Button[] StageBtn;       // 스테이지 선택 버튼들
+
+    [Header("Popup")]
+    [SerializeField] private GameObject ClearPopup;   // 스테이지 클리어 팝업
+    [SerializeField] private GameObject ChapterPopup; // 챕터 선택 팝업
+    [SerializeField] private GameObject StagePopup1;  // 첫 번째 스테이지 팝업
+    [SerializeField] private GameObject StagePopup2;  // 두 번째 스테이지 팝업
+
+    [Header("MoveBtn")]
+    [SerializeField] private Button OpenChapterBtn;   // 챕터 선택 팝업 열기 버튼
+    [SerializeField] private Button NextChapterBtn;   // 다음 챕터로 이동 버튼
+
+    [Header("CloseBtn")]
+    [SerializeField] private Button CloseChapterPopup;// 챕터 팝업 닫기 버튼
+    [SerializeField] private Button CloseStage1Popup; // 챕터 1-1 팝업 닫기 버튼
+    [SerializeField] private Button CloseStage2Popup; // 챕터 1-2 팝업 닫기 버튼
+
+    [Header("테스트용")] // 테스트 후 제거
+    [SerializeField] private Text _currentStageView;  // 테스트 후 제거
+    [SerializeField] private Text _currentChapterView;// 테스트 후 제거
+    [SerializeField] private Button OnOpenChapter;    // 테스트 후 제거
+    [SerializeField] private Button OnGameClear;      // 테스트 후 제거
 
 
+    // 챕터와 해당 스테이지 목록을 저장할 딕셔너리
+    Dictionary<ChapterIndex, List<StageIndex>> _dic = new Dictionary<ChapterIndex, List<StageIndex>>();
 
-    private string _currentChapter = null;                                             // 현재 챕터
-    private string _currentStage = null;                                               // 현재 스테이지
-    [SerializeField] private Button[] ChapterStageBtnArr;// 챕터와 스테이지의 모든 버튼을 담음
-    [SerializeField] private GameObject ChapterPopup;
-    [SerializeField] private GameObject StagePopup1;
-    [SerializeField] private GameObject StagePopup2;
-    Dictionary<StageIndex, List<StageIndex>> _dic = new Dictionary<StageIndex, List<StageIndex>>();
+    // 열거형 값을 배열로 가져옴
+    ChapterIndex[] chapterIndices = (ChapterIndex[])Enum.GetValues(typeof(ChapterIndex));
     StageIndex[] stageIndices = (StageIndex[])Enum.GetValues(typeof(StageIndex));
+
+    private void Awake()
+    {
+        // 각 챕터에 해당하는 스테이지를 딕셔너리에 추가
+        _dic.Add(ChapterIndex.Chapter1_1, new List<StageIndex> { StageIndex.Serving1, StageIndex.Serving2 });
+        _dic.Add(ChapterIndex.Chapter1_2, new List<StageIndex> { StageIndex.Serving3, StageIndex.Serving4 });
+    }
 
     void Start()
     {
-        _dic.Add(StageIndex.Chapter1_1, new List<StageIndex> { StageIndex.Serving1, StageIndex.Serving2 });
-        _dic.Add(StageIndex.Chapter1_2, new List<StageIndex> { StageIndex.Serving3, StageIndex.Serving4 });
-        for (int i = 0; i < stageIndices.Length; i++)
+        for (int i = 0; i < ChapterBtn.Length; i++)             // 챕터 버튼 클릭 이벤트 설정
         {
-            int stageIndex = i;                                                 // i 값을 로컬 변수에 저장 (클로저 문제 해결)
-            string btnName = stageIndices[stageIndex].ToString();               
-
-            ChapterStageBtnArr[i].onClick.AddListener(() => SetCurrentChapterStage(btnName));
-           
-
+            int idx = i;
+            string btnName = ChapterBtn[idx].name;
+            ChapterBtn[idx].onClick.AddListener(() => SelectChapter(btnName));
         }
+        for (int i = 0; i < StageBtn.Length; i++)               // 스테이지 버튼 클릭 이벤트 설정
+        {
+            int idx = i;
+            string btnName = StageBtn[idx].name;
+            StageBtn[idx].onClick.AddListener(() => SelectStage(btnName));
+        }
+        OpenChapterBtn.onClick.AddListener(() => OpenChapter());// 챕터 선택 팝업 열기 버튼 클릭 이벤트 설정        
+        NextChapterBtn.onClick.AddListener(() => LastStage());  // 다음 챕터로 이동 버튼 클릭 이벤트 설정
+        OnOpenChapter.onClick.AddListener(() => OpenChapter()); // Test 후 삭제
+        OnGameClear.onClick.AddListener(() => ClearStage());    // Test 후 삭제
     }
-    void SetCurrentChapterStage(string btnName)
+
+    // 챕터 선택 버튼 클릭 할 때 호출
+    void SelectChapter(string btnName)
     {
-        if (btnName.Contains("Chapter")){
-            _currentChapter = btnName;
-            if(btnName == StageIndex.Chapter1_1.ToString())
-            {
-                ChapterPopup.SetActive(false);
-                StagePopup1.SetActive(true);
-                StagePopup2.SetActive(false);
-            } else if(btnName == StageIndex.Chapter1_2.ToString())
-            {
-                ChapterPopup.SetActive(false);
-                StagePopup1.SetActive(false);
-                StagePopup2.SetActive(true);
-            }
+        _currentChapter = btnName;  // 현재 챕터 이름 저장
 
-        } else
+        // 선택한 챕터의 스테이지 팝업 표시
+        if (Enum.TryParse(_currentChapter, out ChapterIndex selectedChapter))
         {
-            _currentStage = btnName;
+            switch (selectedChapter)
+            {
+                case ChapterIndex.Chapter1_1:
+                    ActivePopup(StagePopup1);
+                    break;
+                case ChapterIndex.Chapter1_2:
+                    ActivePopup(StagePopup2);
+                    break;
+            }
         }
     }
 
+    // 스테이지 선택 버튼 클릭 할 때 호출
+    void SelectStage(string stageName) 
+    {
+        _currentStage = stageName;  // 현재 스테이지 이름 저장
+        ActivePopup();              // 모든 팝업 닫기
+    }
+
+    // 챕터 팝업창 여는 함수
+    public void OpenChapter() => ActivePopup(ChapterPopup);
+
+    public void ActivePopup(GameObject obj = null)
+    {
+        // Array of all popup GameObjects
+        GameObject[] popups = { ClearPopup, ChapterPopup, StagePopup1, StagePopup2 };
+
+        // Iterate through each popup
+        foreach (GameObject popup in popups)
+        {
+            if(obj == null)
+            {
+                popup.SetActive(false);
+            } else
+            {
+                popup.SetActive(popup == obj);
+            }
+            
+        }
+    }
+    // 현재 스테이지를 클리어 했을 때 호출
     void ClearStage()
     {
+        // 현재 선택된 챕터와 스테이지가 없으면 리턴
         if (_currentChapter == null || _currentStage == null) return;
-        if (Enum.TryParse(_currentChapter, out StageIndex currentChapterIndex))
+
+        // 현재 챕터의 스테이지 리스트에서 현재 스테이지가 마지막인지 확인
+        if (Enum.TryParse(_currentChapter, out ChapterIndex currentChapterIndex))
         {
-            // _currentStage 값이 _dic[currentChapterIndex] 리스트에 있는지 확인
             if (_dic.ContainsKey(currentChapterIndex) && _dic[currentChapterIndex].Contains((StageIndex)Enum.Parse(typeof(StageIndex), _currentStage)))
             {
                 List<StageIndex> stages = _dic[currentChapterIndex];
 
-                // 현재 스테이지가 마지막 스테이지인지 확인
+                // 마지막 스테이지인지 확인
                 if (stages[stages.Count - 1].ToString() == _currentStage)
                 {
                     Debug.Log("현재 스테이지는 마지막 스테이지입니다.");
-                    // 여기에 마지막 스테이지인 경우에 해야 할 추가 작업을 추가하세요.
+                    ActivePopup(ClearPopup);
+
                 }
+                // 마지막 스테이지가 아니면 다음 스테이지로 이동
                 else
                 {
-                    Debug.Log("현재 스테이지는 마지막 스테이지가 아닙니다.");
+                    Debug.Log("마지막 스테이지가 아닙니다");
+                    NextStage(stages);
                 }
             }
         }
     }
 
-    // Update is called once per frame
+    // 다음 스테이지로 이동
+    void NextStage(List<StageIndex> stages)
+    {
+        StageIndex currentStageEnum;
+        if (Enum.TryParse(_currentStage, out currentStageEnum))
+        {
+            int currentIndex = stages.IndexOf(currentStageEnum);
+
+            if (currentIndex != -1 && currentIndex < stages.Count - 1)
+            {
+                // 다음 스테이지로 업데이트
+                currentIndex++;
+                _currentStage = stages[currentIndex].ToString();
+                Debug.Log("Moved to the next stage: " + _currentStage);
+
+                // 추가적으로 씬 로딩이나 UI 업데이트 등의 논리를 여기에 추가할 수 있음
+            }
+            else
+            {
+                Debug.Log("Already at the last stage or current stage not found in the list.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Failed to parse _currentStage to StageIndex enum.");
+        }
+    }
+
+    // 마지막 스테이지를 클리어 한 후 다음 챕터로 이동
+    void LastStage()
+    {
+        if (Enum.TryParse(_currentChapter, out ChapterIndex currentChapterEnum))
+        {
+            int currentChapterIndex = Array.IndexOf(chapterIndices, currentChapterEnum);
+
+            // 다음 챕터가 존재하는지 확인
+            if (currentChapterIndex != -1 && currentChapterIndex < chapterIndices.Length - 1)
+            {
+                ChapterIndex nextChapter = chapterIndices[currentChapterIndex + 1];
+
+                // 다음 챕터의 첫 번째 스테이지로 이동
+                if (_dic.ContainsKey(nextChapter))
+                {
+                    _currentChapter = nextChapter.ToString();
+                    _currentStage = _dic[nextChapter][0].ToString();  // 첫 번째 스테이지로 설정
+
+                    Debug.Log("Moved to the next chapter: " + _currentChapter + ", first stage: " + _currentStage);
+                    ClearPopup.SetActive(false);
+                }
+                else
+                {
+                    Debug.Log("The next chapter does not have any stages defined.");
+                }
+            }
+            else
+            {
+                Debug.Log("현재 챕터는 마지막 챕터입니다. 더 이상 진행할 챕터가 없습니다.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Failed to parse _currentChapter to ChapterIndex enum.");
+        }
+    }
+
+    // 매 프레임마다 호출
     void Update()
     {
-        Debug.Log(_currentStage);
+        Debug.Log("현재 챕터: " + _currentChapter);
+        Debug.Log("현재 스테이지: " + _currentStage);
+
+        // 키 입력으로 챕터 선택창 열기
         if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            OpenChapter();
+        }
+
+        // 키 입력으로 현재 스테이지 클리어 처리
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             ClearStage();
         }
+
+        _currentChapterView.text = $"현재 챕터 : {_currentChapter}";
+        _currentStageView.text = $"현재 스테이지 : {_currentStage}";
+
     }
 }
