@@ -11,46 +11,70 @@ public class DragPoseUse : MonoBehaviour
         private UnityEngine.Object _hmd;
         private IHmd Hmd { get; set; }
 
-        [SerializeField]
-        private ActiveStateSelector[] _poses;
+        [SerializeField] private ActiveStateSelector _pose;
 
-        [SerializeField]
-        private Material[] _onSelectIcons;
-
-        //[SerializeField]
-        //private GameObject _poseActiveVisualPrefab;
-
-        private GameObject[] _poseActiveVisuals;
-
+        [SerializeField] private Transform objectTransform;
+        [SerializeField] private Material _cubeMat;
+        
+        private Pose hmdPose;
+        private Vector3 lastHandPosition;
+        private float rotationSpeed = 100f;
+        private bool isRotating = false;
+        private bool IsRotating
+        {
+            get => isRotating;
+            set
+            {
+                _cubeMat.color = (value) ? Color.red : Color.white;
+                isRotating = value;
+            }
+        }
         protected virtual void Awake()
         {
             Hmd = _hmd as IHmd;
         }
-
         protected virtual void Start()
         {
             this.AssertField(Hmd, nameof(Hmd));
             //this.AssertField(_poseActiveVisualPrefab, nameof(_poseActiveVisualPrefab));
 
-            _poseActiveVisuals = new GameObject[_poses.Length];
-            for (int i = 0; i < _poses.Length; i++)
+            _pose.WhenSelected += StartDragObjectRotation;
+            _pose.WhenUnselected += EndDragObjectRotation;
+            
+        }
+        void Update()
+        {
+            if (IsRotating)
             {
-                //_poseActiveVisuals[i] = Instantiate(_poseActiveVisualPrefab);
-                _poseActiveVisuals[i].GetComponentInChildren<TextMeshPro>().text = _poses[i].name;
-                _poseActiveVisuals[i].GetComponentInChildren<ParticleSystemRenderer>().material = _onSelectIcons[i];
-                _poseActiveVisuals[i].SetActive(false);
-
-                int poseNumber = i;
-                _poses[i].WhenSelected += () => ShowVisuals(poseNumber);
-                _poses[i].WhenUnselected += () => HideVisuals(poseNumber);
+                // 손의 현재 위치
+                Vector3 currentHandPosition = hmdPose.position;
+                
+                // 손의 이동 거리 계산
+                float deltaX = currentHandPosition.x - lastHandPosition.x;
+                
+                // 오브젝트 회전
+                objectTransform.Rotate(Vector3.up, deltaX * rotationSpeed * Time.deltaTime);
+                
+                // 이전 위치 업데이트
+                lastHandPosition = currentHandPosition;
             }
         }
-        private void ShowVisuals(int poseNumber)
+        private void StartDragObjectRotation()
         {
             if (!Hmd.TryGetRootPose(out Pose hmdPose))
-            {
                 return;
-            }
+            this.hmdPose = hmdPose;
+            lastHandPosition = hmdPose.position;
+            IsRotating = true;
+        }
+        private void EndDragObjectRotation()
+        {
+            IsRotating = false;
+        }
+        /*private void ShowVisuals()
+        {
+            if (!Hmd.TryGetRootPose(out Pose hmdPose))
+                return;
 
             Vector3 spawnSpot = hmdPose.position + hmdPose.forward;
             _poseActiveVisuals[poseNumber].transform.position = spawnSpot;
@@ -68,8 +92,8 @@ public class DragPoseUse : MonoBehaviour
             _poseActiveVisuals[poseNumber].gameObject.SetActive(true);
         }
 
-        private void HideVisuals(int poseNumber)
+        private void HideVisuals()
         {
             _poseActiveVisuals[poseNumber].gameObject.SetActive(false);
-        }
+        }*/
     }
