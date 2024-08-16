@@ -34,7 +34,7 @@ public class TempSheetConnector : MonoBehaviour
     {
         StartButton.WhenSelect.AddListener(OnClick_Start);
         CookButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.Cook));
-        MoveButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.Move));
+        MoveButton.WhenSelect.AddListener(()=> OnClick_SetLogic(BlockLogicType.Move));
         PushItemButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.PushItem));
         RotateLeftButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.RotateLeft));
         RotateRightButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.RotateRight));
@@ -49,6 +49,7 @@ public class TempSheetConnector : MonoBehaviour
 
     public void OnClick_SetLogic(BlockLogicType type)
     {
+        Debug.Log(type.ToString());
         sheetText.text += $"\n{type.ToString()}";
 
         BlockLogicBase logicBase = null;

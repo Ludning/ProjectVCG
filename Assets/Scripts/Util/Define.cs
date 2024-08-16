@@ -22,7 +22,9 @@ public enum BlockLogicType
     PushItem,
     RotateLeft,
     RotateRight,
-    SetItem
+    SetItem,
+    Start,
+    Clear,
 }
 public enum Rotate
 {
