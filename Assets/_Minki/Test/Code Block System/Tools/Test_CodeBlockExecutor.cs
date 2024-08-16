@@ -18,8 +18,16 @@ namespace CodeBlockSystem
         // 함수
         private void Awake() // Awake()
         {
+            Initialize();
+            // executeButton.onClick.AddListener(ExecuteCode); // 버튼의 클릭 이벤트를 등록합니다.
+        }
+
+        // 변수를 초기화하는 함수
+        private void Initialize()
+        {
             _player = FindAnyObjectByType<PlayerCharacter>(); // 플레이어는 Find() 함수를 사용하여 찾습니다.
-            executeButton.onClick.AddListener(ExecuteCode); // 버튼의 클릭 이벤트를 등록합니다.
+            _sourceCode = new(); // 소스 코드의 인스턴스를 생성하고, 초기화합니다.
+            _sourceCode.Clear();
         }
         
         // 소스 코드를 실행하는 함수

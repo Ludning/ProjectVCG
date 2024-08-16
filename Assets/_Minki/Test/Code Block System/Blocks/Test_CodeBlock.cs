@@ -1,7 +1,5 @@
 using System;
 using PlayerSystem;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 
 // 코드 블록 시스템

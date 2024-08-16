@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace PlayerSystem
 {
-    public class User : MonoBehaviour
+    public class VRController : MonoBehaviour
     {
         private void Update()
         {

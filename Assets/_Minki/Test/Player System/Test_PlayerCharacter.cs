@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using CodeBlockSystem;
 using ItemSystem;
+using TileSystem;
 using UnityEngine;
 
 // 플레이어 시스템
@@ -11,6 +12,18 @@ namespace PlayerSystem
     {
         // 변수
         private List<BaseItem> _itemInHand; // 플레이어가 들고 있는 아이템(재료, 음식 등)
+
+        private void Awake()
+        {
+            SetStartPosition();
+        }
+
+        // 시작 위치를 지정하는 함수
+        private void SetStartPosition()
+        {
+            StartTile startTile = FindAnyObjectByType<StartTile>();
+            transform.position = startTile.CentreTransform.position;
+        }
         
         // 함수
         private void ActByCode(BaseCodeBlock codeBlock)
