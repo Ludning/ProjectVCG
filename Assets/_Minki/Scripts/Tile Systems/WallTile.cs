@@ -1,18 +1,8 @@
 namespace TileSystem
 {
     // 벽 타일; 플레이어는 벽 타일 위로 이동할 수 없습니다.
-    public class WallTile : BaseTile, INotWalkable
+    public class WallTile : BaseTile
     {
-        private void Awake()
-        {
-            // 시작 전, 타일의 종류를 '벽'으로 지정합니다.
-            TypeName = TileType.Blocking;
-        }
-        
-        // Interface Method
-        public bool Walk()
-        {
-            return false;
-        }
+        // 플레이어는 벽에 물리적으로 부딪혀 이동하지 못하는 연출을 해야 한다.
     }
 }

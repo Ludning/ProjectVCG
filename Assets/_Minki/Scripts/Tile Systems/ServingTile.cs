@@ -16,12 +16,6 @@ namespace TileSystem
             set => servingFood = value;
         }
         
-        private void Awake()
-        {
-            // 시작 전, 타일의 종류를 지정합니다.
-            TypeName = TileType.Serving;
-        }
-        
         #region Interface Methods
 
         // 이 함수는 플레이어가 호출합니다.
