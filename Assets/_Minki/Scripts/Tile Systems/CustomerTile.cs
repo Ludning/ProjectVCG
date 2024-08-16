@@ -9,6 +9,7 @@ namespace TileSystem
     // 플레이어는 손님 테이블 타일 위로 이동할 수 없으며, 이 타일에 들고 있는 음식을 내려놓을 수 있습니다.
     public class CustomerTile : BaseTile, IDropable
     {
+        // TODO: BaseFood → ItemBase?
         [SerializeField] private BaseFood desiredFood; // 목표 음식
         [SerializeField] private Image desiredFoodImage; // UI: Image; 목표 음식을 이미지로 보여주고자 할 경우
 

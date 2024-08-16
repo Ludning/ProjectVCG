@@ -5,7 +5,7 @@ using UnityEngine;
 namespace TileSystem
 {
     // 타일의 종류를 정의하는 열거형
-    public enum TileType
+    public enum TileSystemTileType
     {
         Floor, // 바닥 타일: 플레이어가 이동할 수 있는 기본 타일
         Wall, // 벽 타일: 플레이어가 이동할 수 없는 기본 타일
@@ -19,7 +19,7 @@ namespace TileSystem
     // 타일 아이템 클래스의 최상위 클래스
     public class BaseTile : MonoBehaviour
     {
-        // 타일의 종류(타입)
+        // 타일의 종류(타입) (Define.cs에서 정의한 것을 사용)
         [SerializeField] private TileType typeName;
         public TileType TypeName => typeName;
     }
@@ -32,7 +32,7 @@ namespace TileSystem
         bool Walk();
     }
     
-    // (재료, 음식을) 들어1`2올릴 수 있는 타일
+    // (재료, 음식을) 들어올릴 수 있는 타일
     public interface ILiftable
     {
         BaseFood Lift(); // (재료, 음식을) 들어올립니다.
