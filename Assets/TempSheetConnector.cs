@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Oculus.Interaction;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,14 +12,14 @@ public class TempSheetConnector : MonoBehaviour
     [SerializeField] private SheetManager sheetManager;
     [SerializeField] private TextMeshProUGUI sheetText;
 
-    [SerializeField] private Button StartButton;
-    [SerializeField] private Button CookButton;
-    [SerializeField] private Button MoveButton;
-    [SerializeField] private Button PushItemButton;
-    [SerializeField] private Button RotateLeftButton;
-    [SerializeField] private Button RotateRightButton;
-    [SerializeField] private Button SetItemButton;
-    [SerializeField] private Button ClearButton;
+    [SerializeField] private InteractableUnityEventWrapper StartButton;
+    [SerializeField] private InteractableUnityEventWrapper CookButton;
+    [SerializeField] private InteractableUnityEventWrapper MoveButton;
+    [SerializeField] private InteractableUnityEventWrapper PushItemButton;
+    [SerializeField] private InteractableUnityEventWrapper RotateLeftButton;
+    [SerializeField] private InteractableUnityEventWrapper RotateRightButton;
+    [SerializeField] private InteractableUnityEventWrapper SetItemButton;
+    [SerializeField] private InteractableUnityEventWrapper ClearButton;
     
     
     [SerializeField] private GameObject CookPrefab;
@@ -31,14 +32,14 @@ public class TempSheetConnector : MonoBehaviour
 
     private void Awake()
     {
-        StartButton.onClick.AddListener(OnClick_Start);
-        CookButton.onClick.AddListener(()=>OnClick_SetLogic(BlockLogicType.Cook));
-        MoveButton.onClick.AddListener(()=>OnClick_SetLogic(BlockLogicType.Move));
-        PushItemButton.onClick.AddListener(()=>OnClick_SetLogic(BlockLogicType.PushItem));
-        RotateLeftButton.onClick.AddListener(()=>OnClick_SetLogic(BlockLogicType.RotateLeft));
-        RotateRightButton.onClick.AddListener(()=>OnClick_SetLogic(BlockLogicType.RotateRight));
-        SetItemButton.onClick.AddListener(()=>OnClick_SetLogic(BlockLogicType.SetItem));
-        ClearButton.onClick.AddListener(OnClick_ClearLogic);
+        StartButton.WhenSelect.AddListener(OnClick_Start);
+        CookButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.Cook));
+        MoveButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.Move));
+        PushItemButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.PushItem));
+        RotateLeftButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.RotateLeft));
+        RotateRightButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.RotateRight));
+        SetItemButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.SetItem));
+        ClearButton.WhenSelect.AddListener(OnClick_ClearLogic);
     }
     public void OnClick_Start()
     {
