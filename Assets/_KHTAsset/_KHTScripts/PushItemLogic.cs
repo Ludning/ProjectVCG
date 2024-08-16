@@ -12,13 +12,14 @@ public class PushItemLogic : BlockLogicBase
         TileType tileType = owner.Table.GetTileType(position);
         ItemBase item = owner.Table.GetTileItem(position);
 
-        return (tileType == TileType.Serving) ? true : false;
+        return (item != null) ? true : false;
     }
 
     public override bool Execute(StageManager owner)
     {
         var position = owner.Controller.PlayerForwardPosition;
         var item = owner.Table.GetTileItem(position);
+        owner.Table.SetTileItem(position, null);
         owner.Inventory.PushItem(item);
         return true;
     }
