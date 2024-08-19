@@ -6,13 +6,13 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
-        float h = Input.GetAxis("Horizontal"); // A, D Å° -> X Ãà ÀÌµ¿
-        float v = Input.GetAxis("Vertical");   // W, S Å° -> Z Ãà ÀÌµ¿
+        float h = Input.GetAxis("Horizontal"); // A, D í‚¤ -> X ì¶• ì´ë™
+        float v = Input.GetAxis("Vertical");   // W, S í‚¤ -> Z ì¶• ì´ë™
 
-        // X Ãà°ú Z ÃàÀ¸·Î ÀÌµ¿ÇÏµµ·Ï ¼³Á¤ÇÏ°í, Y ÃàÀº 0À¸·Î °íÁ¤
+        // X ì¶•ê³¼ Z ì¶•ìœ¼ë¡œ ì´ë™í•˜ë„ë¡ ì„¤ì •í•˜ê³ , Y ì¶•ì€ 0ìœ¼ë¡œ ê³ ì •
         Vector3 move = new Vector3(h, 0, v) * moveSpeed * Time.deltaTime;
 
-        // Y ÃàÀº °íÁ¤µÈ »óÅÂ·Î X¿Í Z¸¸ ÀÌµ¿
+        // Y ì¶•ì€ ê³ ì •ëœ ìƒíƒœë¡œ Xì™€ Zë§Œ ì´ë™
         transform.Translate(move, Space.World);
     }
 }

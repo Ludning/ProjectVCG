@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// [Á¤¸®]
-// 1. Ã©ÅÍÃ¢ ÆË¾÷À» ¿©´Â ÇÔ¼ö OpenChapter()´Â °ÔÀÓ ½ÃÀÛÇÒ ¶§ È£ÃâÇÏ´Â °ÍÀÌ ÁÁÀ» µí.
-// 2. TODO: ½ºÅ×ÀÌÁö ¼±ÅÃ ÇÔ¼ö SelectStage()´Â ½ºÅ×ÀÌÁö ¼±ÅÃ ÈÄ ÃÊ±âÈ­ ·ÎÁ÷À» ÀÛ¼ºÇØ¾ß ÇÔ.
-// 3. ½ºÅ×ÀÌÁö¸¦ Å¬¸®¾îÇßÀ» ¶§ È£ÃâÇÏ´Â ÇÔ¼ö ClearStage().
+// [ì •ë¦¬]
+// 1. ì±•í„°ì°½ íŒì—…ì„ ì—¬ëŠ” í•¨ìˆ˜ OpenChapter()ëŠ” ê²Œì„ ì‹œì‘í•  ë•Œ í˜¸ì¶œí•˜ëŠ” ê²ƒì´ ì¢‹ì„ ë“¯.
+// 2. TODO: ìŠ¤í…Œì´ì§€ ì„ íƒ í•¨ìˆ˜ SelectStage()ëŠ” ìŠ¤í…Œì´ì§€ ì„ íƒ í›„ ì´ˆê¸°í™” ë¡œì§ì„ ì‘ì„±í•´ì•¼ í•¨.
+// 3. ìŠ¤í…Œì´ì§€ë¥¼ í´ë¦¬ì–´í–ˆì„ ë•Œ í˜¸ì¶œí•˜ëŠ” í•¨ìˆ˜ ClearStage().
 enum ChapterIndex
 {
     Chapter1_1,
@@ -24,55 +24,55 @@ enum StageIndex
 
 public class Chapter : MonoBehaviour
 {
-    // ÇöÀç ¼±ÅÃµÈ Ã©ÅÍ¿Í ½ºÅ×ÀÌÁö ÀÌ¸§À» ÀúÀå
+    // í˜„ì¬ ì„ íƒëœ ì±•í„°ì™€ ìŠ¤í…Œì´ì§€ ì´ë¦„ì„ ì €ì¥
     private string _currentChapter = null;
     private string _currentStage = null;
     private bool _isChapterSelectionActive;
 
-    // UI ¿ä¼Ò ÂüÁ¶
+    // UI ìš”ì†Œ ì°¸ì¡°
     [Header("Btn_ChapterAndStage")]
-    [SerializeField] private Button[] ChapterBtn;     // Ã©ÅÍ ¼±ÅÃ ¹öÆ°µé
-    [SerializeField] private Button[] StageBtn;       // ½ºÅ×ÀÌÁö ¼±ÅÃ ¹öÆ°µé
+    [SerializeField] private Button[] ChapterBtn;     // ì±•í„° ì„ íƒ ë²„íŠ¼ë“¤
+    [SerializeField] private Button[] StageBtn;       // ìŠ¤í…Œì´ì§€ ì„ íƒ ë²„íŠ¼ë“¤
 
     [Header("Popup")]
-    [SerializeField] private GameObject ClearPopup;   // ½ºÅ×ÀÌÁö Å¬¸®¾î ÆË¾÷
-    [SerializeField] private GameObject ExitPopup;    // µ¹¾Æ°¡±â ÆË¾÷
-    [SerializeField] private GameObject ChapterPopup; // Ã©ÅÍ ¼±ÅÃ ÆË¾÷
-    [SerializeField] private GameObject StagePopup1;  // Ã¹ ¹øÂ° Ã©ÅÍÀÇ ½ºÅ×ÀÌÁö ÆË¾÷
-    [SerializeField] private GameObject StagePopup2;  // µÎ ¹øÂ° Ã©ÅÍÀÇ ½ºÅ×ÀÌÁö ÆË¾÷
+    [SerializeField] private GameObject ClearPopup;   // ìŠ¤í…Œì´ì§€ í´ë¦¬ì–´ íŒì—…
+    [SerializeField] private GameObject ExitPopup;    // ëŒì•„ê°€ê¸° íŒì—…
+    [SerializeField] private GameObject ChapterPopup; // ì±•í„° ì„ íƒ íŒì—…
+    [SerializeField] private GameObject StagePopup1;  // ì²« ë²ˆì§¸ ì±•í„°ì˜ ìŠ¤í…Œì´ì§€ íŒì—…
+    [SerializeField] private GameObject StagePopup2;  // ë‘ ë²ˆì§¸ ì±•í„°ì˜ ìŠ¤í…Œì´ì§€ íŒì—…
 
     [Header("MoveBtn")]
-    [SerializeField] private Button OpenChapterBtn;   // Ã©ÅÍ ¼±ÅÃ ÆË¾÷ ¿­µµ·Ï ÇÏ´Â ¹öÆ° (¸¶Áö¸· ½ºÅ×ÀÌÁö Å¬¸®¾î ½Ã ³ª¿À´Â ÆË¾÷ÀÇ ÀÏºÎ ¹öÆ°)
-    [SerializeField] private Button NextChapterBtn;   // ´ÙÀ½ Ã©ÅÍ·Î ÀÌµ¿ ¹öÆ°
+    [SerializeField] private Button OpenChapterBtn;   // ì±•í„° ì„ íƒ íŒì—… ì—´ë„ë¡ í•˜ëŠ” ë²„íŠ¼ (ë§ˆì§€ë§‰ ìŠ¤í…Œì´ì§€ í´ë¦¬ì–´ ì‹œ ë‚˜ì˜¤ëŠ” íŒì—…ì˜ ì¼ë¶€ ë²„íŠ¼)
+    [SerializeField] private Button NextChapterBtn;   // ë‹¤ìŒ ì±•í„°ë¡œ ì´ë™ ë²„íŠ¼
 
     [Header("CloseBtn")]
-    [SerializeField] private Button CloseChapterPopup;// Ã©ÅÍ ÆË¾÷ ´İ±â ¹öÆ°
-    [SerializeField] private Button CloseStage1Popup; // Ã¹ ¹øÂ° Ã©ÅÍÀÇ ÆË¾÷ ´İ±â ¹öÆ°
-    [SerializeField] private Button CloseStage2Popup; // µÎ ¹øÂ° Ã©ÅÍÀÇ ÆË¾÷ ´İ±â ¹öÆ°
+    [SerializeField] private Button CloseChapterPopup;// ì±•í„° íŒì—… ë‹«ê¸° ë²„íŠ¼
+    [SerializeField] private Button CloseStage1Popup; // ì²« ë²ˆì§¸ ì±•í„°ì˜ íŒì—… ë‹«ê¸° ë²„íŠ¼
+    [SerializeField] private Button CloseStage2Popup; // ë‘ ë²ˆì§¸ ì±•í„°ì˜ íŒì—… ë‹«ê¸° ë²„íŠ¼
 
     [Header("OtherBtns")]
-    [SerializeField] private Button chapterSelectButton;    // °ÔÀÓ ½ÃÀÛ ½ÃÁ¡¿¡¼­¸¸ º¸ÀÌ´Â Ã©ÅÍ ¼±ÅÃ ¹öÆ°
-    [SerializeField] private Button BeforeBtn;              // µ¹¾Æ°¡±â ¹öÆ°
-    [SerializeField] private Button BeforeYesBtn;           // µ¹¾Æ°¡±â È®ÀÎ ÆË¾÷ÀÇ Yes ¹öÆ°
-    [SerializeField] private Button BeforeNoBtn;            // µ¹¾Æ°¡±â È®ÀÎ ÆË¾÷ÀÇ No ¹öÆ°
+    [SerializeField] private Button chapterSelectButton;    // ê²Œì„ ì‹œì‘ ì‹œì ì—ì„œë§Œ ë³´ì´ëŠ” ì±•í„° ì„ íƒ ë²„íŠ¼
+    [SerializeField] private Button BeforeBtn;              // ëŒì•„ê°€ê¸° ë²„íŠ¼
+    [SerializeField] private Button BeforeYesBtn;           // ëŒì•„ê°€ê¸° í™•ì¸ íŒì—…ì˜ Yes ë²„íŠ¼
+    [SerializeField] private Button BeforeNoBtn;            // ëŒì•„ê°€ê¸° í™•ì¸ íŒì—…ì˜ No ë²„íŠ¼
 
-    [Header("Å×½ºÆ®¿ë")] // Å×½ºÆ® ÈÄ Á¦°Å ¿¹Á¤
-    [SerializeField] private Text _currentStageView;  // ÇöÀç ½ºÅ×ÀÌÁö Ç¥½Ã¿ë ÅØ½ºÆ® (Å×½ºÆ®¿ë)
-    [SerializeField] private Text _currentChapterView;// ÇöÀç Ã©ÅÍ Ç¥½Ã¿ë ÅØ½ºÆ® (Å×½ºÆ®¿ë)
-    [SerializeField] private Button OnGameClear;      // ½ºÅ×ÀÌÁö Å¬¸®¾î Å×½ºÆ®¿ë ¹öÆ° (Å×½ºÆ® ÈÄ »èÁ¦)
+    [Header("í…ŒìŠ¤íŠ¸ìš©")] // í…ŒìŠ¤íŠ¸ í›„ ì œê±° ì˜ˆì •
+    [SerializeField] private Text _currentStageView;  // í˜„ì¬ ìŠ¤í…Œì´ì§€ í‘œì‹œìš© í…ìŠ¤íŠ¸ (í…ŒìŠ¤íŠ¸ìš©)
+    [SerializeField] private Text _currentChapterView;// í˜„ì¬ ì±•í„° í‘œì‹œìš© í…ìŠ¤íŠ¸ (í…ŒìŠ¤íŠ¸ìš©)
+    [SerializeField] private Button OnGameClear;      // ìŠ¤í…Œì´ì§€ í´ë¦¬ì–´ í…ŒìŠ¤íŠ¸ìš© ë²„íŠ¼ (í…ŒìŠ¤íŠ¸ í›„ ì‚­ì œ)
 
-    // Ã©ÅÍ¿Í ÇØ´ç ½ºÅ×ÀÌÁö ¸ñ·ÏÀ» ÀúÀåÇÒ µñ¼Å³Ê¸®
+    // ì±•í„°ì™€ í•´ë‹¹ ìŠ¤í…Œì´ì§€ ëª©ë¡ì„ ì €ì¥í•  ë”•ì…”ë„ˆë¦¬
     Dictionary<ChapterIndex, List<StageIndex>> _dic = new Dictionary<ChapterIndex, List<StageIndex>>();
 
-    // ¿­°ÅÇüÀ» ¹è¿­·Î °¡Á®¿È
+    // ì—´ê±°í˜•ì„ ë°°ì—´ë¡œ ê°€ì ¸ì˜´
     ChapterIndex[] chapterIndices = (ChapterIndex[])Enum.GetValues(typeof(ChapterIndex));
 
     private void Awake()
     {
-        // °ÔÀÓ ½ÃÀÛ ½Ã Ã©ÅÍ ¼±ÅÃ ¹öÆ°ÀÌ ºñÈ°¼ºÈ­ »óÅÂ¶ó¸é È°¼ºÈ­
+        // ê²Œì„ ì‹œì‘ ì‹œ ì±•í„° ì„ íƒ ë²„íŠ¼ì´ ë¹„í™œì„±í™” ìƒíƒœë¼ë©´ í™œì„±í™”
         if (!chapterSelectButton.gameObject.activeSelf) chapterSelectButton.gameObject.SetActive(true);
 
-        // °¢ Ã©ÅÍ¿¡ ÇØ´çÇÏ´Â ½ºÅ×ÀÌÁö ¸ñ·ÏÀ» µñ¼Å³Ê¸®¿¡ Ãß°¡
+        // ê° ì±•í„°ì— í•´ë‹¹í•˜ëŠ” ìŠ¤í…Œì´ì§€ ëª©ë¡ì„ ë”•ì…”ë„ˆë¦¬ì— ì¶”ê°€
         _dic.Add(ChapterIndex.Chapter1_1, new List<StageIndex> { StageIndex.Serving1, StageIndex.Serving2 });
         _dic.Add(ChapterIndex.Chapter1_2, new List<StageIndex> { StageIndex.Serving3, StageIndex.Serving4 });
     }
@@ -80,7 +80,7 @@ public class Chapter : MonoBehaviour
     void Start()
     {
         #region Event
-        // Ã©ÅÍ ¼±ÅÃ ¹öÆ° Å¬¸¯ ÀÌº¥Æ® ¼³Á¤
+        // ì±•í„° ì„ íƒ ë²„íŠ¼ í´ë¦­ ì´ë²¤íŠ¸ ì„¤ì •
         for (int i = 0; i < ChapterBtn.Length; i++)
         {
             int idx = i;
@@ -88,7 +88,7 @@ public class Chapter : MonoBehaviour
             ChapterBtn[idx].onClick.AddListener(() => SelectChapter(btnName));
         }
 
-        // ½ºÅ×ÀÌÁö ¼±ÅÃ ¹öÆ° Å¬¸¯ ÀÌº¥Æ® ¼³Á¤
+        // ìŠ¤í…Œì´ì§€ ì„ íƒ ë²„íŠ¼ í´ë¦­ ì´ë²¤íŠ¸ ì„¤ì •
         for (int i = 0; i < StageBtn.Length; i++)
         {
             int idx = i;
@@ -96,158 +96,158 @@ public class Chapter : MonoBehaviour
             StageBtn[idx].onClick.AddListener(() => SelectStage(btnName));
         }
 
-        // Ã©ÅÍ ¼±ÅÃ ÆË¾÷ ¿­±â ¹öÆ° Å¬¸¯ ÀÌº¥Æ® ¼³Á¤
+        // ì±•í„° ì„ íƒ íŒì—… ì—´ê¸° ë²„íŠ¼ í´ë¦­ ì´ë²¤íŠ¸ ì„¤ì •
         OpenChapterBtn.onClick.AddListener(() => OpenChapter());
 
-        // ´ÙÀ½ Ã©ÅÍ·Î ÀÌµ¿ ¹öÆ° Å¬¸¯ ÀÌº¥Æ® ¼³Á¤
+        // ë‹¤ìŒ ì±•í„°ë¡œ ì´ë™ ë²„íŠ¼ í´ë¦­ ì´ë²¤íŠ¸ ì„¤ì •
         NextChapterBtn.onClick.AddListener(() => LastStage());
 
-        // Ã©ÅÍ 1-1 ÆË¾÷ ´İ±â ¹öÆ° Å¬¸¯ ½Ã Ã©ÅÍ ÆË¾÷ ¿­±â
+        // ì±•í„° 1-1 íŒì—… ë‹«ê¸° ë²„íŠ¼ í´ë¦­ ì‹œ ì±•í„° íŒì—… ì—´ê¸°
         CloseStage1Popup.onClick.AddListener(() => ActivePopup(ChapterPopup));
 
-        // Ã©ÅÍ 1-2 ÆË¾÷ ´İ±â ¹öÆ° Å¬¸¯ ½Ã Ã©ÅÍ ÆË¾÷ ¿­±â
+        // ì±•í„° 1-2 íŒì—… ë‹«ê¸° ë²„íŠ¼ í´ë¦­ ì‹œ ì±•í„° íŒì—… ì—´ê¸°
         CloseStage2Popup.onClick.AddListener(() => ActivePopup(ChapterPopup));
 
-        // µ¹¾Æ°¡±â ¹öÆ° Å¬¸¯ ½Ã µ¹¾Æ°¡±â ÆË¾÷ Ç¥½Ã
+        // ëŒì•„ê°€ê¸° ë²„íŠ¼ í´ë¦­ ì‹œ ëŒì•„ê°€ê¸° íŒì—… í‘œì‹œ
         BeforeBtn.onClick.AddListener(() => ExitPopup.SetActive(true));
 
-        // µ¹¾Æ°¡±â È®ÀÎ ÆË¾÷ÀÇ No ¹öÆ° Å¬¸¯ ½Ã ÆË¾÷ ´İ±â
+        // ëŒì•„ê°€ê¸° í™•ì¸ íŒì—…ì˜ No ë²„íŠ¼ í´ë¦­ ì‹œ íŒì—… ë‹«ê¸°
         BeforeNoBtn.onClick.AddListener(() => ExitPopup.SetActive(false));
 
-        // µ¹¾Æ°¡±â È®ÀÎ ÆË¾÷ÀÇ Yes ¹öÆ° Å¬¸¯ ½Ã ·ÎÁ÷ Ã³¸®
+        // ëŒì•„ê°€ê¸° í™•ì¸ íŒì—…ì˜ Yes ë²„íŠ¼ í´ë¦­ ì‹œ ë¡œì§ ì²˜ë¦¬
         BeforeYesBtn.onClick.AddListener(() =>
         {
             BeforeBtn.gameObject.SetActive(false);
             _isChapterSelectionActive = false;
-            ActivePopup(ChapterPopup);  // Ã©ÅÍ ¼±ÅÃ ÆË¾÷ ¿­±â
+            ActivePopup(ChapterPopup);  // ì±•í„° ì„ íƒ íŒì—… ì—´ê¸°
         });
 
-        // Ã©ÅÍ ¼±ÅÃ ÆË¾÷ ´İ±â ¹öÆ° Å¬¸¯ ÀÌº¥Æ® ¼³Á¤
+        // ì±•í„° ì„ íƒ íŒì—… ë‹«ê¸° ë²„íŠ¼ í´ë¦­ ì´ë²¤íŠ¸ ì„¤ì •
         CloseChapterPopup.onClick.AddListener(() =>
         {
             chapterSelectButton.gameObject.SetActive(true);
-            ActivePopup();  // ¸ğµç ÆË¾÷ ´İ±â
+            ActivePopup();  // ëª¨ë“  íŒì—… ë‹«ê¸°
         });
 
-        // °ÔÀÓ ½ÃÀÛ ½Ã Ã©ÅÍ ¼±ÅÃ ¹öÆ° Å¬¸¯ ½Ã Ã©ÅÍ ¼±ÅÃÃ¢ ¿­±â
+        // ê²Œì„ ì‹œì‘ ì‹œ ì±•í„° ì„ íƒ ë²„íŠ¼ í´ë¦­ ì‹œ ì±•í„° ì„ íƒì°½ ì—´ê¸°
         chapterSelectButton.onClick.AddListener(() =>
         {
             OpenChapter();
             chapterSelectButton.gameObject.SetActive(false);
         });
 
-        // Å×½ºÆ® ¿ëÀ¸·Î °ÔÀÓ Å¬¸®¾î Ã³¸®
-        OnGameClear.onClick.AddListener(() => ClearStage());    // Å×½ºÆ® ÈÄ »èÁ¦
+        // í…ŒìŠ¤íŠ¸ ìš©ìœ¼ë¡œ ê²Œì„ í´ë¦¬ì–´ ì²˜ë¦¬
+        OnGameClear.onClick.AddListener(() => ClearStage());    // í…ŒìŠ¤íŠ¸ í›„ ì‚­ì œ
         #endregion
     }
 
-    // Ã©ÅÍ ¼±ÅÃ ¹öÆ° Å¬¸¯ ½Ã È£Ãâ
+    // ì±•í„° ì„ íƒ ë²„íŠ¼ í´ë¦­ ì‹œ í˜¸ì¶œ
     void SelectChapter(string btnName)
     {
-        _currentChapter = btnName;  // ÇöÀç ¼±ÅÃµÈ Ã©ÅÍ ÀÌ¸§ ÀúÀå
+        _currentChapter = btnName;  // í˜„ì¬ ì„ íƒëœ ì±•í„° ì´ë¦„ ì €ì¥
 
-        // ¼±ÅÃÇÑ Ã©ÅÍ¿¡ ¸Â´Â ½ºÅ×ÀÌÁö ÆË¾÷ Ç¥½Ã
+        // ì„ íƒí•œ ì±•í„°ì— ë§ëŠ” ìŠ¤í…Œì´ì§€ íŒì—… í‘œì‹œ
         if (Enum.TryParse(_currentChapter, out ChapterIndex selectedChapter))
         {
             switch (selectedChapter)
             {
                 case ChapterIndex.Chapter1_1:
-                    ActivePopup(StagePopup1); // Ã¹ ¹øÂ° Ã©ÅÍ ÆË¾÷ ¿­±â
+                    ActivePopup(StagePopup1); // ì²« ë²ˆì§¸ ì±•í„° íŒì—… ì—´ê¸°
                     break;
                 case ChapterIndex.Chapter1_2:
-                    ActivePopup(StagePopup2); // µÎ ¹øÂ° Ã©ÅÍ ÆË¾÷ ¿­±â
+                    ActivePopup(StagePopup2); // ë‘ ë²ˆì§¸ ì±•í„° íŒì—… ì—´ê¸°
                     break;
             }
         }
     }
 
-    // ½ºÅ×ÀÌÁö ¼±ÅÃ ¹öÆ° Å¬¸¯ ½Ã È£Ãâ
+    // ìŠ¤í…Œì´ì§€ ì„ íƒ ë²„íŠ¼ í´ë¦­ ì‹œ í˜¸ì¶œ
     void SelectStage(string stageName)
     {
-        // Ã©ÅÍ ¼±ÅÃ ÁßÀÌ ¾Æ´Ñ »óÅÂ¶ó¸é Ã©ÅÍ ¼±ÅÃ ¹öÆ° ºñÈ°¼ºÈ­ ¹× µ¹¾Æ°¡±â ¹öÆ° È°¼ºÈ­
+        // ì±•í„° ì„ íƒ ì¤‘ì´ ì•„ë‹Œ ìƒíƒœë¼ë©´ ì±•í„° ì„ íƒ ë²„íŠ¼ ë¹„í™œì„±í™” ë° ëŒì•„ê°€ê¸° ë²„íŠ¼ í™œì„±í™”
             chapterSelectButton.gameObject.SetActive(false);
             BeforeBtn.gameObject.SetActive(true);
 
-        _currentStage = stageName;  // ÇöÀç ¼±ÅÃµÈ ½ºÅ×ÀÌÁö ÀÌ¸§ ÀúÀå
-        ActivePopup();              // ¸ğµç ÆË¾÷ ´İ±â
+        _currentStage = stageName;  // í˜„ì¬ ì„ íƒëœ ìŠ¤í…Œì´ì§€ ì´ë¦„ ì €ì¥
+        ActivePopup();              // ëª¨ë“  íŒì—… ë‹«ê¸°
     }
 
-    // Ã©ÅÍ ÆË¾÷Ã¢ ¿©´Â ÇÔ¼ö
+    // ì±•í„° íŒì—…ì°½ ì—¬ëŠ” í•¨ìˆ˜
     public void OpenChapter() {
         BeforeBtn.gameObject.SetActive(false);
         ActivePopup(ChapterPopup);
     }
 
-    // ÆË¾÷ È°¼ºÈ­ ¹× ºñÈ°¼ºÈ­ Ã³¸® ÇÔ¼ö
+    // íŒì—… í™œì„±í™” ë° ë¹„í™œì„±í™” ì²˜ë¦¬ í•¨ìˆ˜
     public void ActivePopup(GameObject obj = null)
     {
-        // ¸ğµç ÆË¾÷ ¸ñ·Ï
+        // ëª¨ë“  íŒì—… ëª©ë¡
         GameObject[] popups = { ClearPopup, ChapterPopup, StagePopup1, StagePopup2, ExitPopup };
 
-        // ¸ğµç ÆË¾÷À» ºñÈ°¼ºÈ­ÇÏ°í, ÀÎÀÚ·Î ¹ŞÀº ÆË¾÷¸¸ È°¼ºÈ­
+        // ëª¨ë“  íŒì—…ì„ ë¹„í™œì„±í™”í•˜ê³ , ì¸ìë¡œ ë°›ì€ íŒì—…ë§Œ í™œì„±í™”
         foreach (GameObject popup in popups)
         {
             if (obj == null)
             {
-                popup.SetActive(false);  // ÀÎÀÚ°¡ ¾øÀ¸¸é ¸ğµç ÆË¾÷ ºñÈ°¼ºÈ­
+                popup.SetActive(false);  // ì¸ìê°€ ì—†ìœ¼ë©´ ëª¨ë“  íŒì—… ë¹„í™œì„±í™”
             }
             else
             {
-                popup.SetActive(popup == obj);  // Æ¯Á¤ ÆË¾÷¸¸ È°¼ºÈ­
+                popup.SetActive(popup == obj);  // íŠ¹ì • íŒì—…ë§Œ í™œì„±í™”
             }
         }
     }
 
-    // ½ºÅ×ÀÌÁö Å¬¸®¾î ½Ã È£Ãâ
+    // ìŠ¤í…Œì´ì§€ í´ë¦¬ì–´ ì‹œ í˜¸ì¶œ
     void ClearStage()
     {
-        // ÇöÀç ¼±ÅÃµÈ Ã©ÅÍ¿Í ½ºÅ×ÀÌÁö°¡ ¾øÀ¸¸é ¸®ÅÏ
+        // í˜„ì¬ ì„ íƒëœ ì±•í„°ì™€ ìŠ¤í…Œì´ì§€ê°€ ì—†ìœ¼ë©´ ë¦¬í„´
         if (_currentChapter == null || _currentStage == null) return;
 
-        // ÇöÀç Ã©ÅÍÀÇ ¸¶Áö¸· ½ºÅ×ÀÌÁöÀÎÁö È®ÀÎ
+        // í˜„ì¬ ì±•í„°ì˜ ë§ˆì§€ë§‰ ìŠ¤í…Œì´ì§€ì¸ì§€ í™•ì¸
         if (Enum.TryParse(_currentChapter, out ChapterIndex currentChapterIndex))
         {
             if (_dic.ContainsKey(currentChapterIndex) && _dic[currentChapterIndex].Contains((StageIndex)Enum.Parse(typeof(StageIndex), _currentStage)))
             {
                 List<StageIndex> stages = _dic[currentChapterIndex];
 
-                // ¸¶Áö¸· ½ºÅ×ÀÌÁöÀÏ °æ¿ì Å¬¸®¾î ÆË¾÷ Ç¥½Ã
+                // ë§ˆì§€ë§‰ ìŠ¤í…Œì´ì§€ì¼ ê²½ìš° í´ë¦¬ì–´ íŒì—… í‘œì‹œ
                 if (stages[stages.Count - 1].ToString() == _currentStage)
                 {
-                    Debug.Log("ÇöÀç ½ºÅ×ÀÌÁö´Â ¸¶Áö¸· ½ºÅ×ÀÌÁöÀÔ´Ï´Ù.");
+                    Debug.Log("í˜„ì¬ ìŠ¤í…Œì´ì§€ëŠ” ë§ˆì§€ë§‰ ìŠ¤í…Œì´ì§€ì…ë‹ˆë‹¤.");
                     ActivePopup(ClearPopup);
                 }
-                // ¸¶Áö¸· ½ºÅ×ÀÌÁö°¡ ¾Æ´Ï¸é ´ÙÀ½ ½ºÅ×ÀÌÁö·Î ÀÌµ¿
+                // ë§ˆì§€ë§‰ ìŠ¤í…Œì´ì§€ê°€ ì•„ë‹ˆë©´ ë‹¤ìŒ ìŠ¤í…Œì´ì§€ë¡œ ì´ë™
                 else
                 {
-                    Debug.Log("¸¶Áö¸· ½ºÅ×ÀÌÁö°¡ ¾Æ´Õ´Ï´Ù.");
+                    Debug.Log("ë§ˆì§€ë§‰ ìŠ¤í…Œì´ì§€ê°€ ì•„ë‹™ë‹ˆë‹¤.");
                     NextStage(stages);
                 }
             }
         }
     }
 
-    // ´ÙÀ½ ½ºÅ×ÀÌÁö·Î ÀÌµ¿
+    // ë‹¤ìŒ ìŠ¤í…Œì´ì§€ë¡œ ì´ë™
     void NextStage(List<StageIndex> stages)
     {
-        // ÇöÀç ½ºÅ×ÀÌÁö¸¦ ¿­°ÅÇüÀ¸·Î º¯È¯
+        // í˜„ì¬ ìŠ¤í…Œì´ì§€ë¥¼ ì—´ê±°í˜•ìœ¼ë¡œ ë³€í™˜
         StageIndex currentStageEnum;
         if (Enum.TryParse(_currentStage, out currentStageEnum))
         {
             int currentIndex = stages.IndexOf(currentStageEnum);
 
-            // ´ÙÀ½ ½ºÅ×ÀÌÁö·Î ÀÌµ¿
+            // ë‹¤ìŒ ìŠ¤í…Œì´ì§€ë¡œ ì´ë™
             if (currentIndex != -1 && currentIndex < stages.Count - 1)
             {
                 currentIndex++;
-                _currentStage = stages[currentIndex].ToString(); // ´ÙÀ½ ½ºÅ×ÀÌÁö·Î ¾÷µ¥ÀÌÆ®
+                _currentStage = stages[currentIndex].ToString(); // ë‹¤ìŒ ìŠ¤í…Œì´ì§€ë¡œ ì—…ë°ì´íŠ¸
                 Debug.Log("Moved to the next stage: " + _currentStage);
 
-                // ÇÊ¿äÇÑ °æ¿ì Ãß°¡ ·ÎÁ÷ (¾À ·Îµù µî) Ãß°¡ °¡´É
+                // í•„ìš”í•œ ê²½ìš° ì¶”ê°€ ë¡œì§ (ì”¬ ë¡œë”© ë“±) ì¶”ê°€ ê°€ëŠ¥
             }
             else
             {
-                Debug.Log("ÀÌ¹Ì ¸¶Áö¸· ½ºÅ×ÀÌÁöÀÌ°Å³ª ½ºÅ×ÀÌÁö ¸ñ·Ï¿¡¼­ Ã£À» ¼ö ¾ø½À´Ï´Ù.");
+                Debug.Log("ì´ë¯¸ ë§ˆì§€ë§‰ ìŠ¤í…Œì´ì§€ì´ê±°ë‚˜ ìŠ¤í…Œì´ì§€ ëª©ë¡ì—ì„œ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             }
         }
         else
@@ -256,36 +256,36 @@ public class Chapter : MonoBehaviour
         }
     }
 
-    // ¸¶Áö¸· ½ºÅ×ÀÌÁö Å¬¸®¾î ÈÄ ´ÙÀ½ Ã©ÅÍ·Î ÀÌµ¿
+    // ë§ˆì§€ë§‰ ìŠ¤í…Œì´ì§€ í´ë¦¬ì–´ í›„ ë‹¤ìŒ ì±•í„°ë¡œ ì´ë™
     void LastStage()
     {
-        // ÇöÀç Ã©ÅÍ¸¦ ¿­°ÅÇüÀ¸·Î º¯È¯
+        // í˜„ì¬ ì±•í„°ë¥¼ ì—´ê±°í˜•ìœ¼ë¡œ ë³€í™˜
         if (Enum.TryParse(_currentChapter, out ChapterIndex currentChapterEnum))
         {
             int currentChapterIndex = Array.IndexOf(chapterIndices, currentChapterEnum);
 
-            // ´ÙÀ½ Ã©ÅÍ·Î ÀÌµ¿ °¡´ÉÇÑÁö È®ÀÎ
+            // ë‹¤ìŒ ì±•í„°ë¡œ ì´ë™ ê°€ëŠ¥í•œì§€ í™•ì¸
             if (currentChapterIndex != -1 && currentChapterIndex < chapterIndices.Length - 1)
             {
                 ChapterIndex nextChapter = chapterIndices[currentChapterIndex + 1];
 
-                // ´ÙÀ½ Ã©ÅÍÀÇ Ã¹ ¹øÂ° ½ºÅ×ÀÌÁö·Î ÀÌµ¿
+                // ë‹¤ìŒ ì±•í„°ì˜ ì²« ë²ˆì§¸ ìŠ¤í…Œì´ì§€ë¡œ ì´ë™
                 if (_dic.ContainsKey(nextChapter))
                 {
                     _currentChapter = nextChapter.ToString();
-                    _currentStage = _dic[nextChapter][0].ToString();  // Ã¹ ¹øÂ° ½ºÅ×ÀÌÁö·Î ¼³Á¤
+                    _currentStage = _dic[nextChapter][0].ToString();  // ì²« ë²ˆì§¸ ìŠ¤í…Œì´ì§€ë¡œ ì„¤ì •
 
-                    Debug.Log("´ÙÀ½ Ã©ÅÍ·Î ÀÌµ¿: " + _currentChapter + ", Ã¹ ¹øÂ° ½ºÅ×ÀÌÁö: " + _currentStage);
-                    ClearPopup.SetActive(false); // Å¬¸®¾î ÆË¾÷ ´İ±â
+                    Debug.Log("ë‹¤ìŒ ì±•í„°ë¡œ ì´ë™: " + _currentChapter + ", ì²« ë²ˆì§¸ ìŠ¤í…Œì´ì§€: " + _currentStage);
+                    ClearPopup.SetActive(false); // í´ë¦¬ì–´ íŒì—… ë‹«ê¸°
                 }
                 else
                 {
-                    Debug.Log("´ÙÀ½ Ã©ÅÍ¿¡ ½ºÅ×ÀÌÁö°¡ Á¤ÀÇµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+                    Debug.Log("ë‹¤ìŒ ì±•í„°ì— ìŠ¤í…Œì´ì§€ê°€ ì •ì˜ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
                 }
             }
             else
             {
-                Debug.Log("ÇöÀç Ã©ÅÍ´Â ¸¶Áö¸· Ã©ÅÍÀÔ´Ï´Ù. ´õ ÀÌ»ó ÁøÇàÇÒ Ã©ÅÍ°¡ ¾ø½À´Ï´Ù.");
+                Debug.Log("í˜„ì¬ ì±•í„°ëŠ” ë§ˆì§€ë§‰ ì±•í„°ì…ë‹ˆë‹¤. ë” ì´ìƒ ì§„í–‰í•  ì±•í„°ê°€ ì—†ìŠµë‹ˆë‹¤.");
             }
         }
         else
@@ -294,10 +294,10 @@ public class Chapter : MonoBehaviour
         }
     }
 
-    // UI ¾÷µ¥ÀÌÆ®: ÇöÀç ¼±ÅÃµÈ Ã©ÅÍ¿Í ½ºÅ×ÀÌÁö Ç¥½Ã
+    // UI ì—…ë°ì´íŠ¸: í˜„ì¬ ì„ íƒëœ ì±•í„°ì™€ ìŠ¤í…Œì´ì§€ í‘œì‹œ
     void Update()
     {
-        _currentChapterView.text = $"ÇöÀç Ã©ÅÍ : {_currentChapter}";
-        _currentStageView.text = $"ÇöÀç ½ºÅ×ÀÌÁö : {_currentStage}";
+        _currentChapterView.text = $"í˜„ì¬ ì±•í„° : {_currentChapter}";
+        _currentStageView.text = $"í˜„ì¬ ìŠ¤í…Œì´ì§€ : {_currentStage}";
     }
 }

@@ -10,10 +10,13 @@ public class MapReader : MonoBehaviour
     public void ReadMap()
     {
         List<Transform> tileTransforms = new List<Transform>();
+        
         foreach (Transform child in transform)
         {
             tileTransforms.Add(child);
         }
+        
+        
         Dictionary<Vector2Int, TileBase> tileBases = new Dictionary<Vector2Int, TileBase>();
         foreach (var tileTransform in tileTransforms)
         {

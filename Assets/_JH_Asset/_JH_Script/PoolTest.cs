@@ -6,27 +6,27 @@ using UnityEngine;
 
 public class PoolTest : MonoBehaviour
 {
-    // Å×½ºÆ®¿ë ÄÚµå
+    // í…ŒìŠ¤íŠ¸ìš© ì½”ë“œ
     void Start()
     {
         CoroutineGo();
     }
 
-    // Å×½ºÆ®¿ë ÄÚµå
+    // í…ŒìŠ¤íŠ¸ìš© ì½”ë“œ
     private void CoroutineGo()
     {
         StartCoroutine(AddObject()); 
     }
 
-    // Å×½ºÆ®¿ë ÄÚµå
+    // í…ŒìŠ¤íŠ¸ìš© ì½”ë“œ
     private IEnumerator AddObject()
     {
         var countLenth = 0;
         while (countLenth < 15)
         {
-            GameObject obj = PoolManager.Instance.GetPoolObject(PoolObjectType.Capsule); // Ç®¸ÅÀÌÀú¸¦ ÅëÇØ »ý¼º µÈ ¿ÀºêÁ§Æ®¸¦ È°¼ºÈ­ ÇÏ´Â ¹æ¹ý
+            GameObject obj = PoolManager.Instance.GetPoolObject(PoolObjectType.Capsule); // í’€ë§¤ì´ì €ë¥¼ í†µí•´ ìƒì„± ëœ ì˜¤ë¸Œì íŠ¸ë¥¼ í™œì„±í™” í•˜ëŠ” ë°©ë²•
 
-            yield return new WaitForSeconds(1f);                                         // 1ÃÊ ´ÜÀ§·Î È°¼ºÈ­
+            yield return new WaitForSeconds(1f);                                         // 1ì´ˆ ë‹¨ìœ„ë¡œ í™œì„±í™”
 
           
             StartCoroutine(CoolObject(obj, PoolObjectType.Capsule));                    
@@ -36,10 +36,10 @@ public class PoolTest : MonoBehaviour
 
     private IEnumerator CoolObject(GameObject obj, PoolObjectType type)
     {
-        yield return new WaitForSeconds(5f);                                            // 5ÃÊ ´ÜÀ§·Î ¹ÝÈ¯
+        yield return new WaitForSeconds(5f);                                            // 5ì´ˆ ë‹¨ìœ„ë¡œ ë°˜í™˜
         if (obj != null && obj.activeInHierarchy)
         {
-            PoolManager.Instance.CoolObject(obj, type);                                 // Ç®¸ÅÀÌÀú¸¦ ÅëÇØ »ý¼º µÈ ¿ÀºêÁ§Æ®¸¦ ¹ÝÈ¯ ÇÏ´Â ¹æ¹ý
+            PoolManager.Instance.CoolObject(obj, type);                                 // í’€ë§¤ì´ì €ë¥¼ í†µí•´ ìƒì„± ëœ ì˜¤ë¸Œì íŠ¸ë¥¼ ë°˜í™˜ í•˜ëŠ” ë°©ë²•
         }
     }
 }

@@ -18,28 +18,28 @@ public class NpcManager : SingleTonMono<NpcManager>
         // Add dialogues for different situations
         dialogueDictionary.Add("HintMessage", new string[]
         {
-            "¿ŞÂÊÀ¸·Î µ¹¾Æ¾ß ÇÒ µí",
-            "¿À¸¥ÂÊÀ¸·Î µ¹¾Æ¾ß ÇÒ µí",
-            "µÚ·Î µ¹¾Æ¾ß ÇÒ µí",
-            "¾ÕÀ¸·Î °¥ ¼ö ¾ø¾î",
-            "À½½ÄÀ» ³»·Á³õÀ» ¼ö ¾ø¾î"
+            "ì™¼ìª½ìœ¼ë¡œ ëŒì•„ì•¼ í•  ë“¯",
+            "ì˜¤ë¥¸ìª½ìœ¼ë¡œ ëŒì•„ì•¼ í•  ë“¯",
+            "ë’¤ë¡œ ëŒì•„ì•¼ í•  ë“¯",
+            "ì•ìœ¼ë¡œ ê°ˆ ìˆ˜ ì—†ì–´",
+            "ìŒì‹ì„ ë‚´ë ¤ë†“ì„ ìˆ˜ ì—†ì–´"
         });
         dialogueDictionary.Add("IntroduceBlockRun", new string[]
         {
-            "ÀÌ ºí·°Àº ´Ş¸®±â ºí·°ÀÌ¾ß",
-            "³¡±îÁö ´Ş¸± ¼ö ÀÖ¾î"
+            "ì´ ë¸”ëŸ­ì€ ë‹¬ë¦¬ê¸° ë¸”ëŸ­ì´ì•¼",
+            "ëê¹Œì§€ ë‹¬ë¦´ ìˆ˜ ìˆì–´"
         });
 
         dialogueDictionary.Add("IntroduceBlockLoop", new string[]
         {
-            "ÀÌ ºí·°Àº ¹İº¹¹® ºí·°ÀÌ¾ß",
-            "¿øÇÏ´Â µ¿ÀÛÀ» ¹İº¹ÇÒ ¼ö ÀÖÁö",
-            "»ç¿ëÇØºÁ!"
+            "ì´ ë¸”ëŸ­ì€ ë°˜ë³µë¬¸ ë¸”ëŸ­ì´ì•¼",
+            "ì›í•˜ëŠ” ë™ì‘ì„ ë°˜ë³µí•  ìˆ˜ ìˆì§€",
+            "ì‚¬ìš©í•´ë´!"
         });
     }
     private void Update()
     {
-        // ¿©·¯ ÁÙ ¸ğµÎ Ãâ·ÂÇÒ ¶§
+        // ì—¬ëŸ¬ ì¤„ ëª¨ë‘ ì¶œë ¥í•  ë•Œ
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
 
@@ -47,7 +47,7 @@ public class NpcManager : SingleTonMono<NpcManager>
         }
 
 
-        // Æ¯Á¤ ´ëÈ­¸¸ Ãâ·Â
+        // íŠ¹ì • ëŒ€í™”ë§Œ ì¶œë ¥
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
                 GetDialogue("HintMessage",0);
@@ -65,7 +65,7 @@ public class NpcManager : SingleTonMono<NpcManager>
             }
             
 
-            // ÀÎµ¦½º °ªÀÌ À¯È¿ÇÑ °æ¿ì ÇØ´ç ÀÎµ¦½ºÀÇ ¸Ş½ÃÁö¸¸ Ãâ·Â
+            // ì¸ë±ìŠ¤ ê°’ì´ ìœ íš¨í•œ ê²½ìš° í•´ë‹¹ ì¸ë±ìŠ¤ì˜ ë©”ì‹œì§€ë§Œ ì¶œë ¥
             if (index >= 0 && index < dialogueDictionary[msg].Length)
             {
                 string[] selectedMsg = new string[] { dialogueDictionary[msg][index] };
@@ -73,7 +73,7 @@ public class NpcManager : SingleTonMono<NpcManager>
             }
             else
             {
-                // ÀÎµ¦½º °ªÀÌ À¯È¿ÇÏÁö ¾ÊÀ¸¸é ¸ğµç ¸Ş½ÃÁö¸¦ Ãâ·Â
+                // ì¸ë±ìŠ¤ ê°’ì´ ìœ íš¨í•˜ì§€ ì•Šìœ¼ë©´ ëª¨ë“  ë©”ì‹œì§€ë¥¼ ì¶œë ¥
                 TalkCoroutineRunning = StartCoroutine(StartTalk(msg, dialogueDictionary[msg]));
             }
         }

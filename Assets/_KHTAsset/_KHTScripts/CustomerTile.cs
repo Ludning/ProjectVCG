@@ -9,11 +9,11 @@ public class CustomerTile : TileBase
     {
         if(_targetItem.ItemName == Item.ItemName)
         {
-            Debug.Log("¼º°ø");
+            Debug.Log("ì„±ê³µ");
         }
         else
         {
-            Debug.Log("½ÇÆÐ");
+            Debug.Log("ì‹¤íŒ¨");
         }
     }
 }

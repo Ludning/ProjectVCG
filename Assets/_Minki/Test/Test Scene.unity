@@ -213,7 +213,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83ebe380fa761744db16688999a30473, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockTransforms: []
+  blockTransforms:
+  - {fileID: 145257988}
+  - {fileID: 1721212316}
+  - {fileID: 529764533}
+  - {fileID: 1398586776}
+  - {fileID: 1483130605}
+  - {fileID: 1575256879}
+  - {fileID: 1789183213}
+  - {fileID: 1287188791}
+  - {fileID: 1980653864}
+  - {fileID: 1088349484}
   executeButton: {fileID: 0}
 --- !u!4 &241827186
 Transform:
@@ -436,7 +446,7 @@ GameObject:
   - component: {fileID: 875521641}
   - component: {fileID: 875521640}
   m_Layer: 0
-  m_Name: User
+  m_Name: VR Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
