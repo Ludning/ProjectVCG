@@ -11134,6 +11134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce165a2945c4fbd4892eaf9960f979d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sheetCount: 10
+  _sheetSlotPrefab: {fileID: 0}
 --- !u!1 &1589309050
 GameObject:
   m_ObjectHideFlags: 0

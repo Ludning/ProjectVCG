@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class SheetManager : MonoBehaviour
@@ -8,7 +9,7 @@ public class SheetManager : MonoBehaviour
     private StageManager Stage;
     private List<BlockLogicBase> _blockLogicBases = new List<BlockLogicBase>();
 
-    private bool IsRun = true;
+    //private bool IsRun = true;
 
     public void AddBlockLogic(BlockLogicBase blockLogic)
     {
@@ -25,41 +26,35 @@ public class SheetManager : MonoBehaviour
     
     public void RunSheetBlock()
     {
-        StartCoroutine(StartBlockLogics());
+        StartBlockLogics().Forget();
     }
-    IEnumerator StartBlockLogics()
+    async UniTask<bool> StartBlockLogics()
     {
-        IsRun = true;
         foreach (var blockLogic in _blockLogicBases)
         {
-            yield return BlockLogic(blockLogic);
-            if (IsRun == false)
+            bool result = await BlockLogic(blockLogic);
+            if (result == false)
             {
                 //TODO
                 //실패로직 이벤트
                 Debug.Log("로직 실패!!");
-                yield break;
+                return false;
             }
         }
+        return true;
     }
-    IEnumerator BlockLogic(BlockLogicBase blockLogic)
+    async UniTask<bool> BlockLogic(BlockLogicBase blockLogic)
     {
-        bool result = true;
-        
-        result = blockLogic.IsExecutable(Stage);
-
+        bool result = blockLogic.IsExecutable(Stage);
         if (result == false)
-        {
-            IsRun = false;
-            yield break;
-        }
+            return false;
 
         while (true)
         {
             bool isComplete = blockLogic.Execute(Stage);
-            if(isComplete)
-                yield break;
-            yield return null;
+            if (isComplete)
+                return true;
+            await UniTask.NextFrame();
         }
     }
 }
