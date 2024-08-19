@@ -194,10 +194,9 @@ public class Chapter : MonoBehaviour
     public void ActivePopup(GameObject obj = null)
     {
         // 모든 팝업 목록
-        if(obj == ChapterPopup)
-        {
-            LoadMap("CloseMap");
-        }
+        if (obj == ChapterPopup) LoadMap("CloseMap");
+        else if (obj == ClearPopup) BeforeBtn.gameObject.SetActive(false);
+
         GameObject[] popups = { ClearPopup, ChapterPopup, StagePopup1, StagePopup2, ExitPopup };
 
         // 모든 팝업을 비활성화하고, 인자로 받은 팝업만 활성화
@@ -258,6 +257,7 @@ public class Chapter : MonoBehaviour
                 currentIndex++;
                 _currentStage = stages[currentIndex].ToString(); // 다음 스테이지로 업데이트
                 LoadMap(_currentStage);
+                
                 Debug.Log("Moved to the next stage: " + _currentStage);
 
                 // 필요한 경우 추가 로직 (씬 로딩 등) 추가 가능
@@ -292,6 +292,7 @@ public class Chapter : MonoBehaviour
                     _currentChapter = nextChapter.ToString();
                     _currentStage = _dic[nextChapter][0].ToString();  // 첫 번째 스테이지로 설정
                     LoadMap(_currentStage);
+                    BeforeBtn.gameObject.SetActive(true);
                     Debug.Log("다음 챕터로 이동: " + _currentChapter + ", 첫 번째 스테이지: " + _currentStage);
                     ClearPopup.SetActive(false); // 클리어 팝업 닫기
                 }
