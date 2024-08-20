@@ -12735,7 +12735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318ae14a41455d8469f363bc8f49c426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TileType: 1
+  TileType: 5
   Item: {fileID: 0}
 --- !u!65 &493143170
 BoxCollider:
@@ -44695,7 +44695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318ae14a41455d8469f363bc8f49c426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TileType: 1
+  TileType: 5
   Item: {fileID: 0}
 --- !u!1 &1945423452
 GameObject:
