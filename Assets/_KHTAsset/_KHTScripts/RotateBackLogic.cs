@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotateBack : BlockLogicBase
+public class RotateBackLogic : BlockLogicBase
 {
     Quaternion playerTargetRot = Quaternion.identity;
     public override bool IsExecutable(StageManager owner)
