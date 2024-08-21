@@ -20,7 +20,7 @@ public class DataPostprocessor : AssetPostprocessor
             if (str == dataXlsxPath)
                 DataConverter.LoadExcel<GameData>(dataXlsxPath, dataJsonPath);
             if (str == addressXlsxPath)
-                DataConverter.LoadExcel<AssetPathData>(addressXlsxPath, addressJsonPath);
+                DataConverter.LoadExcel<AssetAddressData>(addressXlsxPath, addressJsonPath);
         }
         foreach (string str in deletedAssets)
         {
@@ -42,6 +42,6 @@ public class DataPostprocessor : AssetPostprocessor
     public static void OnLoadXlsx()
     {
         DataConverter.LoadExcel<GameData>(dataXlsxPath, dataJsonPath);
-        DataConverter.LoadExcel<AssetPathData>(addressXlsxPath, addressJsonPath);
+        DataConverter.LoadExcel<AssetAddressData>(addressXlsxPath, addressJsonPath);
     }
 }

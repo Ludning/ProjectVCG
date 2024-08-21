@@ -11,7 +11,7 @@ public class LoadCodeBlockMaterial : MonoBehaviour
     {
         Material tempMat = null;
         
-        switch (_type)
+        /*switch (_type)
         {
             case BlockLogicType.Cook:
                 tempMat = DataManager.Instance.Cook;
@@ -40,7 +40,7 @@ public class LoadCodeBlockMaterial : MonoBehaviour
             default:
                 tempMat = DataManager.Instance.NullMat;
                 break;
-        }
+        }*/
 
         _meshRenderer.materials = new[] { tempMat };
     }
