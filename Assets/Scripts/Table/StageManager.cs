@@ -18,6 +18,10 @@ public class StageManager : MonoBehaviour
         tempDic.Add(StageIndex.Serving2,new List<string> {"7"});
         tempDic.Add(StageIndex.Serving3,new List<string> {"9"});
         tempDic.Add(StageIndex.Serving4,new List<string> {"11"});
+        tempDic.Add(StageIndex.Serving5,new List<string> {"11"});
+        tempDic.Add(StageIndex.Serving6,new List<string> {"11"});
+        tempDic.Add(StageIndex.Serving7,new List<string> {"11"});
+        tempDic.Add(StageIndex.Serving8,new List<string> {"11"});
     }
     public Direction playerForwardDirection = Direction.Right;
 

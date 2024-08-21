@@ -28,6 +28,7 @@ public class Chapter : MonoBehaviour
     [SerializeField] private GameObject ChapterPopup; // 챕터 선택 팝업
     [SerializeField] private GameObject StagePopup1;  // 첫 번째 챕터의 스테이지 팝업
     [SerializeField] private GameObject StagePopup2;  // 두 번째 챕터의 스테이지 팝업
+    [SerializeField] private GameObject StagePopup3;  // 두 번째 챕터의 스테이지 팝업
 
     [Header("MoveBtn")]
     [SerializeField] private Button OpenChapterBtn;   // 챕터 선택 팝업 열도록 하는 버튼 (마지막 스테이지 클리어 시 나오는 팝업의 일부 버튼)
@@ -37,12 +38,14 @@ public class Chapter : MonoBehaviour
     [SerializeField] private Button CloseChapterPopup;// 챕터 팝업 닫기 버튼
     [SerializeField] private Button CloseStage1Popup; // 첫 번째 챕터의 팝업 닫기 버튼
     [SerializeField] private Button CloseStage2Popup; // 두 번째 챕터의 팝업 닫기 버튼
+    [SerializeField] private Button CloseStage3Popup; // 두 번째 챕터의 팝업 닫기 버튼
 
     [Header("OtherBtns")]
     [SerializeField] private Button chapterSelectButton;    // 게임 시작 시점에서만 보이는 챕터 선택 버튼
     [SerializeField] private Button BeforeBtn;              // 돌아가기 버튼
     [SerializeField] private Button BeforeYesBtn;           // 돌아가기 확인 팝업의 Yes 버튼
     [SerializeField] private Button BeforeNoBtn;            // 돌아가기 확인 팝업의 No 버튼
+    [SerializeField] private Button[] PopupChangeButton;    // 이전,다음 스테이지로 변경 팝업창
 
     [Header("OtherScript")]
     [SerializeField] private StageManager stageManager;
@@ -64,8 +67,9 @@ public class Chapter : MonoBehaviour
         if (!chapterSelectButton.gameObject.activeSelf) chapterSelectButton.gameObject.SetActive(true);
 
         // 각 챕터에 해당하는 스테이지 목록을 딕셔너리에 추가
-        _dic.Add(ChapterIndex.Chapter1_1, new List<StageIndex> { StageIndex.Serving1, StageIndex.Serving2 });
-        _dic.Add(ChapterIndex.Chapter1_2, new List<StageIndex> { StageIndex.Serving3, StageIndex.Serving4 });
+        _dic.Add(ChapterIndex.Chapter1, new List<StageIndex> { StageIndex.Serving1, StageIndex.Serving2, StageIndex.Serving3, StageIndex.Serving4 });
+        _dic.Add(ChapterIndex.Chapter2, new List<StageIndex> { StageIndex.Serving5, StageIndex.Serving6, StageIndex.Serving7});
+        _dic.Add(ChapterIndex.Chapter3, new List<StageIndex> { StageIndex.Serving8});
     }
 
     void Start()
@@ -87,17 +91,28 @@ public class Chapter : MonoBehaviour
             StageBtn[idx].onClick.AddListener(() => SelectStage(btnName));
         }
 
+    /*    for (int i = 0; i < PopupChangeButton.Length; i++)
+        {
+            int idx = i;
+
+            PopupChangeButton[idx].onClick.AddListener(() =>
+            {
+                // 버튼을 클릭할 때마다 _currentStage 또는 다른 전역 변수의 현재 값을 전달
+                string currentStage = _currentStage; // 예시로 전역 변수 _currentStage를 사용
+                SelectStage(currentStage);
+            });
+        }
+*/
         // 챕터 선택 팝업 열기 버튼 클릭 이벤트 설정
         OpenChapterBtn.onClick.AddListener(() => OpenChapter());
 
         // 다음 챕터로 이동 버튼 클릭 이벤트 설정
         NextChapterBtn.onClick.AddListener(() => LastStage());
 
-        // 챕터 1-1 팝업 닫기 버튼 클릭 시 챕터 팝업 열기
+        // 챕터 1 팝업 닫기 버튼 클릭 시 챕터 팝업 열기
         CloseStage1Popup.onClick.AddListener(() => ActivePopup(ChapterPopup));
-
-        // 챕터 1-2 팝업 닫기 버튼 클릭 시 챕터 팝업 열기
         CloseStage2Popup.onClick.AddListener(() => ActivePopup(ChapterPopup));
+        CloseStage3Popup.onClick.AddListener(() => ActivePopup(ChapterPopup));
 
         // 돌아가기 버튼 클릭 시 돌아가기 팝업 표시
         BeforeBtn.onClick.AddListener(() => ExitPopup.SetActive(true));
@@ -142,11 +157,14 @@ public class Chapter : MonoBehaviour
         {
             switch (selectedChapter)
             {
-                case ChapterIndex.Chapter1_1:
+                case ChapterIndex.Chapter1:
                     ActivePopup(StagePopup1); // 첫 번째 챕터 팝업 열기
                     break;
-                case ChapterIndex.Chapter1_2:
+                case ChapterIndex.Chapter2:
                     ActivePopup(StagePopup2); // 두 번째 챕터 팝업 열기
+                    break;
+                case ChapterIndex.Chapter3:
+                    ActivePopup(StagePopup3); // 두 번째 챕터 팝업 열기
                     break;
             }
         }
@@ -169,6 +187,10 @@ public class Chapter : MonoBehaviour
         else if (name == StageIndex.Serving2.ToString()) StageNumber = StageIndex.Serving2;
         else if (name == StageIndex.Serving3.ToString()) StageNumber = StageIndex.Serving3;
         else if (name == StageIndex.Serving4.ToString()) StageNumber = StageIndex.Serving4;
+        else if (name == StageIndex.Serving5.ToString()) StageNumber = StageIndex.Serving5;
+        else if (name == StageIndex.Serving6.ToString()) StageNumber = StageIndex.Serving6;
+        else if (name == StageIndex.Serving7.ToString()) StageNumber = StageIndex.Serving7;
+        else if (name == StageIndex.Serving8.ToString()) StageNumber = StageIndex.Serving8;
         else StageNumber = StageIndex.None;
 
         stageManager.InitStage(StageNumber);
@@ -186,7 +208,7 @@ public class Chapter : MonoBehaviour
         else if (obj == ClearPopup) BeforeBtn.gameObject.SetActive(false);
 
         // 모든 팝업 목록
-        GameObject[] popups = { ClearPopup, ChapterPopup, StagePopup1, StagePopup2, ExitPopup };
+        GameObject[] popups = { ClearPopup, ChapterPopup, StagePopup1, StagePopup2, StagePopup3, ExitPopup };
 
         // 모든 팝업을 비활성화하고, 인자로 받은 팝업만 활성화
         foreach (GameObject popup in popups)

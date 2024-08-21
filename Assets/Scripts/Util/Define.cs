@@ -42,8 +42,9 @@ public enum Direction
 
 public enum ChapterIndex
 {
-    Chapter1_1,
-    Chapter1_2
+    Chapter1,
+    Chapter2,
+    Chapter3,
 }
 
 public enum StageIndex
@@ -52,6 +53,10 @@ public enum StageIndex
     Serving2,
     Serving3,
     Serving4,
+    Serving5,
+    Serving6,
+    Serving7,
+    Serving8,
     None
 }
 
