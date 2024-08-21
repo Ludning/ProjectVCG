@@ -28,7 +28,7 @@ public class TempSheetConnector : MonoBehaviour
     [SerializeField] private GameObject RotateLeftPrefab;
     [SerializeField] private GameObject RotateRightPrefab;
     [SerializeField] private GameObject SetItemPrefab;
-    
+    [SerializeField] private GameObject AnserObj;
 
     private void Awake()
     {
@@ -51,6 +51,7 @@ public class TempSheetConnector : MonoBehaviour
     {
         Debug.Log(type.ToString());
         sheetText.text += $"\n{type.ToString()}";
+        CheckChildren(AnserObj.transform);
 
         BlockLogicBase logicBase = null;
         switch (type)
@@ -81,6 +82,31 @@ public class TempSheetConnector : MonoBehaviour
             sheetManager.AddBlockLogic(logicBase);
         }
     }
+    void CheckChildren(Transform parent)
+    {
+        // A 오브젝트의 자식들을 순회
+        foreach (Transform child in parent)
+        {
+            Debug.Log("오브젝트: " + child.name);
+
+            // 자식 오브젝트가 있는지 확인
+            if (child.childCount > 0)
+            {
+                Debug.Log(child.name + "은 자식 오브젝트가 있습니다.");
+
+                // 자식 오브젝트들을 다시 순회
+                foreach (Transform grandChild in child)
+                {
+                    Debug.Log(child.name + "의 자식: " + grandChild.name);
+                }
+            }
+            else
+            {
+                Debug.Log(child.name + "은 자식 오브젝트가 없습니다.");
+            }
+        }
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.S))

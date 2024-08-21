@@ -8,19 +8,7 @@ using UnityEngine.UI;
 // 1. 챕터창 팝업을 여는 함수 OpenChapter()는 게임 시작할 때 호출하는 것이 좋을 듯.
 // 2. TODO: 스테이지 선택 함수 SelectStage()는 스테이지 선택 후 초기화 로직을 작성해야 함.
 // 3. 스테이지를 클리어했을 때 호출하는 함수 ClearStage().
-enum ChapterIndex
-{
-    Chapter1_1,
-    Chapter1_2
-}
 
-enum StageIndex
-{
-    Serving1,
-    Serving2,
-    Serving3,
-    Serving4
-}
 
 public class Chapter : MonoBehaviour
 {
@@ -176,12 +164,13 @@ public class Chapter : MonoBehaviour
     }
     public void LoadMap(string name)
     {
-        int StageNumber = 0;
-        if (name == StageIndex.Serving1.ToString()) StageNumber = 0;
-        else if (name == StageIndex.Serving2.ToString()) StageNumber = 1;
-        else if (name == StageIndex.Serving3.ToString()) StageNumber = 2;
-        else if (name == StageIndex.Serving4.ToString()) StageNumber = 3;
-        else StageNumber = -1;
+        StageIndex StageNumber;
+        if (name == StageIndex.Serving1.ToString()) StageNumber = StageIndex.Serving1;
+        else if (name == StageIndex.Serving2.ToString()) StageNumber = StageIndex.Serving2;
+        else if (name == StageIndex.Serving3.ToString()) StageNumber = StageIndex.Serving3;
+        else if (name == StageIndex.Serving4.ToString()) StageNumber = StageIndex.Serving4;
+        else StageNumber = StageIndex.None;
+
         stageManager.InitStage(StageNumber);
     }
     // 챕터 팝업창 여는 함수

@@ -39,3 +39,19 @@ public enum Direction
     Left,
     Right,
 }
+
+public enum ChapterIndex
+{
+    Chapter1_1,
+    Chapter1_2
+}
+
+public enum StageIndex
+{
+    Serving1,
+    Serving2,
+    Serving3,
+    Serving4,
+    None
+}
+
