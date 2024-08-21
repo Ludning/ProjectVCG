@@ -6,6 +6,7 @@ public class SheetManager : MonoBehaviour
 {
     [SerializeField]
     private StageManager Stage;
+    [SerializeField]
     private List<BlockLogicBase> _blockLogicBases = new List<BlockLogicBase>();
 
     private bool IsRun = true;
@@ -50,6 +51,7 @@ public class SheetManager : MonoBehaviour
 
         if (result == false)
         {
+            Debug.Log("로직 종료");
             IsRun = false;
             yield break;
         }

@@ -22,9 +22,11 @@ public enum BlockLogicType
     PushItem,
     RotateLeft,
     RotateRight,
+    RotateBack,
     SetItem,
     Start,
     Clear,
+    Dash,
 }
 public enum Rotate
 {
@@ -38,4 +40,11 @@ public enum Direction
     Down,
     Left,
     Right,
+}
+
+public enum CookType
+{
+    Chop,
+    Glid,
+    Boil,
 }

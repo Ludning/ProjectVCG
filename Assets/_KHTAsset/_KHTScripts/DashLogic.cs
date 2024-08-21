@@ -6,9 +6,6 @@ public class DashLogic : BlockLogicBase
 {
     public override bool IsExecutable(StageManager owner)
     {
-        //이동의 예시
-
-        //앞으로 이동하면 캐릭터 기준 앞 위치를 매개변수로 넘겨줌
         var position = owner.Controller.PlayerForwardPosition;
         TileType tileType = owner.Table.GetTileType(position);
         ItemBase item = owner.Table.GetTileItem(position);
@@ -22,20 +19,27 @@ public class DashLogic : BlockLogicBase
 
     public override bool Execute(StageManager owner)
     {
+        Debug.Log("Execute");
         var targetPosition = owner.Controller.PlayerForwardPosition;
 
         Vector3 targetWorldPosition = owner.Table.GetTilePosition(targetPosition);
         Vector3 playerWorldPosition = owner.Controller.transform.position;
         owner.Controller.transform.position = Vector3.Lerp(owner.Controller.transform.position, targetWorldPosition, 0.1f);
         float distance = Vector3.Distance(playerWorldPosition, targetWorldPosition);
-        Debug.Log(distance);
 
         if (distance < 0.1f)
         {
             owner.Controller.transform.position = targetWorldPosition;
             owner.Controller.PlayerPosition = targetPosition;
-            Debug.Log("End Logic");
-            return true;
+
+            if(IsExecutable(owner))
+            {
+                return false;
+            }
+            else
+                Debug.Log("End Logic");
+                return true;
+            
         }
         return false;
     }

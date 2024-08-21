@@ -22,13 +22,25 @@ public class TempSheetConnector : MonoBehaviour
     [SerializeField] private InteractableUnityEventWrapper ClearButton;
     
     
+    [SerializeField] private GameObject DashPrefab;
     [SerializeField] private GameObject CookPrefab;
     [SerializeField] private GameObject MovePrefab;
     [SerializeField] private GameObject PushItemPrefab;
     [SerializeField] private GameObject RotateLeftPrefab;
     [SerializeField] private GameObject RotateRightPrefab;
+    [SerializeField] private GameObject RotateBackPrefab;
     [SerializeField] private GameObject SetItemPrefab;
-    
+
+
+
+    [SerializeField] private Button T_DashButton;
+    [SerializeField] private Button T_RotateBackButton;
+    [SerializeField] private Button T_RotateLeftButton;
+    [SerializeField] private Button T_RotateRightButton;
+    [SerializeField] private Button T_StartButton;
+    [SerializeField] private Button T_ClearButton;
+
+
 
     private void Awake()
     {
@@ -40,6 +52,14 @@ public class TempSheetConnector : MonoBehaviour
         RotateRightButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.RotateRight));
         SetItemButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.SetItem));
         ClearButton.WhenSelect.AddListener(OnClick_ClearLogic);
+
+
+        T_DashButton.onClick.AddListener(() => OnClick_SetLogic(BlockLogicType.Dash));
+        T_RotateLeftButton.onClick.AddListener(() => OnClick_SetLogic(BlockLogicType.RotateLeft));
+        T_RotateRightButton.onClick.AddListener(() => OnClick_SetLogic(BlockLogicType.RotateRight));
+        T_RotateBackButton.onClick.AddListener(() => OnClick_SetLogic(BlockLogicType.RotateBack));
+        T_StartButton.onClick.AddListener(OnClick_Start);
+        T_ClearButton.onClick.AddListener(OnClick_ClearLogic);
     }
     public void OnClick_Start()
     {
@@ -55,6 +75,9 @@ public class TempSheetConnector : MonoBehaviour
         BlockLogicBase logicBase = null;
         switch (type)
         {
+            case BlockLogicType.Dash:
+                logicBase = Instantiate(DashPrefab).GetComponent<DashLogic>();
+                break;
             case BlockLogicType.Cook:
                 logicBase = Instantiate(CookPrefab).GetComponent<CookLogic>();
                 break;
@@ -69,6 +92,9 @@ public class TempSheetConnector : MonoBehaviour
                 break;
             case BlockLogicType.RotateRight:
                 logicBase = Instantiate(RotateRightPrefab).GetComponent<RotateRightLogic>();
+                break;
+            case BlockLogicType.RotateBack:
+                logicBase = Instantiate(RotateBackPrefab).GetComponent<RotateBackLogic>();
                 break;
             case BlockLogicType.SetItem:
                 logicBase = Instantiate(SetItemPrefab).GetComponent<PopItemLogic>();

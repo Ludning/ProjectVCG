@@ -15,11 +15,11 @@ public class CookLogic : BlockLogicBase
 
     public override bool Execute(StageManager owner)
     {
-        if ()
-        {
+        //if ()
+        //{
 
-            return true;
-        }
+        //    return true;
+        //}
         return false;
     }
 }

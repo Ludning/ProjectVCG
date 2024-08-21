@@ -25,7 +25,6 @@ public class MoveLogic : BlockLogicBase
         Vector3 playerWorldPosition = owner.Controller.transform.position;
         owner.Controller.transform.position = Vector3.Lerp(owner.Controller.transform.position, targetWorldPosition, 0.1f);
         float distance = Vector3.Distance(playerWorldPosition, targetWorldPosition);
-        Debug.Log(distance);
         
         if (distance < 0.1f)
         {
