@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using Oculus.Interaction;
 using TMPro;
 using Unity.VisualScripting;
@@ -11,7 +12,7 @@ public class TempSheetConnector : MonoBehaviour
 {
     [SerializeField] private SheetManager sheetManager;
     [SerializeField] private TextMeshProUGUI sheetText;
-
+    [SerializeField] private SimulatorManager simulatorManager;
     [SerializeField] private InteractableUnityEventWrapper StartButton;
     [SerializeField] private InteractableUnityEventWrapper CookButton;
     [SerializeField] private InteractableUnityEventWrapper MoveButton;
@@ -43,69 +44,47 @@ public class TempSheetConnector : MonoBehaviour
     }
     public void OnClick_Start()
     {
-        Debug.Log("Start Logic");
+        Debug.Log("Start Logic");        
         sheetManager.RunSheetBlock();
     }
 
     public void OnClick_SetLogic(BlockLogicType type)
     {
         Debug.Log(type.ToString());
+        if (SimulatorManager.Instance.CheckAnswerMax(AnserObj.transform)) return;        
+        SimulatorManager.Instance.CheckChildren(AnserObj.transform, type);
+
         sheetText.text += $"\n{type.ToString()}";
-        CheckChildren(AnserObj.transform);
 
         BlockLogicBase logicBase = null;
         switch (type)
         {
             case BlockLogicType.Cook:
-                logicBase = Instantiate(CookPrefab).GetComponent<CookLogic>();
+                logicBase = Instantiate(CookPrefab).GetComponent<CookLogic>();                
                 break;
             case BlockLogicType.Move:
-                logicBase = Instantiate(MovePrefab).GetComponent<MoveLogic>();
+                logicBase = Instantiate(MovePrefab).GetComponent<MoveLogic>();                
                 break;
             case BlockLogicType.PushItem:
-                logicBase = Instantiate(PushItemPrefab).GetComponent<PushItemLogic>();
+                logicBase = Instantiate(PushItemPrefab).GetComponent<PushItemLogic>();                
                 break;
             case BlockLogicType.RotateLeft:
-                logicBase = Instantiate(RotateLeftPrefab).GetComponent<RotateLeftLogic>();
+                logicBase = Instantiate(RotateLeftPrefab).GetComponent<RotateLeftLogic>();                
                 break;
             case BlockLogicType.RotateRight:
-                logicBase = Instantiate(RotateRightPrefab).GetComponent<RotateRightLogic>();
+                logicBase = Instantiate(RotateRightPrefab).GetComponent<RotateRightLogic>();                
                 break;
             case BlockLogicType.SetItem:
                 logicBase = Instantiate(SetItemPrefab).GetComponent<PopItemLogic>();
                 break;
-        }
-
+        }       
         if (logicBase != null)
         {
             logicBase.transform.position = new Vector3(100, 100, 100);
             sheetManager.AddBlockLogic(logicBase);
         }
     }
-    void CheckChildren(Transform parent)
-    {
-        // A 오브젝트의 자식들을 순회
-        foreach (Transform child in parent)
-        {
-            Debug.Log("오브젝트: " + child.name);
-
-            // 자식 오브젝트가 있는지 확인
-            if (child.childCount > 0)
-            {
-                Debug.Log(child.name + "은 자식 오브젝트가 있습니다.");
-
-                // 자식 오브젝트들을 다시 순회
-                foreach (Transform grandChild in child)
-                {
-                    Debug.Log(child.name + "의 자식: " + grandChild.name);
-                }
-            }
-            else
-            {
-                Debug.Log(child.name + "은 자식 오브젝트가 없습니다.");
-            }
-        }
-    }
+    
 
     private void Update()
     {
