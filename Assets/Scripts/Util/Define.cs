@@ -19,10 +19,10 @@ public enum BlockLogicType
 {
     Cook,
     Move,
-    PushItem,
     RotateLeft,
     RotateRight,
-    SetItem,
+    PushItem,
+    PopItem,
     Start,
     Clear,
 }
@@ -38,4 +38,10 @@ public enum Direction
     Down,
     Left,
     Right,
+}
+
+public enum AssetType
+{
+    GameObject,
+    Material,
 }

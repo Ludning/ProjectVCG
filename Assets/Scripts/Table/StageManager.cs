@@ -5,11 +5,16 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
+    [Header("Manager")]
+    public TableManager Table;
+    public SheetManager Sheet;
+    public InteractableManager InteractableManager;
+    
+    public MapReader Reader;
+    
     public PlayerController Controller;
     public PlayerInventory Inventory;
-    public TableManager Table;
-    public MapReader Reader;
-
+    
     public Direction playerForwardDirection = Direction.Right;
 
     private void Awake()
@@ -17,5 +22,8 @@ public class StageManager : MonoBehaviour
         Reader.ReadMap();
         
         Controller.Init(Table.startPosition, playerForwardDirection);
+        
+        Sheet.Init();
+        InteractableManager.Init();
     }
 }

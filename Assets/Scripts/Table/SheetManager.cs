@@ -6,31 +6,59 @@ using UnityEngine;
 
 public class SheetManager : MonoBehaviour
 {
-    [SerializeField] private List<InteractableUnityEventWrapper> InteractableButtons;
-    
+    [Header("Manager")]
     [SerializeField] private StageManager Stage;
+    [SerializeField] private InteractableManager InteractableManager;
+    
+    [Header("Parent")]
+    [SerializeField] private Transform SheetParent;
     private List<BlockLogicBase> _blockLogicBases = new List<BlockLogicBase>();
 
-    public void OnClick_StartLogic()
+    public void Init()
+    {
+        //InteractableButtons = new Dictionary<BlockLogicType, InteractableUnityEventWrapper>();
+        
+        /*foreach (var interactableButton in InteractableButtons)
+        {
+            interactableButton.Value.WhenSelect.AddListener(()=>OnClick_SetLogic(interactableButton.Key));
+        }*/
+        
+        /*StartButton.WhenSelect.AddListener(OnClick_StartLogic);
+        ClearButton.WhenSelect.AddListener(OnClick_ClearLogic);
+        CookButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.Cook));
+        MoveButton.WhenSelect.AddListener(()=> OnClick_SetLogic(BlockLogicType.Move));
+        PushItemButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.PushItem));
+        RotateLeftButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.RotateLeft));
+        RotateRightButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.RotateRight));
+        SetItemButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.SetItem));*/
+    }
+    private void OnClick_StartLogic()
     {
         Debug.Log("Start Logic");
         RunSheetBlock();
     }
-    public void OnClick_ClearLogic()
+    private void OnClick_ClearLogic()
     {
-        //TODO
-        //시각적 오브젝트 추가
         ClearBlockLogic();
     }
-    public void OnClick_SetLogic(BlockLogicType type)
+    private void OnClick_SetLogic(BlockLogicType type)
     {
+        switch (type)
+        {
+            case BlockLogicType.Start:
+                OnClick_StartLogic();
+                return;
+            case BlockLogicType.Clear:
+                OnClick_ClearLogic();
+                return;
+        }
+        
         GameObject tempPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(type.ToString());
         BlockLogicBase logicBase = Instantiate(tempPrefab).GetComponent<BlockLogicBase>();
         
-
         if (logicBase != null)
         {
-            logicBase.transform.position = new Vector3(100, 100, 100);
+            logicBase.transform.SetParent(SheetParent);
             AddBlockLogic(logicBase);
         }
     }
