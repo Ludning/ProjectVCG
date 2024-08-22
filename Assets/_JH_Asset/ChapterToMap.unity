@@ -26016,6 +26016,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sheetManager: {fileID: 933737900}
   sheetText: {fileID: 418314881}
+  simulatorManager: {fileID: 0}
   StartButton: {fileID: 1776718537}
   CookButton: {fileID: 1253619002}
   MoveButton: {fileID: 40496223}
@@ -26036,7 +26037,7 @@ MonoBehaviour:
     type: 3}
   SetItemPrefab: {fileID: 7038036788328824224, guid: 23a2ba887e3a463469602b120cedd97c,
     type: 3}
-  AnserObj: {fileID: 34298190509190986}
+  AnserObj: {fileID: 6631272396811077852}
 --- !u!1 &572046315
 GameObject:
   m_ObjectHideFlags: 0
