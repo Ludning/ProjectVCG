@@ -37,6 +37,8 @@ public class TempSheetConnector : MonoBehaviour
     [SerializeField] private Button T_RotateBackButton;
     [SerializeField] private Button T_RotateLeftButton;
     [SerializeField] private Button T_RotateRightButton;
+    [SerializeField] private Button T_PushItemButton;
+    [SerializeField] private Button T_PopItemButton;
     [SerializeField] private Button T_StartButton;
     [SerializeField] private Button T_ClearButton;
 
@@ -58,6 +60,8 @@ public class TempSheetConnector : MonoBehaviour
         T_RotateLeftButton.onClick.AddListener(() => OnClick_SetLogic(BlockLogicType.RotateLeft));
         T_RotateRightButton.onClick.AddListener(() => OnClick_SetLogic(BlockLogicType.RotateRight));
         T_RotateBackButton.onClick.AddListener(() => OnClick_SetLogic(BlockLogicType.RotateBack));
+        T_PushItemButton.onClick.AddListener(() => OnClick_SetLogic(BlockLogicType.PushItem));
+        T_PopItemButton.onClick.AddListener(() => OnClick_SetLogic(BlockLogicType.SetItem));
         T_StartButton.onClick.AddListener(OnClick_Start);
         T_ClearButton.onClick.AddListener(OnClick_ClearLogic);
     }
