@@ -6,9 +6,10 @@ using UnityEngine;
 public class DataPostprocessor : AssetPostprocessor
 {
     const string dataXlsxPath = "Assets/Resources/Xlsx/GameData.xlsx";
-    const string dataJsonPath = "Assets/Resources/Data/GameData.json";
+    const string dataJsonPath = "Assets/Resources_Addressable/Data/GameData.json";
+    
     const string addressXlsxPath = "Assets/Resources/Xlsx/AssetAddress.xlsx";
-    const string addressJsonPath = "Assets/Resources/Data/AssetAddress.json";
+    const string addressJsonPath = "Assets/Resources_Addressable/Data/AssetAddress.json";
     
     static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths, bool didDomainReload)
     {

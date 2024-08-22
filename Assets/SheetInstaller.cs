@@ -9,11 +9,6 @@ public class SheetInstaller : MonoBehaviour
 
     [SerializeField] private GameObject _sheetSlotPrefab;
 
-    private void Awake()
-    {
-        Init(_sheetCount);
-    }
-
     public void Init(int sheetCount)
     {
         

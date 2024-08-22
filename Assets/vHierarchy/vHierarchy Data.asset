@@ -36,9 +36,9 @@ MonoBehaviour:
         - colorIndex: 9
           iconNameOrGuid: 
         - colorIndex: 7
-          iconNameOrGuid: 
+          iconNameOrGuid: Terrain Icon
         - colorIndex: 7
-          iconNameOrGuid: 
+          iconNameOrGuid: ReflectionProbe Icon
         - colorIndex: 4
           iconNameOrGuid: 
         - colorIndex: 0

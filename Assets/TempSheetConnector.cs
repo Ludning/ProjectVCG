@@ -38,7 +38,7 @@ public class TempSheetConnector : MonoBehaviour
         PushItemButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.PushItem));
         RotateLeftButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.RotateLeft));
         RotateRightButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.RotateRight));
-        SetItemButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.SetItem));
+        SetItemButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.PopItem));
         ClearButton.WhenSelect.AddListener(OnClick_ClearLogic);
     }
     public void OnClick_Start()
@@ -70,7 +70,7 @@ public class TempSheetConnector : MonoBehaviour
             case BlockLogicType.RotateRight:
                 logicBase = Instantiate(RotateRightPrefab).GetComponent<RotateRightLogic>();
                 break;
-            case BlockLogicType.SetItem:
+            case BlockLogicType.PopItem:
                 logicBase = Instantiate(SetItemPrefab).GetComponent<PopItemLogic>();
                 break;
         }

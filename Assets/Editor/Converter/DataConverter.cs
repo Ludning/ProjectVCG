@@ -17,14 +17,11 @@ public class DataConverter
     {
         Debug.Log("ReadExcel");
 
-        //파일 존재 체크
         if (IsFileExists(xlsxPath) == false)
             return;
 
         ConvertExcelToJson<T>(xlsxPath, jsonPath);
         
-        //EditorUtility.SetDirty(asset);
-        //AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
     }
     

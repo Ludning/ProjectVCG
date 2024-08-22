@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 3d50b985e82e89340870c9196b80e77f
+  m_SerializeEntries:
+  - m_GUID: 5934e32393a77cb418e131da0af77743
+    m_Address: Materials/Logic/ClearMat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 26a220be94c6e6641b9fb901573e7ef4
+    m_Address: Materials/Logic/RotateRightMat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a2f247ef11a3e6748bff231d2252ed5d
+    m_Address: Materials/Logic/TempMat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0cdbc752c3531a847b4aecd924ab88b2
+    m_Address: Materials/Logic/RotateLeftMat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d3021bf10f87cb5429169e5baa5340b2
+    m_Address: Materials/Logic/PushItemMat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6373692d5ce737e4cbae7103e47d76ff
+    m_Address: Materials/Logic/StartMat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef91ce1cd606fce4f88dda9f691778b0
+    m_Address: Materials/Logic/MoveMat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 982a5b41f07834940aa33db8f155b3fd
+    m_Address: Materials/Logic/PopItemMat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 14a74b03982e97e42887fe45d803e6ad
+    m_Address: Prefabs/LogicBlock
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8776cd84a07736b418d88f964237c04a
+    m_Address: Data/AssetAddress
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e88b271c32aa56644b3760172847b474
+    m_Address: Data/GameData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cd8bf1e90bffa4b479fe9a4a2feae60f
+    m_Address: Materials/Logic/CookMat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 827618ca01c5bd84f80f29cb5dfd5897
+    m_Address: Prefabs/ButtonInteractable
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 8b1dc452034a1734db8ae1cd6cb6a1de, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 0f1d348a739da294eb3d40f55db09d7f, type: 2}
+    - {fileID: 11400000, guid: dacd648e8160d1b498750e461665d6bf, type: 2}
