@@ -2051,7 +2051,27 @@ PrefabInstance:
     - target: {fileID: 86736978705349865, guid: c0ab22a53b622294195db4724313307f,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 10
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 86736978705349865, guid: c0ab22a53b622294195db4724313307f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 86736978705349865, guid: c0ab22a53b622294195db4724313307f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 86736978705349865, guid: c0ab22a53b622294195db4724313307f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 86736978705349865, guid: c0ab22a53b622294195db4724313307f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 342719728753155701, guid: c0ab22a53b622294195db4724313307f,
         type: 3}
@@ -2241,7 +2261,27 @@ PrefabInstance:
     - target: {fileID: 3530598364834638633, guid: c0ab22a53b622294195db4724313307f,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 10
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3530598364834638633, guid: c0ab22a53b622294195db4724313307f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3530598364834638633, guid: c0ab22a53b622294195db4724313307f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3530598364834638633, guid: c0ab22a53b622294195db4724313307f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3530598364834638633, guid: c0ab22a53b622294195db4724313307f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5779196069856707311, guid: c0ab22a53b622294195db4724313307f,
         type: 3}
