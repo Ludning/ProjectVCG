@@ -1,12 +1,14 @@
 using System.Collections.Generic;
 using FoodSystem;
+using ItemSystem;
 using UnityEngine;
 
 namespace TileSystem
 {
     // 타일의 종류를 정의하는 열거형
-    public enum TileSystemTileType
+    public enum TileType
     {
+        None, // Null
         Floor, // 바닥 타일: 플레이어가 이동할 수 있는 기본 타일
         Wall, // 벽 타일: 플레이어가 이동할 수 없는 기본 타일
         Destination, // 목적지 타일: 플레이어가 최종적으로 이동해야 하는 타일; 도착 시 스테이지를 클리어합니다.
@@ -22,6 +24,10 @@ namespace TileSystem
         // 타일의 종류(타입) (Define.cs에서 정의한 것을 사용)
         [SerializeField] private TileType typeName;
         public TileType TypeName => typeName;
+
+        // 소지 아이템; 일부 타일이 가질 수 있는 아이템
+        private BaseItem itemName;
+        public BaseItem ItemName => itemName;
     }
 
     #region Interfaces

@@ -1,12 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LoadCodeBlockMaterial : MonoBehaviour
 {
     [SerializeField] private BlockLogicType _type;
     [SerializeField] private MeshRenderer _meshRenderer;
+    
     private void Awake()
     {
         Material tempMat = null;

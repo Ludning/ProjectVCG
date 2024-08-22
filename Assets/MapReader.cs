@@ -1,23 +1,17 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapReader : MonoBehaviour
+public class TilemapReader : MonoBehaviour
 {
-    [SerializeField] private TableManager Table;
+    // [SerializeField] private TableManager tableManager;
 
-    public void ReadMap()
+    public void GetTilemap()
     {
-        List<Transform> tileTransforms = new List<Transform>();
-        
-        foreach (Transform child in transform)
-        {
-            tileTransforms.Add(child);
-        }
+        Transform[] tileTransforms = GetComponentsInChildren<Transform>();
         
         
         Dictionary<Vector2Int, TileBase> tileBases = new Dictionary<Vector2Int, TileBase>();
+        
         foreach (var tileTransform in tileTransforms)
         {
             //좌표는 
@@ -26,6 +20,7 @@ public class MapReader : MonoBehaviour
 
             tileBases[new Vector2Int(x, y)] = tileTransform.GetComponent<TileBase>();
         }
-        Table.Init(tileBases);
+        
+        // tableManager.Init(tileBases);
     }
 }

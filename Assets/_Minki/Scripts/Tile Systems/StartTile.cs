@@ -14,7 +14,7 @@ namespace TileSystem
     public class StartTile : FloorTile
     {
         // [SerializeField] private bool isSpawnTile; // 시작 타일인가?
-        [SerializeField] private Rotation spawnRotation; // 시작 방향
-        public int SpawnRotation => (int)spawnRotation;
+        [SerializeField] private Direction spawnRotation; // 시작 방향
+        public Direction SpawnRotation => spawnRotation;
     }
 }
