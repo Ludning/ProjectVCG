@@ -11,7 +11,7 @@ public class ResourceManager : SingleTon<ResourceManager>
     
     public T LoadResource<T>(string resourceName) where T : UnityEngine.Object
     {
-        string resourcePath = DataManager.Instance.GetAssetAddress(resourceName);
+        string resourcePath = DataManager.Instance.GetAssetAddress<T>(resourceName);
         
         T resource = Addressables.LoadAssetAsync<T>(resourcePath).WaitForCompletion();
         if (resource == null)
@@ -20,6 +20,7 @@ public class ResourceManager : SingleTon<ResourceManager>
     }
     public T LoadResourceWithCaching<T>(string resourceName) where T : UnityEngine.Object
     {
+        Debug.Log($"resourceName : {resourceName}");
         if(_resourceDictionary == null)
             _resourceDictionary = new Dictionary<Type, Dictionary<string, Object>>();
         

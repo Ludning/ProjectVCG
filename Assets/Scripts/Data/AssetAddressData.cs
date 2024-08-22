@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class AssetAddressData
 {
-    public Dictionary<string, string> AssetAddressDatas;
+    public Dictionary<string, string> GameObject;
+    public Dictionary<string, string> Material;
 }

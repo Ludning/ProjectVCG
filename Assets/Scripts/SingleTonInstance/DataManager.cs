@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -9,8 +10,8 @@ public class DataManager : SingleTonMono<DataManager>
     private GameData _gameData;
     private AssetAddressData _assetAddressData;
     
-    const string _dataJsonPath = "Assets/Resource/Data/GameData.json";
-    const string _addressJsonPath = "Assets/Resource/Data/AssetAddress.json";
+    const string _dataJsonPath = "Data/GameData";
+    const string _addressJsonPath = "Data/AssetAddress";
     
     public T GetGameData<T>(string key) where T : class, new()
     {
@@ -48,7 +49,7 @@ public class DataManager : SingleTonMono<DataManager>
         return null;
     }
 
-    public string GetAssetAddress(string key)
+    public string GetAssetAddress<T>(string key)
     {
         if (_assetAddressData == null)
         {
@@ -56,6 +57,11 @@ public class DataManager : SingleTonMono<DataManager>
             _assetAddressData = JsonConvert.DeserializeObject<AssetAddressData>(jsonFile.text);
         }
 
-        return _assetAddressData.AssetAddressDatas.GetValueOrDefault(key);
+        if(typeof(T) == typeof(GameObject))
+            return _assetAddressData.GameObject.GetValueOrDefault(key);
+        if (typeof(T) == typeof(Material))
+            return _assetAddressData.Material.GetValueOrDefault(key);
+
+        return null;
     }
 }
