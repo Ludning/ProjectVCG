@@ -2515,6 +2515,11 @@ PrefabInstance:
       propertyPath: SheetParent
       value: 
       objectReference: {fileID: 1581422951}
+    - target: {fileID: 4470865141629060255, guid: ea45353fd3e481648a98b8c95bac0e5d,
+        type: 3}
+      propertyPath: InteractableManager
+      value: 
+      objectReference: {fileID: 5396450360619514066}
     - target: {fileID: 5245920724353730381, guid: ea45353fd3e481648a98b8c95bac0e5d,
         type: 3}
       propertyPath: m_Name

@@ -1,7 +1,13 @@
 {
   "GameObject": {
     "LogicBlock": "Prefabs/LogicBlock",
-    "ButtonInteractable": "Prefabs/ButtonInteractable"
+    "ButtonInteractable": "Prefabs/ButtonInteractable",
+    "CookBlockLogic": "Prefabs/BlockLogic/CookBlockLogic",
+    "MoveBlockLogic": "Prefabs/BlockLogic/MoveBlockLogic",
+    "PopItemBlockLogic": "Prefabs/BlockLogic/PopItemBlockLogic",
+    "PushItemBlockLogic": "Prefabs/BlockLogic/PushItemBlockLogic",
+    "RotateLeftBlockLogic": "Prefabs/BlockLogic/RotateLeftBlockLogic",
+    "RotateRightBlockLogic": "Prefabs/BlockLogic/RotateRightBlockLogic"
   },
   "Material": {
     "TempMat": "Materials/Logic/TempMat",

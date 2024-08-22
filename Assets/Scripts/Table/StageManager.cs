@@ -23,7 +23,8 @@ public class StageManager : MonoBehaviour
         
         Controller.Init(Table.startPosition, playerForwardDirection);
         
-        Sheet.Init();
         InteractableManager.Init();
+        
+        Sheet.Init();
     }
 }

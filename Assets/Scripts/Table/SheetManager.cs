@@ -16,54 +16,33 @@ public class SheetManager : MonoBehaviour
 
     public void Init()
     {
-        //InteractableButtons = new Dictionary<BlockLogicType, InteractableUnityEventWrapper>();
-        
-        /*foreach (var interactableButton in InteractableButtons)
+        foreach (var interactableButton in InteractableManager.InteractableButtons)
         {
             interactableButton.Value.WhenSelect.AddListener(()=>OnClick_SetLogic(interactableButton.Key));
-        }*/
-        
-        /*StartButton.WhenSelect.AddListener(OnClick_StartLogic);
-        ClearButton.WhenSelect.AddListener(OnClick_ClearLogic);
-        CookButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.Cook));
-        MoveButton.WhenSelect.AddListener(()=> OnClick_SetLogic(BlockLogicType.Move));
-        PushItemButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.PushItem));
-        RotateLeftButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.RotateLeft));
-        RotateRightButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.RotateRight));
-        SetItemButton.WhenSelect.AddListener(()=>OnClick_SetLogic(BlockLogicType.SetItem));*/
-    }
-    private void OnClick_StartLogic()
-    {
-        Debug.Log("Start Logic");
-        RunSheetBlock();
-    }
-    private void OnClick_ClearLogic()
-    {
-        ClearBlockLogic();
+        }
     }
     private void OnClick_SetLogic(BlockLogicType type)
     {
         switch (type)
         {
             case BlockLogicType.Start:
-                OnClick_StartLogic();
+                RunSheetBlock();
                 return;
             case BlockLogicType.Clear:
-                OnClick_ClearLogic();
+                ClearBlockLogic();
                 return;
         }
-        
-        GameObject tempPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(type.ToString());
+        GameObject tempPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>($"{type.ToString()}BlockLogic");
         BlockLogicBase logicBase = Instantiate(tempPrefab).GetComponent<BlockLogicBase>();
         
         if (logicBase != null)
         {
-            logicBase.transform.SetParent(SheetParent);
             AddBlockLogic(logicBase);
         }
     }
     public void AddBlockLogic(BlockLogicBase blockLogic)
     {
+        blockLogic.transform.SetParent(SheetParent, false);
         _blockLogicBases.Add(blockLogic);
     }
     public void ClearBlockLogic()

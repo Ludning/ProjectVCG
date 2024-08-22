@@ -77,8 +77,38 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 827618ca01c5bd84f80f29cb5dfd5897
+  - m_GUID: 9a80b31ec5fc340448bfac8458ca6a43
     m_Address: Prefabs/ButtonInteractable
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b1b3157957b34794d8a4ea61f979f409
+    m_Address: Prefabs/BlockLogic/CookBlockLogic
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e797e3399fe2dbf4b8dc64a954a220ea
+    m_Address: Prefabs/BlockLogic/MoveBlockLogic
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d7d6d89eb00db04cb2e011178c6d434
+    m_Address: Assets/Resources_Addressable/Prefabs/BlockLogic/PushItemBlockLogic.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ea1521a4462829a4ca40950d22a2bd9c
+    m_Address: Assets/Resources_Addressable/Prefabs/BlockLogic/RotateLeftBlockLogic.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0e8ca17bebf686242ba10d747c991aa0
+    m_Address: Assets/Resources_Addressable/Prefabs/BlockLogic/RotateRightBlockLogic.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 23a2ba887e3a463469602b120cedd97c
+    m_Address: Assets/Resources_Addressable/Prefabs/BlockLogic/PopItemBlockLogic.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
