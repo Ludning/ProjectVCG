@@ -12,6 +12,7 @@ public enum TileType
     Kitchen,
     Customer,
     Blocking,
+    Cook,
     Pass,
 }
 
