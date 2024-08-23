@@ -12,7 +12,6 @@ public class TempSheetConnector : MonoBehaviour
 {
     [SerializeField] private SheetManager sheetManager;
     [SerializeField] private TextMeshProUGUI sheetText;
-    [SerializeField] private SimulatorManager simulatorManager;
     [SerializeField] private InteractableUnityEventWrapper StartButton;
     [SerializeField] private InteractableUnityEventWrapper CookButton;
     [SerializeField] private InteractableUnityEventWrapper MoveButton;
@@ -29,7 +28,6 @@ public class TempSheetConnector : MonoBehaviour
     [SerializeField] private GameObject RotateLeftPrefab;
     [SerializeField] private GameObject RotateRightPrefab;
     [SerializeField] private GameObject SetItemPrefab;
-    [SerializeField] private GameObject AnserObj;
 
     private void Awake()
     {
@@ -50,9 +48,9 @@ public class TempSheetConnector : MonoBehaviour
 
     public void OnClick_SetLogic(BlockLogicType type)
     {
-        Debug.Log(type.ToString());
-        if (SimulatorManager.Instance.CheckAnswerMax(AnserObj.transform)) return;        
-        SimulatorManager.Instance.CheckChildren(AnserObj.transform, type);
+        //Debug.Log(type.ToString());
+        if (SimulatorManager.Instance.CheckAnswerMax()) return;        
+        SimulatorManager.Instance.CheckChildren(type);
 
         sheetText.text += $"\n{type.ToString()}";
 

@@ -1,8 +1,11 @@
+using System;
 using UnityEngine;
 
 public class SimulatorManager : SingleTonMono<SimulatorManager>
 {
     /*CheckChildren(AnserObj.transform, mT);*/
+    public Transform AnswerParent;
+    public event Action<Transform> PlayingSimulator;
 
     public Material SetBlockMaterial(BlockLogicType type)
     {
@@ -25,16 +28,25 @@ public class SimulatorManager : SingleTonMono<SimulatorManager>
                 return DataManager.Instance.NullMat;  // 기본값 반환 (NullMat)
         }
     }
+    
+   
 
-    public void CheckChildren(Transform parent, BlockLogicType type)
+    public void CheckAnswer(bool isStart)
     {
-        foreach (Transform child in parent)
+
+        PlayingSimulator?.Invoke(AnswerParent);
+    }
+    public void CheckChildren( BlockLogicType type)
+    {
+        foreach (Transform child in AnswerParent)
         {
             if (child.childCount < 1)
             {
                 Material _bt = SetBlockMaterial(type);
                 Transform answerObj = Instantiate(child, child);
                 Renderer renderer = answerObj.GetComponent<Renderer>();
+                answerObj.gameObject.AddComponent<Check>();
+
                 answerObj.transform.localScale = Vector3.one;
                 answerObj.transform.localRotation = Quaternion.Euler(0, 0, 180f);
                 answerObj.transform.localPosition = new Vector3(0, 0, -0.3f);
@@ -47,11 +59,21 @@ public class SimulatorManager : SingleTonMono<SimulatorManager>
         }
     }
 
-
-    public bool CheckAnswerMax(Transform parent)
+    protected override void Init()
     {
+        GameObject cubeParent = GameObject.Find("CubeParent");
+        if (cubeParent != null) AnswerParent = cubeParent.transform;
+        else Debug.LogWarning("CubeParnet not found!");
+    }
+
+    public bool CheckAnswerMax()
+    {
+        if(AnswerParent == null)
+        {
+            Init();
+        }
         bool isCheck = true;
-        foreach (Transform child in parent)
+        foreach (Transform child in AnswerParent)
         {
             if (child.childCount < 1)
             {
@@ -61,6 +83,7 @@ public class SimulatorManager : SingleTonMono<SimulatorManager>
         }
         return isCheck;
     }
+
 }
  
 /*

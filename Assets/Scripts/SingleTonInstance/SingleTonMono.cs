@@ -19,8 +19,13 @@ public class SingleTonMono<T> : MonoBehaviour where T : MonoBehaviour, new()
                 else
                     _instance = go.AddComponent<T>();
                 DontDestroyOnLoad(_instance);
+                (_instance as SingleTonMono<T>)?.Init();
             }
             return _instance;
         }
+    }
+    protected virtual void Init()
+    {
+
     }
 }

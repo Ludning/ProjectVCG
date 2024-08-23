@@ -32,6 +32,7 @@ public class SheetManager : MonoBehaviour
         IsRun = true;
         foreach (var blockLogic in _blockLogicBases)
         {
+            //Debug.Log(blockLogic);
             yield return BlockLogic(blockLogic);
             if (IsRun == false)
             {
@@ -47,6 +48,7 @@ public class SheetManager : MonoBehaviour
         bool result = true;
         
         result = blockLogic.IsExecutable(Stage);
+        SimulatorManager.Instance.CheckAnswer(result);// To Do
 
         if (result == false)
         {
