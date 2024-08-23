@@ -2035,6 +2035,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sheets
       objectReference: {fileID: 0}
+    - target: {fileID: 6637605338158404300, guid: 078fd9f94c03814409d0cd6aa6cb24cf,
+        type: 3}
+      propertyPath: m_Spacing
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637605338158404300, guid: 078fd9f94c03814409d0cd6aa6cb24cf,
+        type: 3}
+      propertyPath: m_ChildScaleWidth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637605338158404300, guid: 078fd9f94c03814409d0cd6aa6cb24cf,
+        type: 3}
+      propertyPath: m_ChildControlWidth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637605338158404300, guid: 078fd9f94c03814409d0cd6aa6cb24cf,
+        type: 3}
+      propertyPath: m_ChildControlHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637605338158404300, guid: 078fd9f94c03814409d0cd6aa6cb24cf,
+        type: 3}
+      propertyPath: m_ReverseArrangement
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637605338158404300, guid: 078fd9f94c03814409d0cd6aa6cb24cf,
+        type: 3}
+      propertyPath: m_ChildForceExpandWidth
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

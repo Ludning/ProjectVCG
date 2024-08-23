@@ -18,6 +18,7 @@ public class SheetManager : MonoBehaviour
     {
         foreach (var interactableButton in InteractableManager.InteractableButtons)
         {
+            Debug.Log($"BlockLogicType : {interactableButton.Key}");
             interactableButton.Value.WhenSelect.AddListener(()=>OnClick_SetLogic(interactableButton.Key));
         }
     }
@@ -44,6 +45,7 @@ public class SheetManager : MonoBehaviour
     {
         blockLogic.transform.SetParent(SheetParent, false);
         _blockLogicBases.Add(blockLogic);
+        Debug.Log("AddBlockLogic");
     }
     public void ClearBlockLogic()
     {

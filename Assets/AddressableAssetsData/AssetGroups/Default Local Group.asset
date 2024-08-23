@@ -93,22 +93,22 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6d7d6d89eb00db04cb2e011178c6d434
-    m_Address: Assets/Resources_Addressable/Prefabs/BlockLogic/PushItemBlockLogic.prefab
+    m_Address: Prefabs/BlockLogic/PushItemBlockLogic
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ea1521a4462829a4ca40950d22a2bd9c
-    m_Address: Assets/Resources_Addressable/Prefabs/BlockLogic/RotateLeftBlockLogic.prefab
+    m_Address: Prefabs/BlockLogic/RotateLeftBlockLogic
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0e8ca17bebf686242ba10d747c991aa0
-    m_Address: Assets/Resources_Addressable/Prefabs/BlockLogic/RotateRightBlockLogic.prefab
+    m_Address: Prefabs/BlockLogic/RotateRightBlockLogic
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 23a2ba887e3a463469602b120cedd97c
-    m_Address: Assets/Resources_Addressable/Prefabs/BlockLogic/PopItemBlockLogic.prefab
+    m_Address: Prefabs/BlockLogic/PopItemBlockLogic
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
