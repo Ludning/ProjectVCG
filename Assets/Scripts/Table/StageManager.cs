@@ -16,8 +16,7 @@ public class StageManager : MonoBehaviour
     
     public MapReader Reader;
 
-    // Awake()
-    private void Awake()
+    public void InitStage()
     {
         Reader.ReadMap();
 
