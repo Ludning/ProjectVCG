@@ -7,29 +7,6 @@ public class SimulatorManager : SingleTonMono<SimulatorManager>
     public Transform AnswerParent;
     public event Action<Transform> PlayingSimulator;
 
-    public Material SetBlockMaterial(BlockLogicType type)
-    {
-        switch (type)
-        {
-            case BlockLogicType.Cook:
-                return DataManager.Instance.Cook;
-            case BlockLogicType.Move:
-                return DataManager.Instance.Move;
-            case BlockLogicType.PushItem:
-                return DataManager.Instance.Push;
-            case BlockLogicType.RotateLeft:
-                return DataManager.Instance.Turn_Left;
-            case BlockLogicType.RotateRight:
-                return DataManager.Instance.Turn_Right;
-            case BlockLogicType.SetItem:
-                return DataManager.Instance.Pop;
-            default:
-                Debug.LogWarning("Unknown BlockLogicType: " + type);
-                return DataManager.Instance.NullMat;  // ±âº»°ª ¹ÝÈ¯ (NullMat)
-        }
-    }
-    
-   
 
     public void CheckAnswer(bool isStart)
     {
@@ -42,7 +19,7 @@ public class SimulatorManager : SingleTonMono<SimulatorManager>
         {
             if (child.childCount < 1)
             {
-                Material _bt = SetBlockMaterial(type);
+                Material _bt = ResourceManager.Instance.LoadResourceWithCaching<Material>(type.ToString());
                 Transform answerObj = Instantiate(child, child);
                 Renderer renderer = answerObj.GetComponent<Renderer>();
                 answerObj.gameObject.AddComponent<Check>();
@@ -51,7 +28,7 @@ public class SimulatorManager : SingleTonMono<SimulatorManager>
                 answerObj.transform.localRotation = Quaternion.Euler(0, 0, 180f);
                 answerObj.transform.localPosition = new Vector3(0, 0, -0.3f);
 
-                if (renderer != null) renderer.material = _bt; // ¿©±â¼­ selectedMaterial´Â ÀûÀýÇÑ MaterialÀÌ¾î¾ß ÇÔ
+                if (renderer != null) renderer.material = _bt; // ï¿½ï¿½ï¿½â¼­ selectedMaterialï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Materialï¿½Ì¾ï¿½ï¿½ ï¿½ï¿½
                 else Debug.LogWarning("Renderer not found on answerObj: " + answerObj.name);
 
                 return;
@@ -78,7 +55,7 @@ public class SimulatorManager : SingleTonMono<SimulatorManager>
             if (child.childCount < 1)
             {
                 isCheck = false;
-                return false;  // Áï½Ã ÇÔ¼ö°¡ Á¾·áµÇ°í false ¹ÝÈ¯
+                return false;  // ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ false ï¿½ï¿½È¯
             }
         }
         return isCheck;

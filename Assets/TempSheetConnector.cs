@@ -61,7 +61,7 @@ public class TempSheetConnector : MonoBehaviour
         T_RotateRightButton.onClick.AddListener(() => OnClick_SetLogic(BlockLogicType.RotateRight));
         T_RotateBackButton.onClick.AddListener(() => OnClick_SetLogic(BlockLogicType.RotateBack));
         T_PushItemButton.onClick.AddListener(() => OnClick_SetLogic(BlockLogicType.PushItem));
-        T_PopItemButton.onClick.AddListener(() => OnClick_SetLogic(BlockLogicType.SetItem));
+        T_PopItemButton.onClick.AddListener(() => OnClick_SetLogic(BlockLogicType.PopItem));
         T_StartButton.onClick.AddListener(OnClick_Start);
         T_ClearButton.onClick.AddListener(OnClick_ClearLogic);
     }
@@ -143,7 +143,7 @@ public class TempSheetConnector : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
-            OnClick_SetLogic(BlockLogicType.SetItem);
+            OnClick_SetLogic(BlockLogicType.PopItem);
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
