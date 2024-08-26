@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SheetManager : MonoBehaviour
-{
+{ 
     [SerializeField]
     private StageManager Stage;
     private List<BlockLogicBase> _blockLogicBases = new List<BlockLogicBase>();
