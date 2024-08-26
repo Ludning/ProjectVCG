@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using Oculus.Interaction;
 using TMPro;
 using Unity.VisualScripting;
@@ -11,7 +12,6 @@ public class TempSheetConnector : MonoBehaviour
 {
     [SerializeField] private SheetManager sheetManager;
     [SerializeField] private TextMeshProUGUI sheetText;
-
     [SerializeField] private InteractableUnityEventWrapper StartButton;
     [SerializeField] private InteractableUnityEventWrapper CookButton;
     [SerializeField] private InteractableUnityEventWrapper MoveButton;
@@ -67,13 +67,16 @@ public class TempSheetConnector : MonoBehaviour
     }
     public void OnClick_Start()
     {
-        Debug.Log("Start Logic");
+        Debug.Log("Start Logic");        
         sheetManager.RunSheetBlock();
     }
 
     public void OnClick_SetLogic(BlockLogicType type)
     {
-        Debug.Log(type.ToString());
+        //Debug.Log(type.ToString());
+        if (SimulatorManager.Instance.CheckAnswerMax()) return;        
+        SimulatorManager.Instance.CheckChildren(type);
+
         sheetText.text += $"\n{type.ToString()}";
 
         BlockLogicBase logicBase = null;
@@ -83,19 +86,19 @@ public class TempSheetConnector : MonoBehaviour
                 logicBase = Instantiate(DashPrefab).GetComponent<DashLogic>();
                 break;
             case BlockLogicType.Cook:
-                logicBase = Instantiate(CookPrefab).GetComponent<CookLogic>();
+                logicBase = Instantiate(CookPrefab).GetComponent<CookLogic>();                
                 break;
             case BlockLogicType.Move:
-                logicBase = Instantiate(MovePrefab).GetComponent<MoveLogic>();
+                logicBase = Instantiate(MovePrefab).GetComponent<MoveLogic>();                
                 break;
             case BlockLogicType.PushItem:
-                logicBase = Instantiate(PushItemPrefab).GetComponent<PushItemLogic>();
+                logicBase = Instantiate(PushItemPrefab).GetComponent<PushItemLogic>();                
                 break;
             case BlockLogicType.RotateLeft:
-                logicBase = Instantiate(RotateLeftPrefab).GetComponent<RotateLeftLogic>();
+                logicBase = Instantiate(RotateLeftPrefab).GetComponent<RotateLeftLogic>();                
                 break;
             case BlockLogicType.RotateRight:
-                logicBase = Instantiate(RotateRightPrefab).GetComponent<RotateRightLogic>();
+                logicBase = Instantiate(RotateRightPrefab).GetComponent<RotateRightLogic>();                
                 break;
             case BlockLogicType.RotateBack:
                 logicBase = Instantiate(RotateBackPrefab).GetComponent<RotateBackLogic>();
@@ -103,12 +106,48 @@ public class TempSheetConnector : MonoBehaviour
             case BlockLogicType.PopItem:
                 logicBase = Instantiate(SetItemPrefab).GetComponent<PopItemLogic>();
                 break;
-        }
-
+        }       
         if (logicBase != null)
         {
             logicBase.transform.position = new Vector3(100, 100, 100);
             sheetManager.AddBlockLogic(logicBase);
+        }
+    }
+    
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            OnClick_Start();
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            OnClick_SetLogic(BlockLogicType.Cook);
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            OnClick_SetLogic(BlockLogicType.Move);
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            OnClick_SetLogic(BlockLogicType.PushItem);
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            OnClick_SetLogic(BlockLogicType.RotateLeft);
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            OnClick_SetLogic(BlockLogicType.RotateRight);
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            OnClick_SetLogic(BlockLogicType.SetItem);
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            OnClick_ClearLogic();
         }
     }
     public void OnClick_ClearLogic()

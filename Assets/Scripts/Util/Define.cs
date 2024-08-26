@@ -43,6 +43,26 @@ public enum Direction
     Right,
 }
 
+public enum ChapterIndex
+{
+    Chapter1,
+    Chapter2,
+    Chapter3,
+}
+
+public enum StageIndex
+{
+    Serving1,
+    Serving2,
+    Serving3,
+    Serving4,
+    Serving5,
+    Serving6,
+    Serving7,
+    Serving8,
+    None
+}
+
 public enum CookType
 {
     Chop,
