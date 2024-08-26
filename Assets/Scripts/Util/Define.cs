@@ -68,6 +68,8 @@ public enum CookType
     Chop,
     Glid,
     Boil,
+}
+
 public enum AssetType
 {
     GameObject,

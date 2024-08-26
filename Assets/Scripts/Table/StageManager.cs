@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TilemapSystem;
 using UnityEngine;
 
@@ -29,7 +30,6 @@ public class StageManager : MonoBehaviour
         tempDic.Add(StageIndex.Serving7,new List<string> {"11"});
         tempDic.Add(StageIndex.Serving8,new List<string> {"11"});
     }
-    public Direction playerForwardDirection = Direction.Right;
 
     // InitStage�� ���� StageIndex�� ���ڷ� ����
     public void InitStage(StageIndex stageIndex)
