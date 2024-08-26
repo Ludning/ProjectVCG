@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Frameworks;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-public class DataManager : SingleTonMono<DataManager>
+public class DataManager : SingletonMonoBehaviour<DataManager>
 {
     private GameData _gameData;
     private AssetAddressData _assetAddressData;

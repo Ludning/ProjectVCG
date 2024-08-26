@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Frameworks;
 using UnityEngine;
 
 public enum PoolObjectType
@@ -19,14 +20,14 @@ public class PoolInfo
     public GameObject container;
 
     [HideInInspector]    
-    public List<GameObject> pool = new List<GameObject>();   // ºñÈ°¼ºÈ­ »óÅÂÀÇ ¿ÀºêÁ§Æ®
+    public List<GameObject> pool = new List<GameObject>();   // ë¹„í™œì„±í™” ìƒíƒœì˜ ì˜¤ë¸Œì íŠ¸
 }
 
-public class PoolManager : SingleTonMono<PoolManager>
+public class PoolManager : SingletonMonoBehaviour<PoolManager>
 {
     [SerializeField]
-    List<PoolInfo> listOfPool;                              // ´ÙÁß ¿ÀºêÁ§Æ®Ç® °¡´É
-    private Vector3 defaultPos = new Vector3(0,0,0);        // ¿ÀºêÁ§Æ® ¼ÒÈ¯ À§Ä¡ ÀÓÀÇ ¼³Á¤
+    List<PoolInfo> listOfPool;                              // ë‹¤ì¤‘ ì˜¤ë¸Œì íŠ¸í’€ ê°€ëŠ¥
+    private Vector3 defaultPos = new Vector3(0,0,0);        // ì˜¤ë¸Œì íŠ¸ ì†Œí™˜ ìœ„ì¹˜ ì„ì˜ ì„¤ì •
 
     void Awake()
     {
@@ -36,7 +37,7 @@ public class PoolManager : SingleTonMono<PoolManager>
         }
     }
 
-    //ÃÊ±âÈ­
+    //ì´ˆê¸°í™”
     void FillPool(PoolInfo info)
     {
         for (int i = 0; i < info.amount; i++)
@@ -45,7 +46,7 @@ public class PoolManager : SingleTonMono<PoolManager>
             obInstance.gameObject.SetActive(false);
             obInstance.transform.position = defaultPos;
             
-            info.pool.Add(obInstance);//»ı¼º µÇ¸é Ç®¿¡ ³ÖÀ½ (ÃÊ±â °ª ºñÈ°¼ºÈ­)
+            info.pool.Add(obInstance);//ìƒì„± ë˜ë©´ í’€ì— ë„£ìŒ (ì´ˆê¸° ê°’ ë¹„í™œì„±í™”)
         }
     }
 
