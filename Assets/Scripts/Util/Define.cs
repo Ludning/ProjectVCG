@@ -14,6 +14,7 @@ public enum TileType
     Blocking,
     Cook,
     Pass,
+    Table,
 }
 
 public enum BlockLogicType

@@ -9,8 +9,11 @@ public class PopItemLogic : BlockLogicBase
         var position = owner.Controller.PlayerForwardPosition;
         TileType tileType = owner.Table.GetTileType(position);
         ItemBase item = owner.Table.GetTileItem(position);
-
-        return (tileType == TileType.Customer||tileType == TileType.Kitchen|| tileType == TileType.Cook) ? true : false;
+        bool IsCustomer = tileType == TileType.Customer;
+        bool IsKitchen = tileType == TileType.Kitchen;
+        bool IsCook = tileType == TileType.Cook;
+        bool IsTable = tileType == TileType.Table;
+        return (IsCustomer || IsKitchen || IsCook) ? true : false;
     }
 
     public override bool Execute(StageManager owner)
