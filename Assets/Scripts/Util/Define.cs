@@ -12,6 +12,7 @@ public enum TileType
     Kitchen,
     Customer,
     Blocking,
+    Cook,
     Pass,
 }
 
@@ -21,10 +22,12 @@ public enum BlockLogicType
     Move,
     RotateLeft,
     RotateRight,
+    RotateBack,
     PushItem,
     PopItem,
     Start,
     Clear,
+    Dash,
 }
 public enum Rotate
 {
@@ -40,6 +43,11 @@ public enum Direction
     Right,
 }
 
+public enum CookType
+{
+    Chop,
+    Glid,
+    Boil,
 public enum AssetType
 {
     GameObject,

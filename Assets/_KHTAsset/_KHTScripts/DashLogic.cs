@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveLogic : BlockLogicBase
+public class DashLogic : BlockLogicBase
 {
     public override bool IsExecutable(StageManager owner)
     {
@@ -17,19 +19,27 @@ public class MoveLogic : BlockLogicBase
 
     public override bool Execute(StageManager owner)
     {
+        Debug.Log("Execute");
         var targetPosition = owner.Controller.PlayerForwardPosition;
 
         Vector3 targetWorldPosition = owner.Table.GetTilePosition(targetPosition);
         Vector3 playerWorldPosition = owner.Controller.transform.position;
         owner.Controller.transform.position = Vector3.Lerp(owner.Controller.transform.position, targetWorldPosition, 0.1f);
         float distance = Vector3.Distance(playerWorldPosition, targetWorldPosition);
-        
+
         if (distance < 0.1f)
         {
             owner.Controller.transform.position = targetWorldPosition;
             owner.Controller.PlayerPosition = targetPosition;
-            Debug.Log("End Logic");
-            return true;
+
+            if(IsExecutable(owner))
+            {
+                return false;
+            }
+            else
+                Debug.Log("End Logic");
+                return true;
+            
         }
         return false;
     }
