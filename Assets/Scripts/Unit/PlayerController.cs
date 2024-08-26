@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Transform LogicHint;
+    
     public Direction PlayerForwardType;
     public Vector2Int PlayerPosition;
     public Vector2Int PlayerForwardPosition => PlayerPosition + PlayerForward;
-/*    private PlayerTopMsg playerTopMsg;
-*/    public Vector2Int PlayerForward
+    public Vector2Int PlayerForward
     {
         get
         {
