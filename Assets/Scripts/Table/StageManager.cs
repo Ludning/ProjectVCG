@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class StageManager : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class StageManager : MonoBehaviour
     public SheetManager Sheet;
     public InteractableManager InteractableManager;
 
-    public MainUI ui;
+    [FormerlySerializedAs("ui")] public UIContainer uiContainer;
     
     public GameObject Items;
     
@@ -20,7 +21,7 @@ public class StageManager : MonoBehaviour
 
     public void InitStage()
     {
-        ui.gameObject.SetActive(false);
+        uiContainer.gameObject.SetActive(false);
         
         //스테이지 오브젝트 활성화
         Reader.gameObject.SetActive(true);
