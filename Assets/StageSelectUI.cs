@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StageSelectUI : MonoBehaviour
+public class StageSelectUI : MonoBehaviour, IUIElement
 {
     public StageManager StageManager;
     public GameObject GameTable;
@@ -27,5 +27,10 @@ public class StageSelectUI : MonoBehaviour
     public void OnClick_Back()
     {
         this.gameObject.SetActive(false);
+    }
+
+    public void Init()
+    {
+        
     }
 }

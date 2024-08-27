@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChapterSelectUI : MonoBehaviour
+public class ChapterSelectUI : MonoBehaviour, IUIElement
 {
     [SerializeField] private GameObject NextUI;
 
@@ -18,5 +18,9 @@ public class ChapterSelectUI : MonoBehaviour
             return;
         NextUI.SetActive(true);
         gameObject.SetActive(false);
+    }
+
+    public void Init()
+    {
     }
 }

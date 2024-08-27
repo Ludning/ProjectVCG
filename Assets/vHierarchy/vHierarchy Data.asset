@@ -58,6 +58,8 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-8e7241a4dddf12a4daab53605fb86102-5149776923026234145-276649621
         - globalObjectIdString: GlobalObjectId_V1-2-8e7241a4dddf12a4daab53605fb86102-1333489089287864508-6980765977362199853
         - globalObjectIdString: GlobalObjectId_V1-2-8e7241a4dddf12a4daab53605fb86102-2590291799688022894-8675620403635389953
+        - globalObjectIdString: GlobalObjectId_V1-2-8e7241a4dddf12a4daab53605fb86102-2124739792-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8e7241a4dddf12a4daab53605fb86102-239142068-0
         values:
         - colorIndex: 2
           iconNameOrGuid: StandaloneInputModule Icon
@@ -69,13 +71,17 @@ MonoBehaviour:
           iconNameOrGuid: 
         - colorIndex: 7
           iconNameOrGuid: Terrain Icon
-        - colorIndex: 7
+        - colorIndex: 0
           iconNameOrGuid: ReflectionProbe Icon
         - colorIndex: 4
           iconNameOrGuid: 
-        - colorIndex: 0
+        - colorIndex: 5
           iconNameOrGuid: AvatarMask On Icon
         - colorIndex: 8
+          iconNameOrGuid: 
+        - colorIndex: 3
+          iconNameOrGuid: 
+        - colorIndex: 7
           iconNameOrGuid: 
         - colorIndex: 3
           iconNameOrGuid: 

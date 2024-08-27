@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StageClearPopup : MonoBehaviour, IUIBase
+public interface IUIElement
 {
-    
+    public void Init();
 }

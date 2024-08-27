@@ -7,7 +7,9 @@
     "PopItemBlockLogic": "Prefabs/BlockLogic/PopItemBlockLogic",
     "PushItemBlockLogic": "Prefabs/BlockLogic/PushItemBlockLogic",
     "RotateLeftBlockLogic": "Prefabs/BlockLogic/RotateLeftBlockLogic",
-    "RotateRightBlockLogic": "Prefabs/BlockLogic/RotateRightBlockLogic"
+    "RotateRightBlockLogic": "Prefabs/BlockLogic/RotateRightBlockLogic",
+    "StageClearPopup": "Prefabs/UI/StageClearPopup",
+    "StageSelectPopup": "Prefabs/UI/StageSelectPopup"
   },
   "Material": {
     "TempMat": "Materials/Logic/TempMat",
