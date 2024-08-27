@@ -93,6 +93,50 @@ MonoBehaviour:
   Stage: {fileID: 2324106997134201195}
   InteractableManager: {fileID: 7022657531795921493}
   SheetParent: {fileID: 0}
+--- !u!1 &5172011013339461665
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5794458582964898340}
+  - component: {fileID: 974716058251498038}
+  m_Layer: 0
+  m_Name: RecipeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5794458582964898340
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5172011013339461665}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2639243018561309311}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &974716058251498038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5172011013339461665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b14251914c67b4982ffb6f70c4404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5245920724353730381
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,6 +170,7 @@ Transform:
   - {fileID: 8500225035053186622}
   - {fileID: 4260105331689796640}
   - {fileID: 392269505047638082}
+  - {fileID: 5794458582964898340}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6720569742300118016
@@ -220,7 +265,7 @@ MonoBehaviour:
   Table: {fileID: 7103794928054253303}
   Sheet: {fileID: 4470865141629060255}
   InteractableManager: {fileID: 7022657531795921493}
-  ui: {fileID: 0}
+  uiContainer: {fileID: 0}
   Items: {fileID: 0}
   Controller: {fileID: 0}
   Inventory: {fileID: 0}
