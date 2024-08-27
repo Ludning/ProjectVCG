@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +12,8 @@ public enum ValueType
 }
 public class ToggleHandler : MonoBehaviour
 {
-    [SerializeField] private ValueType type;
+    public TextMeshProUGUI Context;
+    public ValueType type;
     public int Value;
     private Toggle toggle;
     

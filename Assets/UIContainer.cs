@@ -8,7 +8,7 @@ public enum MainUIType
     StageSelectPopup,
     StageClearPopup,
 }
-public class MainUI : MonoBehaviour
+public class UIContainer : MonoBehaviour
 {
     private Dictionary<MainUIType, IUIBase> _elements = new Dictionary<MainUIType, IUIBase>();
 

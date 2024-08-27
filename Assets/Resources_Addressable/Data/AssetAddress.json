@@ -10,9 +10,10 @@
     "RotateLeftBlockLogic": "Prefabs/BlockLogic/RotateLeftBlockLogic",
     "RotateRightBlockLogic": "Prefabs/BlockLogic/RotateRightBlockLogic",
     "RotateBackBlockLogic": "Prefabs/BlockLogic/RotateBackBlockLogic",
-    "StageClearPopup": "Prefabs/UI/StageClearPopup",
-    "StageSelectPopup": "Prefabs/UI/StageSelectPopup",
-    "ButtonToggle": "Prefabs/UI/ButtonToggle"
+    "ChapterSelectPopup": "Prefabs/WorldUI/ChapterSelectPopup",
+    "StageClearPopup": "Prefabs/WorldUI/StageClearPopup",
+    "StageSelectPopup": "Prefabs/WorldUI/StageSelectPopup",
+    "ButtonToggle": "Prefabs/WorldUI/Elements/Toggle"
   },
   "Material": {
     "TempMat": "Materials/Logic/TempMat",

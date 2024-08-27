@@ -112,16 +112,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1781361e4d6dabc4e99c3f500770d6f7
-    m_Address: Prefabs/UI/StageClearPopup
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7b8f7186544bb1548bd529997255a8a3
-    m_Address: Prefabs/UI/StageSelectPopup
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b3cc5a7d8b77959428ce13f1224c4bbd
     m_Address: Prefabs/BlockLogic/RotateBackBlockLogic
     m_ReadOnly: 0
@@ -134,6 +124,26 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 080f2f112a8940a4f9c8cad42258423d
     m_Address: Prefabs/UI/ButtonToggle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 905578922a0e0d84caf0e2ad0a86b030
+    m_Address: Prefabs/WorldUI/Elements/Toggle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef8174138b41406429428a689bb2113b
+    m_Address: Prefabs/WorldUI/ChapterSelectPopup
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 144c801e4e49f3543820297467b2b227
+    m_Address: Prefabs/WorldUI/StageClearPopup
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2f870fb1a837b4e41a68fd250254cc75
+    m_Address: Prefabs/WorldUI/StageSelectPopup
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
