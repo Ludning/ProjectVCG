@@ -1,20 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class ChapterSelectUI : MonoBehaviour, IUIElement
+public class ChapterSelectPopup : MonoBehaviour, IUIBase
 {
     [SerializeField] private GameObject NextUI;
-
-    public int _selectedChapterIndex;
-    
-    public void OnSelectChapter(int chapterIndex)
+    public void OnSelectChapter(int value)
     {
-        _selectedChapterIndex = chapterIndex;
+        Debug.Log(value);
+        GameManager.Instance.SelectedChapterIndex = value;
     }
     public void OnClick_OK()
     {
-        if (_selectedChapterIndex == 0)
+        if (GameManager.Instance.SelectedChapterIndex == 0)
             return;
         NextUI.SetActive(true);
         gameObject.SetActive(false);
@@ -22,5 +21,6 @@ public class ChapterSelectUI : MonoBehaviour, IUIElement
 
     public void Init()
     {
+        
     }
 }

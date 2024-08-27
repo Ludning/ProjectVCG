@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2869295560278432564}
   - component: {fileID: -4000706578730419044}
   m_Layer: 0
-  m_Name: RotateBackBlockLogic 1
+  m_Name: RotateBackBlockLogic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

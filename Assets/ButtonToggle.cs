@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -11,35 +12,38 @@ public class ButtonToggle : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
     private ButtonToggleGroup ToggleGroup;
     private event Action<ButtonToggle> OnSelectEvent;
 
-    private Image ButtonImage;
+    [SerializeField] private Image ButtonImage;
+    [SerializeField] private Text ButtonText;
 
     public bool IsSelect = false;
 
+    [Header("선택되었을 시 넘겨줄 값")] public int value;
+
+    public void SetUIText(string context)
+    {
+        ButtonText.text = context;
+    }
     private void Awake()
     {
-        ButtonImage = GetComponent<Image>();
         ToggleGroup = transform.parent.GetComponent<ButtonToggleGroup>();
         ToggleGroup.AddToggleToList(this);
     }
 
     public void RegistSelectEvent(Action<ButtonToggle> action)
     {
-        OnSelectEvent = action;
+        OnSelectEvent += action;
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("OnPointerClick");
         OnSelectEvent?.Invoke(this);
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("OnPointerEnter");
         OnHighlightChangeColor();
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("OnPointerExit");
         OnUnhighlightChangeColor();
     }
     

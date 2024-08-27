@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum MainUIType
 {
+    ChapterSelectPopup,
     StageSelectPopup,
     StageClearPopup,
 }
@@ -13,17 +14,18 @@ public class MainUI : MonoBehaviour
 
     private void OnEnable()
     {
-        (GetUIBase(MainUIType.StageSelectPopup) as MonoBehaviour)?.gameObject.SetActive(true);
-        (GetUIBase(MainUIType.StageClearPopup) as MonoBehaviour)?.gameObject.SetActive(false);
+        GetUIBase<ChapterSelectPopup>(MainUIType.ChapterSelectPopup)?.gameObject.SetActive(true);
+        GetUIBase<StageSelectPopup>(MainUIType.StageSelectPopup)?.gameObject.SetActive(false);
+        GetUIBase<StageClearPopup>(MainUIType.StageClearPopup)?.gameObject.SetActive(false);
     }
 
-    private IUIBase GetUIBase(MainUIType type)
+    private T GetUIBase<T>(MainUIType type) where T : IUIBase
     {
         if (!_elements.TryGetValue(type, out IUIBase uiBase))
         {
-            GameObject ui = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(type.ToString());
+            GameObject ui = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(typeof(T).ToString());
             _elements.Add(type, ui.GetComponent<IUIBase>());
         }
-        return _elements[type];
+        return (T)_elements[type];
     }
 }

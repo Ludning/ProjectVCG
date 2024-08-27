@@ -220,6 +220,8 @@ MonoBehaviour:
   Table: {fileID: 7103794928054253303}
   Sheet: {fileID: 4470865141629060255}
   InteractableManager: {fileID: 7022657531795921493}
+  ui: {fileID: 0}
+  Items: {fileID: 0}
   Controller: {fileID: 0}
   Inventory: {fileID: 0}
   playerForwardDirection: 4
