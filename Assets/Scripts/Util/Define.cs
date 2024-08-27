@@ -4,6 +4,13 @@ public enum UIType
     TitleUI,
 }
 
+public enum LogicState
+{
+    Running,
+    Success,
+    Failure,
+}
+
 public enum TileType
 {
     Empty,

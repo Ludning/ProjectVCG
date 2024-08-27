@@ -11,7 +11,7 @@ public class RotateBackLogic : BlockLogicBase
         return true;
     }
 
-    public override bool Execute(StageManager owner)
+    public override LogicState Execute(StageManager owner)
     {
         Quaternion playerCurrentRot = owner.Controller.transform.rotation;
         owner.Controller.transform.rotation = Quaternion.Lerp(playerCurrentRot, playerTargetRot, 0.1f);
@@ -33,9 +33,9 @@ public class RotateBackLogic : BlockLogicBase
                     owner.Controller.PlayerForwardType = Direction.Left;
                     break;
             }
-            return true;
+            return LogicState.Success;
         }
-        return false;
+        return LogicState.Running;
 
     }
 }

@@ -14,17 +14,19 @@ public class DashLogic : BlockLogicBase
         {
             return false;
         }
+
         return true;
     }
 
-    public override bool Execute(StageManager owner)
+    public override LogicState Execute(StageManager owner)
     {
         Debug.Log("Execute");
         var targetPosition = owner.Controller.PlayerForwardPosition;
 
         Vector3 targetWorldPosition = owner.Table.GetTilePosition(targetPosition);
         Vector3 playerWorldPosition = owner.Controller.transform.position;
-        owner.Controller.transform.position = Vector3.Lerp(owner.Controller.transform.position, targetWorldPosition, 0.1f);
+        owner.Controller.transform.position =
+            Vector3.Lerp(owner.Controller.transform.position, targetWorldPosition, 0.1f);
         float distance = Vector3.Distance(playerWorldPosition, targetWorldPosition);
 
         if (distance < 0.1f)
@@ -32,15 +34,13 @@ public class DashLogic : BlockLogicBase
             owner.Controller.transform.position = targetWorldPosition;
             owner.Controller.PlayerPosition = targetPosition;
 
-            if(IsExecutable(owner))
+            if (IsExecutable(owner))
             {
-                return false;
+                return LogicState.Running;
             }
-            else
-                Debug.Log("End Logic");
-                return true;
-            
+            Debug.Log("End Logic");
+            return LogicState.Success;
         }
-        return false;
+        return LogicState.Running;
     }
 }

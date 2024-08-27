@@ -15,12 +15,12 @@ public class PushItemLogic : BlockLogicBase
         return (item != null) ? true : false;
     }
 
-    public override bool Execute(StageManager owner)
+    public override LogicState Execute(StageManager owner)
     {
         var position = owner.Controller.PlayerForwardPosition;
         var item = owner.Table.GetTileItem(position);
         owner.Table.SetTileItem(position, null);
         owner.Inventory.PushItem(item);
-        return true;
+        return LogicState.Success;
     }
 }

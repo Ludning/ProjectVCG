@@ -7,6 +7,7 @@ public enum MainUIType
     ChapterSelectPopup,
     StageSelectPopup,
     StageClearPopup,
+    NPCMessagePopup,
 }
 public class UIContainer : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class UIContainer : MonoBehaviour
         GetUIBase<ChapterSelectPopup>(MainUIType.ChapterSelectPopup)?.gameObject.SetActive(true);
         GetUIBase<StageSelectPopup>(MainUIType.StageSelectPopup)?.gameObject.SetActive(false);
         GetUIBase<StageClearPopup>(MainUIType.StageClearPopup)?.gameObject.SetActive(false);
+        GetUIBase<NPCMessagePopup>(MainUIType.NPCMessagePopup)?.gameObject.SetActive(false);
     }
 
     private T GetUIBase<T>(MainUIType type) where T : IUIBase

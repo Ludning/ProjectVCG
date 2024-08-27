@@ -57,33 +57,33 @@ public class SheetManager : MonoBehaviour
     }
     public void RunSheetBlock()
     {
-        StartBlockLogics().Forget();
+        RunBlockLogics().Forget();
     }
-    async UniTask<bool> StartBlockLogics()
+    async UniTask<LogicState> RunBlockLogics()
     {
         foreach (var blockLogic in _blockLogicBases)
         {
-            bool result = await BlockLogic(blockLogic);
-            if (result == false)
+            LogicState result = await RunBlockLogic(blockLogic);
+            if (result == LogicState.Failure)
             {
                 Debug.Log("로직 실패!!");
-                return false;
+                return LogicState.Failure;
             }
         }
-        return true;
+        return LogicState.Success;
     }
-    async UniTask<bool> BlockLogic(BlockLogicBase blockLogic)
+    async UniTask<LogicState> RunBlockLogic(BlockLogicBase blockLogic)
     {
     	bool result = blockLogic.IsExecutable(Stage);
         //SimulatorManager.Instance.CheckAnswer(result);// To Do
         if (result == false)
-            return false;
+            return LogicState.Failure;
 
         while (true)
         {
-            bool isComplete = blockLogic.Execute(Stage);
-            if (isComplete)
-                return true;
+            LogicState logicState = blockLogic.Execute(Stage);
+            if (logicState == LogicState.Success)
+                return LogicState.Success;
             await UniTask.NextFrame();
         }
     }

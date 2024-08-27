@@ -15,7 +15,7 @@ public class MoveLogic : BlockLogicBase
         return true;
     }
 
-    public override bool Execute(StageManager owner)
+    public override LogicState Execute(StageManager owner)
     {
         var targetPosition = owner.Controller.PlayerForwardPosition;
 
@@ -29,8 +29,8 @@ public class MoveLogic : BlockLogicBase
             owner.Controller.transform.position = targetWorldPosition;
             owner.Controller.PlayerPosition = targetPosition;
             Debug.Log("End Logic");
-            return true;
+            return LogicState.Success;
         }
-        return false;
+        return LogicState.Running;
     }
 }

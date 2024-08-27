@@ -13,12 +13,12 @@ public class PopItemLogic : BlockLogicBase
         return (tileType == TileType.Customer||tileType == TileType.Kitchen|| tileType == TileType.Cook) ? true : false;
     }
 
-    public override bool Execute(StageManager owner)
+    public override LogicState Execute(StageManager owner)
     {
         var position = owner.Controller.PlayerForwardPosition;
         var item = owner.Inventory.PopItem(position);
         item.transform.position = owner.Table.GetTilePosition(position);
         owner.Table.SetTileItem(position, item);
-        return true;
+        return LogicState.Success;
     }
 }

@@ -13,13 +13,13 @@ public class CookLogic : BlockLogicBase
         return (tileType == TileType.Kitchen && item != null) ? true : false;
     }
 
-    public override bool Execute(StageManager owner)
+    public override LogicState Execute(StageManager owner)
     {
         //if ()
         //{
 
         //    return true;
         //}
-        return false;
+        return LogicState.Success;
     }
 }

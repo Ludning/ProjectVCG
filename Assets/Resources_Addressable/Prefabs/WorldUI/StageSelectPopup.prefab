@@ -426,7 +426,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8562680186667845391}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StageSelectUI, Assembly-CSharp
         m_MethodName: OnClick_OK
         m_Mode: 1
@@ -506,7 +506,6 @@ GameObject:
   - component: {fileID: 6517176299988563716}
   - component: {fileID: 4831319146218050181}
   - component: {fileID: 6175227455353490562}
-  - component: {fileID: 8562680186667845391}
   m_Layer: 0
   m_Name: StageSelectPopup
   m_TagString: Untagged
@@ -693,21 +692,6 @@ MonoBehaviour:
   _addNewPointsToFront: 0
   _forwardElement: {fileID: 0}
   _canvas: {fileID: 3931152679776799325}
---- !u!114 &8562680186667845391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4244746782124667612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c623144fc6adaf6478ae65a3afb3d3e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PrevUI: {fileID: 0}
-  StageManager: {fileID: 0}
-  ToggleGroup: {fileID: 697373718035993993}
 --- !u!1 &4564855732809175639
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,7 +1440,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8562680186667845391}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StageSelectUI, Assembly-CSharp
         m_MethodName: OnClick_Back
         m_Mode: 1
