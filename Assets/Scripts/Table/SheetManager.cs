@@ -73,7 +73,7 @@ public class SheetManager : MonoBehaviour
     async UniTask<bool> BlockLogic(BlockLogicBase blockLogic)
     {
     	bool result = blockLogic.IsExecutable(Stage);
-        SimulatorManager.Instance.CheckAnswer(result);// To Do
+        //SimulatorManager.Instance.CheckAnswer(result);// To Do
         if (result == false)
             return false;
 

@@ -15,6 +15,9 @@ MonoBehaviour:
   sceneDatas_byGuid:
     keys:
     - 7b7ceff58f72e3a4a8521c928e70245f
+    - 8e7241a4dddf12a4daab53605fb86102
+    - beb7cc6ac7dd84742b987b99c054a369
+    - 890859041bdd55540aaa5679955b95f3
     values:
     - goDatas_byGlobalId:
         keys:
@@ -26,6 +29,102 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-7b7ceff58f72e3a4a8521c928e70245f-1682506928-0
         - globalObjectIdString: GlobalObjectId_V1-2-7b7ceff58f72e3a4a8521c928e70245f-1336383420-0
         - globalObjectIdString: GlobalObjectId_V1-2-7b7ceff58f72e3a4a8521c928e70245f-5149776923026234145-276649621
+        values:
+        - colorIndex: 2
+          iconNameOrGuid: StandaloneInputModule Icon
+        - colorIndex: 2
+          iconNameOrGuid: StandaloneInputModule Icon
+        - colorIndex: 3
+          iconNameOrGuid: Camera Icon
+        - colorIndex: 9
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: Terrain Icon
+        - colorIndex: 7
+          iconNameOrGuid: ReflectionProbe Icon
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 0
+          iconNameOrGuid: AvatarMask On Icon
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-2-8e7241a4dddf12a4daab53605fb86102-6532115850317741879-7151243900161697446
+        - globalObjectIdString: GlobalObjectId_V1-2-8e7241a4dddf12a4daab53605fb86102-5245920724353730381-5396450360619514065
+        - globalObjectIdString: GlobalObjectId_V1-2-8e7241a4dddf12a4daab53605fb86102-1567864640-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8e7241a4dddf12a4daab53605fb86102-472292294-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8e7241a4dddf12a4daab53605fb86102-9163274028360721341-8017636754276119292
+        - globalObjectIdString: GlobalObjectId_V1-2-8e7241a4dddf12a4daab53605fb86102-1682506928-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8e7241a4dddf12a4daab53605fb86102-1336383420-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8e7241a4dddf12a4daab53605fb86102-5149776923026234145-276649621
+        - globalObjectIdString: GlobalObjectId_V1-2-8e7241a4dddf12a4daab53605fb86102-1333489089287864508-6980765977362199853
+        - globalObjectIdString: GlobalObjectId_V1-2-8e7241a4dddf12a4daab53605fb86102-2590291799688022894-8675620403635389953
+        - globalObjectIdString: GlobalObjectId_V1-2-8e7241a4dddf12a4daab53605fb86102-2124739792-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8e7241a4dddf12a4daab53605fb86102-239142068-0
+        - globalObjectIdString: GlobalObjectId_V1-2-8e7241a4dddf12a4daab53605fb86102-1791330045-0
+        values:
+        - colorIndex: 2
+          iconNameOrGuid: StandaloneInputModule Icon
+        - colorIndex: 2
+          iconNameOrGuid: StandaloneInputModule Icon
+        - colorIndex: 3
+          iconNameOrGuid: Camera Icon
+        - colorIndex: 9
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: Terrain Icon
+        - colorIndex: 0
+          iconNameOrGuid: ReflectionProbe Icon
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 5
+          iconNameOrGuid: AvatarMask On Icon
+        - colorIndex: 8
+          iconNameOrGuid: 
+        - colorIndex: 3
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 3
+          iconNameOrGuid: 
+        - colorIndex: 6
+          iconNameOrGuid: 
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-2-beb7cc6ac7dd84742b987b99c054a369-6532115850317741879-7151243900161697446
+        - globalObjectIdString: GlobalObjectId_V1-2-beb7cc6ac7dd84742b987b99c054a369-5245920724353730381-5396450360619514065
+        - globalObjectIdString: GlobalObjectId_V1-2-beb7cc6ac7dd84742b987b99c054a369-1567864640-0
+        - globalObjectIdString: GlobalObjectId_V1-2-beb7cc6ac7dd84742b987b99c054a369-472292294-0
+        - globalObjectIdString: GlobalObjectId_V1-2-beb7cc6ac7dd84742b987b99c054a369-9163274028360721341-8017636754276119292
+        - globalObjectIdString: GlobalObjectId_V1-2-beb7cc6ac7dd84742b987b99c054a369-1682506928-0
+        - globalObjectIdString: GlobalObjectId_V1-2-beb7cc6ac7dd84742b987b99c054a369-1336383420-0
+        - globalObjectIdString: GlobalObjectId_V1-2-beb7cc6ac7dd84742b987b99c054a369-5149776923026234145-276649621
+        values:
+        - colorIndex: 2
+          iconNameOrGuid: StandaloneInputModule Icon
+        - colorIndex: 2
+          iconNameOrGuid: StandaloneInputModule Icon
+        - colorIndex: 3
+          iconNameOrGuid: Camera Icon
+        - colorIndex: 9
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: Terrain Icon
+        - colorIndex: 7
+          iconNameOrGuid: ReflectionProbe Icon
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 0
+          iconNameOrGuid: AvatarMask On Icon
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-2-890859041bdd55540aaa5679955b95f3-6532115850317741879-7151243900161697446
+        - globalObjectIdString: GlobalObjectId_V1-2-890859041bdd55540aaa5679955b95f3-5245920724353730381-5396450360619514065
+        - globalObjectIdString: GlobalObjectId_V1-2-890859041bdd55540aaa5679955b95f3-1567864640-0
+        - globalObjectIdString: GlobalObjectId_V1-2-890859041bdd55540aaa5679955b95f3-472292294-0
+        - globalObjectIdString: GlobalObjectId_V1-2-890859041bdd55540aaa5679955b95f3-9163274028360721341-8017636754276119292
+        - globalObjectIdString: GlobalObjectId_V1-2-890859041bdd55540aaa5679955b95f3-1682506928-0
+        - globalObjectIdString: GlobalObjectId_V1-2-890859041bdd55540aaa5679955b95f3-1336383420-0
+        - globalObjectIdString: GlobalObjectId_V1-2-890859041bdd55540aaa5679955b95f3-5149776923026234145-276649621
         values:
         - colorIndex: 2
           iconNameOrGuid: StandaloneInputModule Icon

@@ -4,10 +4,15 @@
     "ButtonInteractable": "Prefabs/ButtonInteractable",
     "CookBlockLogic": "Prefabs/BlockLogic/CookBlockLogic",
     "MoveBlockLogic": "Prefabs/BlockLogic/MoveBlockLogic",
+    "DashBlockLogic": "Prefabs/BlockLogic/DashBlockLogic",
     "PopItemBlockLogic": "Prefabs/BlockLogic/PopItemBlockLogic",
     "PushItemBlockLogic": "Prefabs/BlockLogic/PushItemBlockLogic",
     "RotateLeftBlockLogic": "Prefabs/BlockLogic/RotateLeftBlockLogic",
-    "RotateRightBlockLogic": "Prefabs/BlockLogic/RotateRightBlockLogic"
+    "RotateRightBlockLogic": "Prefabs/BlockLogic/RotateRightBlockLogic",
+    "RotateBackBlockLogic": "Prefabs/BlockLogic/RotateBackBlockLogic",
+    "StageClearPopup": "Prefabs/UI/StageClearPopup",
+    "StageSelectPopup": "Prefabs/UI/StageSelectPopup",
+    "ButtonToggle": "Prefabs/UI/ButtonToggle"
   },
   "Material": {
     "TempMat": "Materials/Logic/TempMat",

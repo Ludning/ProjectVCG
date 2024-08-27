@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a762cc1f0f695b34bb8c2b812b546fb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LogicButtonParent: {fileID: 0}
+  GameControlButtonParent: {fileID: 0}
 --- !u!1 &4052659004184919315
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stage: {fileID: 2324106997134201195}
+  InteractableManager: {fileID: 7022657531795921493}
   SheetParent: {fileID: 0}
 --- !u!1 &5245920724353730381
 GameObject:
@@ -214,10 +217,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3992d6af143eb644dbd2f1b0be3c0bb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Controller: {fileID: 0}
-  Inventory: {fileID: 0}
-  Reader: {fileID: 0}
   Table: {fileID: 7103794928054253303}
   Sheet: {fileID: 4470865141629060255}
-  InteractableManager: {fileID: 0}
+  InteractableManager: {fileID: 7022657531795921493}
+  ui: {fileID: 0}
+  Items: {fileID: 0}
+  Controller: {fileID: 0}
+  Inventory: {fileID: 0}
   playerForwardDirection: 4
+  Reader: {fileID: 0}

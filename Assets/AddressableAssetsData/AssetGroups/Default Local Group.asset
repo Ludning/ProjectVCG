@@ -112,6 +112,31 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1781361e4d6dabc4e99c3f500770d6f7
+    m_Address: Prefabs/UI/StageClearPopup
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7b8f7186544bb1548bd529997255a8a3
+    m_Address: Prefabs/UI/StageSelectPopup
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b3cc5a7d8b77959428ce13f1224c4bbd
+    m_Address: Prefabs/BlockLogic/RotateBackBlockLogic
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 76122f66b6427fc489a080d23516f63c
+    m_Address: Prefabs/BlockLogic/DashBlockLogic
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 080f2f112a8940a4f9c8cad42258423d
+    m_Address: Prefabs/UI/ButtonToggle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8b1dc452034a1734db8ae1cd6cb6a1de, type: 2}
   m_SchemaSet:
