@@ -1,14 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Tile_FoodData
 {
-    public string ID;
-    public string Description;
-    public string Type;
-    public string Icon;
-    public string Value;
-    public string PrefabName;
-
+    public string ID { get; set; }
+    public string Description { get; set; }
+    public string Type { get; set; }
+    public string Icon { get; set; }
+    public string Value { get; set; }
+    public string PrefabName { get; set; }
 }

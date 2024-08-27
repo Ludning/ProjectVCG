@@ -1,61 +1,64 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Answer : MonoBehaviour
 {
-    [SerializeField] GameObject BackBoxPrefab;   // »ı¼ºÇÒ ÇÁ¸®ÆÕ
-    [SerializeField] Transform BackPanel;        // Answer Back Panel
-    [SerializeField] Transform CubeParent;  // ºÎ¸ğ ¿ÀºêÁ§Æ®
-    [SerializeField] float boxSpacing = 0.02f;   // ¹Ú½º »çÀÌÀÇ °£°İ
-    private float _answerBlockScale = 0.1f;      // ÆĞµù °ª
-
-   
-
-    public void InitAnswer(int AnswerCount)
+    [SerializeField] private GameObject backBoxPrefab;   // ìƒì„±í•  í”„ë¦¬íŒ¹
+    [SerializeField] private Transform backPanel;        // Answer Back Panel
+    [SerializeField] private Transform cubeParent;  // ë¶€ëª¨ ì˜¤ë¸Œì íŠ¸
+    [SerializeField] private float boxSpacing = 0.02f;   // ë°•ìŠ¤ ì‚¬ì´ì˜ ê°„ê²©
+    private float _answerBlockScale = 0.1f;      // íŒ¨ë”© ê°’
+    
+    public void InitializeAnswer(int answerCount)
     {
-        foreach (Transform child in CubeParent)
-        {
-            Destroy(child.gameObject);
-        }
-        // BackPanel°ú CubeParentÀÇ ÃÊ±â »óÅÂ¸¦ ¼³Á¤
-        Vector3 scaleTemp = BackPanel.transform.localScale;
-        Vector3 positionTemp = CubeParent.transform.position;
+        DestroyChildren(cubeParent);
+        
+        // BackPanelê³¼ CubeParentì˜ ì´ˆê¸° ìƒíƒœë¥¼ ì„¤ì •
+        Vector3 scaleTemp = backPanel.transform.localScale;
+        Vector3 positionTemp = cubeParent.transform.position;
 
-        // ¹Ú½ºµéÀÇ ÃÑ ³Êºñ(¹Ú½º Å©±â + °£°İ)
-        float totalWidth = (AnswerCount - 1) * (boxSpacing + _answerBlockScale) + _answerBlockScale;
+        // ë°•ìŠ¤ë“¤ì˜ ì´ ë„ˆë¹„(ë°•ìŠ¤ í¬ê¸° + ê°„ê²©)
+        float totalWidth = (answerCount - 1) * (boxSpacing + _answerBlockScale) + _answerBlockScale;
 
-        // CubeParent¸¦ Áß¾ÓÀ¸·Î Á¤·ÄÇÏ±â À§ÇØ ½ÃÀÛ À§Ä¡¸¦ °è»ê
+        // CubeParentë¥¼ ì¤‘ì•™ìœ¼ë¡œ ì •ë ¬í•˜ê¸° ìœ„í•´ ì‹œì‘ ìœ„ì¹˜ë¥¼ ê³„ì‚°
         float startX = -(totalWidth / 2);
 
-        float tempValue = startX;  // ½ÃÀÛ x À§Ä¡
+        float tempValue = startX;  // ì‹œì‘ x ìœ„ì¹˜
 
-        for (int i = 0; i < AnswerCount; i++)
+        for (int i = 0; i < answerCount; i++)
         {
-            // »õ·Î¿î ¹Ú½º¸¦ »ı¼ºÇÏ°í ºÎ¸ğ(CubeParent)¿¡ ÇÒ´ç
-            GameObject newBackBox = Instantiate(BackBoxPrefab, CubeParent);
+            // ìƒˆë¡œìš´ ë°•ìŠ¤ë¥¼ ìƒì„±í•˜ê³  ë¶€ëª¨(CubeParent)ì— í• ë‹¹
+            GameObject newBackBox = Instantiate(backBoxPrefab, cubeParent);
 
             if (i != 0)
             {
-                // Ã¹ ¹øÂ° ¹Ú½º¸¦ Á¦¿ÜÇÑ ³ª¸ÓÁö ¹Ú½ºµéÀº °£°İÀ» Ãß°¡ÇÏ¿© À§Ä¡ ¼³Á¤
+                // ì²« ë²ˆì§¸ ë°•ìŠ¤ë¥¼ ì œì™¸í•œ ë‚˜ë¨¸ì§€ ë°•ìŠ¤ë“¤ì€ ê°„ê²©ì„ ì¶”ê°€í•˜ì—¬ ìœ„ì¹˜ ì„¤ì •
                 tempValue += _answerBlockScale + boxSpacing;
             }
             else
             {
-                // Ã¹ ¹øÂ° ¹Ú½º´Â º°µµ·Î °£°İ ¾øÀÌ ¼³Á¤
+                // ì²« ë²ˆì§¸ ë°•ìŠ¤ëŠ” ë³„ë„ë¡œ ê°„ê²© ì—†ì´ ì„¤ì •
                 tempValue += _answerBlockScale / 2;
             }
 
-            // ¹Ú½ºÀÇ À§Ä¡¸¦ ¼³Á¤
+            // ë°•ìŠ¤ì˜ ìœ„ì¹˜ë¥¼ ì„¤ì •
             newBackBox.transform.localPosition = new Vector3(tempValue, 0, 0.021f);
 
-            // BackPanelÀÇ Å©±â¸¦ ¹Ú½º¿Í °£°İ¿¡ ¸ÂÃç È®Àå
+            // BackPanelì˜ í¬ê¸°ë¥¼ ë°•ìŠ¤ì™€ ê°„ê²©ì— ë§ì¶° í™•ì¥
             scaleTemp.x = totalWidth;
-            BackPanel.transform.localScale = scaleTemp;
+            backPanel.transform.localScale = scaleTemp;
 
-            // CubeParentÀÇ À§Ä¡´Â Áß¾ÓÀ» À¯ÁöÇÏµµ·Ï Á¶Á¤
+            // CubeParentì˜ ìœ„ì¹˜ëŠ” ì¤‘ì•™ì„ ìœ ì§€í•˜ë„ë¡ ì¡°ì •
             positionTemp.x = 0;
-            CubeParent.transform.position = positionTemp;
+            cubeParent.transform.position = positionTemp;
         }
+    }
+
+    private void DestroyChildren(Transform parent)
+    {
+        Transform[] children = parent.GetComponentsInChildren<Transform>().Skip(1).ToArray();
+
+        foreach (Transform child in parent)
+            Destroy(child);
     }
 }

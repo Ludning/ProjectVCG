@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Frameworks;
 using Newtonsoft.Json;
@@ -11,8 +9,8 @@ public class DataManager : SingletonMonoBehaviour<DataManager>
     private GameData _gameData;
     private AssetAddressData _assetAddressData;
     
-    const string _dataJsonPath = "Data/GameData";
-    const string _addressJsonPath = "Data/AssetAddress";
+    private const string DataJsonPath = "Data/GameData";
+    private const string AddressJsonPath = "Data/AssetAddress";
     
     public T GetGameData<T>(string key) where T : class, new()
     {
@@ -24,7 +22,7 @@ public class DataManager : SingletonMonoBehaviour<DataManager>
     {
         if (_gameData == null)
         {
-            TextAsset jsonFile = Addressables.LoadAssetAsync<TextAsset>(_dataJsonPath).WaitForCompletion();
+            TextAsset jsonFile = Addressables.LoadAssetAsync<TextAsset>(DataJsonPath).WaitForCompletion();
             _gameData = JsonConvert.DeserializeObject<GameData>(jsonFile.text);
         }
 
@@ -54,7 +52,7 @@ public class DataManager : SingletonMonoBehaviour<DataManager>
     {
         if (_assetAddressData == null)
         {
-            TextAsset jsonFile = Addressables.LoadAssetAsync<TextAsset>(_addressJsonPath).WaitForCompletion();
+            TextAsset jsonFile = Addressables.LoadAssetAsync<TextAsset>(AddressJsonPath).WaitForCompletion();
             _assetAddressData = JsonConvert.DeserializeObject<AssetAddressData>(jsonFile.text);
         }
 

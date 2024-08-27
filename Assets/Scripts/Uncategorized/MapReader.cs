@@ -1,11 +1,9 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MapReader : MonoBehaviour
 {
-    [SerializeField] private TableManager Table;
+    [SerializeField] private TableManager tableManager;
 
     public void ReadMap()
     {
@@ -23,6 +21,6 @@ public class MapReader : MonoBehaviour
 
             tileBases[new Vector2Int(x, y)] = tileTransform.GetComponent<TileBase>();
         }
-        Table.Init(tileBases);
+        tableManager.Init(tileBases);
     }
 }

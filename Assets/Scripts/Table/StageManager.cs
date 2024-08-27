@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using TilemapSystem;
 using UnityEngine;
 
 public class StageManager : MonoBehaviour

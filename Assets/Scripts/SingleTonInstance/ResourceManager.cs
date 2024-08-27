@@ -16,7 +16,7 @@ public class ResourceManager : Singleton<ResourceManager>
         
         T resource = Addressables.LoadAssetAsync<T>(resourcePath).WaitForCompletion();
         
-        if (resource == null)
+        if (!resource)
             throw new System.NotImplementedException();
         
         return resource;

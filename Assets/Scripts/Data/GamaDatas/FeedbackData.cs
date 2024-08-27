@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class FeedbackData
 {
-    public string ID;
-    public string Description;
-    public string CallUI;
+    public string ID { get; set; }
+    public string Description { get; set; }
+    public string CallUI { get; set; }
 }

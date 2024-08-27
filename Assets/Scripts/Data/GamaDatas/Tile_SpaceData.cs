@@ -1,14 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Tile_SpaceData
 {
-    public string ID;
-    public string Description;
-    public string PrefabName;
-    public string Type;
-    public string Movable;
-    public string Liftable;
-    public string Putable;
+    public string ID { get; set; }
+    public string Description { get; set; }
+    public string PrefabName { get; set; }
+    public string Type { get; set; }
+    public string Movable { get; set; }
+    public string Liftable { get; set; }
+    public string Putable { get; set; }
 }

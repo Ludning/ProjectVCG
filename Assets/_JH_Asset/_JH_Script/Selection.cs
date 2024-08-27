@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+
 public class Selection : MonoBehaviour
 {
     private MapMakerManager _MapMakerManager;
@@ -22,19 +21,19 @@ public class Selection : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 1000))
             {
-                // hit.collider°¡ nullÀÌ ¾Æ´ÑÁö È®ÀÎ
+                // hit.colliderê°€ nullì´ ì•„ë‹Œì§€ í™•ì¸
                 if (hit.collider != null)
                 {
-                    // hit.collider.gameObject°¡ nullÀÌ ¾Æ´ÑÁö È®ÀÎ
+                    // hit.collider.gameObjectê°€ nullì´ ì•„ë‹Œì§€ í™•ì¸
                     if (hit.collider.gameObject != null)
                     {
-                        // hit.collider.gameObject.transform.parent°¡ nullÀÌ ¾Æ´ÑÁö È®ÀÎ
+                        // hit.collider.gameObject.transform.parentê°€ nullì´ ì•„ë‹Œì§€ í™•ì¸
                         if (hit.collider.gameObject.transform.parent != null)
                         {
-                            // hit.collider.gameObject.transform.parent.gameObject°¡ nullÀÌ ¾Æ´ÑÁö È®ÀÎ
+                            // hit.collider.gameObject.transform.parent.gameObjectê°€ nullì´ ì•„ë‹Œì§€ í™•ì¸
                             if (hit.collider.gameObject.transform.parent.gameObject != null)
                             {
-                                // Å¸°ÙÀÌ tileObj ÅÂ±×¸¦ °¡Áø ºÎ¸ğ ¿ÀºêÁ§Æ®ÀÎÁö È®ÀÎ
+                                // íƒ€ê²Ÿì´ tileObj íƒœê·¸ë¥¼ ê°€ì§„ ë¶€ëª¨ ì˜¤ë¸Œì íŠ¸ì¸ì§€ í™•ì¸
                                 if (hit.collider.gameObject.transform.parent.gameObject.CompareTag("tileObj"))
                                 {
                                     Debug.Log(hit.collider.gameObject.name);

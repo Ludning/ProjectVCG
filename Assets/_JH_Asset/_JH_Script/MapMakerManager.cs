@@ -1,69 +1,68 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-// ¹èÄ¡ ÇÒ ¿ÀºêÁ§Æ®¿¡ ÄÃ¶óÀÌ´õ ¼³Á¤ ÇÊ¿ä
-// Plane ÀÇ Å©±â´Â Ground ¿ÀºêÁ§Æ® Scale ¼öÁ¤
-// ¿ÀºêÁ§Æ® Å©±â°¡ ÀÛ´Ù¸é ÇÁ¸®ÆÕ Scale°ªÀ» ¼öÁ¤
+
 public class MapMakerManager : MonoBehaviour
 {
+    // ë°°ì¹˜ í•  ì˜¤ë¸Œì íŠ¸ì— ì»¬ë¼ì´ë” ì„¤ì • í•„ìš”
+    // Plane ì˜ í¬ê¸°ëŠ” Ground ì˜¤ë¸Œì íŠ¸ Scale ìˆ˜ì •
+    // ì˜¤ë¸Œì íŠ¸ í¬ê¸°ê°€ ì‘ë‹¤ë©´ í”„ë¦¬íŒ¹ Scaleê°’ì„ ìˆ˜ì •
+    
     [Header("[Settings.......]")]
-    [SerializeField] private float GridSize = 1f;       // ±×¸®µå Å©±â 
+    [SerializeField] private float GridSize = 1f;       // ê·¸ë¦¬ë“œ í¬ê¸° 
     [SerializeField] private float SetHeight;
 
 
-    public GameObject[] SetObjects;                   // ¸Ê¿¡ ¹èÄ¡ ÇÒ ÇÁ¸®ÆÕµé
+    public GameObject[] SetObjects;                   // ë§µì— ë°°ì¹˜ í•  í”„ë¦¬íŒ¹ë“¤
 
 
     [Header("[Dont edit]")]
-    public GameObject PendingObject;             // ¸¶¿ì½º¸¦ µû¶ó ´Ù´Ï¸ç ¹èÄ¡ ´ë±â ÁßÀÎ ¿ÀºêÁ§Æ®
+    public GameObject PendingObject;             // ë§ˆìš°ìŠ¤ë¥¼ ë”°ë¼ ë‹¤ë‹ˆë©° ë°°ì¹˜ ëŒ€ê¸° ì¤‘ì¸ ì˜¤ë¸Œì íŠ¸
 
-    private bool _gridOn = true;                   // ½º³À ±â´É »ç¿ë ¿©ºÎ
-    private Vector3 _pos;                          // ¸¶¿ì½º À§Ä¡ °ª ÀúÀå
-    private RaycastHit _hit;                       // È÷Æ® Á¤º¸ ÀúÀå
+    private bool _gridOn = true;                   // ìŠ¤ëƒ… ê¸°ëŠ¥ ì‚¬ìš© ì—¬ë¶€
+    private Vector3 _pos;                          // ë§ˆìš°ìŠ¤ ìœ„ì¹˜ ê°’ ì €ì¥
+    private RaycastHit _hit;                       // íˆíŠ¸ ì •ë³´ ì €ì¥
 
     [SerializeField] private GameObject GroundObj;
     [SerializeField] private Button CloneBtn;
     [SerializeField] private GameObject RootObj;
-    [SerializeField] private float RotateAmount;   // R Å°ÀÔ·Â ½Ã ¿ÀºêÁ§Æ®°¡ È¸ÀüÇÏ´Â °¢µµ
-    [SerializeField] private Toggle GridToggle;    // Åä±Û UI 
-    [SerializeField] private LayerMask LayerMask;  // ·¹ÀÌÄ³½ºÆ®¿¡ »ç¿ëÇÒ ·¹ÀÌ¾î ¸¶½ºÅ©
+    [SerializeField] private float RotateAmount;   // R í‚¤ì…ë ¥ ì‹œ ì˜¤ë¸Œì íŠ¸ê°€ íšŒì „í•˜ëŠ” ê°ë„
+    [SerializeField] private Toggle GridToggle;    // í† ê¸€ UI 
+    [SerializeField] private LayerMask LayerMask;  // ë ˆì´ìºìŠ¤íŠ¸ì— ì‚¬ìš©í•  ë ˆì´ì–´ ë§ˆìŠ¤í¬
 
     private void Start()
     {
         if (SetObjects != null && CloneBtn != null)
         {
-            // CloneBtnÀÌ ¾À¿¡ ¹èÄ¡µÈ ¿ÀºêÁ§Æ®¶ó°í °¡Á¤ÇÕ´Ï´Ù.
+            // CloneBtnì´ ì”¬ì— ë°°ì¹˜ëœ ì˜¤ë¸Œì íŠ¸ë¼ê³  ê°€ì •í•©ë‹ˆë‹¤.
             int idx = 0;
             foreach (GameObject objPrefab in SetObjects)
             {
-                // ¹öÆ° ÇÁ¸®ÆÕ »ı¼º
+                // ë²„íŠ¼ í”„ë¦¬íŒ¹ ìƒì„±
                 GameObject newButton = Instantiate(CloneBtn.gameObject, RootObj.transform);
                 newButton.GetComponentInChildren<TextMeshProUGUI>().text = (idx + 1).ToString();
                 // 
                 Button newButtonGameObject = newButton.GetComponent<Button>();
 
-                int capturedIdx = idx; // Å¬·ÎÀú ¹®Á¦¸¦ ÇÇÇÏ±â À§ÇØ Áö¿ª º¯¼ö·Î Ä¸Ã³
+                int capturedIdx = idx; // í´ë¡œì € ë¬¸ì œë¥¼ í”¼í•˜ê¸° ìœ„í•´ ì§€ì—­ ë³€ìˆ˜ë¡œ ìº¡ì²˜
 
                 newButtonGameObject.onClick.AddListener(() => SelectObject(capturedIdx));
                 idx++;
 
-                // ÇÁ¸®ÆÕÀ» ÀÎ½ºÅÏ½ºÈ­
+                // í”„ë¦¬íŒ¹ì„ ì¸ìŠ¤í„´ìŠ¤í™”
                 GameObject objInstance = Instantiate(objPrefab, newButton.transform);
                 objInstance.transform.localScale = new Vector3(100, 100, 100);
 
-                // ÀÎ½ºÅÏ½ºÈ­µÈ ¿ÀºêÁ§Æ®¸¦ »õ·Î »ı¼ºµÈ ¹öÆ°ÀÇ ÀÚ½ÄÀ¸·Î ¼³Á¤
+                // ì¸ìŠ¤í„´ìŠ¤í™”ëœ ì˜¤ë¸Œì íŠ¸ë¥¼ ìƒˆë¡œ ìƒì„±ëœ ë²„íŠ¼ì˜ ìì‹ìœ¼ë¡œ ì„¤ì •
 
-                // ÇÊ¿ä¿¡ µû¶ó Ãß°¡ÀûÀÎ ÀÛ¾÷ ¼öÇà
-                objInstance.name = "Child_" + objPrefab.name; // ÀÌ¸§ º¯°æ µî
+                // í•„ìš”ì— ë”°ë¼ ì¶”ê°€ì ì¸ ì‘ì—… ìˆ˜í–‰
+                objInstance.name = "Child_" + objPrefab.name; // ì´ë¦„ ë³€ê²½ ë“±
             }
         }
     }
     void Update()
     {
-        // ¹èÄ¡ ´ë±â ÁßÀÎ ¿ÀºêÁ§Æ®°¡ ÀÖÀ» ¶§ (Äµ¹ö½º¿¡¼­ 1,2,3 Áß ÇÏ³ª ¹öÆ° ´©¸£¸é µÊ)
+        // ë°°ì¹˜ ëŒ€ê¸° ì¤‘ì¸ ì˜¤ë¸Œì íŠ¸ê°€ ìˆì„ ë•Œ (ìº”ë²„ìŠ¤ì—ì„œ 1,2,3 ì¤‘ í•˜ë‚˜ ë²„íŠ¼ ëˆ„ë¥´ë©´ ë¨)
         if (PendingObject != null)
         {
             if (_gridOn)
@@ -76,7 +75,7 @@ public class MapMakerManager : MonoBehaviour
             }
             else
             {
-                PendingObject.transform.position = _pos; // null ÀÌ¸é ¸¶¿ì½º À§Ä¡ °ª Àû¿ë
+                PendingObject.transform.position = _pos; // null ì´ë©´ ë§ˆìš°ìŠ¤ ìœ„ì¹˜ ê°’ ì ìš©
             }
             if (Input.GetMouseButtonDown(0))
             {
@@ -142,10 +141,10 @@ public class MapMakerManager : MonoBehaviour
         PendingObject.transform.Rotate(Vector3.up, RotateAmount);
     }
 
-    // ¹°¸® °ü·Ã
+    // ë¬¼ë¦¬ ê´€ë ¨
     private void FixedUpdate()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // ¸¶¿ì½º À§Ä¡ ¹İÈ¯
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // ë§ˆìš°ìŠ¤ ìœ„ì¹˜ ë°˜í™˜
 
         if (Physics.Raycast(ray, out _hit, 1000, LayerMask))
         {
@@ -153,7 +152,7 @@ public class MapMakerManager : MonoBehaviour
         }
     }
 
-    // ¼±ÅÃ
+    // ì„ íƒ
     public void SelectObject(int idx)
     {
         if (idx >= SetObjects.Length) return;
