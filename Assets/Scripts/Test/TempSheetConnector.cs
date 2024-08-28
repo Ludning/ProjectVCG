@@ -110,41 +110,7 @@ public class TempSheetConnector : MonoBehaviour
     }
     
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            OnClick_Start();
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            OnClick_SetLogic(BlockLogicType.Cook);
-        }
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            OnClick_SetLogic(BlockLogicType.Move);
-        }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            OnClick_SetLogic(BlockLogicType.PushItem);
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            OnClick_SetLogic(BlockLogicType.RotateLeft);
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            OnClick_SetLogic(BlockLogicType.RotateRight);
-        }
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            OnClick_SetLogic(BlockLogicType.PopItem);
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            OnClick_ClearLogic();
-        }
-    }
+
     public void OnClick_ClearLogic()
     {
         sheetText.text = "";

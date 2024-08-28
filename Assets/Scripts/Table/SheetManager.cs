@@ -12,6 +12,44 @@ public class SheetManager : MonoBehaviour
     [SerializeField] private Transform SheetParent;
     private List<BlockLogicBase> _blockLogicBases = new List<BlockLogicBase>();
 
+    //임시 코드
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            OnClick_SetLogic(BlockLogicType.Start);
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            OnClick_SetLogic(BlockLogicType.Cook);
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            OnClick_SetLogic(BlockLogicType.Move);
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            OnClick_SetLogic(BlockLogicType.PushItem);
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            OnClick_SetLogic(BlockLogicType.RotateLeft);
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            OnClick_SetLogic(BlockLogicType.RotateRight);
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            OnClick_SetLogic(BlockLogicType.PopItem);
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            OnClick_SetLogic(BlockLogicType.Clear);
+        }
+    }
+
+
     public void Init()
     {
         foreach (var interactableButton in InteractableManager.InteractableButtons)
@@ -72,6 +110,7 @@ public class SheetManager : MonoBehaviour
     }
     async UniTask<LogicState> RunBlockLogic(BlockLogicBase blockLogic)
     {
+        Debug.Log("tset");
     	bool result = blockLogic.IsExecutable(Stage);
         //SimulatorManager.Instance.CheckAnswer(result);// To Do
         if (result == false)
