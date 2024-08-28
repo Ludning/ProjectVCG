@@ -8,8 +8,6 @@ using ExcelDataReader;
 using Newtonsoft.Json;
 using UnityEditor;
 using UnityEngine;
-//using BehaviorDesigner.Runtime.Tasks.Unity.UnityVector2;
-//using Sirenix.Utilities;
 
 public class DataConverter
 {

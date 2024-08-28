@@ -7,6 +7,15 @@ public class RecipeManager : MonoBehaviour
     [SerializeField] private RecipePopup recipePopup;
     private Dictionary<string, RecipeBase> recipes = new Dictionary<string, RecipeBase>();
 
+    public void Init()
+    {
+        AddRecipe("recipeName");
+        AddRecipe("recipeName");
+        AddRecipe("recipeName");
+        AddRecipe("recipeName");
+        AddRecipe("recipeName");
+    }
+    
     //모든 레시피가 완료되었는지 확인하는 프로퍼티
     public bool IsComplete
     {
