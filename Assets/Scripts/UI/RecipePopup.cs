@@ -1,30 +1,31 @@
-using ItemSystem;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RecipePopup : MonoBehaviour
+public class RecipePopup : MonoBehaviour // Assets/Scripts/UI/RecipePopup.cs
 {
     [SerializeField] private Transform context;
-    private Dictionary<string, RecipeUI> recipesDictionary = new Dictionary<string, RecipeUI>();
-
-    //스테이지의 모든 레시피 UI를 등록할 함수
+    private Dictionary<string, RecipePopupElement> recipesDictionary = new();
+    
+    // 한 스테이지 내의 모든 레시피를 등록하는 함수
     public void Init()
     {
         
     }
     
+    // UI 화면에 레시피를 출력하는 함수
     public void DisplayRecipe(string recipeName)
     {
         GameObject recipeUIPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(recipeName);
         GameObject recipeObject = Instantiate(recipeUIPrefab, context);
-        RecipeUI recipeUI = recipeObject.GetComponent<RecipeUI>();
-        recipeUI.Init(recipeName);
-        recipesDictionary.Add(recipeName, recipeUI);
+        RecipePopupElement recipePopupElement = recipeObject.GetComponent<RecipePopupElement>();
+        recipePopupElement.Init(recipeName);
+        recipesDictionary.Add(recipeName, recipePopupElement);
     }
+    
+    // UI 화면에서 레시피를 삭제하는 함수
     public void HideRecipe(string recipeName)
     {
-        if (recipesDictionary.TryGetValue(recipeName, out RecipeUI recipeUI))
+        if (recipesDictionary.TryGetValue(recipeName, out RecipePopupElement recipeUI))
         {
             Destroy(recipeUI);
             recipesDictionary.Remove(recipeName);

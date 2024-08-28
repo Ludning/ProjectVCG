@@ -1,53 +1,50 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class RecipeManager : MonoBehaviour
+public class RecipeManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManager.cs
 {
-    [SerializeField] private RecipePopup recipePopup;
-    private Dictionary<string, RecipeBase> recipes = new Dictionary<string, RecipeBase>();
-
-    public void Init()
+    [SerializeField] private RecipePopup recipePopup; // UI?
+    private Dictionary<string, RecipeBase> recipes = new(); // Recipe 사전
+    
+    private void Awake()
     {
-        AddRecipe("recipeName");
-        AddRecipe("recipeName");
-        AddRecipe("recipeName");
-        AddRecipe("recipeName");
-        AddRecipe("recipeName");
+        Init();
+    }
+	
+    private void Init()
+    {
+        // AddRecipe("recipeName");
     }
     
-    //모든 레시피가 완료되었는지 확인하는 프로퍼티
-    public bool IsComplete
+    // = Init(); Stage에서 레시피의 목록을 불러온다.
+    private void ReadRecipesFromStage()
     {
-        get
-        {
-            foreach (var recipe in recipes)
-            {
-                if(recipe.Value.isComplete == false)
-                    return false;
-            }
-            return true;
-        }
+        
     }
+    
+    // 모든 레시피가 완료되었는지 확인하는 프로퍼티
+    public bool IsComplete => recipes.All(recipe => recipe.Value.IsComplete);
+
     public void InitRecipeState()
     {
-        foreach (var recipe in recipes)
+        foreach (KeyValuePair<string, RecipeBase> recipe in recipes)
         {
             recipe.Value.Reset();
         }
     }
-    
+	
     public void AddRecipe(string recipeName)
     {
         recipes.Add(recipeName, new RecipeBase(recipeName));
         recipePopup.DisplayRecipe(recipeName);
     }
-
+    
     public void CompleteRecipe(string recipeName)
     {
-        if(recipes.TryGetValue(recipeName, out RecipeBase recipe))
+        if (recipes.TryGetValue(recipeName, out RecipeBase recipe))
         {
-            recipe.isComplete = true;
+            recipe.IsComplete = true;
             recipePopup.HideRecipe(recipeName);
         }
     }

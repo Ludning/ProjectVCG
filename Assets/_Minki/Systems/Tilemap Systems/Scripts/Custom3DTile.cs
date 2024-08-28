@@ -19,7 +19,7 @@ namespace TilemapSystem
         
         #region TileBase 클래스의 재정의(Override) 함수
 
-        public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
+        public override void GetTileData(Vector3Int position, ITilemap tilemap, ref UnityEngine.Tilemaps.TileData tileData)
         {
             tileData.gameObject = tilePrefab;
             tileData.sprite = tileSprite;
