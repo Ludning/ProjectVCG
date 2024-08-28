@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Uncategorized.meta
+guid: f4af16fbae0e8fb4894c7acfc70fa464
+folderAsset: yes
+========
 guid: fabd3ed403e60a74fb750831600c936f
+>>>>>>>> origin/main_Merge:Assets/Scenes/StageSelect.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

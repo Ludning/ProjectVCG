@@ -1,14 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class CodingBlockData
 {
-    public string ID;
-    public string Description;
-    public string IconBlock;
-    public string AnimationKey;
-    public string MoveDistance;
-    public string Angle;
-    public string Distance;
+    public string ID { get; set; }
+    public string Description { get; set; }
+    public string IconBlock { get; set; }
+    public string AnimationKey { get; set; }
+    public string MoveDistance { get; set; }
+    public string Angle { get; set; }
+    public string Distance { get; set; }
 }

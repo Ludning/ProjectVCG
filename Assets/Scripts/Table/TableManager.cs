@@ -1,8 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using UnityEngine.UIElements;
 
 public class TableManager : MonoBehaviour
 {
@@ -52,7 +49,7 @@ public class TableManager : MonoBehaviour
     {
         if (Map.TryGetValue(position, out TileBase tileBase))
         {
-            if (tileBase.Item != null)
+            if (tileBase.Item)
             {
                 Map[position].Item = item;
                 return true;

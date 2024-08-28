@@ -1,14 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-// 배치 할 오브젝트에 컬라이더 설정 필요
-// Plane 의 크기는 Ground 오브젝트 Scale 수정
-// 오브젝트 크기가 작다면 프리팹 Scale값을 수정
+
 public class MapMakerManager : MonoBehaviour
 {
+    // 배치 할 오브젝트에 컬라이더 설정 필요
+    // Plane 의 크기는 Ground 오브젝트 Scale 수정
+    // 오브젝트 크기가 작다면 프리팹 Scale값을 수정
+    
     [Header("[Settings.......]")]
     [SerializeField] private float GridSize = 1f;       // 그리드 크기 
     [SerializeField] private float SetHeight;

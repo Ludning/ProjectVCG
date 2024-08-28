@@ -1,19 +1,18 @@
+using Frameworks;
 using System;
 using UnityEngine;
 
-public class SimulatorManager : SingleTonMono<SimulatorManager>
+public class SimulatorManager : SingletonMonoBehaviour<SimulatorManager>
 {
-    /*CheckChildren(AnserObj.transform, mT);*/
     public Transform AnswerParent;
     public event Action<Transform> PlayingSimulator;
-
-
+    
     public void CheckAnswer(bool isStart)
     {
-
         PlayingSimulator?.Invoke(AnswerParent);
     }
-    public void CheckChildren( BlockLogicType type)
+    
+    public void CheckChildren(BlockLogicType type)
     {
         foreach (Transform child in AnswerParent)
         {
@@ -28,7 +27,7 @@ public class SimulatorManager : SingleTonMono<SimulatorManager>
                 answerObj.transform.localRotation = Quaternion.Euler(0, 0, 180f);
                 answerObj.transform.localPosition = new Vector3(0, 0, -0.3f);
 
-                if (renderer != null) renderer.material = _bt; // ���⼭ selectedMaterial�� ������ Material�̾�� ��
+                if (renderer) renderer.material = _bt; // 여기서 selectedMaterial는 적절한 Material이어야 함
                 else Debug.LogWarning("Renderer not found on answerObj: " + answerObj.name);
 
                 return;
@@ -36,33 +35,37 @@ public class SimulatorManager : SingleTonMono<SimulatorManager>
         }
     }
 
-    protected override void Init()
+    protected override void Awake()
+    {
+        base.Awake();
+        Initialize();
+    }
+    
+    private void Initialize()
     {
         GameObject cubeParent = GameObject.Find("CubeParent");
-        if (cubeParent != null) AnswerParent = cubeParent.transform;
-        else Debug.LogWarning("CubeParnet not found!");
+        if (cubeParent) AnswerParent = cubeParent.transform;
+        else Debug.LogWarning("CubeParent is not found!");
     }
-
+    
     public bool CheckAnswerMax()
     {
-        if(AnswerParent == null)
+        if(!AnswerParent)
         {
-            Init();
+            Initialize();
         }
+        
         bool isCheck = true;
+        
         foreach (Transform child in AnswerParent)
         {
             if (child.childCount < 1)
             {
                 isCheck = false;
-                return false;  // ��� �Լ��� ����ǰ� false ��ȯ
+                return false;  // 즉시 함수가 종료되고 false 반환
             }
         }
+        
         return isCheck;
     }
-
 }
- 
-/*
-if (CheckAnswerMax(AnserObj.transform)) return;
-}*/

@@ -1,72 +1,76 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Chapter : MonoBehaviour
 {
-    // ���� ���õ� é�Ϳ� �������� ���� ����
+    // 현재 선택된 챕터와 스테이지 이름을 저장
     private string _currentChapter = null;
     private string _currentStage = null;
     private bool _isChapterSelectionActive;
 
-    // UI ���
+    #region UI 요소
+    
+    // UI 요소 참조
     [Header("Btn_ChapterAndStage")]
-    [SerializeField] private Button[] ChapterBtn;     // é�� ���� ��ư��
-    [SerializeField] private Button[] StageBtn;       // �������� ���� ��ư��
+    [SerializeField] private Button[] ChapterBtn;     // 챕터 선택 버튼들
+    [SerializeField] private Button[] StageBtn;       // 스테이지 선택 버튼들
 
     [Header("Popup")]
-    [SerializeField] private GameObject ClearPopup;   // �������� Ŭ���� �˾�
-    [SerializeField] private GameObject ExitPopup;    // ���ư��� �˾�
-    [SerializeField] private GameObject ChapterPopup; // é�� ���� �˾�
-    [SerializeField] private GameObject StagePopup1;  // ù ��° é���� �������� �˾�
-    [SerializeField] private GameObject StagePopup2;  // �� ��° é���� �������� �˾�
-    [SerializeField] private GameObject StagePopup3;  // �� ��° é���� �������� �˾�
+    [SerializeField] private GameObject ClearPopup;   // 스테이지 클리어 팝업
+    [SerializeField] private GameObject ExitPopup;    // 돌아가기 팝업
+    [SerializeField] private GameObject ChapterPopup; // 챕터 선택 팝업
+    [SerializeField] private GameObject StagePopup1;  // 첫 번째 챕터의 스테이지 팝업
+    [SerializeField] private GameObject StagePopup2;  // 두 번째 챕터의 스테이지 팝업
+    [SerializeField] private GameObject StagePopup3;  // 세 번째 챕터의 스테이지 팝업
 
     [Header("MoveBtn")]
-    [SerializeField] private Button OpenChapterBtn;   // é�� ���� �˾� ������ �ϴ� ��ư (������ �������� Ŭ���� �� ������ �˾��� �Ϻ� ��ư)
-    [SerializeField] private Button NextChapterBtn;   // ���� é�ͷ� �̵� ��ư
+    [SerializeField] private Button OpenChapterBtn;   // 챕터 선택 팝업 열도록 하는 버튼 (마지막 스테이지 클리어 시 나오는 팝업의 일부 버튼)
+    [SerializeField] private Button NextChapterBtn;   // 다음 챕터로 이동 버튼
 
     [Header("CloseBtn")]
-    [SerializeField] private Button CloseChapterPopup;// é�� �˾� �ݱ� ��ư
-    [SerializeField] private Button CloseStage1Popup; // ù ��° é���� �˾� �ݱ� ��ư
-    [SerializeField] private Button CloseStage2Popup; // �� ��° é���� �˾� �ݱ� ��ư
-    [SerializeField] private Button CloseStage3Popup; // �� ��° é���� �˾� �ݱ� ��ư
+    [SerializeField] private Button CloseChapterPopup;// 챕터 팝업 닫기 버튼
+    [SerializeField] private Button CloseStage1Popup; // 첫 번째 챕터의 팝업 닫기 버튼
+    [SerializeField] private Button CloseStage2Popup; // 두 번째 챕터의 팝업 닫기 버튼
+    [SerializeField] private Button CloseStage3Popup; // 세 번째 챕터의 팝업 닫기 버튼
 
     [Header("OtherBtns")]
-    [SerializeField] private Button chapterSelectButton;    // é�� ���� ��ư (���� ���� �� ǥ��)
-    [SerializeField] private Button BeforeBtn;              // ���ư��� ��ư
-    [SerializeField] private Button BeforeYesBtn;           // ���ư��� Ȯ�� �˾��� Yes ��ư
-    [SerializeField] private Button BeforeNoBtn;            // ���ư��� Ȯ�� �˾��� No ��ư
-    [SerializeField] private Button[] PopupChangeButton;    // ����/���� ���������� ���� �˾�â
+    [SerializeField] private Button chapterSelectButton;    // 게임 시작 시점에서만 보이는 챕터 선택 버튼
+    [SerializeField] private Button BeforeBtn;              // 돌아가기 버튼
+    [SerializeField] private Button BeforeYesBtn;           /// 돌아가기 확인 팝업의 Yes 버튼
+    [SerializeField] private Button BeforeNoBtn;            // 돌아가기 확인 팝업의 No 버튼
+    [SerializeField] private Button[] PopupChangeButton;    // ???
 
     [Header("OtherScript")]
     [SerializeField] private StageManager stageManager;
+    
+    [Header("테스트용")] // 테스트 후 제거 예정
+    [SerializeField] private Text _currentStageView;        // 현재 스테이지 표시용 텍스트 (테스트용)
+    [SerializeField] private Text _currentChapterView;     // 현재 챕터 표시용 텍스트 (테스트용)
+    [SerializeField] private Button OnGameClear;             // 스테이지 클리어 테스트용 버튼 (테스트 후 삭제)
 
-    [Header("�׽�Ʈ��")] // �׽�Ʈ �� ���� ����
-    [SerializeField] private Text _currentStageView;        // ���� �������� ǥ�ÿ� �ؽ�Ʈ (�׽�Ʈ��)
-    [SerializeField] private Text _currentChapterView;      // ���� é�� ǥ�ÿ� �ؽ�Ʈ (�׽�Ʈ��)
-    [SerializeField] private Button OnGameClear;            // �������� Ŭ���� �׽�Ʈ�� ��ư (�׽�Ʈ �� ����)
-
-    // é�Ϳ� �������� ������ ����
-    Dictionary<ChapterIndex, List<StageIndex>> _dic = new Dictionary<ChapterIndex, List<StageIndex>>();
-    ChapterIndex[] chapterIndices = (ChapterIndex[])Enum.GetValues(typeof(ChapterIndex));
+    #endregion UI 요소
+    
+    // 챕터와 해당 스테이지 목록을 저장할 딕셔너리
+    private Dictionary<ChapterIndex, List<StageIndex>> _dic = new(); // 하나의 Chapter에 여러 개의 Stage가 들어 있는 구조
+    private ChapterIndex[] chapterIndices = (ChapterIndex[])Enum.GetValues(typeof(ChapterIndex));
 
     private void Awake()
     {
-        // �ʱ� ����: é�� ���� ��ư Ȱ��ȭ �� ��ųʸ� ������ ����
+        // 게임 시작 시 챕터 선택 버튼이 비활성화 상태라면 활성화
         if (!chapterSelectButton.gameObject.activeSelf) chapterSelectButton.gameObject.SetActive(true);
 
+        // TODO: Chapter와 Stage의 연결을 하드 코딩하지 않고, 외부 파일(XML 등)을 사용하여 불러오도록 구현하자.
         _dic.Add(ChapterIndex.Chapter1, new List<StageIndex> { StageIndex.Serving1, StageIndex.Serving2, StageIndex.Serving3, StageIndex.Serving4 });
         _dic.Add(ChapterIndex.Chapter2, new List<StageIndex> { StageIndex.Serving5, StageIndex.Serving6, StageIndex.Serving7 });
         _dic.Add(ChapterIndex.Chapter3, new List<StageIndex> { StageIndex.Serving8 });
     }
 
-    void Start()
+    private void Start()
     {
         #region Event
-        // é�� ���� ��ư Ŭ�� �̺�Ʈ ����
+        // 챕터 선택 버튼 클릭 이벤트 설정
         for (int i = 0; i < ChapterBtn.Length; i++)
         {
             int idx = i;
@@ -74,7 +78,7 @@ public class Chapter : MonoBehaviour
             ChapterBtn[idx].onClick.AddListener(() => SelectChapter(btnName));
         }
 
-        // �������� ���� ��ư Ŭ�� �̺�Ʈ ����
+        // 스테이지 선택 버튼 클릭 이벤트 설정
         for (int i = 0; i < StageBtn.Length; i++)
         {
             int idx = i;
@@ -82,7 +86,7 @@ public class Chapter : MonoBehaviour
             StageBtn[idx].onClick.AddListener(() => SelectStage(btnName));
         }
 
-         for (int i = 0; i < PopupChangeButton.Length; i++)
+        for (int i = 0; i < PopupChangeButton.Length; i++)
         {
             int idx = i;
 
@@ -112,95 +116,104 @@ public class Chapter : MonoBehaviour
 
             });
         }
-        // é�� ���� �˾� ���� ��ư Ŭ�� �̺�Ʈ ����
+        // 챕터 선택 팝업 열기 버튼 클릭 이벤트 설정
         OpenChapterBtn.onClick.AddListener(() => OpenChapter());
 
-        // ���� é�ͷ� �̵� ��ư Ŭ�� �̺�Ʈ ����
+        // 다음 챕터로 이동 버튼 클릭 이벤트 설정
         NextChapterBtn.onClick.AddListener(() => LastStage());
 
-        // é�� 1 �˾� �ݱ� ��ư Ŭ�� �� é�� �˾� ����
+        // 챕터 팝업 닫기 버튼 클릭 시 챕터 팝업 열기
         CloseStage1Popup.onClick.AddListener(() => ActivePopup(ChapterPopup));
         CloseStage2Popup.onClick.AddListener(() => ActivePopup(ChapterPopup));
         CloseStage3Popup.onClick.AddListener(() => ActivePopup(ChapterPopup));
 
-        // ���ư��� ��ư Ŭ�� �� ���ư��� �˾� ǥ��
+        // 돌아가기 버튼 클릭 시 돌아가기 팝업 표시
         BeforeBtn.onClick.AddListener(() => ExitPopup.SetActive(true));
 
-        // ���ư��� Ȯ�� �˾��� No ��ư Ŭ�� �� �˾� �ݱ�
+        // 돌아가기 확인 팝업의 No 버튼 클릭 시 팝업 닫기
         BeforeNoBtn.onClick.AddListener(() => ExitPopup.SetActive(false));
 
-        // ���ư��� Ȯ�� �˾��� Yes ��ư Ŭ�� �� ���� ó��
+        // 돌아가기 확인 팝업의 Yes 버튼 클릭 시 로직 처리
         BeforeYesBtn.onClick.AddListener(() =>
         {
             BeforeBtn.gameObject.SetActive(false);
             _isChapterSelectionActive = false;
-            ActivePopup(ChapterPopup);  // é�� ���� �˾� ����
+            ActivePopup(ChapterPopup); // 챕터 선택 팝업 열기
         });
 
-        // é�� ���� �˾� �ݱ� ��ư Ŭ�� �̺�Ʈ ����
+        // 챕터 선택 팝업 닫기 버튼 클릭 이벤트 설정
         CloseChapterPopup.onClick.AddListener(() =>
         {
             chapterSelectButton.gameObject.SetActive(true);
-            ActivePopup();  // ��� �˾� �ݱ�
+            ActivePopup(); // 모든 팝업 닫기
         });
 
-        // ���� ���� �� é�� ���� ��ư Ŭ�� �� é�� ����â ����
+        // 게임 시작 시 챕터 선택 버튼 클릭 시 챕터 선택 창 열기
         chapterSelectButton.onClick.AddListener(() =>
         {
             OpenChapter();
             chapterSelectButton.gameObject.SetActive(false);
         });
-
-        // �׽�Ʈ ������ ���� Ŭ���� ó��
-        OnGameClear.onClick.AddListener(() => ClearStage());    // �׽�Ʈ �� ����
+        
+        // 테스트 용으로 게임 클리어 처리
+        OnGameClear.onClick.AddListener(() => ClearStage()); // 테스트 후 삭제
         #endregion
     }
-
-    // é�� ���� ��ư Ŭ�� �� ȣ��
-    void SelectChapter(string btnName)
+    
+    // UI 업데이트: 현재 선택된 챕터와 스테이지 표시
+    private void Update()
     {
-        /*_currentChapter = btnName;  // ���� ���õ� é�� �̸� ����*/
+        _currentChapterView.text = $"현재 챕터: {_currentChapter}";
+        _currentStageView.text = $"현재 스테이지: {_currentStage}";
+    }
 
-        // ������ é�Ϳ� �´� �������� �˾� ǥ��
+    // 챕터 선택 버튼 클릭 시 호출
+    private void SelectChapter(string btnName)
+    {
+        // _currentChapter = btnName; // 현재 선택된 챕터 이름 저장
+
+        // 선택 한 쳅터에 맞는 스테이지 팝업 표시
         if (Enum.TryParse(btnName, out ChapterIndex selectedChapter))
         {
             switch (selectedChapter)
             {
                 case ChapterIndex.Chapter1:
-                    ActivePopup(StagePopup1); // ù ��° é�� �˾� ����
+                    ActivePopup(StagePopup1); // 첫 번째 챕터 팝업 열기
                     break;
                 case ChapterIndex.Chapter2:
-                    ActivePopup(StagePopup2); // �� ��° é�� �˾� ����
+                    ActivePopup(StagePopup2); // 두 번째 챕터 팝업 열기
                     break;
                 case ChapterIndex.Chapter3:
-                    ActivePopup(StagePopup3); // �� ��° é�� �˾� ����
+                    ActivePopup(StagePopup3); // 세 번째 챕터 팝업 열기
                     break;
             }
         }
     }
 
-    // �������� ���� ��ư Ŭ�� �� ȣ��
-    void SelectStage(string stageName)
+    // 스테이지 선택 버튼 클릭 시 호출
+    private void SelectStage(string stageName)
     {
         foreach (KeyValuePair<ChapterIndex, List<StageIndex>> pair in _dic)
         {
-            // �� �������� ����Ʈ ������ stageName�� ��ġ�ϴ� ���������� �ִ��� Ȯ��
+            // 챕터 선택 중이 아닌 상태라면, 챕터 선택 버튼 비활성화 및 돌아가기 버튼 활성화
             foreach (StageIndex stage in pair.Value)
             {
                 if (stage.ToString() == stageName)
                 {
-                    _currentChapter = pair.Key.ToString();  // �ش� é�͸� ���� é�ͷ� ����
+                    _currentChapter = pair.Key.ToString(); // ???
                 }
             }
         }
-        // é�� ���� ���� �ƴ� ���¶�� é�� ���� ��ư ��Ȱ��ȭ �� ���ư��� ��ư Ȱ��ȭ
+        
+        // ???
         LoadMap(stageName);
         BeforeBtn.gameObject.SetActive(true);
 
-        _currentStage = stageName;  // ���� ���õ� �������� �̸� ����
-        ActivePopup();              // ��� �˾� �ݱ�
+        _currentStage = stageName; // 현재 선택된 스테이지 이름 저장
+        ActivePopup(); // 모든 팝업 닫기
     }
-    public void LoadMap(string name)
+    
+    private void LoadMap(string name)
     {
         StageIndex StageNumber;
         if (name == StageIndex.Serving1.ToString()) StageNumber = StageIndex.Serving1;
@@ -215,88 +228,89 @@ public class Chapter : MonoBehaviour
 
         //stageManager.InitStage(StageNumber);
     }
-    // é�� �˾�â ���� �Լ�
-    public void OpenChapter()
+    
+    // 챕터 팝업창 여는 함수
+    private void OpenChapter()
     {
         BeforeBtn.gameObject.SetActive(false);
         ActivePopup(ChapterPopup);
     }
 
-    // �˾� Ȱ��ȭ �� ��Ȱ��ȭ ó�� �Լ�
-    public void ActivePopup(GameObject obj = null)
+    // 팝업 활성화 및 비활성화 처리 함수
+    private void ActivePopup(GameObject obj = null)
     {
         if (obj == ChapterPopup) LoadMap("CloseMap");
         else if (obj == ClearPopup) BeforeBtn.gameObject.SetActive(false);
 
-        // ��� �˾� ���
+        // 모든 팝업 목록
         GameObject[] popups = { ClearPopup, ChapterPopup, StagePopup1, StagePopup2, StagePopup3, ExitPopup };
 
-        // ��� �˾��� ��Ȱ��ȭ�ϰ�, ���ڷ� ���� �˾��� Ȱ��ȭ
+        // 모든 팝업을 비활성화하고, 인자로 받은 팝업만 활성화
         foreach (GameObject popup in popups)
         {
             if (obj == null)
             {
-                popup.SetActive(false);  // ���ڰ� ������ ��� �˾� ��Ȱ��ȭ
+                popup.SetActive(false); // 인자가 없으면 모든 팝업 비활성화
             }
             else
             {
-                popup.SetActive(popup == obj);  // Ư�� �˾��� Ȱ��ȭ
+                popup.SetActive(popup == obj); // 특정 팝업만 활성화
             }
         }
 
     }
 
-    // �������� Ŭ���� �� ȣ��
-    void ClearStage()
+    // 스테이지 클리어 시 호출
+    private void ClearStage()
     {
-        // ���� ���õ� é�Ϳ� ���������� ������ ����
+        // 현재 선택된 챕터와 스테이지가 없으면 리턴
         if (_currentChapter == null || _currentStage == null) return;
 
-        // ���� é���� ������ ������������ Ȯ��
+        // 현재 챕터의 마지막 스테이지인지 확인
         if (Enum.TryParse(_currentChapter, out ChapterIndex currentChapterIndex))
         {
             if (_dic.ContainsKey(currentChapterIndex) && _dic[currentChapterIndex].Contains((StageIndex)Enum.Parse(typeof(StageIndex), _currentStage)))
             {
                 List<StageIndex> stages = _dic[currentChapterIndex];
 
-                // ������ ���������� ��� Ŭ���� �˾� ǥ��
+                // 마지막 스테이지일 경우 클리어 팝업 표시
                 if (stages[stages.Count - 1].ToString() == _currentStage)
                 {
-                    Debug.Log("���� ���������� ������ ���������Դϴ�.");
+                    Debug.Log("현재 스테이지는 마지막 스테이지입니다.");
                     ActivePopup(ClearPopup);
                 }
-                // ������ ���������� �ƴϸ� ���� ���������� �̵�
+                // 마지막 스테이지가 아니면 다음 스테이지로 이동
                 else
                 {
-                    Debug.Log("������ ���������� �ƴմϴ�.");
+                    Debug.Log("마지막 스테이지가 아닙니다.");
                     NextStage(stages);
                 }
             }
         }
     }
 
-    // ���� ���������� �̵�
-    void NextStage(List<StageIndex> stages)
+    // 다음 스테이지로 이동
+    private void NextStage(List<StageIndex> stages)
     {
-        // ���� ���������� ���������� ��ȯ
+        // 현재 스테이지를 열거형으로 변환
         StageIndex currentStageEnum;
         if (Enum.TryParse(_currentStage, out currentStageEnum))
         {
             int currentIndex = stages.IndexOf(currentStageEnum);
 
-            // ���� ���������� �̵�
+            // 다음 스테이지로 이동
             if (currentIndex != -1 && currentIndex < stages.Count - 1)
             {
                 currentIndex++;
-                _currentStage = stages[currentIndex].ToString(); // ���� ���������� ������Ʈ
+                _currentStage = stages[currentIndex].ToString(); // 다음 스테이지로 업데이트
                 LoadMap(_currentStage);
                 Debug.Log("Moved to the next stage: " + _currentStage);
 
-                // �ʿ��� ��� �߰� ���� (�� �ε� ��) �߰� ����
+                // 필요한 경우 추가 로직 (씬 로딩 등) 추가 가능
             }
             else
             {
-                Debug.Log("�̹� ������ ���������̰ų� �������� ��Ͽ��� ã�� �� �����ϴ�.");
+                Debug.Log("이미 마지막 스테이지거나, 스테이지 목록에서 찾을 수 없습니다.");
             }
         }
         else
@@ -305,48 +319,41 @@ public class Chapter : MonoBehaviour
         }
     }
 
-    // ������ �������� Ŭ���� �� ���� é�ͷ� �̵�
-    void LastStage()
+    // 마지막 스테이지 클리어 후 다음 챕터로 이동
+    private void LastStage()
     {
         if (Enum.TryParse(_currentChapter, out ChapterIndex currentChapterEnum))
         {
             int currentChapterIndex = Array.IndexOf(chapterIndices, currentChapterEnum);
 
-            // ���� é�ͷ� �̵� �������� Ȯ��
+            // 다음 챕터로 이동 가능한지 확인
             if (currentChapterIndex != -1 && currentChapterIndex < chapterIndices.Length - 1)
             {
                 ChapterIndex nextChapter = chapterIndices[currentChapterIndex + 1];
 
-                // ���� é���� ù ��° ���������� �̵�
+                // 다음 챕터의 첫 번째 스테이지로 이동
                 if (_dic.ContainsKey(nextChapter))
                 {
                     _currentChapter = nextChapter.ToString();
-                    _currentStage = _dic[nextChapter][0].ToString();  // ù ��° ���������� ����
+                    _currentStage = _dic[nextChapter][0].ToString(); // 첫 번째 스테이지로 설정
                     LoadMap(_currentStage);
                     BeforeBtn.gameObject.SetActive(true);
-                    Debug.Log("���� é�ͷ� �̵�: " + _currentChapter + ", ù ��° ��������: " + _currentStage);
-                    ClearPopup.SetActive(false); // Ŭ���� �˾� �ݱ�
+                    Debug.Log("다음 챕터로 이동: " + _currentChapter + ", 첫 번째 스테이지: " + _currentStage);
+                    ClearPopup.SetActive(false); // 클리어 팝업 닫기
                 }
                 else
                 {
-                    Debug.Log("���� é�Ϳ� ���������� ���ǵ��� �ʾҽ��ϴ�.");
+                    Debug.Log("다음 챕터에 스테이지가 정의되지 않았습니다.");
                 }
             }
             else
             {
-                Debug.Log("���� é�ʹ� ������ é���Դϴ�. �� �̻� ������ é�Ͱ� �����ϴ�.");
+                Debug.Log("현재 챕터는 마지막 챕터입니다. 더 이상 진행할 챕터가 없습니다.");
             }
         }
         else
         {
             Debug.LogError("Failed to parse _currentChapter to ChapterIndex enum.");
         }
-    }
-
-    // UI ������Ʈ: ���� ���õ� é�Ϳ� �������� ǥ��
-    void Update()
-    {
-        _currentChapterView.text = $"���� é�� : {_currentChapter}";
-        _currentStageView.text = $"���� �������� : {_currentStage}";
     }
 }

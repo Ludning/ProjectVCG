@@ -1,26 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerTopMsg : MonoBehaviour
 {
     private void OnEnable()
     {
-        if (SimulatorManager.Instance != null)
-        {
-            SimulatorManager.Instance.PlayingSimulator += SimulatorMessageLogic;
-        }
+        SimulatorManager.Instance.PlayingSimulator += SimulatorMessageLogic;
     }
 
     private void OnDisable()
     {
-        if (SimulatorManager.Instance != null)
-        {
-            SimulatorManager.Instance.PlayingSimulator -= SimulatorMessageLogic;
-        }
+        SimulatorManager.Instance.PlayingSimulator -= SimulatorMessageLogic;
     }
 
-    public void SimulatorMessageLogic(Transform loc)
+    private void SimulatorMessageLogic(Transform loc)
     {
         foreach (Transform child in loc)
         { 
@@ -45,10 +37,5 @@ public class PlayerTopMsg : MonoBehaviour
                 }
             }
         }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
