@@ -4,6 +4,7 @@ public class CookLogic : BlockLogicBase
     {
         var position = owner.Controller.PlayerForwardPosition;
         TileType tileType = owner.Table.GetTileType(position);
+        CookType cookType = owner.Table.GetCookType(position);
         ItemBase item = owner.Table.GetTileItem(position);
 
         return (tileType == TileType.Kitchen && item != null) ? true : false;
@@ -11,11 +12,14 @@ public class CookLogic : BlockLogicBase
 
     public override LogicState Execute(StageManager owner)
     {
-        //if ()
+        //var position = owner.Controller.PlayerForwardPosition;
+        //CookType cookType = owner.Table.GetCookType(position);
+        //var item = owner.Table.GetTileItem(position);
+        //if (cookType==CookType.Chop)
         //{
-
-        //    return true;
+        //    owner.Table.SetTileItem(position, null);
+        //    return LogicState.Success;
         //}
-        return LogicState.Success;
+        return LogicState.Failure;
     }
 }

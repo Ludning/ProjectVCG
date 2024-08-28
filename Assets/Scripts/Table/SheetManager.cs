@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SheetManager : MonoBehaviour
 {
@@ -8,9 +9,12 @@ public class SheetManager : MonoBehaviour
     [SerializeField] private StageManager Stage;
     [SerializeField] private InteractableManager InteractableManager;
     
-    [Header("Parent")]
+    [Header("MainSheet")]
     [SerializeField] private Transform SheetParent;
     private List<BlockLogicBase> _blockLogicBases = new List<BlockLogicBase>();
+
+    [Header("SubSheet")]
+    private List<Transform> repeatSheetParents = new List<Transform>();
 
     public void Init()
     {
@@ -18,6 +22,13 @@ public class SheetManager : MonoBehaviour
         {
             Debug.Log($"BlockLogicType : {interactableButton.Key}");
             interactableButton.Value.WhenSelect.AddListener(()=>OnClick_SetLogic(interactableButton.Key));
+            if( interactableButton.Key == BlockLogicType.Repeat)
+            {
+                GameObject sheetPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(BlockLogicType.Repeat.ToString());
+                GameObject repeatSheet = Instantiate(sheetPrefab);
+                //TODO 위치 조정 스크립트도 작성해야함
+                repeatSheetParents.Add(repeatSheet.transform);
+            }
         }
     }
     private void OnClick_SetLogic(BlockLogicType type)

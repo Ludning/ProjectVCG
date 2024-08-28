@@ -45,6 +45,14 @@ public class TableManager : MonoBehaviour
         }
         return null;
     }
+    public CookType GetCookType(Vector2Int position)
+    {
+        if (Map.TryGetValue(position, out TileBase tileBase))
+        {
+            return tileBase.cookType;
+        }
+        return CookType.Empty;
+    }
     public bool SetTileItem(Vector2Int position, ItemBase item)
     {
         if (Map.TryGetValue(position, out TileBase tileBase))

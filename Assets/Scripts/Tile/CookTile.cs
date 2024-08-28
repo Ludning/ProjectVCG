@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class CookTile : TileBase
 {
-    private CookType _cookType;
+    
 }

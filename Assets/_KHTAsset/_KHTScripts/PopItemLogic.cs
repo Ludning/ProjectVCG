@@ -17,8 +17,8 @@ public class PopItemLogic : BlockLogicBase
     {
         var position = owner.Controller.PlayerForwardPosition;
         var item = owner.Inventory.PopItem(position);
-        item.transform.position = owner.Table.GetTilePosition(position);
         owner.Table.SetTileItem(position, item);
+        item.transform.position = owner.Table.GetTilePosition(position);
         return LogicState.Success;
     }
 }
