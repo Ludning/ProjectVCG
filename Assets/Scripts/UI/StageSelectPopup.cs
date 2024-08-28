@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,9 @@ public class StageSelectPopup : MonoBehaviour, IUIBase
     public StageManager StageManager;
 
     public ToggleGroup ToggleGroup;
+    public TextMeshProUGUI ChapterText;
+    public Button PrevChapterBtn;
+    public Button NextChapterBtn;
 
     public void OnSelectStage(int value)
     {
@@ -26,13 +30,29 @@ public class StageSelectPopup : MonoBehaviour, IUIBase
         PrevUI.SetActive(true);
         this.gameObject.SetActive(false);
     }
-
+    public void OnClick_PrevChapter()
+    {
+        ClearChildUI();
+        GameManager.Instance.SelectedChapterIndex--;
+        Init();
+    }
+    public void OnClick_NextChapter()
+    {
+        ClearChildUI();
+        GameManager.Instance.SelectedChapterIndex++;
+        Init();
+    }
     private void OnEnable()
     {
         Init();
     }
 
     private void OnDisable()
+    {
+        ClearChildUI();
+    }
+
+    public void ClearChildUI()
     {
         foreach (Transform child in ToggleGroup.transform)
         {
@@ -50,15 +70,20 @@ public class StageSelectPopup : MonoBehaviour, IUIBase
         switch (chapterIndex)
         {
             case 1:
+                PrevChapterBtn.gameObject.SetActive(false);
                 stageCount = 4;
                 break;
             case 2:
+                PrevChapterBtn.gameObject.SetActive(true);
+                NextChapterBtn.gameObject.SetActive(true);
                 stageCount = 3;
                 break;
             case 3:
+                NextChapterBtn.gameObject.SetActive(false);
                 stageCount = 1;
                 break;
         }
+        ChapterText.text = $"{chapterIndex}챕터 \n 스테이지 선택";
 
         for (int i = 1; i <= stageCount; i++)
         {
