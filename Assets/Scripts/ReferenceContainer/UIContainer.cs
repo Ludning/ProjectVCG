@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UIInterface;
 using UnityEngine;
 
 public enum MainUIType

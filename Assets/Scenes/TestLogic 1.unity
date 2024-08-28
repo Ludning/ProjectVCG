@@ -1599,7 +1599,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2145468745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 858adbab0a6da66448596a3b7b88bccf, type: 3}
+  m_Script: {fileID: 11500000, guid: d8d0e290363f1d04581ec2fed044839e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2145468748
@@ -1614,7 +1614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b14251914c67b4982ffb6f70c4404a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recipePopup: {fileID: 0}
+  recipePopup: {fileID: 2728104578035757571}
 --- !u!1001 &501666313620048998
 PrefabInstance:
   m_ObjectHideFlags: 0

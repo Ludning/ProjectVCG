@@ -1,7 +1,8 @@
+using Frameworks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManager : SingleTonMono<UIManager>
+public class UIManager : SingletonMonoBehaviour<UIManager>
 {
 }

@@ -1,4 +1,3 @@
-using UIInterface;
 using UnityEngine;
 
 public class ChapterSelectPopup : MonoBehaviour, IUIBase

@@ -1,4 +1,3 @@
-using UIInterface;
 using UnityEngine;
 using UnityEngine.UI;
 
