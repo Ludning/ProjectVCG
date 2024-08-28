@@ -1,3 +1,4 @@
+using Frameworks;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -63,5 +64,20 @@ namespace Frameworks
         {
             Destroy(prefabComponent.gameObject);
         }
+    }
+}
+
+public class Test : MonoBehaviour, IObjectPoolComponent<Test>
+{
+    private IObjectPool<Test> testPool;
+    
+    private void TestMethod()
+    {
+        Test t = testPool.Get();
+    }
+
+    public void GetObjectPool(IObjectPool<Test> objectPool)
+    {
+        testPool = objectPool;
     }
 }

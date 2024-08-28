@@ -1,10 +1,256 @@
 {
-  "Pc": null,
-  "Npc": null,
-  "CodingBlock": null,
-  "Feedback": null,
-  "Stage": null,
-  "StageGoal": null,
-  "Tile_Space": null,
-  "Tile_Food": null
+  "Pc": {
+    "0": {
+      "ID": null,
+      "Description": null,
+      "PrefabName": null,
+      "InventoryMax": 0
+    }
+  },
+  "Npc": {
+    "10": {
+      "ID": null,
+      "Description": null,
+      "PrefabName": null,
+      "AnimationController": null
+    },
+    "11": {
+      "ID": null,
+      "Description": null,
+      "PrefabName": null,
+      "AnimationController": null
+    },
+    "12": {
+      "ID": null,
+      "Description": null,
+      "PrefabName": null,
+      "AnimationController": null
+    },
+    "13": {
+      "ID": null,
+      "Description": null,
+      "PrefabName": null,
+      "AnimationController": null
+    },
+    "14": {
+      "ID": null,
+      "Description": null,
+      "PrefabName": null,
+      "AnimationController": null
+    },
+    "15": {
+      "ID": null,
+      "Description": null,
+      "PrefabName": null,
+      "AnimationController": null
+    },
+    "16": {
+      "ID": null,
+      "Description": null,
+      "PrefabName": null,
+      "AnimationController": null
+    }
+  },
+  "CodingBlock": {
+    "100": {
+      "ID": null,
+      "Description": null,
+      "IconBlock": null,
+      "AnimationKey": null,
+      "MoveDistance": null,
+      "Angle": null,
+      "Distance": null
+    },
+    "200": {
+      "ID": null,
+      "Description": null,
+      "IconBlock": null,
+      "AnimationKey": null,
+      "MoveDistance": null,
+      "Angle": null,
+      "Distance": null
+    },
+    "201": {
+      "ID": null,
+      "Description": null,
+      "IconBlock": null,
+      "AnimationKey": null,
+      "MoveDistance": null,
+      "Angle": null,
+      "Distance": null
+    },
+    "300": {
+      "ID": null,
+      "Description": null,
+      "IconBlock": null,
+      "AnimationKey": null,
+      "MoveDistance": null,
+      "Angle": null,
+      "Distance": null
+    },
+    "301": {
+      "ID": null,
+      "Description": null,
+      "IconBlock": null,
+      "AnimationKey": null,
+      "MoveDistance": null,
+      "Angle": null,
+      "Distance": null
+    }
+  },
+  "Feedback": {
+    "1000": {
+      "ID": null,
+      "Description": null,
+      "CallUI": null
+    },
+    "1001": {
+      "ID": null,
+      "Description": null,
+      "CallUI": null
+    },
+    "1002": {
+      "ID": null,
+      "Description": null,
+      "CallUI": null
+    },
+    "1003": {
+      "ID": null,
+      "Description": null,
+      "CallUI": null
+    }
+  },
+  "Stage": {
+    "3000": {
+      "ID": null,
+      "Description": null,
+      "PrefabName": null,
+      "StageLevelTable": null,
+      "StageDescription": null,
+      "StageTargetDescription": null
+    },
+    "3001": {
+      "ID": null,
+      "Description": null,
+      "PrefabName": null,
+      "StageLevelTable": null,
+      "StageDescription": null,
+      "StageTargetDescription": null
+    },
+    "3002": {
+      "ID": null,
+      "Description": null,
+      "PrefabName": null,
+      "StageLevelTable": null,
+      "StageDescription": null,
+      "StageTargetDescription": null
+    },
+    "3003": {
+      "ID": null,
+      "Description": null,
+      "PrefabName": null,
+      "StageLevelTable": null,
+      "StageDescription": null,
+      "StageTargetDescription": null
+    }
+  },
+  "StageGoal": {
+    "5000": {},
+    "5001": {},
+    "5002": {},
+    "5003": {},
+    "5500": {},
+    "5501": {},
+    "5502": {},
+    "5503": {}
+  },
+  "Tile_Space": {
+    "10000": {
+      "ID": null,
+      "Description": null,
+      "PrefabName": null,
+      "Type": null,
+      "Movable": null,
+      "Liftable": null,
+      "Putable": null
+    },
+    "10100": {
+      "ID": null,
+      "Description": null,
+      "PrefabName": null,
+      "Type": null,
+      "Movable": null,
+      "Liftable": null,
+      "Putable": null
+    },
+    "10001": {
+      "ID": null,
+      "Description": null,
+      "PrefabName": null,
+      "Type": null,
+      "Movable": null,
+      "Liftable": null,
+      "Putable": null
+    },
+    "10110": {
+      "ID": null,
+      "Description": null,
+      "PrefabName": null,
+      "Type": null,
+      "Movable": null,
+      "Liftable": null,
+      "Putable": null
+    },
+    "10111": {
+      "ID": null,
+      "Description": null,
+      "PrefabName": null,
+      "Type": null,
+      "Movable": null,
+      "Liftable": null,
+      "Putable": null
+    }
+  },
+  "Tile_Food": {
+    "11000": {
+      "ID": null,
+      "Description": null,
+      "Type": null,
+      "Icon": null,
+      "Value": null,
+      "PrefabName": null
+    },
+    "11001": {
+      "ID": null,
+      "Description": null,
+      "Type": null,
+      "Icon": null,
+      "Value": null,
+      "PrefabName": null
+    },
+    "11002": {
+      "ID": null,
+      "Description": null,
+      "Type": null,
+      "Icon": null,
+      "Value": null,
+      "PrefabName": null
+    },
+    "11003": {
+      "ID": null,
+      "Description": null,
+      "Type": null,
+      "Icon": null,
+      "Value": null,
+      "PrefabName": null
+    },
+    "11004": {
+      "ID": null,
+      "Description": null,
+      "Type": null,
+      "Icon": null,
+      "Value": null,
+      "PrefabName": null
+    }
+  }
 }

@@ -14,13 +14,14 @@ public enum LogicState
 public enum TileType
 {
     Empty,
-    Walk,
-    Serving,
-    Kitchen,
-    Customer,
-    Blocking,
-    Cook,
-    Pass,
+    WALK,
+    BLOCKING,
+    PASS,
+    SERVING,
+    CUSTOMER,
+    INGREDIENT,
+    COOKING,
+    TABLE,
 }
 
 public enum BlockLogicType

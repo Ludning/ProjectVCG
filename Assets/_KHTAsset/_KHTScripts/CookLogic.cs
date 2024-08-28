@@ -6,7 +6,7 @@ public class CookLogic : BlockLogicBase
         TileType tileType = owner.Table.GetTileType(position);
         ItemBase item = owner.Table.GetTileItem(position);
 
-        return (tileType == TileType.Kitchen && item != null) ? true : false;
+        return (tileType == TileType.COOKING && item != null) ? true : false;
     }
 
     public override LogicState Execute(StageManager owner)

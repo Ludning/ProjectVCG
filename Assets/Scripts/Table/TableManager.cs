@@ -3,22 +3,49 @@ using UnityEngine;
 
 public class TableManager : MonoBehaviour
 {
-    [SerializeField]
-    private Dictionary<Vector2Int, TileBase> map;
+    [SerializeField] private Transform tableParent;
+    
+    private Dictionary<Vector2Int, TileBase> map = new Dictionary<Vector2Int, TileBase>();
     public Dictionary<Vector2Int, TileBase> Map => map;
 
     public Vector2Int startPosition;
 
-    public void Init()
+    public void InitTable(string stageInfo)
     {
-        //map = new TileBase[100];
-        //초기화 더 할꺼임
         //TODO
+        //현재 스테이지 정보를 받아온 후 초기화
+        //TableData tableData = DataManager.Instance.GetTableData(stageInfo);
+        TableData tableData = new TableData();
+        tableData.Table = new Dictionary<Vector2Int, TileData>();
+        tableData.Table.Add(new Vector2Int(-1, -1), new TileData(){tileType = TileType.WALK});
+        tableData.Table.Add(new Vector2Int(-1, 0),new TileData(){tileType = TileType.WALK});
+        tableData.Table.Add(new Vector2Int(-1, 1),new TileData(){tileType = TileType.WALK});
+        tableData.Table.Add(new Vector2Int(0, -1),new TileData(){tileType = TileType.WALK});
+        tableData.Table.Add(new Vector2Int(0, 0), new TileData(){tileType = TileType.WALK});
+        tableData.Table.Add(new Vector2Int(0, 1), new TileData(){tileType = TileType.WALK});
+        tableData.Table.Add(new Vector2Int(1, -1),new TileData(){tileType = TileType.WALK});
+        tableData.Table.Add(new Vector2Int(1, 0), new TileData(){tileType = TileType.WALK});
+        tableData.Table.Add(new Vector2Int(1, 1), new TileData(){tileType = TileType.WALK});
+        
+        foreach (var tileData in tableData.Table)
+        {
+            GameObject tilePrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("Tile");
+            GameObject tile = Instantiate(tilePrefab, tableParent);
+            tile.transform.position = new Vector3(tileData.Key.x, 0, tileData.Key.y);
+            TileBase tileBase = tile.GetComponent<TileBase>();
+            tileBase.InitTile(tileData.Value);
+            map.Add(tileData.Key, tileBase);
+        }
     }
-    public void Init(Dictionary<Vector2Int, TileBase> mapDictionary)
+
+    public void ClearTable()
+    {
+        
+    }
+    /*public void Init(Dictionary<Vector2Int, TileBase> mapDictionary)
     {
         map = mapDictionary;
-    }
+    }*/
     
     public Vector3 GetTilePosition(Vector2Int position)
     {

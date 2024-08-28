@@ -10,7 +10,7 @@ public class PopItemLogic : BlockLogicBase
         TileType tileType = owner.Table.GetTileType(position);
         ItemBase item = owner.Table.GetTileItem(position);
 
-        return (tileType == TileType.Customer||tileType == TileType.Kitchen|| tileType == TileType.Cook) ? true : false;
+        return (tileType == TileType.CUSTOMER||tileType == TileType.COOKING) ? true : false;
     }
 
     public override LogicState Execute(StageManager owner)

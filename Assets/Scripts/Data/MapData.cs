@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public struct MapData
+public class MapData
 {
+    public Dictionary<string, TableData> TableData;
+    
     [SerializeField] private Vector2Int position;
     public Vector2Int Position
     {
@@ -11,17 +13,16 @@ public struct MapData
         set => position = value;
     }
 
-    [SerializeField] private TileType tileType;
-    public TileType TileType
-    {
-        get => tileType;
-        set => tileType = value;
-    }
+    
+}
 
-    [SerializeField] private string itemName;
-    public string ItemName
-    {
-        get => itemName;
-        set => itemName = value;
-    }
+public class TableData
+{
+    public Dictionary<Vector2Int, TileData> Table;
+}
+
+public class TileData
+{
+    public TileType tileType;
+    public string itemName;
 }

@@ -8,9 +8,11 @@ public class DataManager : SingletonMonoBehaviour<DataManager>
 {
     private GameData _gameData;
     private AssetAddressData _assetAddressData;
+    private MapData _mapData;
     
-    private const string DataJsonPath = "Data/GameData";
-    private const string AddressJsonPath = "Data/AssetAddress";
+    private const string GameDataJsonPath = "Data/GameData";
+    private const string AddressDataJsonPath = "Data/AssetAddress";
+    private const string MapDataJsonPath = "Data/MapData";
     
     public T GetGameData<T>(string key) where T : class, new()
     {
@@ -22,7 +24,7 @@ public class DataManager : SingletonMonoBehaviour<DataManager>
     {
         if (_gameData == null)
         {
-            TextAsset jsonFile = Addressables.LoadAssetAsync<TextAsset>(DataJsonPath).WaitForCompletion();
+            TextAsset jsonFile = Addressables.LoadAssetAsync<TextAsset>(GameDataJsonPath).WaitForCompletion();
             _gameData = JsonConvert.DeserializeObject<GameData>(jsonFile.text);
         }
 
@@ -52,7 +54,7 @@ public class DataManager : SingletonMonoBehaviour<DataManager>
     {
         if (_assetAddressData == null)
         {
-            TextAsset jsonFile = Addressables.LoadAssetAsync<TextAsset>(AddressJsonPath).WaitForCompletion();
+            TextAsset jsonFile = Addressables.LoadAssetAsync<TextAsset>(AddressDataJsonPath).WaitForCompletion();
             _assetAddressData = JsonConvert.DeserializeObject<AssetAddressData>(jsonFile.text);
         }
 
@@ -62,5 +64,16 @@ public class DataManager : SingletonMonoBehaviour<DataManager>
             return _assetAddressData.Material.GetValueOrDefault(key);
 
         return null;
+    }
+    
+    public TableData GetTableData(string key)
+    {
+        if (_mapData == null)
+        {
+            TextAsset jsonFile = Addressables.LoadAssetAsync<TextAsset>(MapDataJsonPath).WaitForCompletion();
+            _mapData = JsonConvert.DeserializeObject<MapData>(jsonFile.text);
+        }
+
+        return _mapData.TableData.GetValueOrDefault(key);
     }
 }

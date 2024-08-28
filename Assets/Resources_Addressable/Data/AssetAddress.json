@@ -15,7 +15,8 @@
     "StageSelectPopup": "Prefabs/WorldUI/StageSelectPopup",
     "NPCMessagePopup": "Prefabs/WorldUI/NPCMessagePopup",
     "RecipePopup": "Prefabs/WorldUI/RecipePopup",
-    "ButtonToggle": "Prefabs/WorldUI/Elements/Toggle"
+    "ButtonToggle": "Prefabs/WorldUI/Elements/Toggle",
+    "Tile": "Prefabs/Tile"
   },
   "Material": {
     "TempMat": "Materials/Logic/TempMat",
