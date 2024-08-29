@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PopItemLogic : BlockLogicBase
 {
-    public override bool IsExecutable(StageManager owner)
+    public override ErrorType IsExecutable(StageManager owner)
     {
         var position = owner.Controller.PlayerForwardPosition;
         TileType tileType = owner.Table.GetTileType(position);
         ItemBase item = owner.Table.GetTileItem(position);
 
-        return (tileType == TileType.Customer||tileType == TileType.Kitchen|| tileType == TileType.Cook) ? true : false;
+        return (tileType == TileType.Customer||tileType == TileType.Kitchen|| tileType == TileType.Cook) ? ErrorType.NoError : ErrorType.NoPickableItem;
     }
 
     public override LogicState Execute(StageManager owner)

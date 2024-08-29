@@ -6,13 +6,13 @@ using UnityEngine.UIElements;
 
 public class PushItemLogic : BlockLogicBase
 {
-    public override bool IsExecutable(StageManager owner)
+    public override ErrorType IsExecutable(StageManager owner)
     {
         var position = owner.Controller.PlayerForwardPosition;
         TileType tileType = owner.Table.GetTileType(position);
         ItemBase item = owner.Table.GetTileItem(position);
 
-        return (item != null) ? true : false;
+        return (item != null) ? ErrorType.NoError : ErrorType.NoDropItem;
     }
 
     public override LogicState Execute(StageManager owner)

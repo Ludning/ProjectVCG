@@ -5,7 +5,7 @@ using UnityEngine;
 public class InteractableManager : MonoBehaviour
 {
     private const string InteractableButtonName = "ButtonInteractable";
-    
+
     [SerializeField] private Transform LogicButtonParent;
     [SerializeField] private Transform GameControlButtonParent;
     
@@ -26,6 +26,7 @@ public class InteractableManager : MonoBehaviour
         InstantiateButton(buttonPrefab, GameControlButtonParent, BlockLogicType.Clear);
     }
 
+    
     private void InstantiateButton(GameObject prefab, Transform parent, BlockLogicType type)
     {
         GameObject button = Instantiate(prefab, parent);

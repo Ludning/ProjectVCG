@@ -15,6 +15,43 @@ public class SheetManager : MonoBehaviour
 
     [Header("SubSheet")]
     private List<Transform> repeatSheetParents = new List<Transform>();
+    //임시 코드
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            OnClick_SetLogic(BlockLogicType.Start);
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            OnClick_SetLogic(BlockLogicType.Cook);
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            OnClick_SetLogic(BlockLogicType.Move);
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            OnClick_SetLogic(BlockLogicType.PushItem);
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            OnClick_SetLogic(BlockLogicType.RotateLeft);
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            OnClick_SetLogic(BlockLogicType.RotateRight);
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            OnClick_SetLogic(BlockLogicType.PopItem);
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            OnClick_SetLogic(BlockLogicType.Clear);
+        }
+    }
+
 
     public void Init()
     {
@@ -68,32 +105,35 @@ public class SheetManager : MonoBehaviour
     {
         RunBlockLogics().Forget();
     }
-    async UniTask<LogicState> RunBlockLogics()
+    async UniTask<ErrorType> RunBlockLogics()
     {
         foreach (var blockLogic in _blockLogicBases)
         {
-            LogicState result = await RunBlockLogic(blockLogic);
-            if (result == LogicState.Failure)
+            ErrorType result = await RunBlockLogic(blockLogic);
+            if (result != ErrorType.NoError)
             {
-                Debug.Log("로직 실패!!");
-                return LogicState.Failure;
+                Debug.LogError($"ErrorType : {result}");
+                return result;
             }
         }
-        return LogicState.Success;
+        return ErrorType.NoError;
     }
-    async UniTask<LogicState> RunBlockLogic(BlockLogicBase blockLogic)
+    async UniTask<ErrorType> RunBlockLogic(BlockLogicBase blockLogic)
     {
-    	bool result = blockLogic.IsExecutable(Stage);
+        Debug.Log("tset");
+        ErrorType result = blockLogic.IsExecutable(Stage);
         //SimulatorManager.Instance.CheckAnswer(result);// To Do
-        if (result == false)
-            return LogicState.Failure;
+        if (result != ErrorType.NoError)
+            return result;
 
         while (true)
         {
             LogicState logicState = blockLogic.Execute(Stage);
             if (logicState == LogicState.Success)
-                return LogicState.Success;
+                return ErrorType.NoError;
             await UniTask.NextFrame();
         }
     }
+
+
 }

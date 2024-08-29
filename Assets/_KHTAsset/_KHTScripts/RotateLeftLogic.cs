@@ -7,10 +7,10 @@ using static UnityEngine.UI.GridLayoutGroup;
 public class RotateLeftLogic : BlockLogicBase
 {
     Quaternion playerTargetRot = Quaternion.identity;
-    public override bool IsExecutable(StageManager owner)
+    public override ErrorType IsExecutable(StageManager owner)
     {
         playerTargetRot = owner.Controller.transform.rotation * Quaternion.Euler(new Vector3(0, -90, 0));
-        return true;
+        return ErrorType.NoError;
     }
 
     public override LogicState Execute(StageManager owner)
