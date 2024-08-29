@@ -35,6 +35,7 @@ public enum BlockLogicType
     Start,
     Clear,
     Dash,
+    Repeat,
 }
 public enum Rotate
 {
@@ -72,9 +73,12 @@ public enum StageIndex
 
 public enum CookType
 {
+    Empty,
     Chop,
     Glid,
     Boil,
+    Fry,
+    Tray,
 }
 
 public enum AssetType
