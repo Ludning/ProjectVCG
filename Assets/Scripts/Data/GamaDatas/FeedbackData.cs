@@ -1,6 +1,6 @@
 public class FeedbackData
 {
-    public string ID { get; set; }
-    public string Description { get; set; }
-    public string CallUI { get; set; }
+    public string ID;
+    public string Description;
+    public string CallUI;
 }

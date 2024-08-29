@@ -16,17 +16,17 @@ public class TableManager : MonoBehaviour
         //현재 스테이지 정보를 받아온 후 초기화
         //TableData tableData = DataManager.Instance.GetTableData(stageInfo);
         TableData tableData = new TableData();
-        tableData.Table = new Dictionary<Vector2Int, TileData>();
-        tableData.Table.Add(new Vector2Int(-1, -1), new TileData(){tileType = TileType.WALK});
-        tableData.Table.Add(new Vector2Int(-1, 0),new TileData(){tileType = TileType.WALK});
-        tableData.Table.Add(new Vector2Int(-1, 1),new TileData(){tileType = TileType.WALK});
-        tableData.Table.Add(new Vector2Int(0, -1),new TileData(){tileType = TileType.WALK});
-        tableData.Table.Add(new Vector2Int(0, 0), new TileData(){tileType = TileType.WALK});
-        tableData.Table.Add(new Vector2Int(0, 1), new TileData(){tileType = TileType.WALK});
-        tableData.Table.Add(new Vector2Int(1, -1),new TileData(){tileType = TileType.WALK});
-        tableData.Table.Add(new Vector2Int(1, 0), new TileData(){tileType = TileType.WALK});
-        tableData.Table.Add(new Vector2Int(1, 1), new TileData(){tileType = TileType.WALK});
-        
+        tableData.Table = new Dictionary<Vector2Int, string>();
+        tableData.Table.Add(new Vector2Int(-1, -1), "10000");
+        tableData.Table.Add(new Vector2Int(-1, 0), "10000");
+        tableData.Table.Add(new Vector2Int(-1, 1), "10000");
+        tableData.Table.Add(new Vector2Int(0, -1), "10000");
+        tableData.Table.Add(new Vector2Int(0, 0), "10000");
+        tableData.Table.Add(new Vector2Int(0, 1), "10000");
+        tableData.Table.Add(new Vector2Int(1, -1), "10000");
+        tableData.Table.Add(new Vector2Int(1, 0), "10000");
+        tableData.Table.Add(new Vector2Int(1, 1), "10000");
+
         foreach (var tileData in tableData.Table)
         {
             GameObject tilePrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("Tile");

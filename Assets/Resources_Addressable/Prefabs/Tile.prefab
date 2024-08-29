@@ -119,4 +119,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TileType: 1
+  TileAttributeType: 0
   Item: {fileID: 0}

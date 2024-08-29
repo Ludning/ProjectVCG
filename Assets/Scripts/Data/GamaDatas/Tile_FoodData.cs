@@ -1,9 +1,9 @@
 public class Tile_FoodData
 {
-    public string ID { get; set; }
-    public string Description { get; set; }
-    public string Type { get; set; }
-    public string Icon { get; set; }
-    public string Value { get; set; }
-    public string PrefabName { get; set; }
+    public string Index;
+    public string Description;
+    public string Type;
+    public string Icon;
+    public string Value;
+    public string PrefabName;
 }

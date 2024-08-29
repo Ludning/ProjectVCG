@@ -1,3 +1,5 @@
+using System;
+
 public enum UIType
 {
     MainUI,
@@ -22,6 +24,16 @@ public enum TileType
     INGREDIENT,
     COOKING,
     TABLE,
+}
+
+[Flags]
+public enum TileAttributeType
+{
+    None,
+    Moveable,
+    Pushable,
+    Popable,
+    Stackable,
 }
 
 public enum BlockLogicType
