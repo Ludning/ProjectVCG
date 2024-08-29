@@ -12,14 +12,7 @@ public class CookLogic : BlockLogicBase
 
     public override LogicState Execute(StageManager owner)
     {
-        //var position = owner.Controller.PlayerForwardPosition;
-        //CookType cookType = owner.Table.GetCookType(position);
-        //var item = owner.Table.GetTileItem(position);
-        //if (cookType==CookType.Chop)
-        //{
-        //    owner.Table.SetTileItem(position, null);
-        //    return LogicState.Success;
-        //}
+        
         return LogicState.Failure;
     }
 }
