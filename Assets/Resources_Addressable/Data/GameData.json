@@ -1,157 +1,157 @@
 {
   "Pc": {
     "0": {
-      "ID": null,
-      "Description": null,
-      "PrefabName": null,
-      "InventoryMax": 0
+      "ID": "0",
+      "Description": "로봇 캐릭터",
+      "PrefabName": "prefab_pc_robot",
+      "InventoryMax": 2
     }
   },
   "Npc": {
     "10": {
-      "ID": null,
-      "Description": null,
-      "PrefabName": null,
-      "AnimationController": null
+      "ID": "10",
+      "Description": "프로토타입용 더미 NPC",
+      "PrefabName": "Dummy",
+      "AnimationController": "Dummy"
     },
     "11": {
-      "ID": null,
-      "Description": null,
-      "PrefabName": null,
-      "AnimationController": null
+      "ID": "11",
+      "Description": "아시아계 여성",
+      "PrefabName": "Asian_Male",
+      "AnimationController": "Male"
     },
     "12": {
-      "ID": null,
-      "Description": null,
-      "PrefabName": null,
-      "AnimationController": null
+      "ID": "12",
+      "Description": "아시아계 남성",
+      "PrefabName": "Asian_Female",
+      "AnimationController": "Female"
     },
     "13": {
-      "ID": null,
-      "Description": null,
-      "PrefabName": null,
-      "AnimationController": null
+      "ID": "13",
+      "Description": "백인계 여성",
+      "PrefabName": "European_Male",
+      "AnimationController": "Male"
     },
     "14": {
-      "ID": null,
-      "Description": null,
-      "PrefabName": null,
-      "AnimationController": null
+      "ID": "14",
+      "Description": "백인계 남성",
+      "PrefabName": "European_Female",
+      "AnimationController": "Female"
     },
     "15": {
-      "ID": null,
-      "Description": null,
-      "PrefabName": null,
-      "AnimationController": null
+      "ID": "15",
+      "Description": "아프라카계 여성",
+      "PrefabName": "African_Female",
+      "AnimationController": "Female"
     },
     "16": {
-      "ID": null,
-      "Description": null,
-      "PrefabName": null,
-      "AnimationController": null
+      "ID": "16",
+      "Description": "아프리카계 남성",
+      "PrefabName": "African_Male",
+      "AnimationController": "Male"
     }
   },
   "CodingBlock": {
     "100": {
-      "ID": null,
-      "Description": null,
-      "IconBlock": null,
-      "AnimationKey": null,
-      "MoveDistance": null,
-      "Angle": null,
-      "Distance": null
+      "ID": "100",
+      "Description": "이동 블록",
+      "IconBlock": "icon_move",
+      "AnimationKey": "anim_move",
+      "MoveDistance": "1",
+      "Angle": "-",
+      "Distance": "-"
     },
     "200": {
-      "ID": null,
-      "Description": null,
-      "IconBlock": null,
-      "AnimationKey": null,
-      "MoveDistance": null,
-      "Angle": null,
-      "Distance": null
+      "ID": "200",
+      "Description": "좌회전 블록",
+      "IconBlock": "icon_left",
+      "AnimationKey": "anim_left",
+      "MoveDistance": "-",
+      "Angle": "-90",
+      "Distance": "-"
     },
     "201": {
-      "ID": null,
-      "Description": null,
-      "IconBlock": null,
-      "AnimationKey": null,
-      "MoveDistance": null,
-      "Angle": null,
-      "Distance": null
+      "ID": "201",
+      "Description": "우회전 블록",
+      "IconBlock": "icon_right",
+      "AnimationKey": "anim_right",
+      "MoveDistance": "-",
+      "Angle": "90",
+      "Distance": "-"
     },
     "300": {
-      "ID": null,
-      "Description": null,
-      "IconBlock": null,
-      "AnimationKey": null,
-      "MoveDistance": null,
-      "Angle": null,
-      "Distance": null
+      "ID": "300",
+      "Description": "들기 블록",
+      "IconBlock": "icon_pickup",
+      "AnimationKey": "anim_pickup",
+      "MoveDistance": "-",
+      "Angle": "-",
+      "Distance": "1"
     },
     "301": {
-      "ID": null,
-      "Description": null,
-      "IconBlock": null,
-      "AnimationKey": null,
-      "MoveDistance": null,
-      "Angle": null,
-      "Distance": null
+      "ID": "301",
+      "Description": "놓기 블록",
+      "IconBlock": "icon_putdown",
+      "AnimationKey": "anim_putdown",
+      "MoveDistance": "-",
+      "Angle": "-",
+      "Distance": "1"
     }
   },
   "Feedback": {
     "1000": {
-      "ID": null,
-      "Description": null,
-      "CallUI": null
+      "ID": "1000",
+      "Description": "답안지 실패 피드백 UI",
+      "CallUI": "ui_fail"
     },
     "1001": {
-      "ID": null,
-      "Description": null,
-      "CallUI": null
+      "ID": "1001",
+      "Description": "답안지 성공 피드백 UI",
+      "CallUI": "ui_success"
     },
     "1002": {
-      "ID": null,
-      "Description": null,
-      "CallUI": null
+      "ID": "1002",
+      "Description": "시뮬레이션 중 현재 실행 중인 코드 블럭 표시 UI",
+      "CallUI": "ui_nowplaying"
     },
     "1003": {
-      "ID": null,
-      "Description": null,
-      "CallUI": null
+      "ID": "1003",
+      "Description": "시뮬레이션 중 실행이 끝난 코드 블럭 표시 UI",
+      "CallUI": "ui_used"
     }
   },
   "Stage": {
     "3000": {
-      "ID": null,
-      "Description": null,
-      "PrefabName": null,
-      "StageLevelTable": null,
-      "StageDescription": null,
-      "StageTargetDescription": null
+      "ID": "3000",
+      "Description": "1챕터_서빙(1) 스테이지",
+      "PrefabName": "Stage_1_1.prefab",
+      "StageLevelTable": "TblLevel_001",
+      "StageDescription": "5000",
+      "StageTargetDescription": "5500"
     },
     "3001": {
-      "ID": null,
-      "Description": null,
-      "PrefabName": null,
-      "StageLevelTable": null,
-      "StageDescription": null,
-      "StageTargetDescription": null
+      "ID": "3001",
+      "Description": "1챕터_서빙(2) 스테이지",
+      "PrefabName": "Stage_1_2.prefab",
+      "StageLevelTable": "TblLevel_002",
+      "StageDescription": "5001",
+      "StageTargetDescription": "5501"
     },
     "3002": {
-      "ID": null,
-      "Description": null,
-      "PrefabName": null,
-      "StageLevelTable": null,
-      "StageDescription": null,
-      "StageTargetDescription": null
+      "ID": "3002",
+      "Description": "2챕터_서빙(1) 스테이지",
+      "PrefabName": "Stage_2_1.prefab",
+      "StageLevelTable": "TblLevel_003",
+      "StageDescription": "5002",
+      "StageTargetDescription": "5502"
     },
     "3003": {
-      "ID": null,
-      "Description": null,
-      "PrefabName": null,
-      "StageLevelTable": null,
-      "StageDescription": null,
-      "StageTargetDescription": null
+      "ID": "3003",
+      "Description": "2챕터_서빙(2) 스테이지",
+      "PrefabName": "Stage_2_2.prefab",
+      "StageLevelTable": "TblLevel_004",
+      "StageDescription": "5003",
+      "StageTargetDescription": "5503"
     }
   },
   "StageGoal": {
@@ -164,93 +164,103 @@
     "5502": {},
     "5503": {}
   },
-  "Tile_Space": {
+  "Tile": {
     "10000": {
-      "ID": null,
-      "Description": null,
-      "PrefabName": null,
-      "Type": null,
-      "Movable": null,
-      "Liftable": null,
-      "Putable": null
+      "Index": "10000",
+      "Description": "바닥 타일, PC가 이동할 바닥 구성용 육면체",
+      "PrefabName": "Walking_Tile",
+      "TileType": 1,
+      "Moveable": true,
+      "Pushable": false,
+      "Popable": false,
+      "Stackable": false,
+      "InventoryCount": 0
     },
     "10100": {
-      "ID": null,
-      "Description": null,
-      "PrefabName": null,
-      "Type": null,
-      "Movable": null,
-      "Liftable": null,
-      "Putable": null
+      "Index": "10100",
+      "Description": "벽 타일, PC의 이동을 제한할 벽 구성용 육면체",
+      "PrefabName": "Wall_Tile",
+      "TileType": 2,
+      "Moveable": false,
+      "Pushable": false,
+      "Popable": false,
+      "Stackable": false,
+      "InventoryCount": 0
     },
     "10001": {
-      "ID": null,
-      "Description": null,
-      "PrefabName": null,
-      "Type": null,
-      "Movable": null,
-      "Liftable": null,
-      "Putable": null
+      "Index": "10001",
+      "Description": "목적지 타일, PC가 도달할 바닥 구성용 육면체",
+      "PrefabName": "Walking_Pass_Tile",
+      "TileType": 3,
+      "Moveable": true,
+      "Pushable": false,
+      "Popable": false,
+      "Stackable": false,
+      "InventoryCount": 0
     },
     "10110": {
-      "ID": null,
-      "Description": null,
-      "PrefabName": null,
-      "Type": null,
-      "Movable": null,
-      "Liftable": null,
-      "Putable": null
+      "Index": "10110",
+      "Description": "서빙 테이블, 서빙 미션에서 PC가 가져갈 오브젝트생성용",
+      "PrefabName": "Serving_Tile",
+      "TileType": 4,
+      "Moveable": false,
+      "Pushable": true,
+      "Popable": false,
+      "Stackable": false,
+      "InventoryCount": 1
     },
     "10111": {
-      "ID": null,
-      "Description": null,
-      "PrefabName": null,
-      "Type": null,
-      "Movable": null,
-      "Liftable": null,
-      "Putable": null
+      "Index": "10111",
+      "Description": "손님 테이블, 서빙 미션에서 PC가 오브젝트 내려놓을 위치",
+      "PrefabName": "Customer_Tile",
+      "TileType": 5,
+      "Moveable": false,
+      "Pushable": false,
+      "Popable": true,
+      "Stackable": true,
+      "InventoryCount": 1
     }
   },
-  "Tile_Food": {
+  "Food": {
     "11000": {
-      "ID": null,
-      "Description": null,
-      "Type": null,
-      "Icon": null,
-      "Value": null,
-      "PrefabName": null
+      "Index": "11000",
+      "Description": "하와이언 포케입니다.",
+      "Type": "완성품",
+      "Icon": "icon_Poke",
+      "Value": "POKE",
+      "PrefabName": "Poke"
     },
     "11001": {
-      "ID": null,
-      "Description": null,
-      "Type": null,
-      "Icon": null,
-      "Value": null,
-      "PrefabName": null
+      "Index": "11001",
+      "Description": "햄버거 세트입니다.",
+      "Type": "완성품",
+      "Icon": "icon_Hamburger_Set",
+      "Value": "HAMBURGER_SET",
+      "PrefabName": "Hamburger_Set"
     },
     "11002": {
-      "ID": null,
-      "Description": null,
-      "Type": null,
-      "Icon": null,
-      "Value": null,
-      "PrefabName": null
+      "Index": "11002",
+      "Description": "썬 감자 입니다.",
+      "Type": "가공재료",
+      "Icon": "icon_Cut_Potato",
+      "Value": "CUT_POTATO",
+      "PrefabName": "Cut_Potato"
     },
     "11003": {
-      "ID": null,
-      "Description": null,
-      "Type": null,
-      "Icon": null,
-      "Value": null,
-      "PrefabName": null
+      "Index": "11003",
+      "Description": "감자 입니다.",
+      "Type": "원재료",
+      "Icon": "icon_Potato",
+      "Value": "POTATO",
+      "PrefabName": "Potato"
     },
     "11004": {
-      "ID": null,
-      "Description": null,
-      "Type": null,
-      "Icon": null,
-      "Value": null,
-      "PrefabName": null
+      "Index": "11004",
+      "Description": "참치 입니다.",
+      "Type": "원재료",
+      "Icon": "icon_Tuna",
+      "Value": "TUNA",
+      "PrefabName": "Tuna"
     }
   }
 }

@@ -1,27 +1,13 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public struct MapData
+public class MapData
 {
-    [SerializeField] private Vector2Int position;
-    public Vector2Int Position
-    {
-        get => position;
-        set => position = value;
-    }
+    public Dictionary<string, TableData> TableData;
+}
 
-    [SerializeField] private TileType tileType;
-    public TileType TileType
-    {
-        get => tileType;
-        set => tileType = value;
-    }
-
-    [SerializeField] private string itemName;
-    public string ItemName
-    {
-        get => itemName;
-        set => itemName = value;
-    }
+public class TableData
+{
+    public Dictionary<Vector2Int, string> Table;
 }

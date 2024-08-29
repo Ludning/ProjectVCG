@@ -10,7 +10,7 @@ public class DashLogic : BlockLogicBase
         TileType tileType = owner.Table.GetTileType(position);
         ItemBase item = owner.Table.GetTileItem(position);
 
-        if (tileType != TileType.Walk || item != null)
+        if (tileType != TileType.WALK || item != null)
         {
             return ErrorType.NotMove;
         }

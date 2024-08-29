@@ -5,7 +5,7 @@ public class MapReader : MonoBehaviour
 {
     [SerializeField] private TableManager tableManager;
 
-    public void ReadMap()
+    /*public void ReadMap()
     {
         List<Transform> tileTransforms = new List<Transform>();
         foreach (Transform child in transform)
@@ -22,5 +22,5 @@ public class MapReader : MonoBehaviour
             tileBases[new Vector2Int(x, y)] = tileTransform.GetComponent<TileBase>();
         }
         tableManager.Init(tileBases);
-    }
+    }*/
 }

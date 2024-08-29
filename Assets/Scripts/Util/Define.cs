@@ -1,3 +1,5 @@
+using System;
+
 public enum UIType
 {
     MainUI,
@@ -14,13 +16,24 @@ public enum LogicState
 public enum TileType
 {
     Empty,
-    Walk,
-    Serving,
-    Kitchen,
-    Customer,
-    Blocking,
-    Cook,
-    Pass,
+    WALK,
+    BLOCKING,
+    PASS,
+    SERVING,
+    CUSTOMER,
+    INGREDIENT,
+    COOKING,
+    TABLE,
+}
+
+[Flags]
+public enum TileAttributeType
+{
+    None,
+    Moveable,
+    Pushable,
+    Popable,
+    Stackable,
 }
 
 public enum BlockLogicType

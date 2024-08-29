@@ -17,18 +17,15 @@ public class StageManager : MonoBehaviour
     
     public Direction playerForwardDirection = Direction.Right;
     
-    public MapReader Reader;
 
     public void InitStage()
     {
+        Table.InitTable("string stageInfo");
         uiContainer.gameObject.SetActive(false);
         
-        //스테이지 오브젝트 활성화
-        Reader.gameObject.SetActive(true);
+        
         Controller.gameObject.SetActive(true);
         Items.SetActive(true);
-        
-        Reader.ReadMap();
         
         Controller.Init(Table.startPosition, playerForwardDirection);
         
