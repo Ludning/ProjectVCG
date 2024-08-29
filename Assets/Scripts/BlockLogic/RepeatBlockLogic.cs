@@ -12,12 +12,12 @@ public class RepeatBlockLogic : BlockLogicBase
     private bool _isChecked;
 
     //FunctionBlock이 작동되는 시작조건을 충족하지 않을 경우 (아마 바로 true 반환하면 될듯?)
-    public override bool IsExecutable(StageManager owner)
+    public override ErrorType IsExecutable(StageManager owner)
     {
         _currentRepeatCount = 0;
         _currentLogicCount = 0;
         _isChecked = false;
-        return true;
+        return ErrorType.NoError;
     }
 
     public override LogicState Execute(StageManager owner)
@@ -28,7 +28,7 @@ public class RepeatBlockLogic : BlockLogicBase
             {
                 if (_elementLogics == null || _elementLogics.Count == 0)
                     return LogicState.Failure;
-                if (_elementLogics[_currentLogicCount].IsExecutable(owner) == false)
+                if (_elementLogics[_currentLogicCount].IsExecutable(owner) != ErrorType.NoError)
                     return LogicState.Failure;
                 _isChecked = true;
             }

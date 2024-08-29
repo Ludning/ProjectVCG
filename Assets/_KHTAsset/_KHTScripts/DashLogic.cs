@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DashLogic : BlockLogicBase
 {
-    public override bool IsExecutable(StageManager owner)
+    public override ErrorType IsExecutable(StageManager owner)
     {
         var position = owner.Controller.PlayerForwardPosition;
         TileType tileType = owner.Table.GetTileType(position);
@@ -12,10 +12,10 @@ public class DashLogic : BlockLogicBase
 
         if (tileType != TileType.Walk || item != null)
         {
-            return false;
+            return ErrorType.NotMove;
         }
 
-        return true;
+        return ErrorType.NoError;
     }
 
     public override LogicState Execute(StageManager owner)
@@ -34,7 +34,7 @@ public class DashLogic : BlockLogicBase
             owner.Controller.transform.position = targetWorldPosition;
             owner.Controller.PlayerPosition = targetPosition;
 
-            if (IsExecutable(owner))
+            if (IsExecutable(owner) == ErrorType.NoError)
             {
                 return LogicState.Running;
             }

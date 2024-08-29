@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MoveLogic : BlockLogicBase
 {
-    public override bool IsExecutable(StageManager owner)
+    public override ErrorType IsExecutable(StageManager owner)
     {
         var position = owner.Controller.PlayerForwardPosition;
         TileType tileType = owner.Table.GetTileType(position);
@@ -10,9 +10,9 @@ public class MoveLogic : BlockLogicBase
 
         if (tileType != TileType.Walk || item != null)
         {
-            return false;
+            return ErrorType.NotMove;
         }
-        return true;
+        return ErrorType.NoError;
     }
 
     public override LogicState Execute(StageManager owner)

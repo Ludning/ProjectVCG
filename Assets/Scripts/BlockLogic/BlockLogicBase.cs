@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class BlockLogicBase : MonoBehaviour
 {
-    public virtual bool IsExecutable(StageManager owner)
+    public virtual ErrorType IsExecutable(StageManager owner)
     {
-        return false;
+        return ErrorType.UnKnownError;
     }
     
     //return false는 미완료의 의미
