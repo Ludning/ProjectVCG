@@ -120,7 +120,6 @@ public class SheetManager : MonoBehaviour
     }
     async UniTask<ErrorType> RunBlockLogic(BlockLogicBase blockLogic)
     {
-        Debug.Log("tset");
         ErrorType result = blockLogic.IsExecutable(Stage);
         //SimulatorManager.Instance.CheckAnswer(result);// To Do
         if (result != ErrorType.NoError)

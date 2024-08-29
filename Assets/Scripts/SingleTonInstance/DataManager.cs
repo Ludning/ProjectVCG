@@ -42,9 +42,9 @@ public class DataManager : SingletonMonoBehaviour<DataManager>
                 return _gameData.Stage as Dictionary<string, T>;
             case "StageGoalData":
                 return _gameData.StageGoal as Dictionary<string, T>;
-            case "Tile_SpaceData":
+            case "TileData":
                 return _gameData.Tile as Dictionary<string, T>;
-            case "Tile_FoodData":
+            case "FoodData":
                 return _gameData.Food as Dictionary<string, T>;
         }
         return null;

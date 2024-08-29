@@ -15,6 +15,8 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    public bool IsInventoryOverflow => itemStack.Count >= MaxCount;
+
     public void PushItem(ItemBase item)
     {
         if(itemStack.Count < MaxCount)
@@ -27,7 +29,6 @@ public class PlayerInventory : MonoBehaviour
             item.transform.localPosition = ItemStackPosition;
             itemStack.Push(item);
         }
-        
     }
 
     public ItemBase PopItem(Vector2Int position)

@@ -5,7 +5,10 @@ using UnityEngine;
 public class RecipeManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManager.cs
 {
     [SerializeField] private RecipePopup recipePopup; // UI?
-    private Dictionary<string, RecipeBase> recipes = new(); // Recipe 사전
+    private List<RecipeBase> recipes = new List<RecipeBase>();
+
+    public int cursor = 0;
+    RecipeBase CurrentRecipe => recipes[cursor];
     
     private void Awake()
     {
@@ -24,28 +27,40 @@ public class RecipeManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManag
     }
     
     // 모든 레시피가 완료되었는지 확인하는 프로퍼티
-    public bool IsComplete => recipes.All(recipe => recipe.Value.IsComplete);
+    public bool IsComplete => recipes.All(recipe => CurrentRecipe.IsComplete);
 
     public void InitRecipeState()
     {
-        foreach (KeyValuePair<string, RecipeBase> recipe in recipes)
+        foreach (var recipe in recipes)
         {
-            recipe.Value.Reset();
+            recipe.Reset();
         }
     }
 	
     public void AddRecipe(string recipeName)
     {
-        recipes.Add(recipeName, new RecipeBase(recipeName));
+        recipes.Add(new RecipeBase(recipeName));
         recipePopup.DisplayRecipe(recipeName);
     }
-    
+    public bool CheckRecipe(List<string> tileInventoryItems)
+    {
+        if(CurrentRecipe.Ingredients.Count != tileInventoryItems.Count)
+            return false;
+        
+        List<string> deepCopiedList = new List<string>(CurrentRecipe.Ingredients);
+        
+        foreach (var itemName in tileInventoryItems)
+        {
+            if(!deepCopiedList.Contains(itemName))
+                return false;
+            deepCopiedList.Remove(itemName);
+        }
+        return true;
+    }
+
     public void CompleteRecipe(string recipeName)
     {
-        if (recipes.TryGetValue(recipeName, out RecipeBase recipe))
-        {
-            recipe.IsComplete = true;
-            recipePopup.HideRecipe(recipeName);
-        }
+        CurrentRecipe.IsComplete = true;
+        recipePopup.HideRecipe(recipeName);
     }
 }

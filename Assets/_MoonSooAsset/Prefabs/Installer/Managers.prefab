@@ -137,6 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b14251914c67b4982ffb6f70c4404a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  recipePopup: {fileID: 0}
+  cursor: 0
 --- !u!1 &5245920724353730381
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,6 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef55ee4ae6738849bcb0f8ae0f04397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tableParent: {fileID: 0}
   startPosition: {x: 0, y: 0}
 --- !u!1 &7431368590363060570
 GameObject:
@@ -262,12 +265,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3992d6af143eb644dbd2f1b0be3c0bb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Table: {fileID: 7103794928054253303}
-  Sheet: {fileID: 4470865141629060255}
+  TableManager: {fileID: 7103794928054253303}
+  SheetManager: {fileID: 4470865141629060255}
   InteractableManager: {fileID: 7022657531795921493}
+  RecipeManager: {fileID: 974716058251498038}
   uiContainer: {fileID: 0}
   Items: {fileID: 0}
   Controller: {fileID: 0}
   Inventory: {fileID: 0}
   playerForwardDirection: 4
-  Reader: {fileID: 0}

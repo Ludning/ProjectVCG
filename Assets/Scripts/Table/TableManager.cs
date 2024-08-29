@@ -42,11 +42,36 @@ public class TableManager : MonoBehaviour
     {
         
     }
-    /*public void Init(Dictionary<Vector2Int, TileBase> mapDictionary)
+    /// <summary>
+    ///아이템이 없는지 체크하는 함수
+    /// </summary>
+    /*public bool CheakTileInventoryEmpty(Vector2Int position)
     {
-        map = mapDictionary;
+        if (TryGetTile(position, out TileBase tile))
+        {
+            return tile.CheakTileAttribute(AttributeCheakType.InventoryEmpty);
+        }
+        return true;
     }*/
-    
+
+    public TileBase PeekTile(Vector2Int position)
+    {
+        return TryGetTile(position, out TileBase tile) ? tile : null;
+    }
+    /// <summary>
+    ///타일 타입을 가져오는 함수
+    /// </summary>
+    private TileType GetTileType(Vector2Int position)
+    {
+        if (Map.TryGetValue(position, out TileBase tileBase))
+        {
+            return tileBase.TileType;
+        }
+        return TileType.Empty;
+    }
+    /// <summary>
+    /// 타일 위치를 반환받는 함수
+    /// </summary>
     public Vector3 GetTilePosition(Vector2Int position)
     {
         if (Map.TryGetValue(position, out TileBase tileBase))
@@ -56,44 +81,49 @@ public class TableManager : MonoBehaviour
         return Vector3.zero;
     }
 
-    public TileType GetTileType(Vector2Int position)
+    /// <summary>
+    /// TileBase를 반환받는 함수
+    /// </summary>
+    private bool TryGetTile(Vector2Int position, out TileBase tile)
     {
-        if (Map.TryGetValue(position, out TileBase tileBase))
+        if (Map.TryGetValue(position, out TileBase temp))
         {
-            return tileBase.TileType;
+            tile = temp;
+            return true;
         }
-        return TileType.Empty;
+        else
+        {
+            tile = null;
+            return false;
+        }
     }
-    public ItemBase GetTileItem(Vector2Int position)
+    
+    /// <summary>
+    /// 타일 아이템을 꺼내오는 함수
+    /// </summary>
+    public ItemBase PopTileItem(Vector2Int position)
     {
-        if (Map.TryGetValue(position, out TileBase tileBase))
-        {
-            return tileBase.Item;
-        }
-        return null;
+        return TryGetTile(position, out TileBase tile) ? tile.TakeItem() : null;
     }
-    public CookType GetCookType(Vector2Int position)
+
+    /// <summary>
+    /// 타일의 아이템 이름 리스트를 반환하는 함수
+    /// </summary>
+    public bool TryGetTileItemNameList(Vector2Int position, out List<string> itemNameList)
     {
-        if (Map.TryGetValue(position, out TileBase tileBase))
+        if (TryGetTile(position, out TileBase tile))
         {
-            return tileBase.cookType;
+            itemNameList = tile.GetItemNameList();
+            return true;
         }
-        return CookType.Empty;
-    }
-    public bool SetTileItem(Vector2Int position, ItemBase item)
-    {
-        if (Map.TryGetValue(position, out TileBase tileBase))
-        {
-            if (tileBase.Item)
-            {
-                Map[position].Item = item;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        itemNameList = null;
         return false;
+    }
+    /// <summary>
+    /// 타일에 아이템을 넣는 함수
+    /// </summary>
+    public void PushTileItem(Vector2Int position, ItemBase item)
+    {
+        Map[position].SetItem(item);
     }
 }

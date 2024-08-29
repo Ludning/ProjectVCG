@@ -4,9 +4,10 @@ using UnityEngine.Serialization;
 public class StageManager : MonoBehaviour
 {
     [Header("Manager")]
-    public TableManager Table;
-    public SheetManager Sheet;
+    public TableManager TableManager;
+    public SheetManager SheetManager;
     public InteractableManager InteractableManager;
+    public RecipeManager RecipeManager;
 
     [FormerlySerializedAs("ui")] public UIContainer uiContainer;
     
@@ -20,16 +21,16 @@ public class StageManager : MonoBehaviour
 
     public void InitStage()
     {
-        Table.InitTable("string stageInfo");
+        TableManager.InitTable("string stageInfo");
         uiContainer.gameObject.SetActive(false);
         
         
         Controller.gameObject.SetActive(true);
         Items.SetActive(true);
         
-        Controller.Init(Table.startPosition, playerForwardDirection);
+        Controller.Init(TableManager.startPosition, playerForwardDirection);
         
         InteractableManager.Init();
-        Sheet.Init();
+        SheetManager.Init();
     }
 }

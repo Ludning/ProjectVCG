@@ -10,7 +10,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     private void Update()
     {
-        Debug.Log(SelectedChapterIndex + ":: Chapter");
-        Debug.Log(SelectedStageIndex + ":: Stage ");
+        /*Debug.Log(SelectedChapterIndex + ":: Chapter");
+        Debug.Log(SelectedStageIndex + ":: Stage ");*/
     }
 }
