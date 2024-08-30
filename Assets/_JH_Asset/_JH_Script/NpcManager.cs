@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;  // Make sure to include this for legacy Text
 using DG.Tweening;
-using Frameworks; // Make sure to include this for DOTween
+using Frameworks;
+using TMPro; // Make sure to include this for DOTween
 
 public class NPCManager : SingletonMonoBehaviour<NPCManager>
 {
     private Dictionary<string, string[]> _dialogueDictionary;
     private Coroutine TalkCoroutineRunning;
 
-    public Text dialogueText;  // Reference to the legacy Text component
+    public TextMeshProUGUI dialogueText;  // Reference to the legacy Text component
 
     // Start()
     private void Start()
