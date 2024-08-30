@@ -1,23 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;  // Make sure to include this for legacy Text
 using DG.Tweening;
-using Frameworks;
 using TMPro; // Make sure to include this for DOTween
-using DG.Tweening;
 
-public class NPCManager : SingletonMonoBehaviour<NPCManager>
+public class NPCManager : MonoBehaviour
 {
     private Dictionary<string, string[]> _dialogueDictionary;
+    [SerializeField] private UIContainer UIContainer;
 
-    public TextMeshProUGUI dialogueText;  // Reference to the legacy Text component
-
+    private void Awake()
+    {
+        Debug.Log("test");
+    }
     // Update()
     private void Update()
     {
         // 여러 줄 모두 출력할 때
-        if (Input.GetKeyDown(KeyCode.Alpha0))
+   /*     if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             string context = DataManager.Instance.GetGameData<ErrorData>(((int)ErrorType.NoTile).ToString()).Context;
             GetDialogue(context);
@@ -29,14 +29,22 @@ public class NPCManager : SingletonMonoBehaviour<NPCManager>
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             GetDialogue("HintMessage",0);
-        }
+        }*/
     }
 
-    private void GetDialogue(string msg, int index = -1)
+    public void GetMessage(ErrorType msg)
     {
-        dialogueText.text = "";
-        dialogueText.DOKill();
+        NPCMessagePopup messagePopup = UIContainer.GetUIBase<NPCMessagePopup>(MainUIType.NPCMessagePopup);
+        messagePopup.gameObject.SetActive(true);
+        Debug.Log(msg);
+        string context = DataManager.Instance.GetGameData<ErrorData>(((int)msg).ToString()).Context;
+        GetDialogue(messagePopup.MessageTextComoponent, context);
+    }
+    private void GetDialogue(TextMeshProUGUI textComponent, string msg, int index = -1)
+    {
+        textComponent.text = "";
+        textComponent.DOKill();
 
-        dialogueText.DOText(msg, 3f);
+        textComponent.DOText(msg, 3f);
     }
 }

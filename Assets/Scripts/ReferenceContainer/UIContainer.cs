@@ -20,12 +20,20 @@ public class UIContainer : MonoBehaviour
         GetUIBase<NPCMessagePopup>(MainUIType.NPCMessagePopup)?.gameObject.SetActive(false);
     }
 
-    private T GetUIBase<T>(MainUIType type) where T : IUIBase
+    public T GetUIBase<T>(MainUIType type) where T : IUIBase
     {
         if (!_elements.TryGetValue(type, out IUIBase uiBase))
         {
-            GameObject ui = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(typeof(T).ToString());
-            _elements.Add(type, ui.GetComponent<IUIBase>());
+            T component = GetComponentInChildren<T>();
+            if(component == null)
+            {
+                GameObject ui = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(typeof(T).ToString());
+                _elements.Add(type, ui.GetComponent<IUIBase>());
+            }
+            else
+            {
+                _elements.Add(type, component);
+            }
         }
         return (T)_elements[type];
     }

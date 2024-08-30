@@ -22,7 +22,7 @@ public class StageManager : MonoBehaviour
     public void InitStage()
     {
         TableManager.InitTable("string stageInfo");
-        uiContainer.gameObject.SetActive(false);
+        //uiContainer.gameObject.SetActive(false);
         
         
         Controller.gameObject.SetActive(true);

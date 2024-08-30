@@ -8,6 +8,7 @@ public class SheetManager : MonoBehaviour
     [Header("Manager")]
     [SerializeField] private StageManager Stage;
     [SerializeField] private InteractableManager InteractableManager;
+    [SerializeField] private NPCManager NPCManager;
     
     [Header("MainSheet")]
     [SerializeField] private Transform SheetParent;
@@ -112,6 +113,7 @@ public class SheetManager : MonoBehaviour
             ErrorType result = await RunBlockLogic(blockLogic);
             if (result != ErrorType.NoError)
             {
+                NPCManager.GetMessage(result);
                 Debug.LogError($"ErrorType : {result} ErrorMessage : {DataManager.Instance.GetGameData<ErrorData>(((int)result).ToString()).Context}");
                 return result;
             }

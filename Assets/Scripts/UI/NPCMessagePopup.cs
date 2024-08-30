@@ -5,5 +5,5 @@ using UnityEngine;
 
 public class NPCMessagePopup : MonoBehaviour, IUIBase
 {
-    [SerializeField] private TextMeshProUGUI MessageTextComoponent;
+    public TextMeshProUGUI MessageTextComoponent;
 }
