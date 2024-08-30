@@ -16,11 +16,11 @@ public enum LogicState
 public enum TileType
 {
     Empty,
-    WALK,
-    BLOCKING,
-    PASS,
-    SERVING,
-    CUSTOMER,
+    WALK = 10000,
+    BLOCKING = 10100,
+    PASS = 10001,
+    SERVING = 10110,
+    CUSTOMER = 10111,
     INGREDIENT,
     COOKING,
     TABLE,
@@ -114,20 +114,20 @@ public enum AssetType
 
 public enum ErrorType
 {
-    NoError,             // 에러 없음
-    UnKnownError,        // 알수 없는 에러
-    NoTile,              // 타일 없음
-    NotMove,             // 이동 불가 오류
-    NoPickableItem,      // 들 수 있는 물건 없음 오류
-    InventoryOverflow,   // 인벤토리 초과 오류
-    NoDropableItem,      // 내려놓을 오브젝트 없음 오류
-    InvalidDropTile,     // 내려놓을 수 없는 타일 오류
-    WrongItemOnTool,     // 조리도구에 알맞지 않은 오브젝트 내려놓음 오류
-    ItemAlreadyOnTile,   // 조리도구 아닌 타일에 이미 오브젝트 올려져 있음 오류
-    InvalidCookAction,   // 조리 타일 아닌 곳에서 조리 행동 오류
-    NoIngredientOnTile,  // 조리 타일에 올려진 재료가 없음 오류
-    InvalidCookCombo,    // 조리 불가능한 조합 조리 오류
-    StackLimitExceeded,  // 적치 가능 수치 초과 오류
-    ToolInventoryFull,   // 조리 도구 인벤토리 초과 오류
-    MissionNotStarted    // 미션 미시행 오류
+    NoError = 2015, // 에러 없음
+    UnKnownError = 2014, // 알수 없는 에러
+    NoTile = 2013, // 타일 없음
+    NotMove = 2000, // 이동 불가 오류
+    NoPickableItem = 2001, // 들 수 있는 물건 없음 오류
+    InventoryOverflow = 2002, // 인벤토리 초과 오류
+    NoDropableItem = 2003, // 내려놓을 오브젝트 없음 오류
+    InvalidDropTile = 2004, // 내려놓을 수 없는 타일 오류
+    WrongItemOnTool = 2005, // 조리도구에 알맞지 않은 오브젝트 내려놓음 오류
+    ItemAlreadyOnTile = 2006, // 조리도구 아닌 타일에 이미 오브젝트 올려져 있음 오류
+    InvalidCookAction = 2007, // 조리 타일 아닌 곳에서 조리 행동 오류
+    NoIngredientOnTile = 2008, // 조리 타일에 올려진 재료가 없음 오류
+    InvalidCookCombo = 2009, // 조리 불가능한 조합 조리 오류
+    StackLimitExceeded = 2010, // 적치 가능 수치 초과 오류
+    ToolInventoryFull = 2011, // 조리 도구 인벤토리 초과 오류
+    MissionNotStarted = 2012, // 미션 미시행 오류
 }

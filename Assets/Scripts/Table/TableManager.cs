@@ -17,15 +17,15 @@ public class TableManager : MonoBehaviour
         //TableData tableData = DataManager.Instance.GetTableData(stageInfo);
         TableData tableData = new TableData();
         tableData.Table = new Dictionary<Vector2Int, string>();
-        tableData.Table.Add(new Vector2Int(-1, -1), "10000");
-        tableData.Table.Add(new Vector2Int(-1, 0), "10000");
-        tableData.Table.Add(new Vector2Int(-1, 1), "10000");
-        tableData.Table.Add(new Vector2Int(0, -1), "10000");
-        tableData.Table.Add(new Vector2Int(0, 0), "10000");
-        tableData.Table.Add(new Vector2Int(0, 1), "10000");
-        tableData.Table.Add(new Vector2Int(1, -1), "10000");
-        tableData.Table.Add(new Vector2Int(1, 0), "10000");
-        tableData.Table.Add(new Vector2Int(1, 1), "10000");
+        tableData.Table.Add(new Vector2Int(-1, -1), ((int)TileType.WALK).ToString());
+        tableData.Table.Add(new Vector2Int(-1, 0), ((int)TileType.BLOCKING).ToString());
+        tableData.Table.Add(new Vector2Int(-1, 1), ((int)TileType.WALK).ToString());
+        tableData.Table.Add(new Vector2Int(0, -1), ((int)TileType.WALK).ToString());
+        tableData.Table.Add(new Vector2Int(0, 0),  ((int)TileType.WALK).ToString());
+        tableData.Table.Add(new Vector2Int(0, 1),  ((int)TileType.WALK).ToString());
+        tableData.Table.Add(new Vector2Int(1, -1), ((int)TileType.WALK).ToString());
+        tableData.Table.Add(new Vector2Int(1, 0),  ((int)TileType.WALK).ToString());
+        tableData.Table.Add(new Vector2Int(1, 1), ((int)TileType.WALK).ToString());
 
         foreach (var tileData in tableData.Table)
         {

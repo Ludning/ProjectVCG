@@ -38,6 +38,8 @@ public class DataManager : SingletonMonoBehaviour<DataManager>
                 return _gameData.CodingBlock as Dictionary<string, T>;
             case "FeedbackData":
                 return _gameData.Feedback as Dictionary<string, T>;
+            case "ErrorData":
+                return _gameData.ErrorMessage as Dictionary<string, T>;
             case "StageData":
                 return _gameData.Stage as Dictionary<string, T>;
             case "StageGoalData":
