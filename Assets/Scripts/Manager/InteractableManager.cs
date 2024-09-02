@@ -7,7 +7,8 @@ public class InteractableManager : MonoBehaviour
     private const string InteractableButtonName = "ButtonInteractable";
 
     [SerializeField] private Transform LogicButtonParent;
-    [SerializeField] private Transform GameControlButtonParent;
+    [SerializeField] private Transform StartParent;
+    [SerializeField] private Transform ClearParent;
     
     public Dictionary<BlockLogicType, InteractableUnityEventWrapper> InteractableButtons = new Dictionary<BlockLogicType, InteractableUnityEventWrapper>();
 
@@ -22,8 +23,11 @@ public class InteractableManager : MonoBehaviour
         InstantiateButton(buttonPrefab, LogicButtonParent, BlockLogicType.PushItem);
         InstantiateButton(buttonPrefab, LogicButtonParent, BlockLogicType.PopItem);
         
-        InstantiateButton(buttonPrefab, GameControlButtonParent, BlockLogicType.Start);
-        InstantiateButton(buttonPrefab, GameControlButtonParent, BlockLogicType.Clear);
+        InstantiateButton(buttonPrefab, StartParent, BlockLogicType.Start);
+        InstantiateButton(buttonPrefab, StartParent, BlockLogicType.Reset);
+        InstantiateButton(buttonPrefab, ClearParent, BlockLogicType.Clear);
+
+        InteractableButtons[BlockLogicType.Reset].gameObject.SetActive(false);
     }
 
     

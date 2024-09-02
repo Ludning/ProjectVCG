@@ -40,7 +40,8 @@ public class TableManager : MonoBehaviour
 
     public void ClearTable()
     {
-        
+        //TODO
+        Debug.Log("스테이지 초기화");
     }
     /// <summary>
     ///아이템이 없는지 체크하는 함수

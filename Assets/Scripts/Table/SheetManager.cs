@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using Cysharp.Threading.Tasks.Triggers;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 
 public class SheetManager : MonoBehaviour
@@ -9,7 +12,8 @@ public class SheetManager : MonoBehaviour
     [SerializeField] private StageManager Stage;
     [SerializeField] private InteractableManager InteractableManager;
     [SerializeField] private NPCManager NPCManager;
-    
+    [SerializeField] GameObject ErrorWarning;
+
     [Header("MainSheet")]
     [SerializeField] private Transform SheetParent;
     private List<BlockLogicBase> _blockLogicBases = new List<BlockLogicBase>();
@@ -51,6 +55,10 @@ public class SheetManager : MonoBehaviour
         {
             OnClick_SetLogic(BlockLogicType.Clear);
         }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            OnClick_SetLogic(BlockLogicType.Reset);
+        }
     }
 
 
@@ -76,11 +84,17 @@ public class SheetManager : MonoBehaviour
             case BlockLogicType.Start:
                 RunSheetBlock();
                 return;
+            case BlockLogicType.Reset: 
+                ResetSheetBlock();
+                return;
             case BlockLogicType.Clear:
                 ClearBlockLogic();
                 return;
         }
         GameObject tempPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>($"{type.ToString()}BlockLogic");
+
+        AddOutlineComponent(tempPrefab);
+
         BlockLogicBase logicBase = Instantiate(tempPrefab).GetComponent<BlockLogicBase>();
         
         if (logicBase != null)
@@ -88,6 +102,9 @@ public class SheetManager : MonoBehaviour
             AddBlockLogic(logicBase);
         }
     }
+
+    
+
     public void AddBlockLogic(BlockLogicBase blockLogic)
     {
         blockLogic.transform.SetParent(SheetParent, false);
@@ -102,21 +119,41 @@ public class SheetManager : MonoBehaviour
         }
         _blockLogicBases.Clear();
     }
+    public void ResetSheetBlock()
+    {
+        //기능 답안지  유지, 스테이지 원래상태 복귀
+        //RunBlockLogic를 중지해야함
+
+        Stage.InteractableManager.InteractableButtons[BlockLogicType.Start].gameObject.SetActive(true);
+        Stage.InteractableManager.InteractableButtons[BlockLogicType.Reset].gameObject.SetActive(false);
+        Stage.TableManager.ClearTable();
+    }
     public void RunSheetBlock()
     {
+        Stage.InteractableManager.InteractableButtons[BlockLogicType.Start].gameObject.SetActive(false);
+        Stage.InteractableManager.InteractableButtons[BlockLogicType.Reset].gameObject.SetActive(true);
         RunBlockLogics().Forget();
     }
     async UniTask<ErrorType> RunBlockLogics()
     {
+        int tempLenght = 0;
         foreach (var blockLogic in _blockLogicBases)
         {
+
             ErrorType result = await RunBlockLogic(blockLogic);
             if (result != ErrorType.NoError)
             {
                 NPCManager.GetMessage(result);
+                ActiveError(SheetParent, tempLenght);
+
                 Debug.LogError($"ErrorType : {result} ErrorMessage : {DataManager.Instance.GetGameData<ErrorData>(((int)result).ToString()).Context}");
                 return result;
+            } else
+            {
+                ActiveHint(SheetParent,tempLenght);
             }
+            tempLenght++;
+
         }
         return ErrorType.NoError;
     }
@@ -136,5 +173,67 @@ public class SheetManager : MonoBehaviour
         }
     }
 
+
+
+
+    public void AddOutlineComponent(GameObject tempPrefab)
+    {
+        if (!tempPrefab.TryGetComponent<Outline>(out Outline outline))
+        {
+            // The Outline component doesn't exist, so add it
+            outline = tempPrefab.AddComponent<Outline>();
+            outline.OutlineWidth = 23f;
+            outline.OutlineColor = new Color(0f, 0.87f, 1f); // Adjusted color value
+
+            Debug.Log($"Outline added. Width: {outline.OutlineWidth}, Color: {outline.OutlineColor}");
+        }
+        else
+        {
+            outline.OutlineWidth = 23f;
+            outline.OutlineColor = new Color(0f, 0.87f, 1f); // Adjusted color value
+        }
+        outline.enabled = false;
+    }
+    public void ActiveHint(Transform trs, int len)
+    {
+        for (int i = 0; i < trs.childCount; i++)
+        {
+            Transform child = trs.GetChild(i);
+            Outline outline = child.GetComponent<Outline>();
+            // 자식 오브젝트가 있는 경우 삭제
+            if (child.childCount > 0)
+            {
+                for (int j = 0; j < child.childCount; j++)
+                {
+                    Destroy(child.GetChild(j).gameObject);
+                }
+            }
+
+            if (outline != null)
+            {
+                // Enable the Outline component on the child at index 'len'
+                outline.enabled = (i == len);
+            }
+        }
+    }
+    public void ActiveError(Transform trs, int len)
+    {
+        for (int i = 0; i < trs.childCount; i++)
+        {
+            Transform child = trs.GetChild(i);
+            Outline outline = child.GetComponent<Outline>();
+
+            if (outline != null)
+            {
+                // Enable the Outline component on the child at index 'len'
+                outline.enabled = false;
+                if (i == len && ErrorWarning && child.childCount < 1)
+                {
+
+                    Instantiate(ErrorWarning, child);
+                }
+            }
+        }
+    }
 
 }

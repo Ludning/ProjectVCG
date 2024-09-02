@@ -27,6 +27,7 @@
     "RotateRightMat": "Materials/Logic/RotateRightMat",
     "PushItemMat": "Materials/Logic/PushItemMat",
     "PopItemMat": "Materials/Logic/PopItemMat",
-    "CookMat": "Materials/Logic/CookMat"
+    "CookMat": "Materials/Logic/CookMat",
+    "ResetMat": "Materials/Logic/ResetMat"
   }
 }

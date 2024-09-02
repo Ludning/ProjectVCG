@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7913145836853805423}
   - component: {fileID: 3986297726628722650}
   - component: {fileID: 2496545770322227119}
+  - component: {fileID: 3085805670709788741}
   m_Layer: 0
   m_Name: MoveBlockLogic
   m_TagString: Untagged
@@ -122,3 +123,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa9a115061f8e3d4c80b194e1c5edad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3085805670709788741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7038036788328824224}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0, g: 0.87, b: 1, a: 1}
+  outlineWidth: 23
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

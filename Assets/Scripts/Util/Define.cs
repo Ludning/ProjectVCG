@@ -58,6 +58,7 @@ public enum BlockLogicType
     PushItem,
     PopItem,
     Start,
+    Reset,
     Clear,
     Dash,
     Repeat,

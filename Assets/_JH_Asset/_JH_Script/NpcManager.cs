@@ -47,4 +47,8 @@ public class NPCManager : MonoBehaviour
 
         textComponent.DOText(msg, 3f);
     }
+
+
+  
+
 }

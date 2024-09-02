@@ -1,17 +1,10 @@
-﻿//
-//  OutlineFill.shader
-//  QuickOutline
-//
-//  Created by Chris Nolet on 2/21/18.
-//  Copyright © 2018 Chris Nolet. All rights reserved.
-//
-
-Shader "Custom/Outline Fill" {
+﻿Shader "Custom/Outline Fill" {
   Properties {
     [Enum(UnityEngine.Rendering.CompareFunction)] _ZTest("ZTest", Float) = 0
 
-    _OutlineColor("Outline Color", Color) = (1, 1, 1, 1)
+    _OutlineColor("Outline Color", Color) = (0.0, 1.0, 0.5, 1.0) // 형광 그린 색상
     _OutlineWidth("Outline Width", Range(0, 10)) = 2
+    _GlowIntensity("Glow Intensity", Range(1, 5)) = 2 // 추가: 빛나는 효과 강도
   }
 
   SubShader {
@@ -26,7 +19,7 @@ Shader "Custom/Outline Fill" {
       Cull Off
       ZTest [_ZTest]
       ZWrite Off
-      Blend SrcAlpha OneMinusSrcAlpha
+      Blend SrcAlpha One // 블렌딩 변경
       ColorMask RGB
 
       Stencil {
@@ -55,6 +48,7 @@ Shader "Custom/Outline Fill" {
 
       uniform fixed4 _OutlineColor;
       uniform float _OutlineWidth;
+      uniform float _GlowIntensity; // 추가: 빛나는 효과 강도
 
       v2f vert(appdata input) {
         v2f output;
@@ -67,7 +61,7 @@ Shader "Custom/Outline Fill" {
         float3 viewNormal = normalize(mul((float3x3)UNITY_MATRIX_IT_MV, normal));
 
         output.position = UnityViewToClipPos(viewPosition + viewNormal * -viewPosition.z * _OutlineWidth / 1000.0);
-        output.color = _OutlineColor;
+        output.color = _OutlineColor * _GlowIntensity; // 빛나는 효과 적용
 
         return output;
       }
