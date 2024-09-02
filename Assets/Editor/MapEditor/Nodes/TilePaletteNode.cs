@@ -5,10 +5,12 @@ using UnityEngine.UIElements;
 
 public class TilePaletteNode : MapNode
 {
+    public TileType TileType;
     public TilePaletteNode(TileType type)
     {
         SetStyle();
         SetTile(type);
+        TileType = type;
     }
     private void SetStyle()
     {

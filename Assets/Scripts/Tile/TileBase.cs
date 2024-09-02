@@ -43,9 +43,9 @@ public class TileBase : MonoBehaviour
         }
     }
     
-    public void InitTile(string tileName)
+    public void InitTile(TileType tileType)
     {
-        TileData tileData = DataManager.Instance.GetGameData<TileData>(tileName);
+        TileData tileData = DataManager.Instance.GetGameData<TileData>(((int)tileType).ToString());
         
         TileType = tileData.TileType;
         TileAttributeType = 

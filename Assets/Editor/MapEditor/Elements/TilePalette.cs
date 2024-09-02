@@ -48,7 +48,7 @@ public class TilePalette : VisualElement
     private void OnTileSelectionChange(TilePaletteNode square)
     {
         selectedElement = square;
-        Debug.Log("Selected element: " + selectedElement);
+        Debug.Log("Selected element: " + square.TileType);
         SelectedNodeChanged?.Invoke(selectedElement);
     }
 }

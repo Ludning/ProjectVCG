@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Resources;
 using UnityEditor;
 using UnityEngine;
@@ -14,8 +15,12 @@ public class MapEditorTool : EditorWindow
     private TilePalette _tilePalette;
     private Inspector _inspector;
 
-    private int _defalutWidth = 5;
-    private int _defalutHeight = 5;
+    private int _width = 5;
+    private int _height = 5;
+    
+    private PopupField<string> _stageDropdown;
+
+    private string _currentStage;
     
     [MenuItem("Map Editor/Map Editor Tool")]
     public static void ShowMyEditor()
@@ -31,92 +36,120 @@ public class MapEditorTool : EditorWindow
     
     public void CreateGUI()
     {
+        VisualElement toolbarContainer = new VisualElement();   // 상단 메뉴바를 포함할 컨테이너
+        VisualElement toolbar = new VisualElement();    // 상단 메뉴바 생성
+        TextField mapSizeXField = new TextField("X");
+        TextField mapSizeYField = new TextField("Y");
+        Button initButton = new Button(OnInitMapData) { text = "Init" };    // 맵 크기 적용 버튼
+        Button saveButton = new Button(OnSaveMapData) { text = "Save" };    // 저장 버튼
+        Button loadButton = new Button(() => OnLoadMapData(_stageDropdown.value)) { text = "Load" };    // 로드 버튼
+        VisualElement mainContainer = new VisualElement();  // 나머지 UI 요소들을 담을 컨테이너
         VisualElement leftContainer = new VisualElement();
         VisualElement rightContainer = new VisualElement();
         
+        var stageDataDictionary = DataManager.Instance.GetGameDataDictionary<StageData>();
+        _stageDropdown = new PopupField<string>("Select Stage", stageDataDictionary.Keys.ToList(), 0);  // 스테이지 선택 드롭다운
+        
+        _mapDrawSpace = new MapDrawSpace(_width, _height);
+        _tilePalette = new TilePalette();
+        _inspector = new Inspector();
+        
+        mapSizeXField.value = _width.ToString();
+        mapSizeXField.RegisterValueChangedCallback(evt => 
+        { 
+            _width = int.Parse(evt.newValue);
+            mapSizeXField.value = evt.newValue.ToString();
+        });
+        mapSizeYField.value = _height.ToString();
+        mapSizeYField.RegisterValueChangedCallback(evt => 
+        { 
+            _height = int.Parse(evt.newValue);
+            mapSizeYField.value = evt.newValue.ToString();
+        });
+        
+        _stageDropdown.RegisterValueChangedCallback(evt => OnStageChanged(evt.newValue));
+        
+        
         // 스타일 설정 (필요에 따라 변경)
-        rootVisualElement.style.flexDirection = FlexDirection.Row;
+        toolbarContainer.style.flexDirection = FlexDirection.Column;
+        toolbar.style.flexDirection = FlexDirection.Row;
+        mapSizeXField.style.width = 200;
+        mapSizeYField.style.width = 200;
+        mainContainer.style.flexDirection = FlexDirection.Row;
+        mainContainer.style.flexGrow = 1; // 남은 공간을 모두 차지하도록 설정
+        _stageDropdown.style.flexGrow = 1;
+        rootVisualElement.style.flexDirection = FlexDirection.Column;
         leftContainer.style.width = Length.Percent(70);
         rightContainer.style.width = Length.Percent(30);
         rightContainer.style.flexDirection = FlexDirection.Column;
         rightContainer.style.flexGrow = 1;
-        
-        _mapDrawSpace = new MapDrawSpace(_defalutWidth, _defalutHeight);
-        _tilePalette = new TilePalette();
-        _inspector = new Inspector();
         _tilePalette.style.height = Length.Percent(50);
         _inspector.style.height = Length.Percent(50);
+        
+        //계층 구조 설정
+        toolbar.Add(mapSizeXField);
+        toolbar.Add(mapSizeYField);
+        toolbar.Add(initButton);
+        toolbar.Add(_stageDropdown);
+        toolbar.Add(saveButton);
+        toolbar.Add(loadButton);
+        toolbarContainer.Add(toolbar);  // 메뉴바를 컨테이너에 추가
+        
         leftContainer.Add(_mapDrawSpace);
         rightContainer.Add(_tilePalette);
         rightContainer.Add(_inspector);
-        rootVisualElement.Add(leftContainer);
-        rootVisualElement.Add(rightContainer);
+        
+        mainContainer.Add(leftContainer);
+        mainContainer.Add(rightContainer);
+
+        // 최상위 컨테이너에 메뉴바와 나머지 UI 요소들을 추가
+        rootVisualElement.Add(toolbarContainer);
+        rootVisualElement.Add(mainContainer);
 
         _mapDrawSpace.SelectedNodeChanged += OnNodeSelectionChange;
-
-        /*//project의 모든 sprites를 list에 저장
-        var allObjectGuids = AssetDatabase.FindAssets("t:Sprite");
-        var allObjects = new List<Sprite>();
-        foreach (var guid in allObjectGuids)
-        {
-            allObjects.Add(AssetDatabase.LoadAssetAtPath<Sprite>(AssetDatabase.GUIDToAssetPath(guid)));
-        }
-        //OnLoadResource();
-
-
-        // 왼쪽 창을 고정하여 두 개의 창으로 된 보기를 만듭니다.
-        //var splitView = new TwoPaneSplitView(0, 250, TwoPaneSplitViewOrientation.Horizontal);
-
-        // 패널을 루트 요소에 자식으로 추가하여 시각적 트리에 추가합니다.
-        //rootVisualElement.Add(splitView);
-
-        //var leftGridPane = new UnityEngine.UIElements.;
-
-        // TwoPaneSplitView에는 항상 두 개의 자식 요소가 필요합니다.
-        //ScrollView rightContainer = new ScrollView(ScrollViewMode.Vertical);*/
-        /*// 모든 스프라이트의 이름으로 목록 뷰를 초기화합니다.
-        //leftPane.makeItem = () => new Label();
-        //leftPane.bindItem = (item, index) => { (item as Label).text = Tiles[index].name; };
-        //leftPane.itemsSource = Tiles;
-
-        // 사용자의 선택에 반응합니다.
-        //leftPane.selectionChanged += OnTileSelectionChange;
-
-        // 핫 새로 고침 이전으로 선택 인덱스를 복원합니다.
-        //leftPane.selectedIndex = m_SelectedIndex;
-
-        // 선택 항목이 변경되면 선택 색인을 저장합니다.
-        //leftPane.selectionChanged += (items) => { m_SelectedIndex = leftPane.selectedIndex; };*/
+        _tilePalette.SelectedNodeChanged += OnClickTilePallete;
     }
 
-    private void OnLoadMapData()
+    private void OnLoadMapData(string stageName)
     {
-        
+        TableData tableData = DataManager.Instance.GetTableData(stageName);
+        if (tableData != null)
+            _mapDrawSpace.LoadGrid(tableData);
+        else
+            _mapDrawSpace.CreateGrid(5, 5);
+    }
+
+    private void OnSaveMapData()
+    {
+        Debug.Log("OnSaveMapData");
+        MapData mapData = MapDataReader.LoadMapData();
+        if (mapData == null)
+            mapData = new MapData();
+        if (mapData.TableData == null)
+            mapData.TableData = new Dictionary<string, TableData>();
+        mapData.TableData["3000"] = _mapDrawSpace.GetTableData();
+        MapDataReader.SaveMapData(mapData);
     }
     
-    private void OnNodeSelectionChange(MapNode selectedNode)
+    private void OnInitMapData()
+    {
+        _mapDrawSpace.CreateGrid(_width, _height);
+    }
+    
+    private void OnStageChanged(string stage)
+    {
+        _currentStage = stage;
+        OnLoadMapData(_currentStage);
+    }
+    
+    private void OnNodeSelectionChange(MapDrawSpaceNode selectedNode)
     {
         _inspector.SetInspector(selectedNode);
-        /*// Clear all previous content from the pane.
-        // 창에서 이전 콘텐츠를 모두 지웁니다.
-        m_RightPane.Clear();
-
-        var enumerator = selectedItems.GetEnumerator();
-        if (enumerator.MoveNext())
-        {
-            var selectedSprite = enumerator.Current as Sprite;
-            if (selectedSprite != null)
-            {
-                // Add a new Image control and display the sprite.
-                // 새 이미지 컨트롤을 추가하고 스프라이트를 표시합니다.
-                var spriteImage = new Image();
-                spriteImage.scaleMode = ScaleMode.ScaleToFit;
-                spriteImage.sprite = selectedSprite;
-
-                // Add the Image control to the right-hand pane.
-                // 오른쪽 창에 이미지 컨트롤을 추가합니다.
-                m_RightPane.Add(spriteImage);
-            }
-        }*/
+    }
+    private void OnClickTilePallete(TilePaletteNode selectedNode)
+    {
+        _mapDrawSpace.selectedElement.SetNode(selectedNode.TileType);
+        _mapDrawSpace.selectedElement.SetTile(selectedNode.TileType);
+        _inspector.SetInspector(_mapDrawSpace.selectedElement);
     }
 }

@@ -19,27 +19,61 @@ public class MapDrawSpace : VisualElement
         xSize = x;
         ySize = y;
         SetStyle();
-        LoadOrCreateGrid(xSize, ySize);
+        CreateGrid(xSize, ySize);
     }
 
-    private void LoadOrCreateGrid(int x, int y)
+    public void CreateGrid(int x, int y)
     {
+        Clear();
+        
         gridElements = new MapDrawSpaceNode[x, y];
 
         // 그리드의 총 크기와 MapDrawSpace의 크기를 고려하여 중앙 정렬 계산
-        float gridWidth = x * 70; // 70은 각 MapNode의 width (50) + margin (20)이라고 가정
-        float gridHeight = y * 70; // 70은 각 MapNode의 height (50) + margin (20)이라고 가정
+        float gridWidth = x * 60; // 70은 각 MapNode의 width (50) + margin (20)이라고 가정
+        float gridHeight = y * 60; // 70은 각 MapNode의 height (50) + margin (20)이라고 가정
         
         // MapDrawSpace의 중앙에 맞추기 위한 위치 조정
         int startX = (int)((1000 * 0.7 - gridWidth) / 2);
         int startY = (int)((720 - gridHeight) / 2);
         
-        for (int row = 0; row < y; row++)
+        for (int col = 0; col < y; col++)
         {
-            for (int col = 0; col < x; col++)
+            for (int row = 0; row < x; row++)
             {
                 var square = CreateSquareElement(row, col, startX, startY);
-                gridElements[col, row] = square;
+                gridElements[row, col] = square;
+                Add(square);
+            }
+        }
+    }
+
+    public void LoadGrid(TableData tableData)
+    {
+        Clear();
+        
+        xSize = tableData.Size.x;
+        ySize = tableData.Size.y;
+        
+        gridElements = new MapDrawSpaceNode[xSize, ySize];
+        
+        // 그리드의 총 크기와 MapDrawSpace의 크기를 고려하여 중앙 정렬 계산
+        float gridWidth = xSize * 60; // 70은 각 MapNode의 width (50) + margin (20)이라고 가정
+        float gridHeight = ySize * 60; // 70은 각 MapNode의 height (50) + margin (20)이라고 가정
+        
+        // MapDrawSpace의 중앙에 맞추기 위한 위치 조정
+        int startX = (int)((1000 * 0.7 - gridWidth) / 2);
+        int startY = (int)((720 - gridHeight) / 2);
+        
+        foreach (var table in tableData.Table)
+        {
+            
+        }
+        for (int col = 0; col < ySize; col++)
+        {
+            for (int row = 0; row < xSize; row++)
+            {
+                var square = CreateSquareElement(row, col, startX, startY);
+                gridElements[row, col] = square;
                 Add(square);
             }
         }
@@ -60,19 +94,6 @@ public class MapDrawSpace : VisualElement
         square.RegisterCallback<ClickEvent>(evt => OnNodeSelectionChange(square));
         return square;
     }
-    
-    // VisualElement에 이미지를 설정하는 메서드
-    /*public void SetImage(int row, int col, Texture2D texture)
-    {
-        if (row >= 0 && row < gridSize && col >= 0 && col < gridSize)
-        {
-            var image = gridElements[row, col].Q<Image>();
-            if (image != null)
-            {
-                image.image = texture;
-            }
-        }
-    }*/
 
     //선택된 Node가 변경되었을 때 호출되는 함수
     private void OnNodeSelectionChange(MapDrawSpaceNode square)
@@ -80,20 +101,22 @@ public class MapDrawSpace : VisualElement
         selectedElement?.UnSelectedNode();
         selectedElement = square;
         selectedElement.OnSelectedNode();
-        Debug.Log("Selected element: " + selectedElement);
-        //선택된 Element의 강조 추가
-        //기존에 선택된 Element의 강조 제거
-        /*// 기존에 선택된 Element의 강조 제거
-        if (selectedElement != null)
+        SelectedNodeChanged?.Invoke(selectedElement);
+        Debug.Log("Selected element: " + selectedElement.Node.TileType);
+    }
+
+    public TableData GetTableData()
+    {
+        TableData tableData = new TableData();
+        tableData.Size = new Vector2Int(xSize, ySize);
+        tableData.Table = new Dictionary<Vector2Int, NodeData>();
+        for (int col = 0; col < ySize; col++)
         {
-            //selectedElement.style.borderColor = Color.black;
+            for (int row = 0; row < xSize; row++)
+            {
+                tableData.Table.Add(gridElements[row, col].Position, gridElements[row, col].Node);
+            }
         }
-
-        // 새로 선택된 Element의 강조 추가
-        //selectedElement = square;
-        //selectedElement.style.borderColor = Color.red;
-
-        // 선택된 VisualElement를 반환하는 로직 추가 가능
-        // 예: Debug.Log("Selected element: " + selectedElement);*/
+        return tableData;
     }
 }

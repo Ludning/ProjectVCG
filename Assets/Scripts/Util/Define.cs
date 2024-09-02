@@ -40,9 +40,9 @@ public enum LogicState
 
 public enum TileType
 {
-    Empty,
+    EMPTY = 0,
     WALK = 10000,
-    BLOCKING = 10100,
+    WALL = 10100,
     PASS = 10001,
     SERVING = 10110,
     CUSTOMER = 10111,

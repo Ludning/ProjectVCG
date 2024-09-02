@@ -5,12 +5,28 @@ using UnityEngine.UIElements;
 
 public class MapDrawSpaceNode : MapNode
 {
-    
+    public Vector2Int Position;
+    public NodeData Node;
     public MapDrawSpaceNode(int x, int y, int startX, int startY)
     {
         SetStyle(x, y, startX, startY);
         TileType type = MapDataReader.LoadTileType(x, y);
+        Position = new Vector2Int(x, y);
+        SetNode(type);
         SetTile(type);
+    }
+    public void SetNode(TileType type)
+    {
+        switch (type)
+        {
+            case TileType.EMPTY:
+                Node = null;
+                break;
+            default:
+                Node = new NodeData();
+                Node.TileType = type;
+                break;
+        }
     }
     private void SetStyle(int x, int y, int startX, int startY)
     {
@@ -19,9 +35,9 @@ public class MapDrawSpaceNode : MapNode
         style.height = 50;
         
         // Absolute 위치 설정
-        style.position = Position.Absolute;
-        style.left = startY + y * 70;
-        style.top = startX + x * 70;
+        style.position = UnityEngine.UIElements.Position.Absolute;
+        style.left = startY + y * 60;
+        style.top = startX + x * 60;
         
         style.alignItems = Align.Center;         // 수평 중앙 정렬
         style.justifyContent = Justify.Center;   // 수직 중앙 정렬
@@ -31,7 +47,7 @@ public class MapDrawSpaceNode : MapNode
 
     public void OnSelectedNode()
     {
-        style.backgroundColor = new Color(1, 0, 1, 0.2f);  // 연한 빨간색
+        style.backgroundColor = new Color(1, 0, 0, 1);  // 연한 빨간색
     }
     public void UnSelectedNode()
     {

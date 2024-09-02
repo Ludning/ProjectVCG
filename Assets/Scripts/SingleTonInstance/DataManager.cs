@@ -69,15 +69,29 @@ public class DataManager : Singleton<DataManager>
 
         return null;
     }
-    
-    public TableData GetTableData(string key)
+    public MapData GetMapData()
     {
         if (_mapData == null)
         {
             TextAsset jsonFile = Addressables.LoadAssetAsync<TextAsset>(MapDataJsonPath).WaitForCompletion();
-            _mapData = JsonConvert.DeserializeObject<MapData>(jsonFile.text);
+            if (jsonFile == null)
+                return null;
+            _mapData = JsonUtility.FromJson<MapData>(jsonFile.text);
         }
 
+        return _mapData;
+    }
+    public TableData GetTableData(string key)
+    {
+        Debug.Log("GetTableData");
+        Debug.Log("GetTableData");
+        if (_mapData == null)
+        {
+            TextAsset jsonFile = Addressables.LoadAssetAsync<TextAsset>(MapDataJsonPath).WaitForCompletion();
+            //_mapData = JsonUtility.FromJson<MapData>(jsonFile.text);
+            _mapData = JsonConvert.DeserializeObject<MapData>(jsonFile.text);
+        }
+        
         return _mapData.TableData.GetValueOrDefault(key);
     }
 }

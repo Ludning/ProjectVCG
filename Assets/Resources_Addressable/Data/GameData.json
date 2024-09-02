@@ -443,6 +443,18 @@
     }
   },
   "Tile": {
+    "0": {
+      "Index": "0",
+      "Description": "비어있는 공간",
+      "PrefabName": "",
+      "ImageName": "",
+      "TileType": 0,
+      "Moveable": false,
+      "Pushable": false,
+      "Popable": false,
+      "Stackable": false,
+      "InventoryCount": 0
+    },
     "10000": {
       "Index": "10000",
       "Description": "바닥 타일, PC가 이동할 바닥 구성용 육면체",
@@ -460,7 +472,7 @@
       "Description": "벽 타일, PC의 이동을 제한할 벽 구성용 육면체",
       "PrefabName": "Wall_Tile",
       "ImageName": "Wall_Image",
-      "TileType": 10000,
+      "TileType": 10100,
       "Moveable": false,
       "Pushable": false,
       "Popable": false,

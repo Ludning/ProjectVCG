@@ -16,16 +16,16 @@ public class TableManager : MonoBehaviour
         //현재 스테이지 정보를 받아온 후 초기화
         //TableData tableData = DataManager.Instance.GetTableData(stageInfo);
         TableData tableData = new TableData();
-        tableData.Table = new Dictionary<Vector2Int, string>();
-        tableData.Table.Add(new Vector2Int(-1, -1), ((int)TileType.WALK).ToString());
-        tableData.Table.Add(new Vector2Int(-1, 0), ((int)TileType.BLOCKING).ToString());
-        tableData.Table.Add(new Vector2Int(-1, 1), ((int)TileType.WALK).ToString());
-        tableData.Table.Add(new Vector2Int(0, -1), ((int)TileType.WALK).ToString());
-        tableData.Table.Add(new Vector2Int(0, 0),  ((int)TileType.WALK).ToString());
-        tableData.Table.Add(new Vector2Int(0, 1),  ((int)TileType.WALK).ToString());
-        tableData.Table.Add(new Vector2Int(1, -1), ((int)TileType.WALK).ToString());
-        tableData.Table.Add(new Vector2Int(1, 0),  ((int)TileType.WALK).ToString());
-        tableData.Table.Add(new Vector2Int(1, 1), ((int)TileType.WALK).ToString());
+        tableData.Table = new Dictionary<Vector2Int, NodeData>();
+        tableData.Table.Add(new Vector2Int(-1, -1), new NodeData(){TileType = TileType.WALK});
+        tableData.Table.Add(new Vector2Int(-1, 0), new NodeData(){TileType = TileType.WALL});
+        tableData.Table.Add(new Vector2Int(-1, 1), new NodeData(){TileType = TileType.WALK});
+        tableData.Table.Add(new Vector2Int(0, -1), new NodeData(){TileType = TileType.WALK});
+        tableData.Table.Add(new Vector2Int(0, 0), new NodeData(){TileType = TileType.WALK});
+        tableData.Table.Add(new Vector2Int(0, 1), new NodeData(){TileType = TileType.WALK});
+        tableData.Table.Add(new Vector2Int(1, -1), new NodeData(){TileType = TileType.WALK});
+        tableData.Table.Add(new Vector2Int(1, 0), new NodeData(){TileType = TileType.WALK});
+        tableData.Table.Add(new Vector2Int(1, 1), new NodeData(){TileType = TileType.WALK});
 
         foreach (var tileData in tableData.Table)
         {
@@ -33,7 +33,7 @@ public class TableManager : MonoBehaviour
             GameObject tile = Instantiate(tilePrefab, tableParent);
             tile.transform.position = new Vector3(tileData.Key.x, 0, tileData.Key.y);
             TileBase tileBase = tile.GetComponent<TileBase>();
-            tileBase.InitTile(tileData.Value);
+            tileBase.InitTile(tileData.Value.TileType);
             map.Add(tileData.Key, tileBase);
         }
     }
@@ -67,7 +67,7 @@ public class TableManager : MonoBehaviour
         {
             return tileBase.TileType;
         }
-        return TileType.Empty;
+        return TileType.EMPTY;
     }
     /// <summary>
     /// 타일 위치를 반환받는 함수
