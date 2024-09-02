@@ -19,16 +19,7 @@ public class MoveLogic : BlockLogicBase
             return ErrorType.NotMove;
         
         return ErrorType.NoError;
-        
-        
-        /*if (owner.TableManager.TryGetTile(position, out TileBase tile))
-        {
-            if (tile.TileType != TileType.WALK)
-                return ErrorType.NotMove;
-            if (tile.IsInventoryEmpty != true)
-                return ErrorType.NotMove;
-        }
-        return ErrorType.NoError;*/
+
     }
 
     public override LogicState Execute(StageManager owner)

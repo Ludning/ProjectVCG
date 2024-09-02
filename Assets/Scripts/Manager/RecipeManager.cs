@@ -8,7 +8,7 @@ public class RecipeManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManag
     private List<RecipeBase> recipes = new List<RecipeBase>();
 
     public int cursor = 0;
-    RecipeBase CurrentRecipe => recipes[cursor];
+    public RecipeBase CurrentRecipe => recipes[cursor];
     
     private void Awake()
     {
@@ -58,9 +58,10 @@ public class RecipeManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManag
         return true;
     }
 
-    public void CompleteRecipe(string recipeName)
+    public void CompleteCurrentRecipe()
     {
         CurrentRecipe.IsComplete = true;
-        recipePopup.HideRecipe(recipeName);
+        recipePopup.HideRecipe(CurrentRecipe.RecipeName);
+        cursor++;
     }
 }

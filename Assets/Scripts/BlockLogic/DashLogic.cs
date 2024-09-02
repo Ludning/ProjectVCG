@@ -7,9 +7,13 @@ public class DashLogic : BlockLogicBase
     public override ErrorType IsExecutable(StageManager owner)
     {
         var position = owner.Controller.PlayerForwardPosition;
-        
+
+        //타일 존재 체크
+        if (owner.TableManager.PeekTile(position) == null)
+            return ErrorType.NoTile;
+
         //지형 체크
-        if(!owner.TableManager.PeekTile(position).CheakTileAttribute(TileAttributeCheckType.WalkAble))
+        if (!owner.TableManager.PeekTile(position).CheakTileAttribute(TileAttributeCheckType.WalkAble))
             return ErrorType.NotMove;
         
         //장애물(재료등) 체크

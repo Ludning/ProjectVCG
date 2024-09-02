@@ -104,6 +104,10 @@ public class TileBase : MonoBehaviour
         item.transform.SetParent(transform, false);
         item.transform.position = transform.position + Vector3.up * 1.5f;
     }
+    public void ClearItem()
+    {
+        //TODO
+    }
     public void OnItemSpawn()
     {
 

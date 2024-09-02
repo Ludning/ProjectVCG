@@ -7,6 +7,8 @@ public class RecipeBase // Assets/Scripts/Recipe/RecipeBase.cs
 
     public List<string> Ingredients = new List<string>();
 
+    public string Result;
+
     // [생성자] RecipeBase의 목표 음식 또는 재료를 초기화
     public RecipeBase(string recipeName)
     {

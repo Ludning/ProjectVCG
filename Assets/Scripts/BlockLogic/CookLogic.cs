@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class CookLogic : BlockLogicBase
 {
@@ -32,7 +33,17 @@ public class CookLogic : BlockLogicBase
 
     public override LogicState Execute(StageManager owner)
     {
-        
-        return LogicState.Failure;
+        var position = owner.Controller.PlayerForwardPosition;
+        TileBase tile =  owner.TableManager.PeekTile(position);
+        string resultName = owner.RecipeManager.CurrentRecipe.Result;
+
+        GameObject foodPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(resultName);
+
+        tile.ClearItem();
+        GameObject food = Instantiate(foodPrefab);
+        tile.SetItem(food.GetComponent<ItemBase>());
+        //TODO
+        owner.RecipeManager.CompleteCurrentRecipe();
+        return LogicState.Success;
     }
 }
