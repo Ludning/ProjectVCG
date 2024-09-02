@@ -19,7 +19,7 @@ public class NPCManager : SingletonMonoBehaviour<NPCManager>
         // 여러 줄 모두 출력할 때
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
-            string context = DataManager.Instance.GetGameData<ErrorData>(((int)ErrorType.NoTile).ToString()).Context;
+            string context = DataManager.Instance.GetGameData<ErrorMessageData>(((int)ErrorType.NoTile).ToString()).Context;
             GetDialogue(context);
             //GetDialogue("IntroduceBlockRun");
         }

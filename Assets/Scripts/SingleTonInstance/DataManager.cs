@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-public class DataManager : SingletonMonoBehaviour<DataManager>
+public class DataManager : Singleton<DataManager>
 {
     private GameData _gameData;
     private AssetAddressData _assetAddressData;
@@ -64,6 +64,8 @@ public class DataManager : SingletonMonoBehaviour<DataManager>
             return _assetAddressData.GameObject.GetValueOrDefault(key);
         if (typeof(T) == typeof(Material))
             return _assetAddressData.Material.GetValueOrDefault(key);
+        if (typeof(T) == typeof(Sprite))
+            return _assetAddressData.Sprite.GetValueOrDefault(key);
 
         return null;
     }

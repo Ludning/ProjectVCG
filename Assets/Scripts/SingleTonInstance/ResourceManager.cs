@@ -10,7 +10,7 @@ public class ResourceManager : Singleton<ResourceManager>
 {
     private Dictionary<Type, Dictionary<string, Object>> _resourceDictionary;
     
-    private T LoadResource<T>(string resourceName) where T : Object
+    public T LoadResource<T>(string resourceName) where T : Object
     {
         string resourcePath = DataManager.Instance.GetAssetAddress<T>(resourceName);
         

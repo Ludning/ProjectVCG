@@ -1,6 +1,6 @@
 public class PcData
 {
-    public string ID;
+    public string Index;
     public string Description;
     public string PrefabName;
     public int InventoryMax;

@@ -1,7 +1,7 @@
 
-public class ErrorData
+public class ErrorMessageData
 {
-    public string ID;
+    public string Index;
     public string Description;
     public string Context;
 }
