@@ -17,16 +17,14 @@ public class TableManager : MonoBehaviour
         //TableData tableData = DataManager.Instance.GetTableData(stageInfo);
         TableData tableData = new TableData();
         tableData.Table = new Dictionary<Vector2Int, NodeData>();
-        tableData.Table.Add(new Vector2Int(-1, -1), new NodeData(){TileType = TileType.WALK});
-        tableData.Table.Add(new Vector2Int(-1, 0), new NodeData(){TileType = TileType.WALL});
-        tableData.Table.Add(new Vector2Int(-1, 1), new NodeData(){TileType = TileType.WALK});
-        tableData.Table.Add(new Vector2Int(0, -1), new NodeData(){TileType = TileType.WALK});
-        tableData.Table.Add(new Vector2Int(0, 0), new NodeData(){TileType = TileType.WALK});
-        tableData.Table.Add(new Vector2Int(0, 1), new NodeData(){TileType = TileType.WALK});
-        tableData.Table.Add(new Vector2Int(1, -1), new NodeData(){TileType = TileType.WALK});
-        tableData.Table.Add(new Vector2Int(1, 0), new NodeData(){TileType = TileType.WALK});
-        tableData.Table.Add(new Vector2Int(1, 1), new NodeData(){TileType = TileType.WALK});
-
+        for (int i = 0; i < 9; i++)
+        {
+            for (int k = 0; k < 9; k++)
+            {
+                tableData.Table.Add(new Vector2Int(i, k), new NodeData(){TileType = TileType.WALK});
+            }
+        }
+        
         foreach (var tileData in tableData.Table)
         {
             GameObject tilePrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("Tile");

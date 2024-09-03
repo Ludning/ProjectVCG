@@ -20,7 +20,7 @@ public class MapEditorTool : EditorWindow
     
     private PopupField<string> _stageDropdown;
 
-    private string _currentStage;
+    private string _currentStage = "3000";
     
     [MenuItem("Map Editor/Map Editor Tool")]
     public static void ShowMyEditor()
@@ -123,11 +123,13 @@ public class MapEditorTool : EditorWindow
     {
         Debug.Log("OnSaveMapData");
         MapData mapData = MapDataReader.LoadMapData();
+        
         if (mapData == null)
             mapData = new MapData();
         if (mapData.TableData == null)
             mapData.TableData = new Dictionary<string, TableData>();
-        mapData.TableData["3000"] = _mapDrawSpace.GetTableData();
+        
+        mapData.TableData[_currentStage] = _mapDrawSpace.GetTableData();
         MapDataReader.SaveMapData(mapData);
     }
     

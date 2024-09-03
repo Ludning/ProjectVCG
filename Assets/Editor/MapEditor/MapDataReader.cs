@@ -18,7 +18,14 @@ public class MapDataReader
         Debug.Log("SaveMapData");
         //var json = JsonUtility.ToJson(mapData);
         //var json = JsonConvert.SerializeObject(mapData);
-        var json = JsonConvert.SerializeObject(mapData, Formatting.Indented);
+        
+        JsonSerializerSettings settings = new JsonSerializerSettings();
+        settings.Converters.Add(new Vector2IntConverter());
+        settings.Converters.Add(new DictionaryVector2IntConverter());
+
+        string json = JsonConvert.SerializeObject(mapData, settings);
+        
+        //var json = JsonConvert.SerializeObject(mapData, Formatting.Indented);
         File.WriteAllText(dataJsonPath, json);
     }
     
@@ -27,15 +34,16 @@ public class MapDataReader
         StageData stage = DataManager.Instance.GetGameData<StageData>(key);
         return stage;
     }
+
+    public static NodeData LoadNodeData(TableData data, int x, int y)
+    {
+        return data.Table[new Vector2Int(x, y)];
+    }
     
     public static Sprite LoadTileSprite(TileType type)
     {
         TileData data = DataManager.Instance.GetGameData<TileData>(((int)type).ToString());
         Sprite sprite = ResourceManager.Instance.LoadResource<Sprite>(data.ImageName);
         return sprite;
-    }
-    public static TileType LoadTileType(int x, int y)
-    {
-        return TileType.WALK;
     }
 }

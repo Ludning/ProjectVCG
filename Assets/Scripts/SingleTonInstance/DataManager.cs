@@ -76,7 +76,12 @@ public class DataManager : Singleton<DataManager>
             TextAsset jsonFile = Addressables.LoadAssetAsync<TextAsset>(MapDataJsonPath).WaitForCompletion();
             if (jsonFile == null)
                 return null;
-            _mapData = JsonUtility.FromJson<MapData>(jsonFile.text);
+            //_mapData = JsonUtility.FromJson<MapData>(jsonFile.text);
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.Converters.Add(new Vector2IntConverter());
+            settings.Converters.Add(new DictionaryVector2IntConverter());
+            
+            _mapData = JsonConvert.DeserializeObject<MapData>(jsonFile.text, settings);
         }
 
         return _mapData;
@@ -89,7 +94,13 @@ public class DataManager : Singleton<DataManager>
         {
             TextAsset jsonFile = Addressables.LoadAssetAsync<TextAsset>(MapDataJsonPath).WaitForCompletion();
             //_mapData = JsonUtility.FromJson<MapData>(jsonFile.text);
-            _mapData = JsonConvert.DeserializeObject<MapData>(jsonFile.text);
+            //_mapData = JsonConvert.DeserializeObject<MapData>(jsonFile.text);
+            
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.Converters.Add(new Vector2IntConverter());
+            settings.Converters.Add(new DictionaryVector2IntConverter());
+
+            _mapData = JsonConvert.DeserializeObject<MapData>(jsonFile.text, settings);
         }
         
         return _mapData.TableData.GetValueOrDefault(key);

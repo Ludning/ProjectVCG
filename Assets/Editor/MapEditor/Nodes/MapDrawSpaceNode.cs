@@ -7,26 +7,19 @@ public class MapDrawSpaceNode : MapNode
 {
     public Vector2Int Position;
     public NodeData Node;
-    public MapDrawSpaceNode(int x, int y, int startX, int startY)
+    public MapDrawSpaceNode(TableData tableData, int x, int y, int startX, int startY)
     {
         SetStyle(x, y, startX, startY);
-        TileType type = MapDataReader.LoadTileType(x, y);
         Position = new Vector2Int(x, y);
+        TileType type;
+        type = tableData == null ? TileType.EMPTY : MapDataReader.LoadNodeData(tableData, x, y).TileType;
         SetNode(type);
         SetTile(type);
     }
     public void SetNode(TileType type)
     {
-        switch (type)
-        {
-            case TileType.EMPTY:
-                Node = null;
-                break;
-            default:
-                Node = new NodeData();
-                Node.TileType = type;
-                break;
-        }
+        Node = new NodeData();
+        Node.TileType = type;
     }
     private void SetStyle(int x, int y, int startX, int startY)
     {

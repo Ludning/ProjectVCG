@@ -25,7 +25,8 @@ public class MapDrawSpace : VisualElement
     public void CreateGrid(int x, int y)
     {
         Clear();
-        
+        xSize = x;
+        ySize = y;
         gridElements = new MapDrawSpaceNode[x, y];
 
         // 그리드의 총 크기와 MapDrawSpace의 크기를 고려하여 중앙 정렬 계산
@@ -40,7 +41,7 @@ public class MapDrawSpace : VisualElement
         {
             for (int row = 0; row < x; row++)
             {
-                var square = CreateSquareElement(row, col, startX, startY);
+                var square = CreateSquareElement(null, row, col, startX, startY);
                 gridElements[row, col] = square;
                 Add(square);
             }
@@ -64,15 +65,15 @@ public class MapDrawSpace : VisualElement
         int startX = (int)((1000 * 0.7 - gridWidth) / 2);
         int startY = (int)((720 - gridHeight) / 2);
         
-        foreach (var table in tableData.Table)
+        /*foreach (var table in tableData.Table)
         {
             
-        }
+        }*/
         for (int col = 0; col < ySize; col++)
         {
             for (int row = 0; row < xSize; row++)
             {
-                var square = CreateSquareElement(row, col, startX, startY);
+                var square = CreateSquareElement(tableData, row, col, startX, startY);
                 gridElements[row, col] = square;
                 Add(square);
             }
@@ -88,9 +89,9 @@ public class MapDrawSpace : VisualElement
         style.backgroundColor = new Color(1, 0, 0, 0.1f);  // 연한 빨간색
     }
 
-    private MapDrawSpaceNode CreateSquareElement(int x, int y, int startX, int startY)
+    private MapDrawSpaceNode CreateSquareElement(TableData tableData, int x, int y, int startX, int startY)
     {
-        var square = new MapDrawSpaceNode(x, y, startX, startY);
+        var square = new MapDrawSpaceNode(tableData, x, y, startX, startY);
         square.RegisterCallback<ClickEvent>(evt => OnNodeSelectionChange(square));
         return square;
     }
