@@ -36,8 +36,6 @@ public class TableManager : MonoBehaviour
             TileBase tileBase = tile.GetComponent<TileBase>();
             tileBase.InitTile(tileData.Value.TileType);
             
-            
-            
             map.Add(position, tileBase);
         }
     }
