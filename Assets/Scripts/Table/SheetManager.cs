@@ -143,15 +143,18 @@ public class SheetManager : MonoBehaviour
             ErrorType result = await RunBlockLogic(blockLogic);
             if (result != ErrorType.NoError)
             {
-                NPCManager.GetMessage(result);
                 ActiveError(SheetParent, tempLenght);
+                NPCManager.GetMessage(result);
 
-                Debug.LogError($"ErrorType : {result} ErrorMessage : {DataManager.Instance.GetGameData<ErrorData>(((int)result).ToString()).Context}");
+                Debug.LogError($"ErrorType : {result} ErrorMessage : {DataManager.Instance.GetGameData<ErrorMessageData>(((int)result).ToString()).Context}");
                 return result;
             } else
             {
                 ActiveHint(SheetParent,tempLenght);
+                NPCManager.GetMessage(result);
+
             }
+
             tempLenght++;
 
         }

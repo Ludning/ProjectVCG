@@ -34,10 +34,20 @@ public class NPCManager : MonoBehaviour
 
     public void GetMessage(ErrorType msg)
     {
+        if (msg == ErrorType.NoError)
+            return;
+
         NPCMessagePopup messagePopup = UIContainer.GetUIBase<NPCMessagePopup>(MainUIType.NPCMessagePopup);
         messagePopup.gameObject.SetActive(true);
         Debug.Log(msg);
-        string context = DataManager.Instance.GetGameData<ErrorData>(((int)msg).ToString()).Context;
+        if (msg == ErrorType.NoTile)
+            Debug.Log("aa");
+
+        string key = ((int)msg).ToString();
+        ErrorMessageData data = DataManager.Instance.GetGameData<ErrorMessageData>(key);
+        string context = data.Context;
+
+        Debug.Log(context);
         GetDialogue(messagePopup.MessageTextComoponent, context);
     }
     private void GetDialogue(TextMeshProUGUI textComponent, string msg, int index = -1)

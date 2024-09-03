@@ -1,7 +1,7 @@
 {
   "Pc": {
     "0": {
-      "ID": "0",
+      "Index": "0",
       "Description": "로봇 캐릭터",
       "PrefabName": "prefab_pc_robot",
       "InventoryMax": 2
@@ -9,43 +9,43 @@
   },
   "Npc": {
     "10": {
-      "ID": "10",
+      "Index": "10",
       "Description": "프로토타입용 더미 NPC",
       "PrefabName": "Dummy",
       "AnimationController": "Dummy"
     },
     "11": {
-      "ID": "11",
+      "Index": "11",
       "Description": "아시아계 여성",
       "PrefabName": "Asian_Male",
       "AnimationController": "Male"
     },
     "12": {
-      "ID": "12",
+      "Index": "12",
       "Description": "아시아계 남성",
       "PrefabName": "Asian_Female",
       "AnimationController": "Female"
     },
     "13": {
-      "ID": "13",
+      "Index": "13",
       "Description": "백인계 여성",
       "PrefabName": "European_Male",
       "AnimationController": "Male"
     },
     "14": {
-      "ID": "14",
+      "Index": "14",
       "Description": "백인계 남성",
       "PrefabName": "European_Female",
       "AnimationController": "Female"
     },
     "15": {
-      "ID": "15",
+      "Index": "15",
       "Description": "아프라카계 여성",
       "PrefabName": "African_Female",
       "AnimationController": "Female"
     },
     "16": {
-      "ID": "16",
+      "Index": "16",
       "Description": "아프리카계 남성",
       "PrefabName": "African_Male",
       "AnimationController": "Male"
@@ -53,7 +53,7 @@
   },
   "CodingBlock": {
     "100": {
-      "ID": "100",
+      "Index": "100",
       "Description": "이동 블록",
       "IconBlock": "icon_move",
       "AnimationKey": "anim_move",
@@ -61,8 +61,17 @@
       "Angle": "-",
       "Distance": "-"
     },
+    "102": {
+      "Index": "102",
+      "Description": "대쉬 블록",
+      "IconBlock": "icon_dash",
+      "AnimationKey": "anim_dash",
+      "MoveDistance": "-",
+      "Angle": "-",
+      "Distance": "-"
+    },
     "200": {
-      "ID": "200",
+      "Index": "200",
       "Description": "좌회전 블록",
       "IconBlock": "icon_left",
       "AnimationKey": "anim_left",
@@ -71,7 +80,7 @@
       "Distance": "-"
     },
     "201": {
-      "ID": "201",
+      "Index": "201",
       "Description": "우회전 블록",
       "IconBlock": "icon_right",
       "AnimationKey": "anim_right",
@@ -79,8 +88,17 @@
       "Angle": "90",
       "Distance": "-"
     },
+    "202": {
+      "Index": "202",
+      "Description": "뒤돌기 블록",
+      "IconBlock": "icon_turnback",
+      "AnimationKey": "anim_turnback",
+      "MoveDistance": "-",
+      "Angle": "180",
+      "Distance": "-"
+    },
     "300": {
-      "ID": "300",
+      "Index": "300",
       "Description": "들기 블록",
       "IconBlock": "icon_pickup",
       "AnimationKey": "anim_pickup",
@@ -89,168 +107,375 @@
       "Distance": "1"
     },
     "301": {
-      "ID": "301",
+      "Index": "301",
       "Description": "놓기 블록",
       "IconBlock": "icon_putdown",
       "AnimationKey": "anim_putdown",
       "MoveDistance": "-",
       "Angle": "-",
       "Distance": "1"
+    },
+    "401": {
+      "Index": "401",
+      "Description": "조리 블록",
+      "IconBlock": "icon_cook",
+      "AnimationKey": "anim_cook",
+      "MoveDistance": "-",
+      "Angle": "-",
+      "Distance": "1"
+    },
+    "999": {
+      "Index": "999",
+      "Description": "함수 블록",
+      "IconBlock": "icon_function",
+      "AnimationKey": "anim_function",
+      "MoveDistance": "-",
+      "Angle": "-",
+      "Distance": "-"
     }
   },
   "Feedback": {
     "1000": {
-      "ID": "1000",
+      "Index": "1000",
       "Description": "답안지 실패 피드백 UI",
       "CallUI": "ui_fail"
     },
     "1001": {
-      "ID": "1001",
+      "Index": "1001",
       "Description": "답안지 성공 피드백 UI",
       "CallUI": "ui_success"
     },
     "1002": {
-      "ID": "1002",
+      "Index": "1002",
       "Description": "시뮬레이션 중 현재 실행 중인 코드 블럭 표시 UI",
       "CallUI": "ui_nowplaying"
     },
     "1003": {
-      "ID": "1003",
+      "Index": "1003",
       "Description": "시뮬레이션 중 실행이 끝난 코드 블럭 표시 UI",
       "CallUI": "ui_used"
     }
   },
   "ErrorMessage": {
     "2000": {
-      "ID": "2000",
+      "Index": "2000",
       "Description": "이동 불가 오류",
       "Context": "포키야 거긴 이동할 수 없어~"
     },
     "2001": {
-      "ID": "2001",
+      "Index": "2001",
       "Description": "들 수 있는 물건 없음 오류",
       "Context": "들 수 있는 물건이 없는걸?"
     },
     "2002": {
-      "ID": "2002",
+      "Index": "2002",
       "Description": "인벤토리 초과 오류",
       "Context": "더 들 수 없는걸?"
     },
     "2003": {
-      "ID": "2003",
+      "Index": "2003",
       "Description": "내려놓을 오브젝트 없음 오류",
       "Context": "내려놓을 물건이 없는걸?"
     },
     "2004": {
-      "ID": "2004",
+      "Index": "2004",
       "Description": "내려놓을 수 없는 타일 오류",
       "Context": "내려놓을 수 없는 곳인걸?"
     },
     "2005": {
-      "ID": "2005",
+      "Index": "2005",
       "Description": "조리도구에 알맞지 않은 오브젝트 내려놓음 오류",
       "Context": "이 조리도구엔 그런 재료를 사용할 수 없어!"
     },
     "2006": {
-      "ID": "2006",
+      "Index": "2006",
       "Description": "조리도구 아닌 타일에 이미 오브젝트 올려져 있음 오류",
       "Context": "이미 테이블이 꽉 차서 내려놓을 공간이 없는걸?"
     },
     "2007": {
-      "ID": "2007",
+      "Index": "2007",
       "Description": "조리 타일 아닌 곳에서 조리 행동 오류",
       "Context": "거기엔 조리 도구가 없는걸?"
     },
     "2008": {
-      "ID": "2008",
+      "Index": "2008",
       "Description": "조리 타일에 올려진 재료가 없음 오류",
       "Context": "거기엔 재료가 없는걸?"
     },
     "2009": {
-      "ID": "2009",
+      "Index": "2009",
       "Description": "조리 불가능한 조합 조리 오류",
       "Context": "그런 요리는 레시피에 없는걸?"
     },
     "2010": {
-      "ID": "2010",
+      "Index": "2010",
       "Description": "적치 가능 수치 초과 오류",
       "Context": "테이블에 그 이상으로 올려놓을 수 없는걸?"
     },
     "2011": {
-      "ID": "2011",
+      "Index": "2011",
       "Description": "조리 도구 인벤토리 초과 오류",
       "Context": "그 조리 도구에는 그만큼 올려놓을 수 없어!"
     },
     "2012": {
-      "ID": "2012",
+      "Index": "2012",
       "Description": "미션 미시행 오류",
       "Context": "미션을 달성하지 않았잖아!"
     },
     "2013": {
-      "ID": "2013",
+      "Index": "2013",
       "Description": "타일 없음",
       "Context": "타일 없음"
     },
     "2014": {
-      "ID": "2014",
+      "Index": "2014",
       "Description": "알수 없는 에러",
       "Context": "알수 없는 에러"
     },
     "2015": {
-      "ID": "2015",
+      "Index": "2015",
       "Description": "에러 없음",
       "Context": ""
     }
   },
   "Stage": {
     "3000": {
-      "ID": "3000",
-      "Description": "1챕터_서빙(1) 스테이지",
+      "Index": "3000",
+      "Chapter": 1,
+      "Stage": 1,
+      "Description": "1챕터 서빙(1) 스테이지",
       "PrefabName": "Stage_1_1.prefab",
+      "ClearCondition": "SERVING",
       "StageLevelTable": "TblLevel_001",
-      "StageDescription": "5000",
-      "StageTargetDescription": "5500"
+      "StageContext": "5000",
+      "StageContext2": "5500",
+      "TargetCustomerIcon": "16",
+      "TargetFoodIcon": "11000",
+      "StageOrder": "1",
+      "AnswerBlockAmount": "4",
+      "ShowBlock": "100, 200, 201, 300, 301",
+      "ETC": "-"
     },
     "3001": {
-      "ID": "3001",
-      "Description": "1챕터_서빙(2) 스테이지",
+      "Index": "3001",
+      "Chapter": 1,
+      "Stage": 2,
+      "Description": "1챕터 서빙(2) 스테이지",
       "PrefabName": "Stage_1_2.prefab",
+      "ClearCondition": "SERVING",
       "StageLevelTable": "TblLevel_002",
-      "StageDescription": "5001",
-      "StageTargetDescription": "5501"
+      "StageContext": "5001",
+      "StageContext2": "5501",
+      "TargetCustomerIcon": "11",
+      "TargetFoodIcon": "11000",
+      "StageOrder": "2",
+      "AnswerBlockAmount": "7",
+      "ShowBlock": "100, 200, 201, 300, 301",
+      "ETC": "-"
     },
     "3002": {
-      "ID": "3002",
-      "Description": "2챕터_서빙(1) 스테이지",
-      "PrefabName": "Stage_2_1.prefab",
+      "Index": "3002",
+      "Chapter": 1,
+      "Stage": 3,
+      "Description": "1챕터 서빙(3) 스테이지",
+      "PrefabName": "Stage_1_3.prefab",
+      "ClearCondition": "SERVING",
       "StageLevelTable": "TblLevel_003",
-      "StageDescription": "5002",
-      "StageTargetDescription": "5502"
+      "StageContext": "5002",
+      "StageContext2": "5502",
+      "TargetCustomerIcon": "14",
+      "TargetFoodIcon": "11001",
+      "StageOrder": "3",
+      "AnswerBlockAmount": "10",
+      "ShowBlock": "100, 200, 201, 300, 301",
+      "ETC": "-"
     },
     "3003": {
-      "ID": "3003",
-      "Description": "2챕터_서빙(2) 스테이지",
-      "PrefabName": "Stage_2_2.prefab",
+      "Index": "3003",
+      "Chapter": 1,
+      "Stage": 4,
+      "Description": "1챕터 서빙(4) 스테이지",
+      "PrefabName": "Stage_1_4.prefab",
+      "ClearCondition": "SERVING",
       "StageLevelTable": "TblLevel_004",
-      "StageDescription": "5003",
-      "StageTargetDescription": "5503"
+      "StageContext": "5003",
+      "StageContext2": "5503",
+      "TargetCustomerIcon": "13",
+      "TargetFoodIcon": "11001",
+      "StageOrder": "4",
+      "AnswerBlockAmount": "10",
+      "ShowBlock": "100, 200, 201, 300, 301",
+      "ETC": "-"
+    },
+    "3004": {
+      "Index": "3004",
+      "Chapter": 2,
+      "Stage": 1,
+      "Description": "2챕터 1스테이지",
+      "PrefabName": "Stage_2_1.prefab",
+      "ClearCondition": "RECIPE",
+      "StageLevelTable": "TblLevel_008",
+      "StageContext": "5004",
+      "StageContext2": "5504",
+      "TargetCustomerIcon": "-",
+      "TargetFoodIcon": "DATA_PRODUCT",
+      "StageOrder": "1",
+      "AnswerBlockAmount": "5",
+      "ShowBlock": "101, 102, 201, 202, 203, 301, 302, 401, 999",
+      "ETC": "-"
+    },
+    "3005": {
+      "Index": "3005",
+      "Chapter": 2,
+      "Stage": 2,
+      "Description": "2챕터 2스테이지",
+      "PrefabName": "Stage_2_2.prefab",
+      "ClearCondition": "RECIPE",
+      "StageLevelTable": "TblLevel_009",
+      "StageContext": "5005",
+      "StageContext2": "5505",
+      "TargetCustomerIcon": "-",
+      "TargetFoodIcon": "DATA_PRODUCT",
+      "StageOrder": "2",
+      "AnswerBlockAmount": "7",
+      "ShowBlock": "101, 102, 201, 202, 203, 301, 302, 401, 999",
+      "ETC": "-"
+    },
+    "3006": {
+      "Index": "3006",
+      "Chapter": 2,
+      "Stage": 3,
+      "Description": "2챕터 3스테이지",
+      "PrefabName": "Stage_2_3.prefab",
+      "ClearCondition": "SERVING",
+      "StageLevelTable": "TblLevel_010",
+      "StageContext": "5006",
+      "StageContext2": "5506",
+      "TargetCustomerIcon": "-",
+      "TargetFoodIcon": "DATA_PRODUCT",
+      "StageOrder": "3",
+      "AnswerBlockAmount": "7",
+      "ShowBlock": "101, 102, 201, 202, 203, 301, 302, 401, 999",
+      "ETC": "-"
+    },
+    "3007": {
+      "Index": "3007",
+      "Chapter": 3,
+      "Stage": 1,
+      "Description": "3챕터 1스테이지",
+      "PrefabName": "Stage_3_1.prefab",
+      "ClearCondition": "RECIPE",
+      "StageLevelTable": "TblLevel_011",
+      "StageContext": "5007",
+      "StageContext2": "5507",
+      "TargetCustomerIcon": "-",
+      "TargetFoodIcon": "DATA_PRODUCT",
+      "StageOrder": "1",
+      "AnswerBlockAmount": "5",
+      "ShowBlock": "101, 102, 201, 202, 203, 301, 302, 401, 999",
+      "ETC": "-"
     }
   },
   "StageGoal": {
-    "5000": {},
-    "5001": {},
-    "5002": {},
-    "5003": {},
-    "5500": {},
-    "5501": {},
-    "5502": {},
-    "5503": {}
+    "5000": {
+      "Index": "5000",
+      "Description": "1-1스테이지에 대한 설명",
+      "Context": "서빙을 하는 스테이지야~"
+    },
+    "5001": {
+      "Index": "5001",
+      "Description": "1-2스테이지에 대한 설명",
+      "Context": "서빙을 하는 스테이지야~"
+    },
+    "5002": {
+      "Index": "5002",
+      "Description": "2-1스테이지에 대한 설명",
+      "Context": "서빙을 하는 스테이지야~"
+    },
+    "5003": {
+      "Index": "5003",
+      "Description": "2-2스테이지에 대한 설명",
+      "Context": "서빙을 하는 스테이지야~"
+    },
+    "5004": {
+      "Index": "5004",
+      "Description": "2챕터 1스테이지에 대한 설명",
+      "Context": "주어진 요리 재료를 알맞은 조리 도구를 사용해 요리를 완성시키는 스테이지야!"
+    },
+    "5005": {
+      "Index": "5005",
+      "Description": "2챕터 2스테이지에 대한 설명",
+      "Context": "주어진 요리 재료를 알맞은 조리 도구를 사용해 요리를 완성시키는 스테이지야!"
+    },
+    "5006": {
+      "Index": "5006",
+      "Description": "2챕터 3스테이지에 대한 설명",
+      "Context": "완성된 요리 2개를 주문한 손님께 서빙하는 스테이지야"
+    },
+    "5007": {
+      "Index": "5007",
+      "Description": "3챕터 1스테이지에 대한 설명",
+      "Context": "주어진 요리 재료를 알맞은 조리 도구를 사용해 요리를 완성시키는 스테이지야!"
+    },
+    "5500": {
+      "Index": "5500",
+      "Description": "1-1스테이지의 클리어 목표에 대한 설명",
+      "Context": "포케를 옆집아주머니 테이블에 서빙해~"
+    },
+    "5501": {
+      "Index": "5501",
+      "Description": "1-2스테이지의 클리어 목표에 대한 설명",
+      "Context": "포케를 옆집아주머니 테이블에 서빙해~"
+    },
+    "5502": {
+      "Index": "5502",
+      "Description": "2-1스테이지의 클리어 목표에 대한 설명",
+      "Context": "햄버거 세트를 앞집 아저씨 테이블에 서빙해~"
+    },
+    "5503": {
+      "Index": "5503",
+      "Description": "2-2스테이지의 클리어 목표에 대한 설명",
+      "Context": "햄버거 세트를 앞집 아저씨 테이블에 서빙해~"
+    },
+    "5504": {
+      "Index": "5504",
+      "Description": "2챕터 1스테이지 클리어 목표에 대한 설명",
+      "Context": "아시아 남성 손님이 새우초밥을 주문했어! 새우초밥을 요리해볼까?"
+    },
+    "5505": {
+      "Index": "5505",
+      "Description": "2챕터 2스테이지 클리어 목표에 대한 설명",
+      "Context": "아프리카 여성 손님이 새우튀김 덮밥을 주문했어! 새우튀김 덮밥을 요리해볼까?"
+    },
+    "5506": {
+      "Index": "5506",
+      "Description": "2챕터 3스테이지 클리어 목표에 대한 설명",
+      "Context": "아시아 남성 손님에게는 새우초밥, 아프리카 여성 손님에게는 새우튀김 덮밥을 서빙해줘"
+    },
+    "5507": {
+      "Index": "5507",
+      "Description": "3챕터 1스테이지 클리어 목표에 대한 설명",
+      "Context": "백인 여성 손님이 생선회를 주문했어! 생선회를 요리해볼까?"
+    }
   },
   "Tile": {
+    "0": {
+      "Index": "0",
+      "Description": "비어있는 공간",
+      "PrefabName": "",
+      "ImageName": "",
+      "TileType": 0,
+      "Moveable": false,
+      "Pushable": false,
+      "Popable": false,
+      "Stackable": false,
+      "InventoryCount": 0
+    },
     "10000": {
       "Index": "10000",
       "Description": "바닥 타일, PC가 이동할 바닥 구성용 육면체",
       "PrefabName": "Walking_Tile",
+      "ImageName": "Walking_Image",
       "TileType": 10000,
       "Moveable": true,
       "Pushable": false,
@@ -262,6 +487,7 @@
       "Index": "10100",
       "Description": "벽 타일, PC의 이동을 제한할 벽 구성용 육면체",
       "PrefabName": "Wall_Tile",
+      "ImageName": "Wall_Image",
       "TileType": 10100,
       "Moveable": false,
       "Pushable": false,
@@ -273,6 +499,7 @@
       "Index": "10001",
       "Description": "목적지 타일, PC가 도달할 바닥 구성용 육면체",
       "PrefabName": "Walking_Pass_Tile",
+      "ImageName": "Walking_Pass_Image",
       "TileType": 10001,
       "Moveable": true,
       "Pushable": false,
@@ -282,67 +509,288 @@
     },
     "10110": {
       "Index": "10110",
-      "Description": "서빙 테이블, 서빙 미션에서 PC가 가져갈 오브젝트생성용",
-      "PrefabName": "Serving_Tile",
+      "Description": "완성 음식 타일, 서빙 미션에서 PC가 가져갈 오브젝트생성용",
+      "PrefabName": "CookedFood_Tile",
+      "ImageName": "CookedFood_Image",
       "TileType": 10110,
       "Moveable": false,
       "Pushable": true,
       "Popable": false,
       "Stackable": false,
-      "InventoryCount": 1
+      "InventoryCount": -1
     },
     "10111": {
       "Index": "10111",
-      "Description": "손님 테이블, 서빙 미션에서 PC가 오브젝트 내려놓을 위치",
+      "Description": "손님 테이블 타일, 서빙 미션에서 PC가 오브젝트 내려놓을 위치",
       "PrefabName": "Customer_Tile",
+      "ImageName": "Customer_Image",
       "TileType": 10111,
       "Moveable": false,
       "Pushable": false,
       "Popable": true,
-      "Stackable": true,
+      "Stackable": false,
       "InventoryCount": 1
+    },
+    "10201": {
+      "Index": "10201",
+      "Description": "재료 타일",
+      "PrefabName": "Ingredient_Tile",
+      "ImageName": "Ingredient_Image",
+      "TileType": 10201,
+      "Moveable": false,
+      "Pushable": true,
+      "Popable": false,
+      "Stackable": false,
+      "InventoryCount": -1
+    },
+    "10301": {
+      "Index": "10301",
+      "Description": "조리 타일",
+      "PrefabName": "Cooking_Tile",
+      "ImageName": "Cooking_Image",
+      "TileType": 10301,
+      "Moveable": false,
+      "Pushable": false,
+      "Popable": true,
+      "Stackable": false,
+      "InventoryCount": 4
+    },
+    "10401": {
+      "Index": "10401",
+      "Description": "테이블 타일",
+      "PrefabName": "Table_Tile",
+      "ImageName": "Table_Image",
+      "TileType": 10401,
+      "Moveable": false,
+      "Pushable": true,
+      "Popable": true,
+      "Stackable": true,
+      "InventoryCount": -1
     }
   },
   "Food": {
-    "11000": {
-      "Index": "11000",
+    "11100": {
+      "Index": "11100",
       "Description": "하와이언 포케입니다.",
-      "Type": "완성품",
-      "Icon": "icon_Poke",
-      "Value": "POKE",
-      "PrefabName": "Poke"
+      "Type": "Product",
+      "Icon": "POKE",
+      "Value": "Poke",
+      "PrefabName": "Object_Food_Poke"
     },
-    "11001": {
-      "Index": "11001",
+    "11101": {
+      "Index": "11101",
       "Description": "햄버거 세트입니다.",
-      "Type": "완성품",
-      "Icon": "icon_Hamburger_Set",
-      "Value": "HAMBURGER_SET",
-      "PrefabName": "Hamburger_Set"
+      "Type": "Product",
+      "Icon": "HAMBURGER_SET",
+      "Value": "Hamburger_Set",
+      "PrefabName": "Object_Food_Hamburger_Set"
     },
-    "11002": {
-      "Index": "11002",
-      "Description": "썬 감자 입니다.",
-      "Type": "가공재료",
-      "Icon": "icon_Cut_Potato",
-      "Value": "CUT_POTATO",
-      "PrefabName": "Cut_Potato"
+    "11200": {
+      "Index": "11200",
+      "Description": "썬 감자",
+      "Type": "Processed",
+      "Icon": "CUT_POTATO",
+      "Value": "Cut_Potato",
+      "PrefabName": "Object_Food_Cut_Potato"
     },
-    "11003": {
-      "Index": "11003",
-      "Description": "감자 입니다.",
-      "Type": "원재료",
-      "Icon": "icon_Potato",
-      "Value": "POTATO",
-      "PrefabName": "Potato"
+    "11201": {
+      "Index": "11201",
+      "Description": "밥(1)",
+      "Type": "Processed",
+      "Icon": "POT_RICE",
+      "Value": "Pot_Rice",
+      "PrefabName": "Object_Food_Pot_Rice"
     },
-    "11004": {
-      "Index": "11004",
-      "Description": "참치 입니다.",
-      "Type": "원재료",
-      "Icon": "icon_Tuna",
-      "Value": "TUNA",
-      "PrefabName": "Tuna"
+    "11202": {
+      "Index": "11202",
+      "Description": "잘린 새우",
+      "Type": "Processed",
+      "Icon": "CUT_SHIRIMP",
+      "Value": "Cut_Shirimp",
+      "PrefabName": "Object_Food_Cut_Shirimp"
+    },
+    "11203": {
+      "Index": "11203",
+      "Description": "밥(2)",
+      "Type": "Processed",
+      "Icon": "POT_RICE_2",
+      "Value": "Pot_Rice_2",
+      "PrefabName": "Object_Food_Pot_Rice_2"
+    },
+    "11204": {
+      "Index": "11204",
+      "Description": "새우튀김",
+      "Type": "Processed",
+      "Icon": "FRIER_SHIRIMP",
+      "Value": "Frier_Shirimp",
+      "PrefabName": "Object_Food_Frier_Shirimp"
+    },
+    "11205": {
+      "Index": "11205",
+      "Description": "잘린 생선",
+      "Type": "Processed",
+      "Icon": "CUT_FISH",
+      "Value": "Cut_Fish",
+      "PrefabName": "Object_Food_Cut_Fish"
+    },
+    "11500": {
+      "Index": "11500",
+      "Description": "감자",
+      "Type": "Original",
+      "Icon": "POTATO",
+      "Value": "Potato",
+      "PrefabName": "Object_Food_Potato"
+    },
+    "11501": {
+      "Index": "11501",
+      "Description": "참치",
+      "Type": "Original",
+      "Icon": "TUNA",
+      "Value": "Tuna",
+      "PrefabName": "Object_Food_Tuna"
+    },
+    "11502": {
+      "Index": "11502",
+      "Description": "쌀",
+      "Type": "Original",
+      "Icon": "RICE",
+      "Value": "Rice",
+      "PrefabName": "Object_Food_Rice"
+    },
+    "11503": {
+      "Index": "11503",
+      "Description": "생선",
+      "Type": "Original",
+      "Icon": "FISH",
+      "Value": "Fish",
+      "PrefabName": "Object_Food_Fish"
+    },
+    "11504": {
+      "Index": "11504",
+      "Description": "새우",
+      "Type": "Original",
+      "Icon": "SHIRIMP",
+      "Value": "Shirimp",
+      "PrefabName": "Object_Food_Shirimp"
+    }
+  },
+  "CookingProperty": {
+    "30000": {
+      "Index": "30000",
+      "Description": "칼로 재료를 자른다고 할 때 사용할 \"도마\" 속성",
+      "KeyName": "CUT",
+      "PrefabName": "Cooking_Tile_Cut",
+      "IconName": "Icon_Cooking_Tile_Cut"
+    },
+    "30001": {
+      "Index": "30001",
+      "Description": "재료를 끓이거나 데칠때 사용할 \"냄비\" 속성",
+      "KeyName": "POT",
+      "PrefabName": "Cooking_Tile_Pot",
+      "IconName": "Icon_Cooking_Tile_Pot"
+    },
+    "30002": {
+      "Index": "30002",
+      "Description": "재료를 굽거나 볶을때 사용할 \"프라이팬\" 속성",
+      "KeyName": "FAN",
+      "PrefabName": "Cooking_Tile_Fan",
+      "IconName": "Icon_Cooking_Tile_Fan"
+    },
+    "30003": {
+      "Index": "30003",
+      "Description": "재료를 튀길때 사용할 \"튀김기\" 속성",
+      "KeyName": "FRIER",
+      "PrefabName": "Cooking_Tile_Frier",
+      "IconName": "Icon_Cooking_Tile_Frier"
+    },
+    "30004": {
+      "Index": "30004",
+      "Description": "재료를 담아서 조합할 때 사용할 \"트레이\" 속성",
+      "KeyName": "TRAY",
+      "PrefabName": "Cooking_Tile_Tray",
+      "IconName": "Icon_Cooking_Tile_Tray"
+    }
+  },
+  "Recipe": {
+    "21000": {
+      "Index": "21000",
+      "Name": "새우초밥",
+      "Product": "SHIRIMP_SUSHI",
+      "Cookery": "TRAY",
+      "Ingre_01": "POT_RICE",
+      "Ingre_02": "CUT_SHIRIMP",
+      "Ingre_03": "-",
+      "Ingre_04": "-"
+    },
+    "21001": {
+      "Index": "21001",
+      "Name": "에비동",
+      "Product": "SHIRIMP_RICE",
+      "Cookery": "TRAY",
+      "Ingre_01": "POT_RICE_2",
+      "Ingre_02": "FRIER_SHIRIMP",
+      "Ingre_03": "-",
+      "Ingre_04": "-"
+    },
+    "21002": {
+      "Index": "21002",
+      "Name": "생선회",
+      "Product": "SASHIMI",
+      "Cookery": "CUT",
+      "Ingre_01": "CUT_FISH",
+      "Ingre_02": "-",
+      "Ingre_03": "-",
+      "Ingre_04": "-"
+    },
+    "20000": {
+      "Index": "20000",
+      "Name": "밥",
+      "Product": "POT_RICE",
+      "Cookery": "POT",
+      "Ingre_01": "RICE",
+      "Ingre_02": "-",
+      "Ingre_03": "-",
+      "Ingre_04": "-"
+    },
+    "20001": {
+      "Index": "20001",
+      "Name": "썬 새우",
+      "Product": "CUT_SHIRIMP",
+      "Cookery": "CUT",
+      "Ingre_01": "SHIRIMP",
+      "Ingre_02": "-",
+      "Ingre_03": "-",
+      "Ingre_04": "-"
+    },
+    "20002": {
+      "Index": "20002",
+      "Name": "밥(2)",
+      "Product": "POT_RICE_2",
+      "Cookery": "POT",
+      "Ingre_01": "RICE",
+      "Ingre_02": "-",
+      "Ingre_03": "-",
+      "Ingre_04": "-"
+    },
+    "20003": {
+      "Index": "20003",
+      "Name": "새우튀김",
+      "Product": "FRIER_SHIRIMP",
+      "Cookery": "FRIER",
+      "Ingre_01": "SHIRIMP",
+      "Ingre_02": "-",
+      "Ingre_03": "-",
+      "Ingre_04": "-"
+    },
+    "20004": {
+      "Index": "20004",
+      "Name": "썬 생선",
+      "Product": "CUT_FISH",
+      "Cookery": "CUT",
+      "Ingre_01": "CUT_FISH",
+      "Ingre_02": "-",
+      "Ingre_03": "-",
+      "Ingre_04": "-"
     }
   }
 }

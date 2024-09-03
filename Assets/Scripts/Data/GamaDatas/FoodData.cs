@@ -1,4 +1,4 @@
-public class Tile_FoodData
+public class FoodData
 {
     public string Index;
     public string Description;

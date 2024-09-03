@@ -1,15 +1,18 @@
 public class StageData
 {
-    public string ID;
+    public string Index;
+    public int Chapter;
+    public int Stage;
     public string Description;
     public string PrefabName;
+    public string ClearCondition;
     public string StageLevelTable;
-    public string StageDescription;
-    public string StageTargetDescription;
-
-    // public string 목표 손님 아이콘;
-    // public string 목표 음식 아이콘;
-    // public string 챕터 내 스테이지 순서;
-    // public string 답안지 필요 블록 수;
-    // public string 제시되는 블록 종류;
+    public string StageContext;
+    public string StageContext2;
+    public string TargetCustomerIcon;
+    public string TargetFoodIcon;
+    public string StageOrder;
+    public string AnswerBlockAmount;
+    public string ShowBlock;
+    public string ETC;
 }

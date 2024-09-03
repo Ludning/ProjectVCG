@@ -42,23 +42,23 @@ public class TileBase : MonoBehaviour
                 return false;
         }
     }
-    
-    public void InitTile(string tileName)
+
+    public void InitTile(TileType tileType)
     {
-        TileData tileData = DataManager.Instance.GetGameData<TileData>(tileName);
-        
+        TileData tileData = DataManager.Instance.GetGameData<TileData>(((int)tileType).ToString());
+
         TileType = tileData.TileType;
-        TileAttributeType = 
+        TileAttributeType =
             (tileData.Moveable ? TileAttributeType.Moveable : 0) |
             (tileData.Pushable ? TileAttributeType.Pushable : 0) |
             (tileData.Popable ? TileAttributeType.Popable : 0) |
             (tileData.Stackable ? TileAttributeType.Stackable : 0);
-        
+
         InventoryCount = tileData.InventoryCount;
-        
+
         //TileLogic 설치
     }
-    
+
     public TileAttributeType GetTileAttributes(bool walkable, bool pushable, bool popable, bool stackable)
     {
         TileAttributeType attributes = TileAttributeType.None;

@@ -21,7 +21,7 @@ public class StageManager : MonoBehaviour
 
     public void InitStage()
     {
-        TableManager.InitTable("string stageInfo");
+        TableManager.InitTable("3000");
         //uiContainer.gameObject.SetActive(false);
         
         

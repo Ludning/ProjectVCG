@@ -1,5 +1,30 @@
 using System;
 
+public enum ItemType
+{
+    Poke = 11100,
+    HamburgerSet = 11101,
+    Cut_Potato = 11200,
+    Pot_Rice = 11201,
+    Cut_Shirimp = 11202,
+    Pot_Rice_2 = 11203,
+    Frier_Shirimp = 11204,
+    Cut_Fish = 11205,
+    Potato = 11500,
+    Tuna = 11501,
+    Rice = 11502,
+    Fish = 11503,
+    Shirimp = 11504,
+    SHIRIMP_SUSHI = 21000,
+    SHIRIMP_RICE = 21001,
+    SASHIMI = 21002,
+    POT_RICE = 20000,
+    CUT_SHIRIMP = 20001,
+    POT_RICE_2 = 20002,
+    FRIER_SHIRIMP = 20003,
+    CUT_FISH = 20004,
+}
+
 public enum UIType
 {
     MainUI,
@@ -15,15 +40,15 @@ public enum LogicState
 
 public enum TileType
 {
-    Empty,
+    EMPTY = 0,
     WALK = 10000,
-    BLOCKING = 10100,
+    WALL = 10100,
     PASS = 10001,
     SERVING = 10110,
     CUSTOMER = 10111,
-    INGREDIENT,
-    COOKING,
-    TABLE,
+    INGREDIENT = 10201,
+    COOKING = 10301,
+    TABLE = 10401,
 }
 
 [Flags]
@@ -58,8 +83,8 @@ public enum BlockLogicType
     PushItem,
     PopItem,
     Start,
-    Reset,
     Clear,
+    Reset,
     Dash,
     Repeat,
 }
@@ -76,14 +101,12 @@ public enum Direction
     Left,
     Right,
 }
-
 public enum ChapterIndex
 {
     Chapter1,
     Chapter2,
     Chapter3,
 }
-
 public enum StageIndex
 {
     Serving1,

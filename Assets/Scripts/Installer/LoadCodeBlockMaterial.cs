@@ -6,6 +6,7 @@ public class LoadCodeBlockMaterial : MonoBehaviour
     
     public void Init(BlockLogicType type)
     {
+        Debug.Log($"{type.ToString()}");
         Material tempMat = ResourceManager.Instance.LoadResourceWithCaching<Material>($"{type.ToString()}Mat");
         
         if (tempMat == null)

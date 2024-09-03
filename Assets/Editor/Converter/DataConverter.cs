@@ -102,6 +102,8 @@ public class DataConverter
 
     private static Dictionary<string, T> DataTableToDictionary<T>(DataTable table)
     {
+        if(typeof(T) ==  typeof(TileData))
+            Debug.Log(typeof(T).ToString());
         var dict = new Dictionary<string, T>();
 
         var fieldInfos = typeof(T).GetFields();
