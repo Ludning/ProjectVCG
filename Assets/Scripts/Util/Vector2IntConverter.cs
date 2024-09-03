@@ -2,47 +2,16 @@ using System;
 using Newtonsoft.Json;
 using UnityEngine;
 
-public class Vector2IntConverter : JsonConverter<Vector2Int>
+public class Vector2IntConverter
 {
-    public override void WriteJson(JsonWriter writer, Vector2Int value, JsonSerializer serializer)
+    public static Vector2Int IntToVec2(Vector2Int size, int num)
     {
-        writer.WriteStartObject();
-        writer.WritePropertyName("x");
-        writer.WriteValue(value.x);
-        writer.WritePropertyName("y");
-        writer.WriteValue(value.y);
-        writer.WriteEndObject();
-    }
-
-    public override Vector2Int ReadJson(JsonReader reader, Type objectType, Vector2Int existingValue, bool hasExistingValue, JsonSerializer serializer)
-    {
-        int x = 0;
-        int y = 0;
-
-        while (reader.Read())
-        {
-            if (reader.TokenType == JsonToken.PropertyName)
-            {
-                var propertyName = reader.Value.ToString();
-                reader.Read();
-
-                switch (propertyName)
-                {
-                    case "x":
-                        x = Convert.ToInt32(reader.Value);
-                        break;
-                    case "y":
-                        y = Convert.ToInt32(reader.Value);
-                        break;
-                }
-            }
-
-            if (reader.TokenType == JsonToken.EndObject)
-            {
-                break;
-            }
-        }
-
+        int x = num % size.x; // num을 size.x로 나눈 나머지가 x 좌표가 됩니다.
+        int y = num / size.x; // num을 size.x로 나눈 몫이 y 좌표가 됩니다.
         return new Vector2Int(x, y);
+    }
+    public static int Vec2ToInt(Vector2Int size, Vector2Int vec)
+    {
+        return vec.y * size.x + vec.x; // y 좌표에 size.x를 곱한 후, x 좌표를 더하면 num이 됩니다.
     }
 }

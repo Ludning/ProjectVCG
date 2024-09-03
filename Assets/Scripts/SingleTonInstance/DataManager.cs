@@ -48,6 +48,10 @@ public class DataManager : Singleton<DataManager>
                 return _gameData.Tile as Dictionary<string, T>;
             case "FoodData":
                 return _gameData.Food as Dictionary<string, T>;
+            case "CookingPropertyData":
+                return _gameData.CookingProperty as Dictionary<string, T>;
+            case "RecipeData":
+                return _gameData.Recipe as Dictionary<string, T>;
         }
         return null;
     }
@@ -78,10 +82,10 @@ public class DataManager : Singleton<DataManager>
                 return null;
             //_mapData = JsonUtility.FromJson<MapData>(jsonFile.text);
             JsonSerializerSettings settings = new JsonSerializerSettings();
-            settings.Converters.Add(new Vector2IntConverter());
+            //settings.Converters.Add(new Vector2IntConverter());
             settings.Converters.Add(new DictionaryVector2IntConverter());
             
-            _mapData = JsonConvert.DeserializeObject<MapData>(jsonFile.text, settings);
+            _mapData = JsonConvert.DeserializeObject<MapData>(jsonFile.text);//, settings);
         }
 
         return _mapData;
@@ -94,13 +98,13 @@ public class DataManager : Singleton<DataManager>
         {
             TextAsset jsonFile = Addressables.LoadAssetAsync<TextAsset>(MapDataJsonPath).WaitForCompletion();
             //_mapData = JsonUtility.FromJson<MapData>(jsonFile.text);
-            //_mapData = JsonConvert.DeserializeObject<MapData>(jsonFile.text);
+            _mapData = JsonConvert.DeserializeObject<MapData>(jsonFile.text);
             
-            JsonSerializerSettings settings = new JsonSerializerSettings();
-            settings.Converters.Add(new Vector2IntConverter());
-            settings.Converters.Add(new DictionaryVector2IntConverter());
+            //JsonSerializerSettings settings = new JsonSerializerSettings();
+            //settings.Converters.Add(new Vector2IntConverter());
+            //settings.Converters.Add(new DictionaryVector2IntConverter());
 
-            _mapData = JsonConvert.DeserializeObject<MapData>(jsonFile.text, settings);
+            //_mapData = JsonConvert.DeserializeObject<MapData>(jsonFile.text, settings);
         }
         
         return _mapData.TableData.GetValueOrDefault(key);

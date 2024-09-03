@@ -241,6 +241,8 @@
   "Stage": {
     "3000": {
       "Index": "3000",
+      "Chapter": 1,
+      "Stage": 1,
       "Description": "1챕터 서빙(1) 스테이지",
       "PrefabName": "Stage_1_1.prefab",
       "ClearCondition": "SERVING",
@@ -256,6 +258,8 @@
     },
     "3001": {
       "Index": "3001",
+      "Chapter": 1,
+      "Stage": 2,
       "Description": "1챕터 서빙(2) 스테이지",
       "PrefabName": "Stage_1_2.prefab",
       "ClearCondition": "SERVING",
@@ -271,6 +275,8 @@
     },
     "3002": {
       "Index": "3002",
+      "Chapter": 1,
+      "Stage": 3,
       "Description": "1챕터 서빙(3) 스테이지",
       "PrefabName": "Stage_1_3.prefab",
       "ClearCondition": "SERVING",
@@ -286,6 +292,8 @@
     },
     "3003": {
       "Index": "3003",
+      "Chapter": 1,
+      "Stage": 4,
       "Description": "1챕터 서빙(4) 스테이지",
       "PrefabName": "Stage_1_4.prefab",
       "ClearCondition": "SERVING",
@@ -301,6 +309,8 @@
     },
     "3004": {
       "Index": "3004",
+      "Chapter": 2,
+      "Stage": 1,
       "Description": "2챕터 1스테이지",
       "PrefabName": "Stage_2_1.prefab",
       "ClearCondition": "RECIPE",
@@ -316,6 +326,8 @@
     },
     "3005": {
       "Index": "3005",
+      "Chapter": 2,
+      "Stage": 2,
       "Description": "2챕터 2스테이지",
       "PrefabName": "Stage_2_2.prefab",
       "ClearCondition": "RECIPE",
@@ -331,6 +343,8 @@
     },
     "3006": {
       "Index": "3006",
+      "Chapter": 2,
+      "Stage": 3,
       "Description": "2챕터 3스테이지",
       "PrefabName": "Stage_2_3.prefab",
       "ClearCondition": "SERVING",
@@ -346,6 +360,8 @@
     },
     "3007": {
       "Index": "3007",
+      "Chapter": 3,
+      "Stage": 1,
       "Description": "3챕터 1스테이지",
       "PrefabName": "Stage_3_1.prefab",
       "ClearCondition": "RECIPE",

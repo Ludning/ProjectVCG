@@ -100,14 +100,12 @@ public enum Direction
     Left,
     Right,
 }
-
 public enum ChapterIndex
 {
     Chapter1,
     Chapter2,
     Chapter3,
 }
-
 public enum StageIndex
 {
     Serving1,

@@ -10,29 +10,35 @@ public class TableManager : MonoBehaviour
 
     public Vector2Int startPosition;
 
-    public void InitTable(string stageInfo)
+    /*TableData tableData = new TableData();
+    tableData.Table = new Dictionary<Vector2Int, NodeData>();
+    for (int i = 0; i < 9; i++)
+    {
+        for (int k = 0; k < 9; k++)
+        {
+            tableData.Table.Add(new Vector2Int(i, k), new NodeData(){TileType = TileType.WALK});
+        }
+    }*/
+
+    public void InitTable(string stageIndex)
     {
         //TODO
         //현재 스테이지 정보를 받아온 후 초기화
-        //TableData tableData = DataManager.Instance.GetTableData(stageInfo);
-        TableData tableData = new TableData();
-        tableData.Table = new Dictionary<Vector2Int, NodeData>();
-        for (int i = 0; i < 9; i++)
-        {
-            for (int k = 0; k < 9; k++)
-            {
-                tableData.Table.Add(new Vector2Int(i, k), new NodeData(){TileType = TileType.WALK});
-            }
-        }
+        TableData tableData = DataManager.Instance.GetTableData(stageIndex);
         
         foreach (var tileData in tableData.Table)
         {
+            Vector2Int position = Vector2IntConverter.IntToVec2(tableData.Size, tileData.Key);
+            
             GameObject tilePrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("Tile");
             GameObject tile = Instantiate(tilePrefab, tableParent);
-            tile.transform.position = new Vector3(tileData.Key.x, 0, tileData.Key.y);
+            tile.transform.position = new Vector3(position.x, 0, position.y);
             TileBase tileBase = tile.GetComponent<TileBase>();
             tileBase.InitTile(tileData.Value.TileType);
-            map.Add(tileData.Key, tileBase);
+            
+            
+            
+            map.Add(position, tileBase);
         }
     }
 

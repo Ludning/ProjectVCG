@@ -50,7 +50,7 @@ public class MapEditorTool : EditorWindow
         var stageDataDictionary = DataManager.Instance.GetGameDataDictionary<StageData>();
         _stageDropdown = new PopupField<string>("Select Stage", stageDataDictionary.Keys.ToList(), 0);  // 스테이지 선택 드롭다운
         
-        _mapDrawSpace = new MapDrawSpace(_width, _height);
+        _mapDrawSpace = new MapDrawSpace(_currentStage, _width, _height);
         _tilePalette = new TilePalette();
         _inspector = new Inspector();
         

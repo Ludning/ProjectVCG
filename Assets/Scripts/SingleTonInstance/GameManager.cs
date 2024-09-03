@@ -7,10 +7,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     public int SelectedChapterIndex;
     public int SelectedStageIndex;
+    public string StageIndex;
 
-    private void Update()
-    {
-        /*Debug.Log(SelectedChapterIndex + ":: Chapter");
-        Debug.Log(SelectedStageIndex + ":: Stage ");*/
-    }
+    public List<StageData> FilteredList;
+    public StageData Stage;
 }

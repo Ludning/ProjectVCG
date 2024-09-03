@@ -1,6 +1,8 @@
 public class StageData
 {
     public string Index;
+    public int Chapter;
+    public int Stage;
     public string Description;
     public string PrefabName;
     public string ClearCondition;

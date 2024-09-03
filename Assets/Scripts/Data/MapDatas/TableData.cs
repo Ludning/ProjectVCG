@@ -6,5 +6,5 @@ using UnityEngine;
 public class TableData
 {
     public Vector2Int Size;
-    public Dictionary<Vector2Int, NodeData> Table;
+    public Dictionary<int, NodeData> Table;
 }

@@ -1,42 +1,56 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using UnityEngine;
 
-public class DictionaryVector2IntConverter : JsonConverter<Dictionary<Vector2Int, NodeData>>
+public class DictionaryVector2IntConverter : JsonConverter
 {
-    public override void WriteJson(JsonWriter writer, Dictionary<Vector2Int, NodeData> value, JsonSerializer serializer)
+    public override bool CanConvert(Type objectType)
     {
-        writer.WriteStartObject();
-        foreach (var kvp in value)
-        {
-            writer.WritePropertyName($"({kvp.Key.x}, {kvp.Key.y})");
-            serializer.Serialize(writer, kvp.Value);
-        }
-        writer.WriteEndObject();
+        return typeof(Dictionary<Vector2Int, NodeData>).IsAssignableFrom(objectType);
     }
 
-    public override Dictionary<Vector2Int, NodeData> ReadJson(JsonReader reader, Type objectType, Dictionary<Vector2Int, NodeData> existingValue, bool hasExistingValue, JsonSerializer serializer)
+    public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
     {
         var dictionary = new Dictionary<Vector2Int, NodeData>();
 
-        while (reader.Read())
+        var jObject = JObject.Load(reader);
+        foreach (var property in jObject.Properties())
         {
-            if (reader.TokenType == JsonToken.PropertyName)
-            {
-                var key = reader.Value.ToString().Trim('(', ')').Split(',');
-                var vectorKey = new Vector2Int(int.Parse(key[0]), int.Parse(key[1]));
-                reader.Read();
-                var value = serializer.Deserialize<NodeData>(reader);
-                dictionary[vectorKey] = value;
-            }
+            // Key를 "(x, y)" 형식의 문자열에서 Vector2Int로 변환
+            var keyString = property.Name.Trim('(', ')');
+            var keyParts = keyString.Split(',');
+            var x = int.Parse(keyParts[0].Trim());
+            var y = int.Parse(keyParts[1].Trim());
+            var key = new Vector2Int(x, y);
 
-            if (reader.TokenType == JsonToken.EndObject)
-            {
-                break;
-            }
+            // Value를 NodeData로 역직렬화
+            var value = property.Value.ToObject<NodeData>(serializer);
+
+            dictionary.Add(key, value);
         }
 
         return dictionary;
+    }
+
+    public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+    {
+        var dictionary = (Dictionary<Vector2Int, NodeData>)value;
+
+        writer.WriteStartObject();
+
+        foreach (var kvp in dictionary)
+        {
+            // Key를 "(x, y)" 형식의 문자열로 변환
+            var key = $"({kvp.Key.x}, {kvp.Key.y})";
+            writer.WritePropertyName(key);
+
+            // Value를 직렬화
+            serializer.Serialize(writer, kvp.Value);
+        }
+
+        writer.WriteEndObject();
     }
 }

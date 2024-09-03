@@ -16,16 +16,17 @@ public class MapDataReader
     public static void SaveMapData(MapData mapData)
     {
         Debug.Log("SaveMapData");
+        Debug.Log("SaveMapData");
         //var json = JsonUtility.ToJson(mapData);
         //var json = JsonConvert.SerializeObject(mapData);
         
-        JsonSerializerSettings settings = new JsonSerializerSettings();
-        settings.Converters.Add(new Vector2IntConverter());
-        settings.Converters.Add(new DictionaryVector2IntConverter());
+        //JsonSerializerSettings settings = new JsonSerializerSettings();
+        //settings.Converters.Add(new Vector2IntConverter());
+        //settings.Converters.Add(new DictionaryVector2IntConverter());
 
-        string json = JsonConvert.SerializeObject(mapData, settings);
+        //string json = JsonConvert.SerializeObject(mapData, settings);
         
-        //var json = JsonConvert.SerializeObject(mapData, Formatting.Indented);
+        var json = JsonConvert.SerializeObject(mapData, Formatting.Indented);
         File.WriteAllText(dataJsonPath, json);
     }
     
@@ -37,7 +38,9 @@ public class MapDataReader
 
     public static NodeData LoadNodeData(TableData data, int x, int y)
     {
-        return data.Table[new Vector2Int(x, y)];
+        Vector2Int position = new Vector2Int(x, y);
+        int index = Vector2IntConverter.Vec2ToInt(data.Size,position);
+        return data.Table[index];
     }
     
     public static Sprite LoadTileSprite(TileType type)

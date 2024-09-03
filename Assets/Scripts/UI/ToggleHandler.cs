@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,13 +30,19 @@ public class ToggleHandler : MonoBehaviour
         if (!isOn)
             return;
 
+        var stageDataDict = DataManager.Instance.GetGameDataDictionary<StageData>();
         switch (type)
         {
             case ValueType.Chapter:
                 GameManager.Instance.SelectedChapterIndex = Value;
+                GameManager.Instance.FilteredList = stageDataDict.Values
+                    .Where(stageData => stageData.Chapter == Value)
+                    .ToList();
                 break;
             case ValueType.Stage:
                 GameManager.Instance.SelectedStageIndex = Value;
+                GameManager.Instance.Stage = GameManager.Instance.FilteredList
+                    .First(stageData => stageData.Stage == Value);
                 break;
         }
     }

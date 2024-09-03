@@ -14,7 +14,7 @@ public class MapDrawSpace : VisualElement
     
     public event Action<MapDrawSpaceNode> SelectedNodeChanged;
 
-    public MapDrawSpace(int x, int y)
+    public MapDrawSpace(string stageName, int x, int y)
     {
         xSize = x;
         ySize = y;
@@ -51,10 +51,8 @@ public class MapDrawSpace : VisualElement
     public void LoadGrid(TableData tableData)
     {
         Clear();
-        
         xSize = tableData.Size.x;
         ySize = tableData.Size.y;
-        
         gridElements = new MapDrawSpaceNode[xSize, ySize];
         
         // 그리드의 총 크기와 MapDrawSpace의 크기를 고려하여 중앙 정렬 계산
@@ -65,10 +63,6 @@ public class MapDrawSpace : VisualElement
         int startX = (int)((1000 * 0.7 - gridWidth) / 2);
         int startY = (int)((720 - gridHeight) / 2);
         
-        /*foreach (var table in tableData.Table)
-        {
-            
-        }*/
         for (int col = 0; col < ySize; col++)
         {
             for (int row = 0; row < xSize; row++)
@@ -110,12 +104,14 @@ public class MapDrawSpace : VisualElement
     {
         TableData tableData = new TableData();
         tableData.Size = new Vector2Int(xSize, ySize);
-        tableData.Table = new Dictionary<Vector2Int, NodeData>();
+        tableData.Table = new Dictionary<int, NodeData>();
         for (int col = 0; col < ySize; col++)
         {
             for (int row = 0; row < xSize; row++)
             {
-                tableData.Table.Add(gridElements[row, col].Position, gridElements[row, col].Node);
+                int index = Vector2IntConverter.Vec2ToInt(tableData.Size, gridElements[row, col].Position);
+                
+                tableData.Table.Add(index, gridElements[row, col].Node);
             }
         }
         return tableData;

@@ -19,9 +19,9 @@ public class StageManager : MonoBehaviour
     public Direction playerForwardDirection = Direction.Right;
     
 
-    public void InitStage()
+    public void InitStage(string stageIndex)
     {
-        TableManager.InitTable("string stageInfo");
+        TableManager.InitTable(stageIndex);
         uiContainer.gameObject.SetActive(false);
         
         
