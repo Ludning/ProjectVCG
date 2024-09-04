@@ -11,4 +11,13 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public List<StageData> FilteredList;
     public StageData Stage;
+
+    public void GetChapterStageList()
+    {
+        var stageDataDict = DataManager.Instance.GetGameDataDictionary<StageData>();
+    }
+    public void GetStage()
+    {
+        var stageDataDict = DataManager.Instance.GetGameDataDictionary<StageData>();
+    }
 }

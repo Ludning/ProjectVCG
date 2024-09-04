@@ -24,7 +24,6 @@ public class StageManager : MonoBehaviour
         TableManager.InitTable(stageIndex);
         uiContainer.gameObject.SetActive(false);
         
-        
         Controller.gameObject.SetActive(true);
         Items.SetActive(true);
         
@@ -32,5 +31,10 @@ public class StageManager : MonoBehaviour
         
         InteractableManager.Init();
         SheetManager.Init();
+    }
+
+    public void ClearStage()
+    {
+        
     }
 }
