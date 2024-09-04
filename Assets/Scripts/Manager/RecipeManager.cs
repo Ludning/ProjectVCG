@@ -78,11 +78,11 @@ public class RecipeManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManag
         return true;
     }
 
-    // 매개변수로 받은 이름의 레시피를 완료 처리하고, 레시피 UI에서 숨긴다.
-    public void CompleteRecipe(string recipeName)
+    public void CompleteCurrentRecipe()
     {
         CurrentRecipe.IsComplete = true;
-        recipePopup.HideRecipe(recipeName);
+        recipePopup.HideRecipe(CurrentRecipe.RecipeName);
+        cursor++;
     }
 
     private async UniTask<LogicState> RunBlockLogics()
