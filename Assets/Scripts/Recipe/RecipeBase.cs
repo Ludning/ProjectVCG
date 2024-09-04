@@ -11,7 +11,7 @@ public class RecipeBase // Assets/Scripts/Recipe/RecipeBase.cs
     public RecipeBase(string recipeName)
     {
         RecipeName = recipeName;
-        IsComplete = false;
+        Reset();
     }
 
     public void Reset()

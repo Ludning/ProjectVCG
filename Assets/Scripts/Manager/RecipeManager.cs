@@ -1,14 +1,20 @@
+using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class RecipeManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManager.cs
 {
-    [SerializeField] private RecipePopup recipePopup; // UI?
-    private List<RecipeBase> recipes = new List<RecipeBase>();
-
-    public int cursor = 0;
-    RecipeBase CurrentRecipe => recipes[cursor];
+    #region Fields
+    
+    [SerializeField] private RecipePopup recipePopup; // Recipe UI
+    
+    private readonly List<RecipeBase> _recipeList = new(); // Recipe List
+    
+    private int _cursor = 0; // Index for Recipe List
+    private RecipeBase CurrentRecipe => _recipeList[_cursor]; // Getter for Index Item of Recipe List
+    
+    #endregion Fields
     
     private void Awake()
     {
@@ -17,50 +23,75 @@ public class RecipeManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManag
 	
     private void Init()
     {
-        // AddRecipe("recipeName");
-    }
-    
-    // = Init(); Stage에서 레시피의 목록을 불러온다.
-    private void ReadRecipesFromStage()
-    {
+        // StageData로부터 레시피의 정보를 받아와서 추가한다.
+        // 매개변수로 레시피의 정보를 전달받을 예정.
         
+        /*PcData pcData = DataManager.Instance.GetGameData<PcData>("0");
+        GameObject pcPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(pcData.PrefabName);
+        Instantiate(pcPrefab);*/
+        
+        //StageData stageData = DataManager.Instance.GetGameData<StageData>("0");
+        //stageData.ShowBlock
+        
+        AddRecipe("recipeName");
     }
     
     // 모든 레시피가 완료되었는지 확인하는 프로퍼티
-    public bool IsComplete => recipes.All(recipe => CurrentRecipe.IsComplete);
+    public bool IsAllComplete => _recipeList.All(recipe => CurrentRecipe.IsComplete);
 
-    public void InitRecipeState()
+    // Recipe 목록에 있는 모든 Recipe의 isComplete를 false로 초기화한다.
+    public void ResetRecipeState()
     {
-        foreach (var recipe in recipes)
+        foreach (RecipeBase recipe in _recipeList)
         {
             recipe.Reset();
         }
     }
 	
+    // Recipe 목록에 Recipe를 추가한다.
     public void AddRecipe(string recipeName)
     {
-        recipes.Add(new RecipeBase(recipeName));
+        _recipeList.Add(new RecipeBase(recipeName));
         recipePopup.DisplayRecipe(recipeName);
     }
+    
+    // 
     public bool CheckRecipe(List<string> tileInventoryItems)
     {
-        if(CurrentRecipe.Ingredients.Count != tileInventoryItems.Count)
+        if (CurrentRecipe.Ingredients.Count != tileInventoryItems.Count)
+        {
             return false;
+        }
         
         List<string> deepCopiedList = new List<string>(CurrentRecipe.Ingredients);
         
-        foreach (var itemName in tileInventoryItems)
+        foreach (string itemName in tileInventoryItems)
         {
-            if(!deepCopiedList.Contains(itemName))
+            if (!deepCopiedList.Contains(itemName))
+            {
                 return false;
+            }
+                
             deepCopiedList.Remove(itemName);
         }
+        
         return true;
     }
 
+    // 매개변수로 받은 이름의 레시피를 완료 처리하고, 레시피 UI에서 숨긴다.
     public void CompleteRecipe(string recipeName)
     {
         CurrentRecipe.IsComplete = true;
         recipePopup.HideRecipe(recipeName);
+    }
+
+    private async UniTask<LogicState> RunBlockLogics()
+    {
+        return LogicState.Success;
+    }
+
+    private async UniTask<LogicState> BlockLogic(BlockLogicBase block)
+    {
+        return LogicState.Success;
     }
 }
