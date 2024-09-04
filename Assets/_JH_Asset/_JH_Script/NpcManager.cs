@@ -6,32 +6,14 @@ using TMPro; // Make sure to include this for DOTween
 
 public class NPCManager : MonoBehaviour
 {
-    private Dictionary<string, string[]> _dialogueDictionary;
+    //private Dictionary<string, string[]> _dialogueDictionary;
     [SerializeField] private UIContainer UIContainer;
 
     private void Awake()
     {
         Debug.Log("test");
     }
-    // Update()
-    private void Update()
-    {
-        // 여러 줄 모두 출력할 때
-   /*     if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            string context = DataManager.Instance.GetGameData<ErrorMessageData>(((int)ErrorType.NoTile).ToString()).Context;
-            GetDialogue(context);
-            //GetDialogue("IntroduceBlockRun");
-        }
-
-
-        // 특정 대화만 출력
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            GetDialogue("HintMessage",0);
-        }*/
-    }
-
+    
     public void GetMessage(ErrorType msg)
     {
         if (msg == ErrorType.NoError)
@@ -58,7 +40,9 @@ public class NPCManager : MonoBehaviour
         textComponent.DOText(msg, 3f);
     }
 
-
-  
-
+    public void Clear()
+    {
+        NPCMessagePopup messagePopup = UIContainer.GetUIBase<NPCMessagePopup>(MainUIType.NPCMessagePopup);
+        messagePopup.gameObject.SetActive(false);
+    }
 }

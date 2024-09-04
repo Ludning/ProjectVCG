@@ -39,4 +39,12 @@ public class InteractableManager : MonoBehaviour
         
         InteractableButtons.Add(type, interactableUnityEventWrapper);
     }
+    public void Clear()
+    {
+        foreach (var interactableButton in InteractableButtons.Values)
+        {
+            Destroy(interactableButton.gameObject);
+        }
+        InteractableButtons.Clear();
+    }
 }

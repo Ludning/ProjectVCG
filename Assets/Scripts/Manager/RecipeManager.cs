@@ -87,4 +87,10 @@ public class RecipeManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManag
     {
         return LogicState.Success;
     }
+    
+    public void Clear()
+    {
+        _recipeList.Clear();
+        _cursor = 0;
+    }
 }

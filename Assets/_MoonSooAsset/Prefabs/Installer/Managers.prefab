@@ -139,7 +139,6 @@ MonoBehaviour:
   Stage: {fileID: 2324106997134201195}
   InteractableManager: {fileID: 7022657531795921493}
   NPCManager: {fileID: 6699213579640648353}
-  ErrorWarning: {fileID: 0}
   SheetParent: {fileID: 0}
 --- !u!1 &5172011013339461665
 GameObject:
@@ -268,7 +267,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tableParent: {fileID: 0}
-  startPosition: {x: 0, y: 0}
 --- !u!1 &7431368590363060570
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,8 +315,8 @@ MonoBehaviour:
   SheetManager: {fileID: 4470865141629060255}
   InteractableManager: {fileID: 7022657531795921493}
   RecipeManager: {fileID: 974716058251498038}
+  NPCManager: {fileID: 6699213579640648353}
   uiContainer: {fileID: 0}
   Items: {fileID: 0}
   Controller: {fileID: 0}
   Inventory: {fileID: 0}
-  playerForwardDirection: 4

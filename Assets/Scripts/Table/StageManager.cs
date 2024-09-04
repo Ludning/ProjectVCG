@@ -8,7 +8,9 @@ public class StageManager : MonoBehaviour
     public SheetManager SheetManager;
     public InteractableManager InteractableManager;
     public RecipeManager RecipeManager;
+    public NPCManager NPCManager;
 
+    [Header("Component")]
     [FormerlySerializedAs("ui")] public UIContainer uiContainer;
     
     public GameObject Items;
@@ -16,18 +18,17 @@ public class StageManager : MonoBehaviour
     public PlayerController Controller;
     public PlayerInventory Inventory;
     
-    public Direction playerForwardDirection = Direction.Right;
-    
-
     public void InitStage(string stageIndex)
     {
+        TableData tableData = DataManager.Instance.GetGameData<TableData>(stageIndex);
+        
         TableManager.InitTable(stageIndex);
         //uiContainer.gameObject.SetActive(false);
         
         Controller.gameObject.SetActive(true);
         Items.SetActive(true);
-        
-        Controller.Init(TableManager.startPosition, playerForwardDirection);
+
+        Controller.Init(tableData.PlayerPosition, tableData.PlayerDirection);
         
         InteractableManager.Init();
         SheetManager.Init();
@@ -35,6 +36,10 @@ public class StageManager : MonoBehaviour
 
     public void ClearStage()
     {
-        
+        TableManager.Clear();
+        SheetManager.Clear();
+        InteractableManager.Clear();
+        RecipeManager.Clear();
+        NPCManager.Clear();
     }
 }

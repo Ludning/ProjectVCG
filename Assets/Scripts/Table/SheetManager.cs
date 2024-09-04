@@ -238,5 +238,17 @@ public class SheetManager : MonoBehaviour
             }
         }
     }
-
+    public void Clear()
+    {
+        foreach (var blockLogic in _blockLogicBases)
+        {
+            Destroy(blockLogic.gameObject);
+        }
+        _blockLogicBases.Clear();
+        foreach (var repeatSheetParent in repeatSheetParents)
+        {
+            Destroy(repeatSheetParent.gameObject);
+        }
+        repeatSheetParents.Clear();
+    }
 }

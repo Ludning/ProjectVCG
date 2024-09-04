@@ -8,8 +8,6 @@ public class TableManager : MonoBehaviour
     private Dictionary<Vector2Int, TileBase> map = new Dictionary<Vector2Int, TileBase>();
     public Dictionary<Vector2Int, TileBase> Map => map;
 
-    public Vector2Int startPosition;
-
     public void InitTable(string stageIndex)
     {
         //TODO
@@ -117,5 +115,13 @@ public class TableManager : MonoBehaviour
     public void PushTileItem(Vector2Int position, ItemBase item)
     {
         Map[position].SetItem(item);
+    }
+    public void Clear()
+    {
+        foreach (var tileBase in map.Values)
+        {
+            Destroy(tileBase.gameObject);
+        }
+        map.Clear();
     }
 }
