@@ -7,10 +7,17 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     public int SelectedChapterIndex;
     public int SelectedStageIndex;
+    public string StageIndex;
 
-    private void Update()
+    public List<StageData> FilteredList;
+    public StageData Stage;
+
+    public void GetChapterStageList()
     {
-        /*Debug.Log(SelectedChapterIndex + ":: Chapter");
-        Debug.Log(SelectedStageIndex + ":: Stage ");*/
+        var stageDataDict = DataManager.Instance.GetGameDataDictionary<StageData>();
+    }
+    public void GetStage()
+    {
+        var stageDataDict = DataManager.Instance.GetGameDataDictionary<StageData>();
     }
 }

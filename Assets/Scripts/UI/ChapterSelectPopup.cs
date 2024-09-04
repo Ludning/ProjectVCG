@@ -10,10 +10,13 @@ public class ChapterSelectPopup : MonoBehaviour, IUIBase
     }
     public void OnClick_OK()
     {
-        if (GameManager.Instance.SelectedChapterIndex == 0)
+        if (GameManager.Instance.FilteredList == null)
             return;
         NextUI.SetActive(true);
         gameObject.SetActive(false);
+        
+        Debug.Log(GameManager.Instance.SelectedChapterIndex);
+        Debug.Log(GameManager.Instance.SelectedStageIndex);
     }
 
     public void Init()

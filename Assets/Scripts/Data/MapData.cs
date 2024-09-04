@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class MapData
 {
     public Dictionary<string, TableData> TableData;

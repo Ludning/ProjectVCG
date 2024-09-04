@@ -18,15 +18,17 @@ public class StageSelectPopup : MonoBehaviour, IUIBase
     }
     public void OnClick_OK()
     {
-        if (GameManager.Instance.SelectedStageIndex == 0)
+        if (GameManager.Instance.Stage == null)
             return;
         
-        StageManager.InitStage();
+        string stageIndex = GameManager.Instance.Stage.Index;
+        StageManager.InitStage(stageIndex);
         
         this.gameObject.SetActive(false);
     }
     public void OnClick_Back()
     {
+        GameManager.Instance.FilteredList = null;
         PrevUI.SetActive(true);
         this.gameObject.SetActive(false);
     }

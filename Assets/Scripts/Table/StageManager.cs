@@ -19,11 +19,10 @@ public class StageManager : MonoBehaviour
     public Direction playerForwardDirection = Direction.Right;
     
 
-    public void InitStage()
+    public void InitStage(string stageIndex)
     {
-        TableManager.InitTable("3000");
+        TableManager.InitTable(stageIndex);
         //uiContainer.gameObject.SetActive(false);
-        
         
         Controller.gameObject.SetActive(true);
         Items.SetActive(true);
@@ -32,5 +31,10 @@ public class StageManager : MonoBehaviour
         
         InteractableManager.Init();
         SheetManager.Init();
+    }
+
+    public void ClearStage()
+    {
+        
     }
 }

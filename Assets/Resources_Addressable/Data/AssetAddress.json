@@ -27,8 +27,7 @@
     "RotateRightMat": "Assets/Resources_Addressable/Materials/Logic/RotateRightMat.mat",
     "PushItemMat": "Assets/Resources_Addressable/Materials/Logic/PushItemMat.mat",
     "PopItemMat": "Assets/Resources_Addressable/Materials/Logic/PopItemMat.mat",
-    "CookMat": "Assets/Resources_Addressable/Materials/Logic/CookMat.mat",
-    "ResetMat": "Assets/Resources_Addressable/Materials/Logic/ResetMat.mat"
+    "CookMat": "Assets/Resources_Addressable/Materials/Logic/CookMat.mat"
   },
   "Sprite": {
     "CookedFood_Image": "Assets/Resources_Addressable/Textures/Tile/CookedFood_Image.png",
