@@ -116,4 +116,13 @@ public class MapDrawSpace : VisualElement
         }
         return tableData;
     }
+
+    /*public Vector2Int GetPlayerPosition()
+    {
+        return 
+    }
+    public Direction GetPlayerDirection()
+    {
+        
+    }*/
 }

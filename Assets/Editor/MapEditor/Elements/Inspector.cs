@@ -9,11 +9,13 @@ public class Inspector : VisualElement
     private EnumField PlayerDirectionDropdown;
     private Toggle SpawnObjectToggle;
     private EnumField SpawnObjectTypeDropdown;
+
+    private TableData tableData;
     
     public Inspector()
     {
         SetStyle();
-        SetInspector(null);
+        SetInspector(null, null);
     }
 
     private void SetStyle()
@@ -22,22 +24,24 @@ public class Inspector : VisualElement
         style.backgroundColor = new Color(0, 0, 1, 0.1f); // 연한 파란색
     }
 
-    public void SetInspector(MapDrawSpaceNode mapNode)
+    public void SetInspector(TableData tableData, MapDrawSpaceNode mapNode)
     {
         Clear();
 
+        if (tableData == null)
+            return;
         if (mapNode == null)
             return;
+
+        this.tableData = tableData;
         
         Debug.Log(mapNode.Node.TileType);
         Debug.Log(mapNode.Node.TileType);
-        Debug.Log(mapNode.Node.IsPlayerPosition);
-        Debug.Log(mapNode.Node.PlayerDirection);
         Debug.Log(mapNode.Node.IsSpawnObject);
         Debug.Log(mapNode.Node.SpawnObjectType);
         TileTypeDropdown = new EnumField("바닥 유형", mapNode.Node.TileType);
         IsPlayerPositionToggle = new Toggle("플레이어 시작 위치");
-        PlayerDirectionDropdown = new EnumField("플레이어 방향", mapNode.Node.PlayerDirection);
+        PlayerDirectionDropdown = new EnumField("플레이어 방향", tableData.PlayerDirection);
         SpawnObjectToggle = new Toggle("아이템 스폰");
         SpawnObjectTypeDropdown = new EnumField("아이템 스폰 유형", mapNode.Node.SpawnObjectType);
         
@@ -48,15 +52,15 @@ public class Inspector : VisualElement
         Add(TileTypeDropdown);
 
         // IsPlayerPosition 체크박스
-        IsPlayerPositionToggle.value = mapNode.Node.IsPlayerPosition;
+        IsPlayerPositionToggle.value = (tableData.PlayerPosition == mapNode.Position) ? true : false;
         IsPlayerPositionToggle.RegisterValueChangedCallback(evt =>
             OnIsPlayerPositionChanged(evt, mapNode));
         Add(IsPlayerPositionToggle);
 
         // PlayerDirection 드롭다운
-        PlayerDirectionDropdown.Init(mapNode.Node.PlayerDirection);
+        PlayerDirectionDropdown.Init(tableData.PlayerDirection);
         PlayerDirectionDropdown.RegisterValueChangedCallback(evt => OnPlayerDirectionChanged(evt, mapNode));
-        PlayerDirectionDropdown.SetEnabled(mapNode.Node.IsPlayerPosition); // 초기 상태 설정
+        PlayerDirectionDropdown.SetEnabled(IsPlayerPositionToggle.value); // 초기 상태 설정
         Add(PlayerDirectionDropdown);
 
         // SpawnObject 체크박스
@@ -89,20 +93,23 @@ public class Inspector : VisualElement
         // TileType 변경 후 비활성화 처리
         bool isEnabled = mapNode.Node.TileType != TileType.EMPTY;
         IsPlayerPositionToggle.SetEnabled(isEnabled);
-        PlayerDirectionDropdown.SetEnabled(isEnabled && mapNode.Node.IsPlayerPosition);
+        PlayerDirectionDropdown.SetEnabled(isEnabled && IsPlayerPositionToggle.value);
         SpawnObjectToggle.SetEnabled(isEnabled);
         SpawnObjectTypeDropdown.SetEnabled(isEnabled && mapNode.Node.IsSpawnObject);
     }
 
     private void OnIsPlayerPositionChanged(ChangeEvent<bool> evt, MapDrawSpaceNode mapNode)
     {
-        mapNode.Node.IsPlayerPosition = evt.newValue;
-        PlayerDirectionDropdown.SetEnabled(evt.newValue);
+        if (evt.newValue == true)
+        {
+            tableData.PlayerPosition = mapNode.Position;
+            PlayerDirectionDropdown.SetEnabled(evt.newValue);
+        }
     }
 
     private void OnPlayerDirectionChanged(ChangeEvent<Enum> evt, MapDrawSpaceNode mapNode)
     {
-        mapNode.Node.PlayerDirection = (Direction)evt.newValue;
+        tableData.PlayerDirection = (Direction)evt.newValue;
     }
 
     private void OnSpawnObjectChanged(ChangeEvent<bool> evt, MapDrawSpaceNode mapNode)

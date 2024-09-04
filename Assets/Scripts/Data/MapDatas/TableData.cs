@@ -6,5 +6,9 @@ using UnityEngine;
 public class TableData
 {
     public Vector2Int Size;
+    
+    public Vector2Int PlayerPosition;
+    public Direction PlayerDirection;
+    
     public Dictionary<int, NodeData> Table;
 }

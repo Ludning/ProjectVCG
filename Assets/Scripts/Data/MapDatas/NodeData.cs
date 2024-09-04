@@ -6,8 +6,6 @@ using UnityEngine;
 public class NodeData
 {
     public TileType TileType;
-    public bool IsPlayerPosition;
-    public Direction PlayerDirection;
     public bool IsSpawnObject;
     public ItemType SpawnObjectType;
 }

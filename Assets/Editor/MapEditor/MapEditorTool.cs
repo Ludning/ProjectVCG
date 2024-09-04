@@ -15,6 +15,8 @@ public class MapEditorTool : EditorWindow
     private TilePalette _tilePalette;
     private Inspector _inspector;
 
+    private TableData tableData;
+
     private int _width = 5;
     private int _height = 5;
     
@@ -112,7 +114,7 @@ public class MapEditorTool : EditorWindow
 
     private void OnLoadMapData(string stageName)
     {
-        TableData tableData = DataManager.Instance.GetTableData(stageName);
+        tableData = DataManager.Instance.GetTableData(stageName);
         if (tableData != null)
             _mapDrawSpace.LoadGrid(tableData);
         else
@@ -128,8 +130,10 @@ public class MapEditorTool : EditorWindow
             mapData = new MapData();
         if (mapData.TableData == null)
             mapData.TableData = new Dictionary<string, TableData>();
-        
+
         mapData.TableData[_currentStage] = _mapDrawSpace.GetTableData();
+        mapData.TableData[_currentStage].PlayerPosition = tableData.PlayerPosition;
+        mapData.TableData[_currentStage].PlayerDirection = tableData.PlayerDirection;
         MapDataReader.SaveMapData(mapData);
     }
     
@@ -146,12 +150,12 @@ public class MapEditorTool : EditorWindow
     
     private void OnNodeSelectionChange(MapDrawSpaceNode selectedNode)
     {
-        _inspector.SetInspector(selectedNode);
+        _inspector.SetInspector(tableData, selectedNode);
     }
     private void OnClickTilePallete(TilePaletteNode selectedNode)
     {
         _mapDrawSpace.selectedElement.SetNode(selectedNode.TileType);
         _mapDrawSpace.selectedElement.SetTile(selectedNode.TileType);
-        _inspector.SetInspector(_mapDrawSpace.selectedElement);
+        _inspector.SetInspector(tableData, _mapDrawSpace.selectedElement);
     }
 }
