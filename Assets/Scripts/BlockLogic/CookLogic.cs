@@ -42,7 +42,6 @@ public class CookLogic : BlockLogicBase
         tile.ClearItem();
         GameObject food = Instantiate(foodPrefab);
         tile.SetItem(food.GetComponent<ItemBase>());
-        //TODO
         owner.RecipeManager.CompleteCurrentRecipe();
         return LogicState.Success;
     }
