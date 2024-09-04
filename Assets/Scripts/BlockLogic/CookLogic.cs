@@ -12,11 +12,11 @@ public class CookLogic : BlockLogicBase
             return ErrorType.NoTile; 
         
         //지형 체크
-        if(!owner.TableManager.PeekTile(position).CheakTileAttribute(TileAttributeCheckType.CookAble))
+        if(!owner.TableManager.PeekTile(position).IsCookAble)
             return ErrorType.InvalidCookAction;
         
         //비어있는건지 체크
-        if (owner.TableManager.PeekTile(position).CheakTileAttribute(TileAttributeCheckType.InventoryEmpty))
+        if (owner.TableManager.PeekTile(position).IsInventoryEmpty)
             return ErrorType.NoIngredientOnTile;
 
         //타일 아이템 리스트 반환

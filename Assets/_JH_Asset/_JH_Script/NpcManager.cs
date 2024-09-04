@@ -19,8 +19,7 @@ public class NPCManager : MonoBehaviour
         if (msg == ErrorType.NoError)
             return;
 
-        NPCMessagePopup messagePopup = UIContainer.GetUIBase<NPCMessagePopup>(MainUIType.NPCMessagePopup);
-        messagePopup.gameObject.SetActive(true);
+        UIContainer.NPCMessagePopup.gameObject.SetActive(true);
         Debug.Log(msg);
         if (msg == ErrorType.NoTile)
             Debug.Log("aa");
@@ -30,7 +29,7 @@ public class NPCManager : MonoBehaviour
         string context = data.Context;
 
         Debug.Log(context);
-        GetDialogue(messagePopup.MessageTextComoponent, context);
+        GetDialogue(UIContainer.NPCMessagePopup.MessageTextComoponent, context);
     }
     private void GetDialogue(TextMeshProUGUI textComponent, string msg, int index = -1)
     {
@@ -42,7 +41,6 @@ public class NPCManager : MonoBehaviour
 
     public void Clear()
     {
-        NPCMessagePopup messagePopup = UIContainer.GetUIBase<NPCMessagePopup>(MainUIType.NPCMessagePopup);
-        messagePopup.gameObject.SetActive(false);
+        UIContainer.NPCMessagePopup.gameObject.SetActive(false);
     }
 }

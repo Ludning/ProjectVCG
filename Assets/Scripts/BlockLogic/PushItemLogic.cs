@@ -15,11 +15,11 @@ public class PushItemLogic : BlockLogicBase
             return ErrorType.NoTile; 
         
         //타일이 비어있는지 체크
-        if (!owner.TableManager.PeekTile(position).CheakTileAttribute(TileAttributeCheckType.PushAble))
+        if (!owner.TableManager.PeekTile(position).IsPushAble)
             return ErrorType.InvalidDropTile;
         
         //타일 인벤토리가 비어있는지 체크
-        if (owner.TableManager.PeekTile(position).CheakTileAttribute(TileAttributeCheckType.InventoryEmpty))
+        if (owner.TableManager.PeekTile(position).IsInventoryEmpty)
             return ErrorType.NoPickableItem;
         
         //캐릭터 인벤토리가 꽉 찼는지 확인
@@ -35,7 +35,7 @@ public class PushItemLogic : BlockLogicBase
         var item = owner.TableManager.PopTileItem(position);
         if(item == null)
             return LogicState.Failure;
-        owner.TableManager.PushTileItem(position, null);
+        //owner.TableManager.PushTileItem(position, null);
         owner.Inventory.PushItem(item);
         return LogicState.Success;
     }

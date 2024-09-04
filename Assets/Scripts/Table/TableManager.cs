@@ -4,27 +4,34 @@ using UnityEngine;
 public class TableManager : MonoBehaviour
 {
     [SerializeField] private Transform tableParent;
+    [SerializeField] private Transform itemParent;
     
     private Dictionary<Vector2Int, TileBase> map = new Dictionary<Vector2Int, TileBase>();
     public Dictionary<Vector2Int, TileBase> Map => map;
 
-    public void InitTable(string stageIndex)
+    public void InitTable(TableData tableData)
     {
-        //TODO
-        //현재 스테이지 정보를 받아온 후 초기화
-        TableData tableData = DataManager.Instance.GetTableData(stageIndex);
-
         foreach (var tileData in tableData.Table)
         {
             Vector2Int position = Vector2IntConverter.IntToVec2(tableData.Size, tileData.Key);
             GameObject tilePrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("Tile");
             GameObject tile = Instantiate(tilePrefab, tableParent);
-            tile.transform.position = new Vector3(position.x, 0, position.y);
+            tile.transform.localPosition = new Vector3(position.x, 0, position.y);
             TileBase tileBase = tile.GetComponent<TileBase>();
-            tileBase.InitTile(tileData.Value.TileType);
+            tileBase.InitTile(tileData.Value);
             map.Add(position, tileBase);
+            
+            if (tileData.Value.SpawnObjectType != ItemType.Null)
+            {
+                string itemIndex = ((int)tileData.Value.SpawnObjectType).ToString();
+                FoodData data = DataManager.Instance.GetGameData<FoodData>(itemIndex);
+                GameObject foodPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(data.PrefabName);
+                tileBase.NoRimitItemMesh = Instantiate(foodPrefab).GetComponent<ItemBase>();
+                tileBase.NoRimitItemMesh.transform.SetParent(itemParent, false);
+                tileBase.NoRimitItemMesh.transform.position = GetTilePosition(position);
+            }
         }
-
+        
     }
 
     public void ClearTable()
@@ -66,7 +73,7 @@ public class TableManager : MonoBehaviour
     {
         if (Map.TryGetValue(position, out TileBase tileBase))
         {
-            return tileBase.transform.position + Vector3.up * 1.5f;
+            return tileBase.transform.position + Vector3.up * 0.8f;
         }
         return Vector3.zero;
     }

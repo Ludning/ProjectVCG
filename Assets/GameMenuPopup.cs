@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameMenuPopup : MonoBehaviour
+public class GameMenuPopup : MonoBehaviour, IUIBase
 {
     [SerializeField] private StageManager StageManager;
 

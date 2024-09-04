@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,23 +13,28 @@ public class StageSelectPopup : MonoBehaviour, IUIBase
     public Button PrevChapterBtn;
     public Button NextChapterBtn;
 
-    public void OnSelectStage(int value)
-    {
-        GameManager.Instance.SelectedStageIndex = value;
-    }
+    public List<StageData> StageDatas = new List<StageData>();
+
     public void OnClick_OK()
     {
-        if (GameManager.Instance.Stage == null)
+        if (GameManager.Instance.SelectedStageIndex == 0)
+            return;
+        if (StageDatas == null || StageDatas.Count == 0)
             return;
         
-        string stageIndex = GameManager.Instance.Stage.Index;
-        StageManager.InitStage(stageIndex);
+        int stageIndex = GameManager.Instance.SelectedStageIndex;
+
+        StageData stageData = GameManager.Instance.GetStage(StageDatas, stageIndex);
+        
+        StageManager.InitStage(stageData);
         
         this.gameObject.SetActive(false);
     }
     public void OnClick_Back()
     {
-        GameManager.Instance.FilteredList = null;
+        StageDatas.Clear();
+        
+        GameManager.Instance.SelectedStageIndex = 0;
         PrevUI.SetActive(true);
         this.gameObject.SetActive(false);
     }
@@ -65,37 +71,34 @@ public class StageSelectPopup : MonoBehaviour, IUIBase
     public void Init()
     {
         GameObject buttonTogglePrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("ButtonToggle");
+        
         int chapterIndex = GameManager.Instance.SelectedChapterIndex;
-
-        int stageCount = 0;
+        StageDatas = GameManager.Instance.GetChapterStageList(chapterIndex);
         
         switch (chapterIndex)
         {
             case 1:
                 PrevChapterBtn.gameObject.SetActive(false);
-                stageCount = 4;
                 break;
             case 2:
                 PrevChapterBtn.gameObject.SetActive(true);
                 NextChapterBtn.gameObject.SetActive(true);
-                stageCount = 3;
                 break;
             case 3:
                 NextChapterBtn.gameObject.SetActive(false);
-                stageCount = 1;
                 break;
         }
         ChapterText.text = $"{chapterIndex}챕터 \n 스테이지 선택";
 
-        for (int i = 1; i <= stageCount; i++)
+        foreach (var stageData in StageDatas)
         {
             ToggleHandler handler = Instantiate(buttonTogglePrefab, ToggleGroup.transform).GetComponent<ToggleHandler>();
             handler.type = ValueType.Stage;
-            handler.Value = i;
-            handler.Context.text = $"{GameManager.Instance.SelectedChapterIndex} - {i}";
-
+            handler.Value = stageData.Stage;
+            handler.Context.text = $"{stageData.Chapter} - {stageData.Stage}";
+            
+            handler.toggle.onValueChanged.AddListener(handler.OnToggleValueChanged);
             handler.GetComponent<Toggle>().group = ToggleGroup;
         }
-        
     }
 }

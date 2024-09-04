@@ -89,7 +89,6 @@ public class DataManager : Singleton<DataManager>
     public TableData GetTableData(string key)
     {
         Debug.Log("GetTableData");
-        Debug.Log("GetTableData");
         if (_mapData == null)
         {
             TextAsset jsonFile = Addressables.LoadAssetAsync<TextAsset>(MapDataJsonPath).WaitForCompletion();

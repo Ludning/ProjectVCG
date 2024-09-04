@@ -1,23 +1,36 @@
 using Frameworks;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
-    public int SelectedChapterIndex;
-    public int SelectedStageIndex;
-    public string StageIndex;
+    private int selectedChapterIndex;
 
-    public List<StageData> FilteredList;
-    public StageData Stage;
-
-    public void GetChapterStageList()
+    public int SelectedChapterIndex
     {
-        var stageDataDict = DataManager.Instance.GetGameDataDictionary<StageData>();
+        get
+        {
+            return selectedChapterIndex;
+        }
+        set
+        {
+            Debug.Log("selectedChapterIndex Change");
+            selectedChapterIndex = value;
+        }
     }
-    public void GetStage()
+    public int SelectedStageIndex;
+    public List<StageData> GetChapterStageList(int chapterIndex)
     {
         var stageDataDict = DataManager.Instance.GetGameDataDictionary<StageData>();
+        return stageDataDict.Values
+            .Where(stageData => stageData.Chapter == chapterIndex)
+            .OrderBy(stageData => stageData.Stage)
+            .ToList();
+    }
+    public StageData GetStage(List<StageData> stageDatas, int stageIndex)
+    {
+        return stageDatas.FirstOrDefault(stageData => stageData.Stage == stageIndex);
     }
 }

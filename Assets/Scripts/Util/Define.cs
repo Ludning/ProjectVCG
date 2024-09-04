@@ -2,6 +2,7 @@ using System;
 
 public enum ItemType
 {
+    Null,
     Poke = 11100,
     HamburgerSet = 11101,
     Cut_Potato = 11200,

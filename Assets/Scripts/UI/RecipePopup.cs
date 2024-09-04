@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RecipePopup : MonoBehaviour // Assets/Scripts/UI/RecipePopup.cs
+public class RecipePopup : MonoBehaviour, IUIBase // Assets/Scripts/UI/RecipePopup.cs
 {
     [SerializeField] private Transform context;
     private Dictionary<string, RecipePopupElement> recipesDictionary = new();

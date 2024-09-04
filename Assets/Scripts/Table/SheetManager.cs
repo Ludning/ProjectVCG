@@ -65,7 +65,7 @@ public class SheetManager : MonoBehaviour
     {
         foreach (var interactableButton in InteractableManager.InteractableButtons)
         {
-            Debug.Log($"BlockLogicType : {interactableButton.Key}");
+            //Debug.Log($"BlockLogicType : {interactableButton.Key}");
             interactableButton.Value.WhenSelect.AddListener(()=>OnClick_SetLogic(interactableButton.Key));
             if( interactableButton.Key == BlockLogicType.Repeat)
             {

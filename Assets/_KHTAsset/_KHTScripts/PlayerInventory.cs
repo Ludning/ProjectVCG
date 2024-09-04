@@ -26,7 +26,7 @@ public class PlayerInventory : MonoBehaviour
             Debug.Log($"InventoryParent : {inventoryParent.position}");
             Debug.Log($"ItemStackPosition : {ItemStackPosition}");
             
-            item.transform.localPosition = ItemStackPosition;
+            item.transform.localPosition = Vector3.zero;
             itemStack.Push(item);
         }
     }

@@ -2,10 +2,744 @@
   "TableData": {
     "3000": {
       "Size": {
+        "x": 4,
+        "y": 4,
+        "magnitude": 5.656854,
+        "sqrMagnitude": 32
+      },
+      "PlayerPosition": {
+        "x": 1,
+        "y": 1,
+        "magnitude": 1.41421354,
+        "sqrMagnitude": 2
+      },
+      "PlayerDirection": 2,
+      "Table": {
+        "0": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "1": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "2": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "3": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "4": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "5": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "6": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "7": {
+          "TileType": 10110,
+          "IsSpawnObject": true,
+          "SpawnObjectType": 11100
+        },
+        "8": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "9": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "10": {
+          "TileType": 10111,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "11": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "12": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "13": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "14": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "15": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        }
+      }
+    },
+    "3004": {
+      "Size": {
         "x": 3,
         "y": 3,
         "magnitude": 4.2426405,
         "sqrMagnitude": 18
+      },
+      "PlayerPosition": {
+        "x": 1,
+        "y": 0,
+        "magnitude": 1.0,
+        "sqrMagnitude": 1
+      },
+      "PlayerDirection": 1,
+      "Table": {
+        "0": {
+          "TileType": 10201,
+          "IsSpawnObject": true,
+          "SpawnObjectType": 11504
+        },
+        "1": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "2": {
+          "TileType": 10301,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "3": {
+          "TileType": 10201,
+          "IsSpawnObject": true,
+          "SpawnObjectType": 11502
+        },
+        "4": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "5": {
+          "TileType": 10301,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "6": {
+          "TileType": 10301,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "7": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "8": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        }
+      }
+    },
+    "3005": {
+      "Size": {
+        "x": 5,
+        "y": 5,
+        "magnitude": 7.071068,
+        "sqrMagnitude": 50
+      },
+      "PlayerPosition": {
+        "x": 3,
+        "y": 4,
+        "magnitude": 5.0,
+        "sqrMagnitude": 25
+      },
+      "PlayerDirection": 3,
+      "Table": {
+        "0": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "1": {
+          "TileType": 10301,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "2": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "3": {
+          "TileType": 10201,
+          "IsSpawnObject": true,
+          "SpawnObjectType": 11504
+        },
+        "4": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "5": {
+          "TileType": 10201,
+          "IsSpawnObject": true,
+          "SpawnObjectType": 11502
+        },
+        "6": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "7": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "8": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "9": {
+          "TileType": 10301,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "10": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "11": {
+          "TileType": 10301,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "12": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "13": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "14": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "15": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "16": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "17": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "18": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "19": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "20": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "21": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "22": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "23": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "24": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        }
+      }
+    },
+    "3006": {
+      "Size": {
+        "x": 4,
+        "y": 4,
+        "magnitude": 5.656854,
+        "sqrMagnitude": 32
+      },
+      "PlayerPosition": {
+        "x": 2,
+        "y": 1,
+        "magnitude": 2.236068,
+        "sqrMagnitude": 5
+      },
+      "PlayerDirection": 1,
+      "Table": {
+        "0": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "1": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "2": {
+          "TileType": 10110,
+          "IsSpawnObject": true,
+          "SpawnObjectType": 21000
+        },
+        "3": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "4": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "5": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "6": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "7": {
+          "TileType": 10110,
+          "IsSpawnObject": true,
+          "SpawnObjectType": 21001
+        },
+        "8": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "9": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "10": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "11": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "12": {
+          "TileType": 10111,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "13": {
+          "TileType": 10111,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "14": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "15": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        }
+      }
+    },
+    "3007": {
+      "Size": {
+        "x": 5,
+        "y": 5,
+        "magnitude": 7.071068,
+        "sqrMagnitude": 50
+      },
+      "PlayerPosition": {
+        "x": 2,
+        "y": 3,
+        "magnitude": 3.60555124,
+        "sqrMagnitude": 13
+      },
+      "PlayerDirection": 2,
+      "Table": {
+        "0": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "1": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "2": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "3": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "4": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "5": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "6": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "7": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "8": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "9": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "10": {
+          "TileType": 10301,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "11": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "12": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "13": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "14": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "15": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "16": {
+          "TileType": 10201,
+          "IsSpawnObject": true,
+          "SpawnObjectType": 11503
+        },
+        "17": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "18": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "19": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "20": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "21": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "22": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "23": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "24": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        }
+      }
+    },
+    "3001": {
+      "Size": {
+        "x": 4,
+        "y": 4,
+        "magnitude": 5.656854,
+        "sqrMagnitude": 32
+      },
+      "PlayerPosition": {
+        "x": 0,
+        "y": 2,
+        "magnitude": 2.0,
+        "sqrMagnitude": 4
+      },
+      "PlayerDirection": 3,
+      "Table": {
+        "0": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "1": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "2": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "3": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "4": {
+          "TileType": 10110,
+          "IsSpawnObject": true,
+          "SpawnObjectType": 11100
+        },
+        "5": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "6": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "7": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "8": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "9": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "10": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "11": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "12": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "13": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "14": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "15": {
+          "TileType": 10111,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        }
+      }
+    },
+    "3002": {
+      "Size": {
+        "x": 4,
+        "y": 4,
+        "magnitude": 5.656854,
+        "sqrMagnitude": 32
+      },
+      "PlayerPosition": {
+        "x": 1,
+        "y": 1,
+        "magnitude": 1.41421354,
+        "sqrMagnitude": 2
+      },
+      "PlayerDirection": 2,
+      "Table": {
+        "0": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "1": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "2": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "3": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "4": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "5": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "6": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "7": {
+          "TileType": 10110,
+          "IsSpawnObject": true,
+          "SpawnObjectType": 11101
+        },
+        "8": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "9": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "10": {
+          "TileType": 10000,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "11": {
+          "TileType": 10111,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "12": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "13": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "14": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "15": {
+          "TileType": 10100,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        }
+      }
+    },
+    "3003": {
+      "Size": {
+        "x": 4,
+        "y": 4,
+        "magnitude": 5.656854,
+        "sqrMagnitude": 32
       },
       "PlayerPosition": {
         "x": 0,
@@ -16,22 +750,22 @@
       "PlayerDirection": 2,
       "Table": {
         "0": {
-          "TileType": 10000,
+          "TileType": 10100,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "1": {
-          "TileType": 10000,
+          "TileType": 10100,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "2": {
-          "TileType": 10000,
+          "TileType": 10100,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "3": {
-          "TileType": 10000,
+          "TileType": 10111,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
@@ -56,149 +790,42 @@
           "SpawnObjectType": 0
         },
         "8": {
-          "TileType": 10000,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        }
-      }
-    },
-    "3001": {
-      "Size": {
-        "x": 5,
-        "y": 5,
-        "magnitude": 7.071068,
-        "sqrMagnitude": 50
-      },
-      "PlayerPosition": {
-        "x": 0,
-        "y": 0,
-        "magnitude": 0.0,
-        "sqrMagnitude": 0
-      },
-      "PlayerDirection": 0,
-      "Table": {
-        "0": {
-          "TileType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "1": {
-          "TileType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "2": {
-          "TileType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "3": {
-          "TileType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "4": {
-          "TileType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "5": {
-          "TileType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "6": {
-          "TileType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "7": {
-          "TileType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "8": {
-          "TileType": 0,
+          "TileType": 10100,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "9": {
-          "TileType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
+          "TileType": 10110,
+          "IsSpawnObject": true,
+          "SpawnObjectType": 11101
         },
         "10": {
-          "TileType": 0,
+          "TileType": 10100,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "11": {
-          "TileType": 0,
+          "TileType": 10100,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "12": {
-          "TileType": 10000,
+          "TileType": 10100,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "13": {
-          "TileType": 0,
+          "TileType": 10100,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "14": {
-          "TileType": 0,
+          "TileType": 10100,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "15": {
-          "TileType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "16": {
-          "TileType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "17": {
-          "TileType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "18": {
-          "TileType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "19": {
-          "TileType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "20": {
-          "TileType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "21": {
-          "TileType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "22": {
-          "TileType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "23": {
-          "TileType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "24": {
-          "TileType": 0,
+          "TileType": 10100,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }

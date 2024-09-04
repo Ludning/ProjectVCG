@@ -13,7 +13,7 @@ public class PopItemLogic : BlockLogicBase
             return ErrorType.NoTile; 
         
         //내려놓을 수 있는 타일인지 체크
-        if (owner.TableManager.PeekTile(position).CheakTileAttribute(TileAttributeCheckType.PopAble))
+        if (!owner.TableManager.PeekTile(position).IsPopAble)
             return ErrorType.InvalidDropTile;
         
         return ErrorType.NoError;

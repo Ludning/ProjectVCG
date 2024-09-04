@@ -2,25 +2,17 @@ using UnityEngine;
 
 public class ChapterSelectPopup : MonoBehaviour, IUIBase
 {
-    [SerializeField] private GameObject NextUI;
-    public void OnSelectChapter(int value)
-    {
-        Debug.Log(value);
-        GameManager.Instance.SelectedChapterIndex = value;
-    }
+    [SerializeField] private StageSelectPopup StageSelectPopup;
     public void OnClick_OK()
     {
-        if (GameManager.Instance.FilteredList == null)
+        if (GameManager.Instance.SelectedChapterIndex == 0)
             return;
-        NextUI.SetActive(true);
+        StageSelectPopup.gameObject.SetActive(true);
         gameObject.SetActive(false);
-        
-        Debug.Log(GameManager.Instance.SelectedChapterIndex);
-        Debug.Log(GameManager.Instance.SelectedStageIndex);
     }
 
     public void Init()
     {
-        
+        GameManager.Instance.SelectedChapterIndex = 0;
     }
 }

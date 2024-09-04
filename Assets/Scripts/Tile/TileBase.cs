@@ -10,42 +10,23 @@ public class TileBase : MonoBehaviour
 
     private int InventoryCount = 0;
 
+    public ItemBase NoRimitItemMesh;
+    
     public Stack<ItemBase> InventoryStack = new Stack<ItemBase>();
 
-    private bool IsWalkAble => (TileAttributeType & TileAttributeType.Moveable) != 0;
-    private bool IsPushAble => (TileAttributeType & TileAttributeType.Pushable) != 0;
-    private bool IsPopAble  => (TileAttributeType & TileAttributeType.Popable)  != 0;
-    private bool IsStackAble => (TileAttributeType & TileAttributeType.Stackable) != 0;
-    private bool IsCookAble => (TileAttributeType & TileAttributeType.Cookable) != 0;
-    private bool IsInventoryEmpty => (InventoryCount == 0) ? true : false;
-    private bool IsInventoryEmptyOrFull => (InventoryCount == 0 || InventoryStack.Count == InventoryCount) ? true : false;
+    public bool IsWalkAble => (TileAttributeType & TileAttributeType.Moveable) != 0;
+    public bool IsPushAble => (TileAttributeType & TileAttributeType.Pushable) != 0;
+    public bool IsPopAble  => (TileAttributeType & TileAttributeType.Popable)  != 0;
+    public bool IsStackAble => (TileAttributeType & TileAttributeType.Stackable) != 0;
+    public bool IsCookAble => (TileAttributeType & TileAttributeType.Cookable) != 0;
+    public bool IsInventoryEmpty => (InventoryCount == 0) ? true : false;
+    public bool IsInventoryEmptyOrFull => (InventoryCount == 0 || InventoryStack.Count == InventoryCount) ? true : false;
 
-    public bool CheakTileAttribute(TileAttributeCheckType type)
-    {
-        switch (type)
-        {
-            case TileAttributeCheckType.WalkAble:
-                return IsWalkAble;
-            case TileAttributeCheckType.PushAble:
-                return IsPushAble;
-            case TileAttributeCheckType.PopAble:
-                return IsPopAble;
-            case TileAttributeCheckType.StackAble:
-                return IsStackAble;
-            case TileAttributeCheckType.CookAble:
-                return IsCookAble;
-            case TileAttributeCheckType.InventoryEmpty:
-                return IsInventoryEmpty;
-            case TileAttributeCheckType.InventoryEmptyOrFull:
-                return IsInventoryEmptyOrFull;
-            default:
-                return false;
-        }
-    }
 
-    public void InitTile(TileType tileType)
+    public void InitTile(NodeData nodeData)
     {
-        TileData tileData = DataManager.Instance.GetGameData<TileData>(((int)tileType).ToString());
+        string tileKey = ((int)nodeData.TileType).ToString();
+        TileData tileData = DataManager.Instance.GetGameData<TileData>(tileKey);
 
         TileType = tileData.TileType;
         TileAttributeType =
@@ -56,7 +37,28 @@ public class TileBase : MonoBehaviour
 
         InventoryCount = tileData.InventoryCount;
 
+        /*if (nodeData.SpawnObjectType != ItemType.Null)
+        {
+            string itemIndex = ((int)nodeData.SpawnObjectType).ToString();
+            FoodData data = DataManager.Instance.GetGameData<FoodData>(itemIndex);
+            GameObject foodPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(data.PrefabName);
+            NoRimitItemMesh = Instantiate(foodPrefab).GetComponent<ItemBase>();
+            NoRimitItemMesh.transform.SetParent(transform, false);
+            NoRimitItemMesh.transform.localPosition = transform.position + Vector3.up * 1.5f;
+        }*/
+
         //TileLogic 설치
+        InitTileMesh(tileData.PrefabName);
+    }
+
+    public void InitTileMesh(string tileName)
+    {
+        if (TileType == TileType.EMPTY)
+            return;
+
+        GameObject tilePrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(tileName);
+        GameObject go = Instantiate(tilePrefab, transform);
+        go.transform.localPosition = Vector3.zero;
     }
 
     public TileAttributeType GetTileAttributes(bool walkable, bool pushable, bool popable, bool stackable)
@@ -94,15 +96,19 @@ public class TileBase : MonoBehaviour
 
         return itemNames;
     }
+    //아이템을 가져가는 함수
     public ItemBase TakeItem()
     {
+        if (InventoryCount == -1)
+            return Instantiate(NoRimitItemMesh.gameObject).GetComponent<ItemBase>();
         return InventoryStack.Count > 0 ? InventoryStack.Pop() : null;
     }
+    //아이템을 놓는 함수
     public void SetItem(ItemBase item)
     {
         InventoryStack.Push(item);
         item.transform.SetParent(transform, false);
-        item.transform.position = transform.position + Vector3.up * 1.5f;
+        item.transform.localPosition = transform.position + Vector3.up * 1.5f;
     }
     public void ClearItem()
     {

@@ -13,11 +13,11 @@ public class DashLogic : BlockLogicBase
             return ErrorType.NoTile;
 
         //지형 체크
-        if (!owner.TableManager.PeekTile(position).CheakTileAttribute(TileAttributeCheckType.WalkAble))
+        if (!owner.TableManager.PeekTile(position).IsWalkAble)
             return ErrorType.NotMove;
         
         //장애물(재료등) 체크
-        if (!owner.TableManager.PeekTile(position).CheakTileAttribute(TileAttributeCheckType.InventoryEmpty))
+        if (!owner.TableManager.PeekTile(position).IsInventoryEmpty)
             return ErrorType.NotMove;
 
         return ErrorType.NoError;

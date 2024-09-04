@@ -967,8 +967,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ChapterSelectUI, Assembly-CSharp
+      - m_Target: {fileID: 7223884698161925614}
+        m_TargetAssemblyTypeName: GameMenuPopup, Assembly-CSharp
         m_MethodName: OnClick_OK
         m_Mode: 1
         m_Arguments:
