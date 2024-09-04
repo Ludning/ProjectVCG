@@ -31,7 +31,7 @@
         },
         "3": {
           "TileType": 10000,
-          "IsPlayerPosition": false,
+          "IsPlayerPosition": true,
           "PlayerDirection": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0

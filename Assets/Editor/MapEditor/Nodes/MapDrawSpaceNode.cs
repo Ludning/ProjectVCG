@@ -11,10 +11,13 @@ public class MapDrawSpaceNode : MapNode
     {
         SetStyle(x, y, startX, startY);
         Position = new Vector2Int(x, y);
-        TileType type;
-        type = tableData == null ? TileType.EMPTY : MapDataReader.LoadNodeData(tableData, x, y).TileType;
-        SetNode(type);
-        SetTile(type);
+        NodeData data = tableData == null ? new NodeData() : MapDataReader.LoadNodeData(tableData, x, y);
+        SetNode(data);
+        SetTile(data.TileType);
+    }
+    public void SetNode(NodeData data)
+    {
+        Node = data;
     }
     public void SetNode(TileType type)
     {

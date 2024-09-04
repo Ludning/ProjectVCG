@@ -12,7 +12,6 @@ public class SheetManager : MonoBehaviour
     [SerializeField] private StageManager Stage;
     [SerializeField] private InteractableManager InteractableManager;
     [SerializeField] private NPCManager NPCManager;
-    [SerializeField] GameObject ErrorWarning;
 
     [Header("MainSheet")]
     [SerializeField] private Transform SheetParent;
@@ -152,7 +151,6 @@ public class SheetManager : MonoBehaviour
             {
                 ActiveHint(SheetParent,tempLenght);
                 NPCManager.GetMessage(result);
-
             }
 
             tempLenght++;
@@ -230,10 +228,12 @@ public class SheetManager : MonoBehaviour
             {
                 // Enable the Outline component on the child at index 'len'
                 outline.enabled = false;
-                if (i == len && ErrorWarning && child.childCount < 1)
+
+                GameObject errorWarningPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("ErrorWarning");
+                if (i == len && errorWarningPrefab && child.childCount < 1)
                 {
 
-                    Instantiate(ErrorWarning, child);
+                    Instantiate(errorWarningPrefab, child);
                 }
             }
         }

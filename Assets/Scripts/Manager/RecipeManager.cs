@@ -12,7 +12,7 @@ public class RecipeManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManag
     private readonly List<RecipeBase> _recipeList = new(); // Recipe List
     
     private int _cursor = 0; // Index for Recipe List
-    private RecipeBase CurrentRecipe => _recipeList[_cursor]; // Getter for Index Item of Recipe List
+    public RecipeBase CurrentRecipe => _recipeList[_cursor]; // Getter for Index Item of Recipe List
     
     #endregion Fields
     
@@ -26,14 +26,7 @@ public class RecipeManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManag
         // StageData로부터 레시피의 정보를 받아와서 추가한다.
         // 매개변수로 레시피의 정보를 전달받을 예정.
         
-        /*PcData pcData = DataManager.Instance.GetGameData<PcData>("0");
-        GameObject pcPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(pcData.PrefabName);
-        Instantiate(pcPrefab);*/
-        
-        //StageData stageData = DataManager.Instance.GetGameData<StageData>("0");
-        //stageData.ShowBlock
-        
-        AddRecipe("recipeName");
+        //AddRecipe("recipeName");
     }
     
     // 모든 레시피가 완료되었는지 확인하는 프로퍼티
@@ -82,7 +75,7 @@ public class RecipeManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManag
     {
         CurrentRecipe.IsComplete = true;
         recipePopup.HideRecipe(CurrentRecipe.RecipeName);
-        cursor++;
+        _cursor++;
     }
 
     private async UniTask<LogicState> RunBlockLogics()

@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3185795868858698333
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1767080474457413261}
+  - component: {fileID: 6699213579640648353}
+  m_Layer: 0
+  m_Name: NPCManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1767080474457413261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3185795868858698333}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2639243018561309311}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6699213579640648353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3185795868858698333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91d09839c19bfe419be7f363d03986f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIContainer: {fileID: 0}
 --- !u!1 &3648319350971215030
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,7 +90,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LogicButtonParent: {fileID: 0}
-  GameControlButtonParent: {fileID: 0}
+  StartParent: {fileID: 0}
+  ClearParent: {fileID: 0}
 --- !u!1 &4052659004184919315
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +138,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Stage: {fileID: 2324106997134201195}
   InteractableManager: {fileID: 7022657531795921493}
+  NPCManager: {fileID: 6699213579640648353}
+  ErrorWarning: {fileID: 0}
   SheetParent: {fileID: 0}
 --- !u!1 &5172011013339461665
 GameObject:
@@ -138,7 +186,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipePopup: {fileID: 0}
-  cursor: 0
 --- !u!1 &5245920724353730381
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,6 +220,7 @@ Transform:
   - {fileID: 4260105331689796640}
   - {fileID: 392269505047638082}
   - {fileID: 5794458582964898340}
+  - {fileID: 1767080474457413261}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6720569742300118016

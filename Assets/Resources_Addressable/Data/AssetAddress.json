@@ -16,7 +16,8 @@
     "NPCMessagePopup": "Assets/Resources_Addressable/Prefabs/WorldUI/NPCMessagePopup.prefab",
     "RecipePopup": "Assets/Resources_Addressable/Prefabs/WorldUI/RecipePopup.prefab",
     "ButtonToggle": "Assets/Resources_Addressable/Prefabs/WorldUI/Elements/Toggle.prefab",
-    "Tile": "Assets/Resources_Addressable/Prefabs/Tile.prefab"
+    "Tile": "Assets/Resources_Addressable/Prefabs/Tile.prefab",
+    "ErrorWarning": "Assets/Resources_Addressable/Prefabs/UI/ErrorWarning.prefab"
   },
   "Material": {
     "TempMat": "Assets/Resources_Addressable/Materials/Logic/TempMat.mat",
@@ -27,7 +28,10 @@
     "RotateRightMat": "Assets/Resources_Addressable/Materials/Logic/RotateRightMat.mat",
     "PushItemMat": "Assets/Resources_Addressable/Materials/Logic/PushItemMat.mat",
     "PopItemMat": "Assets/Resources_Addressable/Materials/Logic/PopItemMat.mat",
-    "CookMat": "Assets/Resources_Addressable/Materials/Logic/CookMat.mat"
+    "CookMat": "Assets/Resources_Addressable/Materials/Logic/CookMat.mat",
+    "ResetMat": "Assets/Resources_Addressable/Materials/Logic/ResetMat.mat",
+    "DashMat": "Assets/Resources_Addressable/Materials/Logic/TempMat.mat",
+    "RepeatMat": "Assets/Resources_Addressable/Materials/Logic/TempMat.mat"
   },
   "Sprite": {
     "CookedFood_Image": "Assets/Resources_Addressable/Textures/Tile/CookedFood_Image.png",
