@@ -17,17 +17,17 @@ public class RecipePopup : MonoBehaviour // Assets/Scripts/UI/RecipePopup.cs
     {
         GameObject recipeUIPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(recipeName);
         GameObject recipeObject = Instantiate(recipeUIPrefab, context);
-        RecipePopupElement recipePopupElement = recipeObject.GetComponent<RecipePopupElement>();
-        recipePopupElement.Init(recipeName);
-        recipesDictionary.Add(recipeName, recipePopupElement);
+        RecipePopupElement newElement = recipeObject.GetComponent<RecipePopupElement>();
+        newElement.Init(recipeName);
+        recipesDictionary.Add(recipeName, newElement);
     }
     
     // UI 화면에서 레시피를 삭제하는 함수
     public void HideRecipe(string recipeName)
     {
-        if (recipesDictionary.TryGetValue(recipeName, out RecipePopupElement recipeUI))
+        if (recipesDictionary.TryGetValue(recipeName, out RecipePopupElement element))
         {
-            Destroy(recipeUI);
+            Destroy(element);
             recipesDictionary.Remove(recipeName);
         }
     }
