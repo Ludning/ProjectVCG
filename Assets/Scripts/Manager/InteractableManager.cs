@@ -12,16 +12,24 @@ public class InteractableManager : MonoBehaviour
     
     public Dictionary<BlockLogicType, InteractableUnityEventWrapper> InteractableButtons = new Dictionary<BlockLogicType, InteractableUnityEventWrapper>();
 
-    public void Init()
+    public void Init(string showBlockString)
     {
         GameObject buttonPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(InteractableButtonName);
 
-        InstantiateButton(buttonPrefab, LogicButtonParent, BlockLogicType.Cook);
+        List<string> blockList = new List<string>(showBlockString.Split(", "));
+        foreach (var blockIndex in blockList)
+        {
+            CodingBlockData data = DataManager.Instance.GetGameData<CodingBlockData>(blockIndex);
+            Debug.Log(data.Type);
+            InstantiateButton(buttonPrefab, LogicButtonParent, data.Type);
+        }
+        
+        /*InstantiateButton(buttonPrefab, LogicButtonParent, BlockLogicType.Cook);
         InstantiateButton(buttonPrefab, LogicButtonParent, BlockLogicType.Move);
         InstantiateButton(buttonPrefab, LogicButtonParent, BlockLogicType.RotateLeft);
         InstantiateButton(buttonPrefab, LogicButtonParent, BlockLogicType.RotateRight);
         InstantiateButton(buttonPrefab, LogicButtonParent, BlockLogicType.PushItem);
-        InstantiateButton(buttonPrefab, LogicButtonParent, BlockLogicType.PopItem);
+        InstantiateButton(buttonPrefab, LogicButtonParent, BlockLogicType.PopItem);*/
         
         InstantiateButton(buttonPrefab, StartParent, BlockLogicType.Start);
         InstantiateButton(buttonPrefab, StartParent, BlockLogicType.Reset);

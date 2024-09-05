@@ -1,3 +1,6 @@
+using System;
+
+[Serializable]
 public class FeedbackData
 {
     public string Index;

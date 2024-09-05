@@ -1,3 +1,6 @@
+using System;
+
+[Serializable]
 public class StageData
 {
     public string Index;

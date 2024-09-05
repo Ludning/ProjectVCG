@@ -1,3 +1,6 @@
+using System;
+
+[Serializable]
 public class PcData
 {
     public string Index;

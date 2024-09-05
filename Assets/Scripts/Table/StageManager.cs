@@ -33,7 +33,7 @@ public class StageManager : MonoBehaviour
         TableManager.InitTable(tableData);
         Vector3 playerPosition = TableManager.GetTilePosition(tableData.PlayerPosition);
         Controller.Init(tableData.PlayerPosition, playerPosition, tableData.PlayerDirection);
-        InteractableManager.Init();
+        InteractableManager.Init(stageData.ShowBlock);
         SheetManager.Init();
         UIContainer.Init();
     }
