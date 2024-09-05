@@ -605,9 +605,9 @@
       "Index": "11202",
       "Description": "잘린 새우",
       "Type": "Processed",
-      "Icon": "CUT_SHIRIMP",
-      "Value": "Cut_Shirimp",
-      "PrefabName": "Object_Food_Cut_Shirimp"
+      "Icon": "CUT_SHRIMP",
+      "Value": "Cut_Shrimp",
+      "PrefabName": "Object_Food_Cut_Shrimp"
     },
     "11203": {
       "Index": "11203",
@@ -621,9 +621,9 @@
       "Index": "11204",
       "Description": "새우튀김",
       "Type": "Processed",
-      "Icon": "FRIER_SHIRIMP",
-      "Value": "Frier_Shirimp",
-      "PrefabName": "Object_Food_Frier_Shirimp"
+      "Icon": "FRIER_SHRIMP",
+      "Value": "Frier_Shrimp",
+      "PrefabName": "Object_Food_Frier_Shrimp"
     },
     "11205": {
       "Index": "11205",
@@ -669,9 +669,9 @@
       "Index": "11504",
       "Description": "새우",
       "Type": "Original",
-      "Icon": "SHIRIMP",
-      "Value": "Shirimp",
-      "PrefabName": "Object_Food_Shirimp"
+      "Icon": "SHRIMP",
+      "Value": "Shrimp",
+      "PrefabName": "Object_Food_Shrimp"
     }
   },
   "CookingProperty": {
@@ -715,20 +715,20 @@
     "21000": {
       "Index": "21000",
       "Name": "새우초밥",
-      "Product": "SHIRIMP_SUSHI",
+      "Product": "SHRIMP_SUSHI",
       "Cookery": "TRAY",
       "Ingre_01": "POT_RICE",
-      "Ingre_02": "CUT_SHIRIMP",
+      "Ingre_02": "CUT_SHRIMP",
       "Ingre_03": "-",
       "Ingre_04": "-"
     },
     "21001": {
       "Index": "21001",
       "Name": "에비동",
-      "Product": "SHIRIMP_RICE",
+      "Product": "SHRIMP_RICE",
       "Cookery": "TRAY",
       "Ingre_01": "POT_RICE_2",
-      "Ingre_02": "FRIER_SHIRIMP",
+      "Ingre_02": "FRIER_SHRIMP",
       "Ingre_03": "-",
       "Ingre_04": "-"
     },
@@ -755,9 +755,9 @@
     "20001": {
       "Index": "20001",
       "Name": "썬 새우",
-      "Product": "CUT_SHIRIMP",
+      "Product": "CUT_SHRIMP",
       "Cookery": "CUT",
-      "Ingre_01": "SHIRIMP",
+      "Ingre_01": "SHRIMP",
       "Ingre_02": "-",
       "Ingre_03": "-",
       "Ingre_04": "-"
@@ -775,9 +775,9 @@
     "20003": {
       "Index": "20003",
       "Name": "새우튀김",
-      "Product": "FRIER_SHIRIMP",
+      "Product": "FRIER_SHRIMP",
       "Cookery": "FRIER",
-      "Ingre_01": "SHIRIMP",
+      "Ingre_01": "SHRIMP",
       "Ingre_02": "-",
       "Ingre_03": "-",
       "Ingre_04": "-"
