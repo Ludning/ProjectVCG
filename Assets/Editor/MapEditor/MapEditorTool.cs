@@ -134,6 +134,7 @@ public class MapEditorTool : EditorWindow
         mapData.TableData[_currentStage] = _mapDrawSpace.GetTableData();
         mapData.TableData[_currentStage].PlayerPosition = tableData.PlayerPosition;
         mapData.TableData[_currentStage].PlayerDirection = tableData.PlayerDirection;
+        mapData.TableData[_currentStage].LevelDataDictionary = tableData.LevelDataDictionary;
         MapDataReader.SaveMapData(mapData);
     }
     

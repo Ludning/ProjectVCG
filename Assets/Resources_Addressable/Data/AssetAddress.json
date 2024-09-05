@@ -62,6 +62,19 @@
     "Table_Image": "Assets/Resources_Addressable/Textures/Tile/Table_Image.png",
     "Walking_Image": "Assets/Resources_Addressable/Textures/Tile/Walking_Image.png",
     "Walking_Pass_Image": "Assets/Resources_Addressable/Textures/Tile/Walking_Pass_Image.png",
-    "Wall_Image": "Assets/Resources_Addressable/Textures/Tile/Wall_Image.png"
+    "Wall_Image": "Assets/Resources_Addressable/Textures/Tile/Wall_Image.png",
+    "Image_Food_Poke": "",
+    "Image_Food_Hamburger_Set": "",
+    "Image_Food_Cut_Potato": "",
+    "Image_Food_Pot_Rice": "",
+    "Image_Food_Cut_Shirimp": "",
+    "Image_Food_Pot_Rice_2": "",
+    "Image_Food_Frier_Shirimp": "",
+    "Image_Food_Cut_Fish": "",
+    "Image_Food_Potato": "",
+    "Image_Food_Tuna": "",
+    "Image_Food_Rice": "",
+    "Image_Food_Fish": "",
+    "Image_Food_Shirimp": ""
   }
 }

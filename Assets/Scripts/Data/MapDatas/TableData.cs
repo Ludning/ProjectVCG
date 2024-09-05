@@ -11,4 +11,6 @@ public class TableData
     public Direction PlayerDirection;
     
     public Dictionary<int, NodeData> Table;
+
+    public Dictionary<int, string> LevelDataDictionary;
 }

@@ -1,10 +1,12 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Inspector : VisualElement
 {
     private EnumField TileTypeDropdown;
+    private TextField TileKeyField;
     private Toggle IsPlayerPositionToggle;
     private EnumField PlayerDirectionDropdown;
     private Toggle SpawnObjectToggle;
@@ -36,10 +38,11 @@ public class Inspector : VisualElement
         this.tableData = tableData;
         
         Debug.Log(mapNode.Node.TileType);
-        Debug.Log(mapNode.Node.TileType);
         Debug.Log(mapNode.Node.IsSpawnObject);
         Debug.Log(mapNode.Node.SpawnObjectType);
+        
         TileTypeDropdown = new EnumField("바닥 유형", mapNode.Node.TileType);
+        TileKeyField = new TextField("타일 고유번호");
         IsPlayerPositionToggle = new Toggle("플레이어 시작 위치");
         PlayerDirectionDropdown = new EnumField("플레이어 방향", tableData.PlayerDirection);
         SpawnObjectToggle = new Toggle("아이템 스폰");
@@ -50,6 +53,13 @@ public class Inspector : VisualElement
         TileTypeDropdown.RegisterValueChangedCallback(evt => OnTileTypeChanged(evt, mapNode));
         TileTypeDropdown.SetEnabled(false);
         Add(TileTypeDropdown);
+        
+        // TileKeyField 텍스트 박스
+        int nodePosition = Vector2IntConverter.Vec2ToInt(tableData.Size, mapNode.Position);
+        if(tableData.LevelDataDictionary != null)
+            TileKeyField.value = tableData.LevelDataDictionary.GetValueOrDefault(nodePosition, "");
+        TileKeyField.RegisterValueChangedCallback(evt => OnTileKeyChanged(evt, mapNode));
+        Add(TileKeyField);
 
         // IsPlayerPosition 체크박스
         IsPlayerPositionToggle.value = (tableData.PlayerPosition == mapNode.Position) ? true : false;
@@ -75,10 +85,12 @@ public class Inspector : VisualElement
         SpawnObjectTypeDropdown.SetEnabled(mapNode.Node.IsSpawnObject); // 초기 상태 설정
         Add(SpawnObjectTypeDropdown);
         
+        
         // TileType이 Empty일 경우 요소 비활성화
         if (mapNode.Node.TileType == TileType.EMPTY)
         {
             IsPlayerPositionToggle.SetEnabled(false);
+            TileKeyField.SetEnabled(false);
             PlayerDirectionDropdown.SetEnabled(false);
             SpawnObjectToggle.SetEnabled(false);
             SpawnObjectTypeDropdown.SetEnabled(false);
@@ -96,6 +108,18 @@ public class Inspector : VisualElement
         PlayerDirectionDropdown.SetEnabled(isEnabled && IsPlayerPositionToggle.value);
         SpawnObjectToggle.SetEnabled(isEnabled);
         SpawnObjectTypeDropdown.SetEnabled(isEnabled && mapNode.Node.IsSpawnObject);
+    }
+    
+    private void OnTileKeyChanged(ChangeEvent<string> evt, MapDrawSpaceNode mapNode)
+    {
+        int nodePosition = Vector2IntConverter.Vec2ToInt(tableData.Size, mapNode.Position);
+        if (tableData.LevelDataDictionary == null)
+            tableData.LevelDataDictionary = new Dictionary<int, string>();
+        
+        if (string.IsNullOrWhiteSpace(evt.newValue))
+            tableData.LevelDataDictionary.Remove(nodePosition);
+        else
+            tableData.LevelDataDictionary[nodePosition] = evt.newValue;
     }
 
     private void OnIsPlayerPositionChanged(ChangeEvent<bool> evt, MapDrawSpaceNode mapNode)
