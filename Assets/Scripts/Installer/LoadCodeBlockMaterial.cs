@@ -13,4 +13,8 @@ public class LoadCodeBlockMaterial : MonoBehaviour
         
         meshRenderer.materials = new[] { tempMat };
     }
+    public void SetMaterial(Material mat)
+    {
+        meshRenderer.materials = new[] { mat };
+    }
 }

@@ -58,11 +58,14 @@ public class SheetManager : MonoBehaviour
         {
             OnClick_SetLogic(BlockLogicType.Reset);
         }
+        if (Input.GetKeyDown(KeyCode.O)) OnClick_OpenExercise(); // VR 터치 대신 키입력으로 임시 코드
+
     }
-
-
     public void Init()
     {
+        InteractableManager.ExerciseButton.WhenSelect.AddListener(OnClick_OpenExercise);
+
+
         foreach (var interactableButton in InteractableManager.InteractableButtons)
         {
             //Debug.Log($"BlockLogicType : {interactableButton.Key}");
@@ -102,7 +105,13 @@ public class SheetManager : MonoBehaviour
         }
     }
 
-    
+    private void OnClick_OpenExercise()
+    {
+        //TODO
+        //연습장 오픈 기능 구현
+        Debug.Log("test");
+    }
+
 
     public void AddBlockLogic(BlockLogicBase blockLogic)
     {
