@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Cysharp.Threading.Tasks.Triggers;
+using Oculus.Interaction;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UIElements;
@@ -17,62 +18,62 @@ public class SheetManager : MonoBehaviour
     [SerializeField] private Transform SheetParent;
     private List<BlockLogicBase> _blockLogicBases = new List<BlockLogicBase>();
 
-    [Header("SubSheet")]
-    private List<Transform> repeatSheetParents = new List<Transform>();
+    //[Header("SubSheet")]
+    //private List<Transform> repeatSheetParents = new List<Transform>();
+    private Dictionary<int, Transform> repeatSheetParents = new Dictionary<int, Transform>();
+    private Dictionary<int, List<BlockLogicBase>> _repeatBlockLogicBasesDictionary = new Dictionary<int, List<BlockLogicBase>>();
+    
     //임시 코드
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.S))
-        {
             OnClick_SetLogic(BlockLogicType.Start);
-        }
+        
         if (Input.GetKeyDown(KeyCode.C))
-        {
             OnClick_SetLogic(BlockLogicType.Cook);
-        }
+        
         if (Input.GetKeyDown(KeyCode.M))
-        {
             OnClick_SetLogic(BlockLogicType.Move);
-        }
+        
         if (Input.GetKeyDown(KeyCode.P))
-        {
             OnClick_SetLogic(BlockLogicType.PushItem);
-        }
+        
         if (Input.GetKeyDown(KeyCode.L))
-        {
             OnClick_SetLogic(BlockLogicType.RotateLeft);
-        }
+        
         if (Input.GetKeyDown(KeyCode.R))
-        {
             OnClick_SetLogic(BlockLogicType.RotateRight);
-        }
+        
         if (Input.GetKeyDown(KeyCode.I))
-        {
             OnClick_SetLogic(BlockLogicType.PopItem);
-        }
+        
         if (Input.GetKeyDown(KeyCode.X))
-        {
             OnClick_SetLogic(BlockLogicType.Clear);
-        }
+        
         if (Input.GetKeyDown(KeyCode.Z))
-        {
             OnClick_SetLogic(BlockLogicType.Reset);
-        }
+        
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+            OnClick_SetLogic(BlockLogicType.Repeat);
     }
 
 
+    //초기화 함수
+    //상호작용 버튼을 생성하고 BlockLogic이 추가되는 이벤트를 연결해준다
+    //
     public void Init()
     {
         foreach (var interactableButton in InteractableManager.InteractableButtons)
         {
             //Debug.Log($"BlockLogicType : {interactableButton.Key}");
             interactableButton.Value.WhenSelect.AddListener(()=>OnClick_SetLogic(interactableButton.Key));
-            if( interactableButton.Key == BlockLogicType.Repeat)
+            if(interactableButton.Key == BlockLogicType.Repeat)
             {
                 GameObject sheetPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(BlockLogicType.Repeat.ToString());
                 GameObject repeatSheet = Instantiate(sheetPrefab);
                 //TODO 위치 조정 스크립트도 작성해야함
-                repeatSheetParents.Add(repeatSheet.transform);
+                //repeatSheetParents.Add(repeatSheet.transform);
+                repeatBlockLogicBases.Add(, repeatSheet);
             }
         }
     }
@@ -250,5 +251,13 @@ public class SheetManager : MonoBehaviour
             Destroy(repeatSheetParent.gameObject);
         }
         repeatSheetParents.Clear();
+    }
+
+    public void TestLogics()
+    {
+        OnClick_SetLogic(BlockLogicType.Repeat);
+        
+        OnClick_SetLogic(BlockLogicType.Repeat);
+        OnClick_SetLogic(BlockLogicType.Repeat);
     }
 }

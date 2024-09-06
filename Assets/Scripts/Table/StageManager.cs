@@ -36,6 +36,9 @@ public class StageManager : MonoBehaviour
         InteractableManager.Init(stageData.ShowBlock);
         SheetManager.Init();
         UIContainer.Init();
+
+
+        SheetManager.TestLogics();
     }
 
     public void ClearStage()
