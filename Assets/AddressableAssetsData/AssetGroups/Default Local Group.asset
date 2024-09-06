@@ -257,11 +257,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1781361e4d6dabc4e99c3f500770d6f7
-    m_Address: Assets/Resources_Addressable/Prefabs/UI/StageClearPopup.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 89f6ef4160d13994087ef0cb79a5b40d
     m_Address: Assets/Resources_Addressable/Prefabs/UI/FlatUnityCanvas.prefab
     m_ReadOnly: 0

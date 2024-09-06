@@ -114,6 +114,6 @@ public class TempSheetConnector : MonoBehaviour
     public void OnClick_ClearLogic()
     {
         sheetText.text = "";
-        sheetManager.ClearBlockLogic();
+        sheetManager.ClearAllBlockLogic();
     }
 }

@@ -10,6 +10,7 @@ public class UIContainer : MonoBehaviour
     public NPCMessagePopup NPCMessagePopup;
     public RecipePopup RecipePopup;
     public GameMenuPopup GameMenuPopup;
+    public ExSheetPopup ExSheetPopup;
 
     private void OnEnable()
     {
@@ -19,6 +20,7 @@ public class UIContainer : MonoBehaviour
         NPCMessagePopup.gameObject.SetActive(false);
         RecipePopup.gameObject.SetActive(false);
         GameMenuPopup.gameObject.SetActive(false);
+        ExSheetPopup.gameObject.SetActive(false);
     }
 
     public void Init()
@@ -29,6 +31,7 @@ public class UIContainer : MonoBehaviour
         NPCMessagePopup.gameObject.SetActive(false);
         RecipePopup.gameObject.SetActive(true);
         GameMenuPopup.gameObject.SetActive(true);
+        ExSheetPopup.gameObject.SetActive(false);
     }
     
     public void Clear()
@@ -39,5 +42,6 @@ public class UIContainer : MonoBehaviour
         NPCMessagePopup.gameObject.SetActive(false);
         RecipePopup.gameObject.SetActive(false);
         GameMenuPopup.gameObject.SetActive(false);
+        ExSheetPopup.gameObject.SetActive(false);
     }
 }
