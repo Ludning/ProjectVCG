@@ -95,6 +95,10 @@
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
+      },
+      "LevelDataDictionary": {
+        "7": "1",
+        "10": "1"
       }
     },
     "3101": {
@@ -192,6 +196,10 @@
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
+      },
+      "LevelDataDictionary": {
+        "4": "2",
+        "15": "2"
       }
     },
     "3102": {
@@ -289,6 +297,10 @@
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
+      },
+      "LevelDataDictionary": {
+        "7": "3",
+        "11": "3"
       }
     },
     "3103": {
@@ -386,6 +398,10 @@
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
+      },
+      "LevelDataDictionary": {
+        "3": "4",
+        "9": "4"
       }
     },
     "3200": {
@@ -448,6 +464,13 @@
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
+      },
+      "LevelDataDictionary": {
+        "0": "3",
+        "3": "2",
+        "2": "2",
+        "5": "1",
+        "6": "3"
       }
     },
     "3201": {
@@ -590,6 +613,13 @@
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
+      },
+      "LevelDataDictionary": {
+        "3": "5",
+        "5": "4",
+        "1": "4",
+        "9": "5",
+        "11": "6"
       }
     },
     "3202": {
@@ -687,6 +717,12 @@
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
+      },
+      "LevelDataDictionary": {
+        "2": "5",
+        "7": "6",
+        "13": "6",
+        "12": "5"
       }
     },
     "3300": {
@@ -829,6 +865,10 @@
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
+      },
+      "LevelDataDictionary": {
+        "16": "6",
+        "10": "7"
       }
     },
     "3000": {
@@ -866,6 +906,9 @@
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
+      },
+      "LevelDataDictionary": {
+        "3": "1"
       }
     },
     "3001": {
@@ -913,6 +956,9 @@
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
+      },
+      "LevelDataDictionary": {
+        "4": "2"
       }
     },
     "3002": {
@@ -960,6 +1006,10 @@
           "IsSpawnObject": true,
           "SpawnObjectType": 11500
         }
+      },
+      "LevelDataDictionary": {
+        "3": "1",
+        "5": "1"
       }
     },
     "3301": {
@@ -1102,6 +1152,11 @@
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
+      },
+      "LevelDataDictionary": {
+        "11": "7",
+        "15": "8",
+        "21": "2"
       }
     },
     "3302": {
@@ -1244,6 +1299,12 @@
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
+      },
+      "LevelDataDictionary": {
+        "0": "7",
+        "21": "7",
+        "19": "8",
+        "3": "9"
       }
     }
   }
