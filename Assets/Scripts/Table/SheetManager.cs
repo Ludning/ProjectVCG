@@ -165,6 +165,7 @@ public class SheetManager : MonoBehaviour
         blockLogic.transform.SetParent(_currentSheetParent, false);
         _currentSheets.Add(blockLogic);
         Debug.Log("AddBlockLogic");
+        Debug.Log("AddBlockLogic");
     }
     public void ClearAllBlockLogic()
     {

@@ -95,7 +95,8 @@
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
-      }
+      },
+      "LevelDataDictionary": null
     },
     "3101": {
       "Size": {
@@ -192,7 +193,8 @@
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
-      }
+      },
+      "LevelDataDictionary": null
     },
     "3102": {
       "Size": {
@@ -289,7 +291,8 @@
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
-      }
+      },
+      "LevelDataDictionary": null
     },
     "3103": {
       "Size": {
@@ -386,7 +389,8 @@
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
-      }
+      },
+      "LevelDataDictionary": null
     },
     "3200": {
       "Size": {
@@ -448,7 +452,8 @@
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
-      }
+      },
+      "LevelDataDictionary": null
     },
     "3201": {
       "Size": {
@@ -590,7 +595,8 @@
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
-      }
+      },
+      "LevelDataDictionary": null
     },
     "3202": {
       "Size": {
@@ -687,7 +693,8 @@
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
-      }
+      },
+      "LevelDataDictionary": null
     },
     "3300": {
       "Size": {
@@ -829,7 +836,8 @@
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
-      }
+      },
+      "LevelDataDictionary": null
     },
     "3000": {
       "Size": {
@@ -866,6 +874,9 @@
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
+      },
+      "LevelDataDictionary": {
+        "2": "1"
       }
     },
     "3001": {
@@ -913,7 +924,8 @@
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
-      }
+      },
+      "LevelDataDictionary": null
     },
     "3002": {
       "Size": {
@@ -960,7 +972,8 @@
           "IsSpawnObject": true,
           "SpawnObjectType": 11500
         }
-      }
+      },
+      "LevelDataDictionary": null
     },
     "3301": {
       "Size": {
@@ -1102,7 +1115,8 @@
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
-      }
+      },
+      "LevelDataDictionary": null
     },
     "3302": {
       "Size": {
@@ -1244,7 +1258,8 @@
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
-      }
+      },
+      "LevelDataDictionary": null
     }
   }
 }
