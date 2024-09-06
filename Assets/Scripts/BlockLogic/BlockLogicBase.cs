@@ -7,9 +7,6 @@ public class BlockLogicBase : MonoBehaviour
     {
         return ErrorType.UnKnownError;
     }
-    
-    //return false는 미완료의 의미
-    //return true는 완료의 의미
     public virtual LogicState Execute(StageManager owner)
     {
         return LogicState.Success;

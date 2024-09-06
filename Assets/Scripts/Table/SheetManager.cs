@@ -33,45 +33,56 @@ public class SheetManager : MonoBehaviour
     private Dictionary<int, List<BlockLogicBase>> _sheetDictionary = new Dictionary<int, List<BlockLogicBase>>();
     private Dictionary<int, Transform> _sheetParentDictionary = new Dictionary<int, Transform>();
     
-    private List<BlockLogicBase> _currentSheets;
+    private List<BlockLogicBase> _currentSheet;
     private Transform _currentSheetParent;
 
+
+
+    private int sheetIndex;
+    private Dictionary<InteractableUnityEventWrapper, int> _sheetIndexDictionary = new Dictionary<InteractableUnityEventWrapper, int>();
 
     //임시 코드
     private void Update()
     {
+        
+
         if (Input.GetKeyDown(KeyCode.S))
-            OnClick_SetLogic(BlockLogicType.Start);
+            OnClick_SetLogic(GetButtonKeyValue(BlockLogicType.Start));
         
         if (Input.GetKeyDown(KeyCode.C))
-            OnClick_SetLogic(BlockLogicType.Cook);
+            OnClick_SetLogic(GetButtonKeyValue(BlockLogicType.Cook));
         
         if (Input.GetKeyDown(KeyCode.M))
-            OnClick_SetLogic(BlockLogicType.Move);
+            OnClick_SetLogic(GetButtonKeyValue(BlockLogicType.Move));
         
         if (Input.GetKeyDown(KeyCode.P))
-            OnClick_SetLogic(BlockLogicType.PushItem);
+            OnClick_SetLogic(GetButtonKeyValue(BlockLogicType.PushItem));
         
         if (Input.GetKeyDown(KeyCode.L))
-            OnClick_SetLogic(BlockLogicType.RotateLeft);
+            OnClick_SetLogic(GetButtonKeyValue(BlockLogicType.RotateLeft));
         
         if (Input.GetKeyDown(KeyCode.R))
-            OnClick_SetLogic(BlockLogicType.RotateRight);
+            OnClick_SetLogic(GetButtonKeyValue(BlockLogicType.RotateRight));
         
         if (Input.GetKeyDown(KeyCode.I))
-            OnClick_SetLogic(BlockLogicType.PopItem);
+            OnClick_SetLogic(GetButtonKeyValue(BlockLogicType.PopItem));
         
         if (Input.GetKeyDown(KeyCode.X))
-            OnClick_SetLogic(BlockLogicType.Clear);
+            OnClick_SetLogic(GetButtonKeyValue(BlockLogicType.Clear));
         
         if (Input.GetKeyDown(KeyCode.Z))
-            OnClick_SetLogic(BlockLogicType.Reset);
+            OnClick_SetLogic(GetButtonKeyValue(BlockLogicType.Reset));
         
         if (Input.GetKeyDown(KeyCode.LeftControl))
-            OnClick_SetLogic(BlockLogicType.Repeat);
+            OnClick_SetLogic(GetButtonKeyValue(BlockLogicType.Repeat));
             
         if (Input.GetKeyDown(KeyCode.O)) 
         	OnClick_OpenExercise(); // VR 터치 대신 키입력으로 임시 코드
+    }
+
+    private KeyValuePair<BlockLogicType, InteractableUnityEventWrapper> GetButtonKeyValue(BlockLogicType type)
+    {
+        return new KeyValuePair<BlockLogicType, InteractableUnityEventWrapper>(type, InteractableManager.InteractableButtons[type]);
     }
 
 
@@ -79,27 +90,31 @@ public class SheetManager : MonoBehaviour
     //상호작용 버튼을 생성하고 BlockLogic이 추가되는 이벤트를 연결해준다
     public void Init()
     {
+        sheetIndex = 1;
+
         InteractableManager.ExerciseButton.WhenSelect.AddListener(OnClick_OpenExercise);
 
 
         foreach (var interactableButton in InteractableManager.InteractableButtons)
         {
             //Debug.Log($"BlockLogicType : {interactableButton.Key}");
-            interactableButton.Value.WhenSelect.AddListener(()=>OnClick_SetLogic(interactableButton.Key));
-            if(interactableButton.Key == BlockLogicType.Repeat)
+            interactableButton.Value.WhenSelect.AddListener(()=>OnClick_SetLogic(interactableButton));
+            if(interactableButton.Key == BlockLogicType.Repeat || interactableButton.Key == BlockLogicType.Function)
             {
-                GameObject sheetPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(BlockLogicType.Repeat.ToString());
+                GameObject sheetPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("RepeatSheets");
                 GameObject repeatSheet = Instantiate(sheetPrefab);
                 //TODO 위치 조정 스크립트도 작성해야함
-                //repeatSheetParents.Add(repeatSheet.transform);
-                //repeatBlockLogicBases.Add(, repeatSheet);
+                int index = GetNextSheetIndex();
+                repeatSheetParents.Add(index, repeatSheet.transform);
+                _repeatBlockLogicBasesDictionary.Add(index, new List<BlockLogicBase>());
+                _sheetIndexDictionary.Add(interactableButton.Value, index);
             }
         }
 
         SetSheet(0, _blockLogicBases, SheetParent);
         SetSheet(-1, _exBlockLogicBases, ExSheetParent);
 
-        _currentSheets = _sheetDictionary[0];
+        _currentSheet = _sheetDictionary[0];
         _currentSheetParent = _sheetParentDictionary[0];
     }
     private void SetSheet(int index, List<BlockLogicBase> blockLogicList, Transform sheetParent)
@@ -107,14 +122,19 @@ public class SheetManager : MonoBehaviour
         _sheetDictionary.TryAdd(index, blockLogicList);
         _sheetParentDictionary.TryAdd(index, sheetParent);
     }
-    private void OnClick_SetLogic(BlockLogicType type)
+
+    private int GetNextSheetIndex()
+    {
+        return sheetIndex++;
+    }
+    /*private void OnClick_SetLogic(BlockLogicType type)
     {
         switch (type)
         {
             case BlockLogicType.Start:
                 RunSheetBlock();
                 return;
-            case BlockLogicType.Reset: 
+            case BlockLogicType.Reset:
                 ResetSheetBlock();
                 return;
             case BlockLogicType.Clear:
@@ -127,10 +147,58 @@ public class SheetManager : MonoBehaviour
         AddOutlineComponent(tempPrefab);
 
         BlockLogicBase logicBase = Instantiate(tempPrefab).GetComponent<BlockLogicBase>();
+
+        if (logicBase != null)
+        {
+            AddBlockLogic(logicBase);
+        }
+    }*/
+    private void OnClick_SetLogic(KeyValuePair<BlockLogicType, InteractableUnityEventWrapper> keyValuePair)
+    {
+        //함수 시트에 함수가 들어가지 못하게 막기용 기능
+        if(_currentSheet != _blockLogicBases || _currentSheet != _exBlockLogicBases)
+        {
+            if(keyValuePair.Key == BlockLogicType.Repeat || keyValuePair.Key == BlockLogicType.Function)
+                return;
+        } 
+        switch (keyValuePair.Key)
+        {
+            case BlockLogicType.Start:
+                RunSheetBlock();
+                return;
+            case BlockLogicType.Reset: 
+                ResetSheetBlock();
+                return;
+            case BlockLogicType.Clear:
+                ClearAllBlockLogic();
+                return;
+        }
+        Debug.Log(keyValuePair.Key.ToString());
+        GameObject tempPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>($"{keyValuePair.Key.ToString()}BlockLogic");
+
+        AddOutlineComponent(tempPrefab);
+
+        BlockLogicBase logicBase = Instantiate(tempPrefab).GetComponent<BlockLogicBase>();
         
         if (logicBase != null)
         {
             AddBlockLogic(logicBase);
+            
+            if(logicBase is RepeatBlockLogic rBlockLogic)
+            {
+                if(_sheetIndexDictionary.TryGetValue(keyValuePair.Value, out int index))
+                {
+                    rBlockLogic.SheetIndex = index;
+                }
+            }
+            //TODO
+            //if (logicBase is FunctionBlockLogic rBlockLogic)
+            //{
+            //    if (_sheetIndexDictionary.TryGetValue(keyValuePair.Value, out int index))
+            //    {
+            //        rBlockLogic.SheetIndex = index;
+            //    }
+            //}
         }
     }
 
@@ -146,7 +214,7 @@ public class SheetManager : MonoBehaviour
         }*/
         Stage.UIContainer.ExSheetPopup.gameObject.SetActive(true);
         ExSheetParent.gameObject.SetActive(true);
-        _currentSheets = _sheetDictionary[-1];
+        _currentSheet = _sheetDictionary[-1];
         _currentSheetParent = _sheetParentDictionary[-1];
     }
     //연습장의 내용이 지워지는지에 따라 내용구현 달라짐
@@ -155,7 +223,7 @@ public class SheetManager : MonoBehaviour
     {
         Stage.UIContainer.ExSheetPopup.gameObject.SetActive(false);
         ExSheetParent.gameObject.SetActive(false);
-        _currentSheets = _sheetDictionary[0];
+        _currentSheet = _sheetDictionary[0];
         _currentSheetParent = _sheetParentDictionary[0];
     }
 
@@ -163,11 +231,12 @@ public class SheetManager : MonoBehaviour
     public void AddBlockLogic(BlockLogicBase blockLogic)
     {
         blockLogic.transform.SetParent(_currentSheetParent, false);
-        _currentSheets.Add(blockLogic);
+        _currentSheet.Add(blockLogic);
         Debug.Log("AddBlockLogic");
     }
     public void ClearAllBlockLogic()
     {
+        sheetIndex = 1;
         ClearMainBlockLogic();
         ClearRepeatBlockLogic();
         ClearExBlockLogic();
@@ -329,9 +398,9 @@ public class SheetManager : MonoBehaviour
 
     public void TestLogics()
     {
-        OnClick_SetLogic(BlockLogicType.Repeat);
+        OnClick_SetLogic(GetButtonKeyValue(BlockLogicType.Repeat));
         
-        OnClick_SetLogic(BlockLogicType.Repeat);
-        OnClick_SetLogic(BlockLogicType.Repeat);
+        OnClick_SetLogic(GetButtonKeyValue(BlockLogicType.Repeat));
+        OnClick_SetLogic(GetButtonKeyValue(BlockLogicType.Repeat));
     }
 }
