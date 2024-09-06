@@ -55,7 +55,6 @@
     "101": {
       "Index": "101",
       "Description": "이동 블록",
-      "Type": 1,
       "IconBlock": "icon_move",
       "AnimationKey": "anim_move",
       "MoveDistance": "1",
@@ -65,7 +64,6 @@
     "102": {
       "Index": "102",
       "Description": "대쉬 블록",
-      "Type": 10,
       "IconBlock": "icon_dash",
       "AnimationKey": "anim_dash",
       "MoveDistance": "-",
@@ -75,7 +73,6 @@
     "200": {
       "Index": "200",
       "Description": "좌회전 블록",
-      "Type": 2,
       "IconBlock": "icon_left",
       "AnimationKey": "anim_left",
       "MoveDistance": "-",
@@ -85,7 +82,6 @@
     "201": {
       "Index": "201",
       "Description": "우회전 블록",
-      "Type": 3,
       "IconBlock": "icon_right",
       "AnimationKey": "anim_right",
       "MoveDistance": "-",
@@ -95,7 +91,6 @@
     "202": {
       "Index": "202",
       "Description": "뒤돌기 블록",
-      "Type": 4,
       "IconBlock": "icon_turnback",
       "AnimationKey": "anim_turnback",
       "MoveDistance": "-",
@@ -105,7 +100,6 @@
     "300": {
       "Index": "300",
       "Description": "들기 블록",
-      "Type": 6,
       "IconBlock": "icon_pickup",
       "AnimationKey": "anim_pickup",
       "MoveDistance": "-",
@@ -115,7 +109,6 @@
     "301": {
       "Index": "301",
       "Description": "놓기 블록",
-      "Type": 5,
       "IconBlock": "icon_putdown",
       "AnimationKey": "anim_putdown",
       "MoveDistance": "-",
@@ -125,7 +118,6 @@
     "401": {
       "Index": "401",
       "Description": "조리 블록",
-      "Type": 0,
       "IconBlock": "icon_cook",
       "AnimationKey": "anim_cook",
       "MoveDistance": "-",
@@ -135,7 +127,6 @@
     "999": {
       "Index": "999",
       "Description": "함수 블록",
-      "Type": 11,
       "IconBlock": "icon_function",
       "AnimationKey": "anim_function",
       "MoveDistance": "-",

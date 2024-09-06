@@ -31,6 +31,7 @@ public class SheetManager : MonoBehaviour
 
     private Dictionary<int, List<BlockLogicBase>> _sheetDictionary = new Dictionary<int, List<BlockLogicBase>>();
     private Dictionary<int, Transform> _sheetParentDictionary = new Dictionary<int, Transform>();
+    
     private List<BlockLogicBase> _currentSheets;
     private Transform _currentSheetParent;
 
@@ -90,7 +91,7 @@ public class SheetManager : MonoBehaviour
                 GameObject repeatSheet = Instantiate(sheetPrefab);
                 //TODO 위치 조정 스크립트도 작성해야함
                 //repeatSheetParents.Add(repeatSheet.transform);
-                repeatBlockLogicBases.Add(, repeatSheet);
+                //repeatBlockLogicBases.Add(, repeatSheet);
             }
         }
 
@@ -319,7 +320,7 @@ public class SheetManager : MonoBehaviour
         _blockLogicBases.Clear();
         foreach (var repeatSheetParent in repeatSheetParents)
         {
-            Destroy(repeatSheetParent.gameObject);
+            //Destroy(repeatSheetParent.gameObject);
         }
         repeatSheetParents.Clear();
     }
