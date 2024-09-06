@@ -24,8 +24,8 @@ public class InteractableManager : MonoBehaviour
         List<string> blockList = new List<string>(showBlockString.Split(", "));
         foreach (var blockIndex in blockList)
         {
+            Debug.Log(blockIndex);
             CodingBlockData data = DataManager.Instance.GetGameData<CodingBlockData>(blockIndex);
-            Debug.Log(data.Type);
             InstantiateButton(buttonPrefab, LogicButtonParent, data.Type);
         }
         
@@ -47,6 +47,7 @@ public class InteractableManager : MonoBehaviour
     }
     private void InstantiateButton(GameObject prefab, Transform parent, BlockLogicType type)
     {
+        Debug.Log(type);
         GameObject button = Instantiate(prefab, parent);
         button.GetComponent<LoadCodeBlockMaterial>().Init(type);
         InteractableUnityEventWrapper interactableUnityEventWrapper = button.GetComponent<InteractableUnityEventWrapper>();

@@ -87,6 +87,7 @@ public enum BlockLogicType
     Clear,
     Reset,
     Dash,
+    Function,
     Repeat,
 }
 public enum Rotate

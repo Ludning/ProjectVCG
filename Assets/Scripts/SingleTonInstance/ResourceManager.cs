@@ -14,7 +14,7 @@ public class ResourceManager : Singleton<ResourceManager>
     {
         string resourcePath = DataManager.Instance.GetAssetAddress<T>(resourceName);
 
-        //Debug.Log($"resourcePath: {resourcePath}");
+        Debug.Log($"resourcePath: {resourcePath}");
 
         T resource = Addressables.LoadAssetAsync<T>(resourcePath).WaitForCompletion();
         

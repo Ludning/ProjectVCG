@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
@@ -120,6 +121,7 @@ public class SheetManager : MonoBehaviour
                 ClearAllBlockLogic();
                 return;
         }
+        Debug.Log(type.ToString());
         GameObject tempPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>($"{type.ToString()}BlockLogic");
 
         AddOutlineComponent(tempPrefab);
