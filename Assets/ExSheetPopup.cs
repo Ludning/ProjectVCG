@@ -10,4 +10,10 @@ public class ExSheetPopup : MonoBehaviour, IUIBase
     {
         SheetManager.ClearExBlockLogic();
     }
+    
+
+    public void OnClick_ExitExercise()
+    {
+        SheetManager.OnClick_ExitExercise();
+    }
 }
