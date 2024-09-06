@@ -11,6 +11,7 @@ public class MapEditorTool : EditorWindow
 {
     [SerializeField] private int m_SelectedIndex = -1;
 
+    private MapInfoGrid _mapInfoGrid;
     private MapDrawSpace _mapDrawSpace;
     private TilePalette _tilePalette;
     private Inspector _inspector;
@@ -32,8 +33,8 @@ public class MapEditorTool : EditorWindow
         wnd.titleContent = new GUIContent("Map Editor Tool");
 
         // window크기 설정
-        wnd.minSize = new Vector2(1000, 720);
-        wnd.maxSize = new Vector2(1000, 720);
+        wnd.minSize = new Vector2(1500, 720);
+        wnd.maxSize = new Vector2(1500, 720);
     }
     
     public void CreateGUI()
@@ -47,11 +48,13 @@ public class MapEditorTool : EditorWindow
         Button loadButton = new Button(() => OnLoadMapData(_stageDropdown.value)) { text = "Load" };    // 로드 버튼
         VisualElement mainContainer = new VisualElement();  // 나머지 UI 요소들을 담을 컨테이너
         VisualElement leftContainer = new VisualElement();
+        VisualElement centerContainer = new VisualElement();
         VisualElement rightContainer = new VisualElement();
         
         var stageDataDictionary = DataManager.Instance.GetGameDataDictionary<StageData>();
         _stageDropdown = new PopupField<string>("Select Stage", stageDataDictionary.Keys.ToList(), 0);  // 스테이지 선택 드롭다운
-        
+
+        _mapInfoGrid = new MapInfoGrid();
         _mapDrawSpace = new MapDrawSpace(_currentStage, _width, _height);
         _tilePalette = new TilePalette();
         _inspector = new Inspector();
@@ -81,8 +84,9 @@ public class MapEditorTool : EditorWindow
         mainContainer.style.flexGrow = 1; // 남은 공간을 모두 차지하도록 설정
         _stageDropdown.style.flexGrow = 1;
         rootVisualElement.style.flexDirection = FlexDirection.Column;
-        leftContainer.style.width = Length.Percent(70);
-        rightContainer.style.width = Length.Percent(30);
+        leftContainer.style.width = Length.Percent(22);
+        centerContainer.style.width = Length.Percent(56);
+        rightContainer.style.width = Length.Percent(22);
         rightContainer.style.flexDirection = FlexDirection.Column;
         rightContainer.style.flexGrow = 1;
         _tilePalette.style.height = Length.Percent(50);
@@ -97,11 +101,13 @@ public class MapEditorTool : EditorWindow
         toolbar.Add(loadButton);
         toolbarContainer.Add(toolbar);  // 메뉴바를 컨테이너에 추가
         
-        leftContainer.Add(_mapDrawSpace);
+        leftContainer.Add(_mapInfoGrid);
+        centerContainer.Add(_mapDrawSpace);
         rightContainer.Add(_tilePalette);
         rightContainer.Add(_inspector);
         
         mainContainer.Add(leftContainer);
+        mainContainer.Add(centerContainer);
         mainContainer.Add(rightContainer);
 
         // 최상위 컨테이너에 메뉴바와 나머지 UI 요소들을 추가
