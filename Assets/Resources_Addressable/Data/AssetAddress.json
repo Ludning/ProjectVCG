@@ -52,7 +52,8 @@
     "CookMat": "Assets/Resources_Addressable/Materials/Logic/CookMat.mat",
     "ResetMat": "Assets/Resources_Addressable/Materials/Logic/ResetMat.mat",
     "DashMat": "Assets/Resources_Addressable/Materials/Logic/TempMat.mat",
-    "RepeatMat": "Assets/Resources_Addressable/Materials/Logic/TempMat.mat"
+    "RepeatMat": "Assets/Resources_Addressable/Materials/Logic/TempMat.mat",
+    "MemoMat": "Assets/Resources_Addressable/Materials/Logic/MemoMat.mat"
   },
   "Sprite": {
     "CookedFood_Image": "Assets/Resources_Addressable/Textures/Tile/CookedFood_Image.png",

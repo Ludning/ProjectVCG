@@ -257,11 +257,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1781361e4d6dabc4e99c3f500770d6f7
-    m_Address: Assets/Resources_Addressable/Prefabs/UI/StageClearPopup.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 89f6ef4160d13994087ef0cb79a5b40d
     m_Address: Assets/Resources_Addressable/Prefabs/UI/FlatUnityCanvas.prefab
     m_ReadOnly: 0
@@ -389,6 +384,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3482ee945ca20b34ab8916f59a1ebe39
     m_Address: Assets/Resources_Addressable/Prefabs/Items/Object_Food_Shirimp.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5ff8362bd532eb64c897ab034684de4b
+    m_Address: Assets/Resources_Addressable/Textures/Memo.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 02434d602a4b98249bfcc9a064d809ac
+    m_Address: Assets/Resources_Addressable/Materials/Logic/MemoMat.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

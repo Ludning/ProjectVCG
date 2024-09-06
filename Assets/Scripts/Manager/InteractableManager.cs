@@ -6,15 +6,20 @@ public class InteractableManager : MonoBehaviour
 {
     private const string InteractableButtonName = "ButtonInteractable";
 
+    [SerializeField] private Transform ExerciseParent;
     [SerializeField] private Transform LogicButtonParent;
     [SerializeField] private Transform StartParent;
     [SerializeField] private Transform ClearParent;
-    
+
+    [HideInInspector]
+    public InteractableUnityEventWrapper ExerciseButton;
     public Dictionary<BlockLogicType, InteractableUnityEventWrapper> InteractableButtons = new Dictionary<BlockLogicType, InteractableUnityEventWrapper>();
 
     public void Init(string showBlockString)
     {
         GameObject buttonPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(InteractableButtonName);
+
+        InstantiateExerciseButton(buttonPrefab, ExerciseParent);
 
         List<string> blockList = new List<string>(showBlockString.Split(", "));
         foreach (var blockIndex in blockList)
@@ -24,13 +29,6 @@ public class InteractableManager : MonoBehaviour
             InstantiateButton(buttonPrefab, LogicButtonParent, data.Type);
         }
         
-        /*InstantiateButton(buttonPrefab, LogicButtonParent, BlockLogicType.Cook);
-        InstantiateButton(buttonPrefab, LogicButtonParent, BlockLogicType.Move);
-        InstantiateButton(buttonPrefab, LogicButtonParent, BlockLogicType.RotateLeft);
-        InstantiateButton(buttonPrefab, LogicButtonParent, BlockLogicType.RotateRight);
-        InstantiateButton(buttonPrefab, LogicButtonParent, BlockLogicType.PushItem);
-        InstantiateButton(buttonPrefab, LogicButtonParent, BlockLogicType.PopItem);*/
-        
         InstantiateButton(buttonPrefab, StartParent, BlockLogicType.Start);
         InstantiateButton(buttonPrefab, StartParent, BlockLogicType.Reset);
         InstantiateButton(buttonPrefab, ClearParent, BlockLogicType.Clear);
@@ -38,7 +36,15 @@ public class InteractableManager : MonoBehaviour
         InteractableButtons[BlockLogicType.Reset].gameObject.SetActive(false);
     }
 
-    
+    private void InstantiateExerciseButton(GameObject prefab, Transform parent)
+    {
+        GameObject button = Instantiate(prefab, parent);
+        Material mat = ResourceManager.Instance.LoadResourceWithCaching<Material>("MemoMat");
+        button.GetComponent<LoadCodeBlockMaterial>().SetMaterial(mat);
+        InteractableUnityEventWrapper interactableUnityEventWrapper = button.GetComponent<InteractableUnityEventWrapper>();
+
+        ExerciseButton = interactableUnityEventWrapper;
+    }
     private void InstantiateButton(GameObject prefab, Transform parent, BlockLogicType type)
     {
         GameObject button = Instantiate(prefab, parent);

@@ -10,6 +10,7 @@ public class UIContainer : MonoBehaviour
     public NPCMessagePopup NPCMessagePopup;
     public RecipePopup RecipePopup;
     public GameMenuPopup GameMenuPopup;
+    public ExSheetPopup ExSheetPopup;
     public InventoryPopup InventoryPopup;
 
     private void OnEnable()
@@ -20,6 +21,7 @@ public class UIContainer : MonoBehaviour
         NPCMessagePopup.gameObject.SetActive(false);
         RecipePopup.gameObject.SetActive(false);
         GameMenuPopup.gameObject.SetActive(false);
+        ExSheetPopup.gameObject.SetActive(false);
         InventoryPopup.gameObject.SetActive(false);
     }
 
@@ -31,6 +33,7 @@ public class UIContainer : MonoBehaviour
         NPCMessagePopup.gameObject.SetActive(false);
         RecipePopup.gameObject.SetActive(true);
         GameMenuPopup.gameObject.SetActive(true);
+        ExSheetPopup.gameObject.SetActive(false);
         InventoryPopup.gameObject.SetActive(true);
     }
     
@@ -42,6 +45,7 @@ public class UIContainer : MonoBehaviour
         NPCMessagePopup.gameObject.SetActive(false);
         RecipePopup.gameObject.SetActive(false);
         GameMenuPopup.gameObject.SetActive(false);
+        ExSheetPopup.gameObject.SetActive(false);
         InventoryPopup.gameObject.SetActive(false);
     }
 }
