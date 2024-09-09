@@ -17,81 +17,129 @@
       "Table": {
         "0": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "1": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "2": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "3": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "4": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "5": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "6": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "7": {
           "TileType": 10110,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": true,
           "SpawnObjectType": 11100
         },
         "8": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "9": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "10": {
           "TileType": 10111,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "11": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "12": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "13": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "14": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "15": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
@@ -118,81 +166,129 @@
       "Table": {
         "0": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "1": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "2": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "3": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "4": {
           "TileType": 10110,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": true,
           "SpawnObjectType": 11100
         },
         "5": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "6": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "7": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "8": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "9": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "10": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "11": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "12": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "13": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "14": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "15": {
           "TileType": 10111,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
@@ -219,81 +315,129 @@
       "Table": {
         "0": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "1": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "2": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "3": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "4": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "5": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "6": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "7": {
           "TileType": 10110,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": true,
           "SpawnObjectType": 11101
         },
         "8": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "9": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "10": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "11": {
           "TileType": 10111,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "12": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "13": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "14": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "15": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
@@ -320,81 +464,129 @@
       "Table": {
         "0": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "1": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "2": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "3": {
           "TileType": 10111,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "4": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "5": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "6": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "7": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "8": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "9": {
           "TileType": 10110,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": true,
           "SpawnObjectType": 11101
         },
         "10": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "11": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "12": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "13": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "14": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "15": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
@@ -421,46 +613,73 @@
       "Table": {
         "0": {
           "TileType": 10201,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": true,
           "SpawnObjectType": 11504
         },
         "1": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "2": {
           "TileType": 10301,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "3": {
           "TileType": 10201,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": true,
           "SpawnObjectType": 11502
         },
         "4": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "5": {
           "TileType": 10301,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "6": {
           "TileType": 10301,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "7": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "8": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
@@ -490,126 +709,201 @@
       "Table": {
         "0": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "1": {
           "TileType": 10301,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "2": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "3": {
           "TileType": 10201,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": true,
           "SpawnObjectType": 11504
         },
         "4": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "5": {
           "TileType": 10201,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": true,
           "SpawnObjectType": 11502
         },
         "6": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "7": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "8": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "9": {
           "TileType": 10301,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "10": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "11": {
           "TileType": 10301,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "12": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "13": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "14": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "15": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "16": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "17": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "18": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "19": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "20": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "21": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "22": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "23": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "24": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
@@ -639,81 +933,129 @@
       "Table": {
         "0": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "1": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "2": {
           "TileType": 10110,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": true,
           "SpawnObjectType": 21000
         },
         "3": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "4": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "5": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "6": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "7": {
           "TileType": 10110,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": true,
           "SpawnObjectType": 21001
         },
         "8": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "9": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "10": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "11": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "12": {
           "TileType": 10111,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "13": {
           "TileType": 10111,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "14": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "15": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
@@ -742,126 +1084,201 @@
       "Table": {
         "0": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "1": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "2": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "3": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "4": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "5": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "6": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "7": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "8": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "9": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "10": {
           "TileType": 10301,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "11": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "12": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "13": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "14": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "15": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "16": {
           "TileType": 10201,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": true,
           "SpawnObjectType": 11503
         },
         "17": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "18": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "19": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "20": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "21": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "22": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "23": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "24": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
@@ -888,21 +1305,33 @@
       "Table": {
         "0": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "1": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "2": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "3": {
           "TileType": 10001,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
@@ -928,31 +1357,49 @@
       "Table": {
         "0": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "1": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "2": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "3": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "4": {
           "TileType": 10001,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "5": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
@@ -978,31 +1425,49 @@
       "Table": {
         "0": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "1": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "2": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "3": {
           "TileType": 10401,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "4": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "5": {
           "TileType": 10201,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": true,
           "SpawnObjectType": 11500
         }
@@ -1029,126 +1494,201 @@
       "Table": {
         "0": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "1": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "2": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "3": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "4": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "5": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "6": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "7": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "8": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "9": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "10": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "11": {
           "TileType": 10201,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": true,
           "SpawnObjectType": 11503
         },
         "12": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "13": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "14": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "15": {
           "TileType": 10301,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "16": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "17": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "18": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "19": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "20": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "21": {
           "TileType": 10401,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "22": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "23": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "24": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
@@ -1176,126 +1716,201 @@
       "Table": {
         "0": {
           "TileType": 10110,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": true,
           "SpawnObjectType": 21002
         },
         "1": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "2": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "3": {
           "TileType": 10111,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "4": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "5": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "6": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "7": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "8": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "9": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "10": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "11": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "12": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "13": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "14": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "15": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "16": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "17": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "18": {
           "TileType": 10000,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "19": {
           "TileType": 10111,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "20": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "21": {
           "TileType": 10111,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "22": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "23": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "24": {
           "TileType": 10100,
+          "TileDetailType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }

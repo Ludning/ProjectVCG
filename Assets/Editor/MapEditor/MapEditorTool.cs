@@ -11,7 +11,7 @@ public class MapEditorTool : EditorWindow
 {
     [SerializeField] private int m_SelectedIndex = -1;
 
-    private MapInfoGrid _mapInfoGrid;
+    private MapInfoListView _mapInfoListView;
     private MapDrawSpace _mapDrawSpace;
     private TilePalette _tilePalette;
     private Inspector _inspector;
@@ -33,8 +33,8 @@ public class MapEditorTool : EditorWindow
         wnd.titleContent = new GUIContent("Map Editor Tool");
 
         // window크기 설정
-        wnd.minSize = new Vector2(1500, 720);
-        wnd.maxSize = new Vector2(1500, 720);
+        wnd.minSize = new Vector2(1600, 720);
+        wnd.maxSize = new Vector2(1600, 720);
     }
     
     public void CreateGUI()
@@ -50,11 +50,12 @@ public class MapEditorTool : EditorWindow
         VisualElement leftContainer = new VisualElement();
         VisualElement centerContainer = new VisualElement();
         VisualElement rightContainer = new VisualElement();
+        RowItem header = new RowItem(true);
         
         var stageDataDictionary = DataManager.Instance.GetGameDataDictionary<StageData>();
         _stageDropdown = new PopupField<string>("Select Stage", stageDataDictionary.Keys.ToList(), 0);  // 스테이지 선택 드롭다운
 
-        _mapInfoGrid = new MapInfoGrid();
+        _mapInfoListView = new MapInfoListView();
         _mapDrawSpace = new MapDrawSpace(_currentStage, _width, _height);
         _tilePalette = new TilePalette();
         _inspector = new Inspector();
@@ -74,6 +75,13 @@ public class MapEditorTool : EditorWindow
         
         _stageDropdown.RegisterValueChangedCallback(evt => OnStageChanged(evt.newValue));
         
+        header.Position.text = "위치";
+        header.TileType.text = "타일 종류";
+        header.TileDetail.text = "타일 속성";
+        header.TileId.text = "타일 아이디";
+        header.SpawnObject.text = "스폰될 아이템";
+        header.SpawnNpc.text = "스폰될 Npc";
+        
         
         // 스타일 설정 (필요에 따라 변경)
         toolbarContainer.style.flexDirection = FlexDirection.Column;
@@ -84,9 +92,9 @@ public class MapEditorTool : EditorWindow
         mainContainer.style.flexGrow = 1; // 남은 공간을 모두 차지하도록 설정
         _stageDropdown.style.flexGrow = 1;
         rootVisualElement.style.flexDirection = FlexDirection.Column;
-        leftContainer.style.width = Length.Percent(22);
-        centerContainer.style.width = Length.Percent(56);
-        rightContainer.style.width = Length.Percent(22);
+        leftContainer.style.width = Length.Percent(30);
+        centerContainer.style.width = Length.Percent(50);
+        rightContainer.style.width = Length.Percent(20);
         rightContainer.style.flexDirection = FlexDirection.Column;
         rightContainer.style.flexGrow = 1;
         _tilePalette.style.height = Length.Percent(50);
@@ -101,7 +109,8 @@ public class MapEditorTool : EditorWindow
         toolbar.Add(loadButton);
         toolbarContainer.Add(toolbar);  // 메뉴바를 컨테이너에 추가
         
-        leftContainer.Add(_mapInfoGrid);
+        leftContainer.Add(header);
+        leftContainer.Add(_mapInfoListView);
         centerContainer.Add(_mapDrawSpace);
         rightContainer.Add(_tilePalette);
         rightContainer.Add(_inspector);
@@ -116,8 +125,8 @@ public class MapEditorTool : EditorWindow
 
         _mapDrawSpace.SelectedNodeChanged += OnNodeSelectionChange;
         _tilePalette.SelectedNodeChanged += OnClickTilePallete;
+        _mapInfoListView.SelectedListItemChanged += OnListSelectionChange;
     }
-
     private void OnLoadMapData(string stageName)
     {
         tableData = DataManager.Instance.GetTableData(stageName);
@@ -125,6 +134,7 @@ public class MapEditorTool : EditorWindow
             _mapDrawSpace.LoadGrid(tableData);
         else
             _mapDrawSpace.CreateGrid(5, 5);
+        _mapInfoListView.OnDataChanged(tableData);
     }
 
     private void OnSaveMapData()
@@ -142,6 +152,7 @@ public class MapEditorTool : EditorWindow
         mapData.TableData[_currentStage].PlayerDirection = tableData.PlayerDirection;
         mapData.TableData[_currentStage].LevelDataDictionary = tableData.LevelDataDictionary;
         MapDataReader.SaveMapData(mapData);
+        _mapInfoListView.OnDataChanged(tableData);
     }
     
     private void OnInitMapData()
@@ -153,6 +164,7 @@ public class MapEditorTool : EditorWindow
     {
         _currentStage = stage;
         OnLoadMapData(_currentStage);
+        _mapInfoListView.OnDataChanged(tableData);
     }
     
     private void OnNodeSelectionChange(MapDrawSpaceNode selectedNode)
@@ -163,6 +175,11 @@ public class MapEditorTool : EditorWindow
     {
         _mapDrawSpace.selectedElement.SetNode(selectedNode.TileType);
         _mapDrawSpace.selectedElement.SetTile(selectedNode.TileType);
+        _inspector.SetInspector(tableData, _mapDrawSpace.selectedElement);
+    }
+    private void OnListSelectionChange(int index)
+    {
+        _mapDrawSpace.SetNodeSelectionChange(tableData.Size, index);
         _inspector.SetInspector(tableData, _mapDrawSpace.selectedElement);
     }
 }

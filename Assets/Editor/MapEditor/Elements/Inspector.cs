@@ -7,6 +7,7 @@ public class Inspector : VisualElement
 {
     private EnumField TileTypeDropdown;
     private TextField TileKeyField;
+    private EnumField TileDetailTypeDropdown;
     private Toggle IsPlayerPositionToggle;
     private EnumField PlayerDirectionDropdown;
     private Toggle SpawnObjectToggle;
@@ -43,6 +44,7 @@ public class Inspector : VisualElement
         
         TileTypeDropdown = new EnumField("바닥 유형", mapNode.Node.TileType);
         TileKeyField = new TextField("타일 고유번호");
+        TileDetailTypeDropdown = new EnumField("바닥 속성", mapNode.Node.TileDetailType);
         IsPlayerPositionToggle = new Toggle("플레이어 시작 위치");
         PlayerDirectionDropdown = new EnumField("플레이어 방향", tableData.PlayerDirection);
         SpawnObjectToggle = new Toggle("아이템 스폰");
@@ -60,6 +62,11 @@ public class Inspector : VisualElement
             TileKeyField.value = tableData.LevelDataDictionary.GetValueOrDefault(nodePosition, "");
         TileKeyField.RegisterValueChangedCallback(evt => OnTileKeyChanged(evt, mapNode));
         Add(TileKeyField);
+        
+        // TileType 드롭다운
+        TileDetailTypeDropdown.Init(mapNode.Node.TileDetailType);
+        TileDetailTypeDropdown.RegisterValueChangedCallback(evt => OnTileTypeChanged(evt, mapNode));
+        Add(TileDetailTypeDropdown);
 
         // IsPlayerPosition 체크박스
         IsPlayerPositionToggle.value = (tableData.PlayerPosition == mapNode.Position) ? true : false;
@@ -89,6 +96,7 @@ public class Inspector : VisualElement
         // TileType이 Empty일 경우 요소 비활성화
         if (mapNode.Node.TileType == TileType.EMPTY)
         {
+            TileDetailTypeDropdown.SetEnabled(false);
             IsPlayerPositionToggle.SetEnabled(false);
             TileKeyField.SetEnabled(false);
             PlayerDirectionDropdown.SetEnabled(false);

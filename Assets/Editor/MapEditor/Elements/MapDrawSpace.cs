@@ -98,6 +98,15 @@ public class MapDrawSpace : VisualElement
         SelectedNodeChanged?.Invoke(selectedElement);
         Debug.Log("Selected element: " + selectedElement.Node.TileType);
     }
+    public void SetNodeSelectionChange(Vector2Int size, int positionIndex)
+    {
+        Vector2Int position = Vector2IntConverter.IntToVec2(size, positionIndex);
+        selectedElement?.UnSelectedNode();
+        selectedElement = gridElements[position.x, position.y];
+        selectedElement.OnSelectedNode();
+        SelectedNodeChanged?.Invoke(selectedElement);
+        Debug.Log("Selected element: " + selectedElement.Node.TileType);
+    }
 
     public TableData GetTableData()
     {

@@ -1,5 +1,10 @@
 using System;
 
+public enum NpcType
+{
+    
+}
+
 public enum ItemType
 {
     Null,
@@ -50,6 +55,11 @@ public enum TileType
     INGREDIENT = 10201,
     COOKING = 10301,
     TABLE = 10401,
+}
+
+public enum TileDetailType
+{
+    EMPTY,
 }
 
 [Flags]

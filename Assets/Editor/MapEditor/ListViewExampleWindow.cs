@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 public class ListViewExampleWindow : EditorWindow
 {
-    [MenuItem("Window/ListViewExampleWindow")]
+    [MenuItem("Map Editor/ListViewExampleWindow")]
     public static void OpenDemoManual()
     {
         GetWindow<ListViewExampleWindow>().Show();
@@ -35,7 +35,7 @@ public class ListViewExampleWindow : EditorWindow
         // so it can calculate how many items to actually display
         const int itemHeight = 16;
 
-        var listView = new ListView(items, itemHeight, makeItem, bindItem);
+        var listView = new UnityEngine.UIElements.ListView(items, itemHeight, makeItem, bindItem);
 
         listView.selectionType = SelectionType.Multiple;
 

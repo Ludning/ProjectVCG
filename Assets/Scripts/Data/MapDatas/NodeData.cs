@@ -6,6 +6,9 @@ using UnityEngine;
 public class NodeData
 {
     public TileType TileType;
+    public TileDetailType TileDetailType;
+    public bool IsSpawnNPC;
+    public NpcType SpawnNpcType;
     public bool IsSpawnObject;
     public ItemType SpawnObjectType;
 }

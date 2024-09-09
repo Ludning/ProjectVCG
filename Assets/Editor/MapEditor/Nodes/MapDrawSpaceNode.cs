@@ -26,7 +26,6 @@ public class MapDrawSpaceNode : MapNode
     }
     private void SetStyle(int x, int y, int startX, int startY)
     {
-        Debug.Log($"{x}, {y}, {startX}, {startY}");
         style.width = 50;
         style.height = 50;
         
