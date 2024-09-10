@@ -8,27 +8,16 @@ public enum NpcType
 public enum ItemType
 {
     Null,
-    Poke = 11100,
-    HamburgerSet = 11101,
-    Cut_Potato = 11200,
-    Pot_Rice = 11201,
-    Cut_Shirimp = 11202,
-    Pot_Rice_2 = 11203,
-    Frier_Shirimp = 11204,
-    Cut_Fish = 11205,
-    Potato = 11500,
-    Tuna = 11501,
-    Rice = 11502,
-    Fish = 11503,
-    Shirimp = 11504,
-    SHIRIMP_SUSHI = 21000,
-    SHIRIMP_RICE = 21001,
-    SASHIMI = 21002,
-    POT_RICE = 20000,
-    CUT_SHIRIMP = 20001,
-    POT_RICE_2 = 20002,
-    FRIER_SHIRIMP = 20003,
-    CUT_FISH = 20004,
+    SHRIMP = 15001,
+    RICE = 15002,
+    FISH = 15003,
+    FRYER_SHRIMP = 15512,
+    POT_RICE = 15502,
+    CUT_FISH = 15503,
+    CUT_SHRIMP = 15504,
+    EBIDON = 19001,
+    SUSHI_SHRIMP = 19002,
+
 }
 
 public enum UIType

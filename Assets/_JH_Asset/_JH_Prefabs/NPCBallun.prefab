@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a91d09839c19bfe419be7f363d03986f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueText: {fileID: 8744118300074987209}
+  UIContainer: {fileID: 0}
 --- !u!1 &4933691887243565882
 GameObject:
   m_ObjectHideFlags: 0

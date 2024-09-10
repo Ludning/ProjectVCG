@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6894440674533122709}
   - component: {fileID: 4257586205791455118}
   m_Layer: 0
-  m_Name: Object_Food_Shirimp
+  m_Name: Prefab_Cut_Fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

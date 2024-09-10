@@ -673,109 +673,77 @@
     }
   },
   "Food": {
-    "11100": {
-      "Index": "11100",
-      "Description": "하와이언 포케입니다.",
-      "Type": "Product",
-      "Icon": "POKE",
-      "Value": "Poke",
-      "PrefabName": "Object_Food_Poke"
+    "15001": {
+      "Index": "15001",
+      "Description": "원재료 / 새우",
+      "Type": "ORIGINAL",
+      "Icon": "Icon_Shrimp",
+      "Value": "SHRIMP",
+      "PrefabName": "Prefab_Shrimp"
     },
-    "11101": {
-      "Index": "11101",
-      "Description": "햄버거 세트입니다.",
-      "Type": "Product",
-      "Icon": "HAMBURGER_SET",
-      "Value": "Hamburger_Set",
-      "PrefabName": "Object_Food_Hamburger_Set"
+    "15002": {
+      "Index": "15002",
+      "Description": "원재료 / 쌀",
+      "Type": "ORIGINAL",
+      "Icon": "Icon_Rice",
+      "Value": "RICE",
+      "PrefabName": "Prefab_Rice"
     },
-    "11200": {
-      "Index": "11200",
-      "Description": "썬 감자",
-      "Type": "Processed",
-      "Icon": "CUT_POTATO",
-      "Value": "Cut_Potato",
-      "PrefabName": "Object_Food_Cut_Potato"
+    "15003": {
+      "Index": "15003",
+      "Description": "원재료 / 생선",
+      "Type": "ORIGINAL",
+      "Icon": "Icon_Fish",
+      "Value": "FISH",
+      "PrefabName": "Prefab_Fish"
     },
-    "11201": {
-      "Index": "11201",
-      "Description": "밥(1)",
-      "Type": "Processed",
-      "Icon": "POT_RICE",
-      "Value": "Pot_Rice",
-      "PrefabName": "Object_Food_Pot_Rice"
+    "15512": {
+      "Index": "15512",
+      "Description": "가공재료 / 튀긴 새우",
+      "Type": "PROCESSED",
+      "Icon": "Icon_Fryer_Shrimp",
+      "Value": "FRYER_SHRIMP",
+      "PrefabName": "Prefab_Fryer_Shrimp"
     },
-    "11202": {
-      "Index": "11202",
-      "Description": "잘린 새우",
-      "Type": "Processed",
-      "Icon": "CUT_SHIRIMP",
-      "Value": "Cut_Shirimp",
-      "PrefabName": "Object_Food_Cut_Shirimp"
+    "15502": {
+      "Index": "15502",
+      "Description": "가공재료 / 밥",
+      "Type": "PROCESSED",
+      "Icon": "Icon_Pot_Rice",
+      "Value": "POT_RICE",
+      "PrefabName": "Prefab_Pot_Rice"
     },
-    "11203": {
-      "Index": "11203",
-      "Description": "밥(2)",
-      "Type": "Processed",
-      "Icon": "POT_RICE_2",
-      "Value": "Pot_Rice_2",
-      "PrefabName": "Object_Food_Pot_Rice_2"
+    "15503": {
+      "Index": "15503",
+      "Description": "가공재료 / 생선 회",
+      "Type": "PROCESSED",
+      "Icon": "Icon_Cut_Fish",
+      "Value": "CUT_FISH",
+      "PrefabName": "Prefab_Cut_Fish"
     },
-    "11204": {
-      "Index": "11204",
-      "Description": "새우튀김",
-      "Type": "Processed",
-      "Icon": "FRIER_SHIRIMP",
-      "Value": "Frier_Shirimp",
-      "PrefabName": "Object_Food_Frier_Shirimp"
+    "15504": {
+      "Index": "15504",
+      "Description": "가공재료 / 새우 회",
+      "Type": "PROCESSED",
+      "Icon": "Icon_Cut_Shrimp",
+      "Value": "CUT_SHRIMP",
+      "PrefabName": "Prefab_Cut_Shrimp"
     },
-    "11205": {
-      "Index": "11205",
-      "Description": "잘린 생선",
-      "Type": "Processed",
-      "Icon": "CUT_FISH",
-      "Value": "Cut_Fish",
-      "PrefabName": "Object_Food_Cut_Fish"
+    "19001": {
+      "Index": "19001",
+      "Description": "가공재료 /새우 튀김 덮밥",
+      "Type": "PROCESSED",
+      "Icon": "Icon_Ebidon",
+      "Value": "EBIDON",
+      "PrefabName": "Prefab_Ebidon"
     },
-    "11500": {
-      "Index": "11500",
-      "Description": "감자",
-      "Type": "Original",
-      "Icon": "POTATO",
-      "Value": "Potato",
-      "PrefabName": "Object_Food_Potato"
-    },
-    "11501": {
-      "Index": "11501",
-      "Description": "참치",
-      "Type": "Original",
-      "Icon": "TUNA",
-      "Value": "Tuna",
-      "PrefabName": "Object_Food_Tuna"
-    },
-    "11502": {
-      "Index": "11502",
-      "Description": "쌀",
-      "Type": "Original",
-      "Icon": "RICE",
-      "Value": "Rice",
-      "PrefabName": "Object_Food_Rice"
-    },
-    "11503": {
-      "Index": "11503",
-      "Description": "생선",
-      "Type": "Original",
-      "Icon": "FISH",
-      "Value": "Fish",
-      "PrefabName": "Object_Food_Fish"
-    },
-    "11504": {
-      "Index": "11504",
-      "Description": "새우",
-      "Type": "Original",
-      "Icon": "SHIRIMP",
-      "Value": "Shirimp",
-      "PrefabName": "Object_Food_Shirimp"
+    "19002": {
+      "Index": "19002",
+      "Description": "가공재료 / 새우 초밥",
+      "Type": "PROCESSED",
+      "Icon": "Icon_Sushi_Shrimp",
+      "Value": "SUSHI_SHRIMP",
+      "PrefabName": "Prefab_Sushi_Shrimp"
     }
   },
   "CookingProperty": {
@@ -816,60 +784,20 @@
     }
   },
   "Recipe": {
-    "21000": {
-      "Index": "21000",
-      "Name": "새우초밥",
-      "Product": "SHIRIMP_SUSHI",
-      "Cookery": "TRAY",
-      "Ingre_01": "POT_RICE",
-      "Ingre_02": "CUT_SHIRIMP",
-      "Ingre_03": "-",
-      "Ingre_04": "-"
-    },
-    "21001": {
-      "Index": "21001",
-      "Name": "에비동",
-      "Product": "SHIRIMP_RICE",
-      "Cookery": "TRAY",
-      "Ingre_01": "POT_RICE_2",
-      "Ingre_02": "FRIER_SHIRIMP",
-      "Ingre_03": "-",
-      "Ingre_04": "-"
-    },
-    "21002": {
-      "Index": "21002",
-      "Name": "생선회",
-      "Product": "SASHIMI",
-      "Cookery": "CUT",
-      "Ingre_01": "CUT_FISH",
-      "Ingre_02": "-",
-      "Ingre_03": "-",
-      "Ingre_04": "-"
-    },
-    "20000": {
-      "Index": "20000",
-      "Name": "밥",
-      "Product": "POT_RICE",
-      "Cookery": "POT",
-      "Ingre_01": "RICE",
-      "Ingre_02": "-",
-      "Ingre_03": "-",
-      "Ingre_04": "-"
-    },
     "20001": {
       "Index": "20001",
-      "Name": "썬 새우",
-      "Product": "CUT_SHIRIMP",
+      "Name": "자른 새우(새우회) 만드는 레시피 레시피",
+      "Product": "CUT_SHRIMP",
       "Cookery": "CUT",
-      "Ingre_01": "SHIRIMP",
+      "Ingre_01": "SHRIMP",
       "Ingre_02": "-",
       "Ingre_03": "-",
       "Ingre_04": "-"
     },
     "20002": {
       "Index": "20002",
-      "Name": "밥(2)",
-      "Product": "POT_RICE_2",
+      "Name": "밥짓는 레시피",
+      "Product": "POT_RICE",
       "Cookery": "POT",
       "Ingre_01": "RICE",
       "Ingre_02": "-",
@@ -878,21 +806,41 @@
     },
     "20003": {
       "Index": "20003",
-      "Name": "새우튀김",
-      "Product": "FRIER_SHIRIMP",
-      "Cookery": "FRIER",
-      "Ingre_01": "SHIRIMP",
+      "Name": "튀긴 새우 만드는 레시피 레시피",
+      "Product": "FRYER_SHRIMP",
+      "Cookery": "FRYER",
+      "Ingre_01": "SHRIMP",
       "Ingre_02": "-",
       "Ingre_03": "-",
       "Ingre_04": "-"
     },
     "20004": {
       "Index": "20004",
-      "Name": "썬 생선",
+      "Name": "생선회 레시피",
       "Product": "CUT_FISH",
       "Cookery": "CUT",
-      "Ingre_01": "CUT_FISH",
+      "Ingre_01": "FISH",
       "Ingre_02": "-",
+      "Ingre_03": "-",
+      "Ingre_04": "-"
+    },
+    "21001": {
+      "Index": "21001",
+      "Name": "새우 초밥 만드는 레시피",
+      "Product": "SUSHI_SHRIMP",
+      "Cookery": "TRAY",
+      "Ingre_01": "CUT_SHRIMP",
+      "Ingre_02": "POT_RICE",
+      "Ingre_03": "-",
+      "Ingre_04": "-"
+    },
+    "21002": {
+      "Index": "21002",
+      "Name": "새우 튀김 덮밥 만드는 레시피",
+      "Product": "EBIDON",
+      "Cookery": "TRAY",
+      "Ingre_01": "FRYER_SHRIMP",
+      "Ingre_02": "POT_RICE",
       "Ingre_03": "-",
       "Ingre_04": "-"
     }

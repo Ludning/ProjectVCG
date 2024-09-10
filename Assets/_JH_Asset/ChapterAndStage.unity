@@ -510,15 +510,19 @@ MonoBehaviour:
   ChapterPopup: {fileID: 780999351}
   StagePopup1: {fileID: 1886060500}
   StagePopup2: {fileID: 1479527702}
+  StagePopup3: {fileID: 0}
   OpenChapterBtn: {fileID: 1759784323}
   NextChapterBtn: {fileID: 1687280410}
   CloseChapterPopup: {fileID: 345128258}
   CloseStage1Popup: {fileID: 1108756260}
   CloseStage2Popup: {fileID: 457057320}
+  CloseStage3Popup: {fileID: 0}
   chapterSelectButton: {fileID: 344271152}
   BeforeBtn: {fileID: 226094555}
   BeforeYesBtn: {fileID: 934337920}
   BeforeNoBtn: {fileID: 892322982}
+  PopupChangeButton: []
+  stageManager: {fileID: 0}
   _currentStageView: {fileID: 1138707171}
   _currentChapterView: {fileID: 2088481309}
   OnGameClear: {fileID: 377899122}
