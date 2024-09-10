@@ -38,7 +38,7 @@ public class StageManager : MonoBehaviour
         UIContainer.Init();
 
 
-        SheetManager.TestLogics();
+        //SheetManager.TestLogics();
     }
 
     public void ClearStage()

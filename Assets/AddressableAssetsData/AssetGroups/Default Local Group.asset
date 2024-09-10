@@ -402,8 +402,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e87da65fd3f9900449ac17e441344d99
-    m_Address: Assets/_MoonSooAsset/Prefabs/RepeatSheets.prefab
+  - m_GUID: d6e853325ceaae440a002e7e1095d88d
+    m_Address: Assets/Resources_Addressable/Prefabs/WorldUI/Sheet/RepeatSheet.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

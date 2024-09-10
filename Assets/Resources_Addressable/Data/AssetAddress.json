@@ -40,7 +40,7 @@
     "Object_Food_Rice": "Assets/Resources_Addressable/Prefabs/Items/Object_Food_Rice.prefab",
     "Object_Food_Fish": "Assets/Resources_Addressable/Prefabs/Items/Object_Food_Fish.prefab",
     "Object_Food_Shirimp": "Assets/Resources_Addressable/Prefabs/Items/Object_Food_Shirimp.prefab",
-    "RepeatSheets": "Assets/_MoonSooAsset/Prefabs/RepeatSheets.prefab"
+    "RepeatSheet": "Assets/Resources_Addressable/Prefabs/WorldUI/Sheet/RepeatSheet.prefab"
   },
   "Material": {
     "TempMat": "Assets/Resources_Addressable/Materials/Logic/TempMat.mat",

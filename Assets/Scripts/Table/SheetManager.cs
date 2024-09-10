@@ -5,50 +5,54 @@ using Cysharp.Threading.Tasks;
 using Cysharp.Threading.Tasks.Triggers;
 using UnityEditor.SceneManagement;
 using Oculus.Interaction;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 
 public class SheetManager : MonoBehaviour
 {
+    [SerializeField, ReadOnly]
+    private bool _isLogicRunning = false;
+    [SerializeField, ReadOnly]
+    private bool _isExBlockLogic = false;
+    
+    [FormerlySerializedAs("Stage")]
     [Header("Manager")]
-    [SerializeField] private StageManager Stage;
+    [SerializeField] private StageManager StageManager;
     [SerializeField] private InteractableManager InteractableManager;
     [SerializeField] private NPCManager NPCManager;
 
+    
+    //MainSheet
     [Header("MainSheet")]
+    [SerializeField] private Transform SheetParent;
+    private List<BlockLogicBase> _blockLogicBases = new List<BlockLogicBase>();
+
+    //SubSheet
+    private Dictionary<int, Transform> repeatSheetParents = new Dictionary<int, Transform>();
+    private Dictionary<int, List<BlockLogicBase>> _repeatBlockLogicBasesDictionary = new Dictionary<int, List<BlockLogicBase>>();
+
+    //연습장
+    [Header("연습장")]
+    [SerializeField] private Transform ExSheetParent;
+    private List<BlockLogicBase> _exBlockLogicBases = new List<BlockLogicBase>();
+
+
+    private Dictionary<int, List<BlockLogicBase>> _sheetDictionary = new Dictionary<int, List<BlockLogicBase>>();
+    private Dictionary<int, Transform> _sheetParentDictionary = new Dictionary<int, Transform>();
     
-
-    //[Header("SubSheet")]
-    //private List<Transform> repeatSheetParents = new List<Transform>();
+    //현재 활성화된 시트
+    private List<BlockLogicBase> _currentSheet;
+    private Transform _currentSheetParent;
     
-
-    private List<BlockLogicBase> _blockLogicBases = new List<BlockLogicBase>(); //메인 블록로직 기능List
-    private Dictionary<int, List<BlockLogicBase>> _repeatBlockLogicBasesDictionary = new Dictionary<int, List<BlockLogicBase>>(); //함수 블록로직 기능List
-    private List<BlockLogicBase> _exBlockLogicBases = new List<BlockLogicBase>();//연습장 블록로직 기능List
-
-    [SerializeField] private Transform SheetParent; //메인 블록로직 UI
-    private Dictionary<int, Transform> repeatSheetParents = new Dictionary<int, Transform>(); //함수 블록로직 UI
-    [SerializeField] private Transform ExSheetParent; //연습장 블록로직 UI
-
-
-    private Dictionary<int, List<BlockLogicBase>> _sheetDictionary = new Dictionary<int, List<BlockLogicBase>>(); //모든 블록로직 기능List을 딕셔너리로 저장해둔 곳
-    private Dictionary<int, Transform> _sheetParentDictionary = new Dictionary<int, Transform>(); //모든 블록로직 UI을 딕셔너리로 저장해둔 곳
-
-
-    private List<BlockLogicBase> _currentSheets; //현재 가르키고 있는 블록로직 기능List
-    private Transform _currentSheetParent; //현재 가르키고 있는 블록로직 UI
-
-
-
-    private int sheetIndex;
+    private int _sheetIndex;
     private Dictionary<InteractableUnityEventWrapper, int> _sheetIndexDictionary = new Dictionary<InteractableUnityEventWrapper, int>();
 
     //임시 코드
     private void Update()
     {
-        
-
         if (Input.GetKeyDown(KeyCode.S))
             OnClick_SetLogic(GetButtonKeyValue(BlockLogicType.Start));
         
@@ -85,6 +89,7 @@ public class SheetManager : MonoBehaviour
 
     private KeyValuePair<BlockLogicType, InteractableUnityEventWrapper> GetButtonKeyValue(BlockLogicType type)
     {
+        Debug.Log($"Input Type : {type}");
         return new KeyValuePair<BlockLogicType, InteractableUnityEventWrapper>(type, InteractableManager.InteractableButtons[type]);
     }
 
@@ -93,7 +98,7 @@ public class SheetManager : MonoBehaviour
     //상호작용 버튼을 생성하고 BlockLogic이 추가되는 이벤트를 연결해준다
     public void Init()
     {
-        sheetIndex = 1;
+        _sheetIndex = 1;
 
         InteractableManager.ExerciseButton.WhenSelect.AddListener(OnClick_OpenExercise);
 
@@ -104,13 +109,14 @@ public class SheetManager : MonoBehaviour
             interactableButton.Value.WhenSelect.AddListener(()=>OnClick_SetLogic(interactableButton));
             if(interactableButton.Key == BlockLogicType.Repeat || interactableButton.Key == BlockLogicType.Function)
             {
-                GameObject sheetPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("RepeatSheets");
+                GameObject sheetPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("RepeatSheet");
                 GameObject repeatSheet = Instantiate(sheetPrefab);
                 //TODO 위치 조정 스크립트도 작성해야함
                 int index = GetNextSheetIndex();
                 repeatSheetParents.Add(index, repeatSheet.transform);
                 _repeatBlockLogicBasesDictionary.Add(index, new List<BlockLogicBase>());
                 _sheetIndexDictionary.Add(interactableButton.Value, index);
+                repeatSheet.GetComponent<RepeatSheet>().Init(ChoiceSheet, index);
             }
         }
 
@@ -125,37 +131,16 @@ public class SheetManager : MonoBehaviour
         _sheetDictionary.TryAdd(index, blockLogicList);
         _sheetParentDictionary.TryAdd(index, sheetParent);
     }
+    private int GetNextSheetIndex()
+    {
+        return _sheetIndex++;
+    }
     private void ChoiceSheet(int index)
     {
-        _currentSheets = _sheetDictionary[index];
+        _isExBlockLogic = (index == -1) ? true : false;
+        _currentSheet = _sheetDictionary[index];
         _currentSheetParent = _sheetParentDictionary[index];
     }
-    private void OnClick_SetLogic(BlockLogicType type)
-    {
-        switch (type)
-        {
-            case BlockLogicType.Start:
-                RunSheetBlock();
-                return;
-            case BlockLogicType.Reset:
-                ResetSheetBlock();
-                return;
-            case BlockLogicType.Clear:
-                ClearAllBlockLogic();
-                return;
-        }
-        Debug.Log(type.ToString());
-        GameObject tempPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>($"{type.ToString()}BlockLogic");
-
-        AddOutlineComponent(tempPrefab);
-
-        BlockLogicBase logicBase = Instantiate(tempPrefab).GetComponent<BlockLogicBase>();
-
-        if (logicBase != null)
-        {
-            AddBlockLogic(logicBase);
-        }
-    }*/
     private void OnClick_SetLogic(KeyValuePair<BlockLogicType, InteractableUnityEventWrapper> keyValuePair)
     {
         //함수 시트에 함수가 들어가지 못하게 막기용 기능
@@ -169,7 +154,7 @@ public class SheetManager : MonoBehaviour
             case BlockLogicType.Start:
                 RunSheetBlock();
                 return;
-            case BlockLogicType.Reset: 
+            case BlockLogicType.Reset:
                 ResetSheetBlock();
                 return;
             case BlockLogicType.Clear:
@@ -194,14 +179,13 @@ public class SheetManager : MonoBehaviour
                     rBlockLogic.SheetIndex = index;
                 }
             }
-            //TODO
-            //if (logicBase is FunctionBlockLogic rBlockLogic)
-            //{
-            //    if (_sheetIndexDictionary.TryGetValue(keyValuePair.Value, out int index))
-            //    {
-            //        rBlockLogic.SheetIndex = index;
-            //    }
-            //}
+            if (logicBase is FunctionBlockLogic fBlockLogic)
+            {
+                if (_sheetIndexDictionary.TryGetValue(keyValuePair.Value, out int index))
+                {
+                    fBlockLogic.SheetIndex = index;
+                }
+            }
         }
     }
 
@@ -215,16 +199,15 @@ public class SheetManager : MonoBehaviour
         {
             InteractableManager.ExerciseButton.transform.parent.FindChild("Answer");
         }*/
-        Stage.UIContainer.ExSheetPopup.gameObject.SetActive(true);
+        StageManager.UIContainer.ExSheetPopup.gameObject.SetActive(true);
         ExSheetParent.gameObject.SetActive(true);
-        _currentSheet = _sheetDictionary[-1];
-        _currentSheetParent = _sheetParentDictionary[-1];
+        ChoiceSheet(-1);
     }
     //연습장의 내용이 지워지는지에 따라 내용구현 달라짐
     //TODO
     public void OnClick_ExitExercise()
     {
-        Stage.UIContainer.ExSheetPopup.gameObject.SetActive(false);
+        StageManager.UIContainer.ExSheetPopup.gameObject.SetActive(false);
         ExSheetParent.gameObject.SetActive(false);
         _currentSheet = _sheetDictionary[0];
         _currentSheetParent = _sheetParentDictionary[0];
@@ -240,7 +223,7 @@ public class SheetManager : MonoBehaviour
     }
     public void ClearAllBlockLogic()
     {
-        sheetIndex = 1;
+        _sheetIndex = 1;
         ClearMainBlockLogic();
         ClearRepeatBlockLogic();
         ClearExBlockLogic();
@@ -271,31 +254,49 @@ public class SheetManager : MonoBehaviour
         //기능 답안지  유지, 스테이지 원래상태 복귀
         //RunBlockLogic를 중지해야함
 
-        Stage.InteractableManager.InteractableButtons[BlockLogicType.Start].gameObject.SetActive(true);
-        Stage.InteractableManager.InteractableButtons[BlockLogicType.Reset].gameObject.SetActive(false);
-        Stage.TableManager.ClearTable();
+        StageManager.InteractableManager.InteractableButtons[BlockLogicType.Start].gameObject.SetActive(true);
+        StageManager.InteractableManager.InteractableButtons[BlockLogicType.Reset].gameObject.SetActive(false);
+        StageManager.TableManager.ClearTable();
     }
     public void RunSheetBlock()
     {
-        Stage.InteractableManager.InteractableButtons[BlockLogicType.Start].gameObject.SetActive(false);
-        Stage.InteractableManager.InteractableButtons[BlockLogicType.Reset].gameObject.SetActive(true);
-        RunBlockLogics().Forget();
+        if (_isLogicRunning == true)
+        {
+            Debug.Log("IsLogicRunning");
+            return;
+        }
+        if (_isExBlockLogic == true)
+        {
+            Debug.Log("IsExBlockLogic");
+            return;
+        }
+        
+        StageManager.InteractableManager.InteractableButtons[BlockLogicType.Start].gameObject.SetActive(false);
+        StageManager.InteractableManager.InteractableButtons[BlockLogicType.Reset].gameObject.SetActive(true);
+        _isLogicRunning = true;
+        RunBlockLogics(0).Forget();
     }
-    async UniTask<ErrorType> RunBlockLogics()
+    async UniTask<ErrorType> RunBlockLogics(int sheetIndex)
     {
         int tempLenght = 0;
-        foreach (var blockLogic in _blockLogicBases)
+        
+        //foreach (var blockLogic in _blockLogicBases)
+        foreach (var blockLogic in _sheetDictionary[sheetIndex])
         {
 
             ErrorType result = await RunBlockLogic(blockLogic);
             if (result != ErrorType.NoError)
             {
-                ActiveError(SheetParent, tempLenght);
-                NPCManager.GetMessage(result);
-
-                Debug.LogError($"ErrorType : {result} ErrorMessage : {DataManager.Instance.GetGameData<ErrorMessageData>(((int)result).ToString()).Context}");
+                if (sheetIndex == 0)
+                {
+                    ActiveError(SheetParent, tempLenght);
+                    Debug.LogError($"ErrorType : {result} ErrorMessage : {DataManager.Instance.GetGameData<ErrorMessageData>(((int)result).ToString()).Context}");
+                    NPCManager.GetMessage(result);
+                    _isLogicRunning = false;
+                }
                 return result;
-            } else
+            }
+            else
             {
                 ActiveHint(SheetParent,tempLenght);
                 NPCManager.GetMessage(result);
@@ -308,14 +309,16 @@ public class SheetManager : MonoBehaviour
     }
     async UniTask<ErrorType> RunBlockLogic(BlockLogicBase blockLogic)
     {
-        ErrorType result = blockLogic.IsExecutable(Stage);
+        ErrorType result = blockLogic.IsExecutable(StageManager);
         //SimulatorManager.Instance.CheckAnswer(result);// To Do
         if (result != ErrorType.NoError)
             return result;
 
+        if (blockLogic is RepeatBlockLogic repeatBlockLogic)
+            return await RunBlockLogics(repeatBlockLogic.SheetIndex);
         while (true)
         {
-            LogicState logicState = blockLogic.Execute(Stage);
+            LogicState logicState = blockLogic.Execute(StageManager);
             if (logicState == LogicState.Success)
                 return ErrorType.NoError;
             await UniTask.NextFrame();
@@ -403,7 +406,6 @@ public class SheetManager : MonoBehaviour
     public void TestLogics()
     {
         OnClick_SetLogic(GetButtonKeyValue(BlockLogicType.Repeat));
-        
         OnClick_SetLogic(GetButtonKeyValue(BlockLogicType.Repeat));
         OnClick_SetLogic(GetButtonKeyValue(BlockLogicType.Repeat));
     }
