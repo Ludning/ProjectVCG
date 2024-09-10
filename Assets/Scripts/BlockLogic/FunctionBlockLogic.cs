@@ -3,12 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RepeatBlockLogic : BlockLogicBase
+public class FunctionBlockLogic : BlockLogicBase
 {
     public int SheetIndex;
 
     private List<BlockLogicBase> _elementLogics;
-    private int _repeatCount;
     private int _currentRepeatCount;
     private int _currentLogicCount;
     private bool _isChecked;
@@ -16,7 +15,6 @@ public class RepeatBlockLogic : BlockLogicBase
     //FunctionBlock이 작동되는 시작조건을 충족하지 않을 경우 (아마 바로 true 반환하면 될듯?)
     public override ErrorType IsExecutable(StageManager owner)
     {
-        _currentRepeatCount = 0;
         _currentLogicCount = 0;
         _isChecked = false;
         return ErrorType.NoError;
@@ -24,7 +22,7 @@ public class RepeatBlockLogic : BlockLogicBase
 
     public override LogicState Execute(StageManager owner)
     {
-        while (_currentRepeatCount < _repeatCount)
+        while (_currentRepeatCount < 1)
         {
             if (_isChecked == false)
             {
