@@ -17,24 +17,27 @@ public class SheetManager : MonoBehaviour
     [SerializeField] private NPCManager NPCManager;
 
     [Header("MainSheet")]
-    [SerializeField] private Transform SheetParent;
-    private List<BlockLogicBase> _blockLogicBases = new List<BlockLogicBase>();
+    
 
     //[Header("SubSheet")]
     //private List<Transform> repeatSheetParents = new List<Transform>();
-    private Dictionary<int, Transform> repeatSheetParents = new Dictionary<int, Transform>();
-    private Dictionary<int, List<BlockLogicBase>> _repeatBlockLogicBasesDictionary = new Dictionary<int, List<BlockLogicBase>>();
-
-    [Header("연습장")]
-    [SerializeField] private Transform ExSheetParent;
-    private List<BlockLogicBase> _exBlockLogicBases = new List<BlockLogicBase>();
-
-
-    private Dictionary<int, List<BlockLogicBase>> _sheetDictionary = new Dictionary<int, List<BlockLogicBase>>();
-    private Dictionary<int, Transform> _sheetParentDictionary = new Dictionary<int, Transform>();
     
-    private List<BlockLogicBase> _currentSheets;
-    private Transform _currentSheetParent;
+
+    private List<BlockLogicBase> _blockLogicBases = new List<BlockLogicBase>(); //메인 블록로직 기능List
+    private Dictionary<int, List<BlockLogicBase>> _repeatBlockLogicBasesDictionary = new Dictionary<int, List<BlockLogicBase>>(); //함수 블록로직 기능List
+    private List<BlockLogicBase> _exBlockLogicBases = new List<BlockLogicBase>();//연습장 블록로직 기능List
+
+    [SerializeField] private Transform SheetParent; //메인 블록로직 UI
+    private Dictionary<int, Transform> repeatSheetParents = new Dictionary<int, Transform>(); //함수 블록로직 UI
+    [SerializeField] private Transform ExSheetParent; //연습장 블록로직 UI
+
+
+    private Dictionary<int, List<BlockLogicBase>> _sheetDictionary = new Dictionary<int, List<BlockLogicBase>>(); //모든 블록로직 기능List을 딕셔너리로 저장해둔 곳
+    private Dictionary<int, Transform> _sheetParentDictionary = new Dictionary<int, Transform>(); //모든 블록로직 UI을 딕셔너리로 저장해둔 곳
+
+
+    private List<BlockLogicBase> _currentSheets; //현재 가르키고 있는 블록로직 기능List
+    private Transform _currentSheetParent; //현재 가르키고 있는 블록로직 UI
 
 
     //임시 코드
@@ -99,13 +102,18 @@ public class SheetManager : MonoBehaviour
         SetSheet(0, _blockLogicBases, SheetParent);
         SetSheet(-1, _exBlockLogicBases, ExSheetParent);
 
-        _currentSheets = _sheetDictionary[0];
-        _currentSheetParent = _sheetParentDictionary[0];
+        ChoiceSheet(0);
     }
+
     private void SetSheet(int index, List<BlockLogicBase> blockLogicList, Transform sheetParent)
     {
         _sheetDictionary.TryAdd(index, blockLogicList);
         _sheetParentDictionary.TryAdd(index, sheetParent);
+    }
+    private void ChoiceSheet(int index)
+    {
+        _currentSheets = _sheetDictionary[index];
+        _currentSheetParent = _sheetParentDictionary[index];
     }
     private void OnClick_SetLogic(BlockLogicType type)
     {
@@ -151,7 +159,7 @@ public class SheetManager : MonoBehaviour
     }
     //연습장의 내용이 지워지는지에 따라 내용구현 달라짐
     //TODO
-    private void OnClick_ExitExercise()
+    public void OnClick_ExitExercise()
     {
         Stage.UIContainer.ExSheetPopup.gameObject.SetActive(false);
         ExSheetParent.gameObject.SetActive(false);
