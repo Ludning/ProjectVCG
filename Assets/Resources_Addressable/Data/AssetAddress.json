@@ -11,6 +11,7 @@
     "RotateRightBlockLogic": "Assets/Resources_Addressable/Prefabs/BlockLogic/RotateRightBlockLogic.prefab",
     "RotateBackBlockLogic": "Assets/Resources_Addressable/Prefabs/BlockLogic/RotateBackBlockLogic.prefab",
     "RepeatBlockLogic": "Assets/Resources_Addressable/Prefabs/BlockLogic/RepeatBlockLogic.prefab",
+    "FunctionBlockLogic": "Assets/Resources_Addressable/Prefabs/BlockLogic/FunctionBlockLogic.prefab",
     "ChapterSelectPopup": "Assets/Resources_Addressable/Prefabs/WorldUI/ChapterSelectPopup.prefab",
     "StageClearPopup": "Assets/Resources_Addressable/Prefabs/WorldUI/StageClearPopup.prefab",
     "StageSelectPopup": "Assets/Resources_Addressable/Prefabs/WorldUI/StageSelectPopup.prefab",
@@ -36,7 +37,8 @@
     "Prefab_Cut_Shrimp": "Assets/Resources_Addressable/Prefabs/Items/Prefab_Cut_Shrimp.prefab",
     "Prefab_Fryer_Shrimp": "Assets/Resources_Addressable/Prefabs/Items/Prefab_Fryer_Shrimp.prefab",
     "Prefab_Sushi_Shrimp": "Assets/Resources_Addressable/Prefabs/Items/Prefab_Sushi_Shrimp.prefab",
-    "RepeatSheet": "Assets/Resources_Addressable/Prefabs/WorldUI/Sheet/RepeatSheet.prefab"
+    "RepeatSheet": "Assets/Resources_Addressable/Prefabs/WorldUI/Sheet/RepeatSheet.prefab",
+    "FunctionSheet": "Assets/Resources_Addressable/Prefabs/WorldUI/Sheet/FunctionSheet.prefab"
   },
   "Material": {
     "TempMat": "Assets/Resources_Addressable/Materials/Logic/TempMat.mat",
@@ -53,7 +55,8 @@
     "DashMat": "Assets/Resources_Addressable/Materials/Logic/TempMat.mat",
     "Function": "Assets/Resources_Addressable/Materials/Logic/TempMat.mat",
     "RepeatMat": "Assets/Resources_Addressable/Materials/Logic/TempMat.mat",
-    "MemoMat": "Assets/Resources_Addressable/Materials/Logic/MemoMat.mat"
+    "MemoMat": "Assets/Resources_Addressable/Materials/Logic/MemoMat.mat",
+    "FunctionMat": "Assets/Resources_Addressable/Materials/Logic/FunctionMat.mat"
   },
   "Sprite": {
     "CookedFood_Image": "Assets/Resources_Addressable/Textures/Tile/CookedFood_Image.png",

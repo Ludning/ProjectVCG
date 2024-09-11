@@ -7,14 +7,14 @@ public class ExSheet : MonoBehaviour
     public Transform SheetParent;
     public SheetManager SheetManager;
 
-    public void OnClick_Close()
-    {
-        SheetManager.ClearExBlockLogic();
-    }
     
-
     public void OnClick_ExitExercise()
     {
         SheetManager.OnClick_ExitExercise();
+    }
+    
+    public void OnClick_Clear()
+    {
+        SheetManager.ClearExBlockLogic();
     }
 }

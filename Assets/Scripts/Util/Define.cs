@@ -77,17 +77,17 @@ public enum BlockLogicType
 {
     Cook,
     Move,
+    Dash,
     RotateLeft,
     RotateRight,
     RotateBack,
-    PushItem,
     PopItem,
+    PushItem,
+    Function,
+    Repeat,
     Start,
     Clear,
     Reset,
-    Dash,
-    Function,
-    Repeat,
 }
 public enum Rotate
 {

@@ -387,6 +387,21 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a8a8a23ec4377324681b505153971063
+    m_Address: Assets/Resources_Addressable/Materials/Logic/FunctionMat.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 64a5682e9d85c664da0a90dbf4b1f936
+    m_Address: Assets/Resources_Addressable/Prefabs/WorldUI/Sheet/FunctionSheet.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 13e815505216b874684963fe27ba6625
+    m_Address: Assets/Resources_Addressable/Prefabs/BlockLogic/FunctionBlockLogic.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8b1dc452034a1734db8ae1cd6cb6a1de, type: 2}
   m_SchemaSet:

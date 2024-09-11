@@ -12,6 +12,8 @@ public class ResourceManager : Singleton<ResourceManager>
     
     public T LoadResource<T>(string resourceName) where T : Object
     {
+        Debug.Log($"resourceName: {resourceName}");
+        
         string resourcePath = DataManager.Instance.GetAssetAddress<T>(resourceName);
 
         Debug.Log($"resourcePath: {resourcePath}");

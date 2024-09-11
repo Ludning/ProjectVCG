@@ -77,7 +77,7 @@
           "IsSpawnNPC": false,
           "SpawnNpcType": 0,
           "IsSpawnObject": true,
-          "SpawnObjectType": 11100
+          "SpawnObjectType": 15001
         },
         "8": {
           "TileType": 10100,
@@ -1448,7 +1448,7 @@
           "IsSpawnNPC": false,
           "SpawnNpcType": 0,
           "IsSpawnObject": true,
-          "SpawnObjectType": 11500
+          "SpawnObjectType": 15001
         }
       },
       "LevelDataDictionary": {
@@ -1718,7 +1718,7 @@
           "IsSpawnNPC": false,
           "SpawnNpcType": 0,
           "IsSpawnObject": true,
-          "SpawnObjectType": 11205
+          "SpawnObjectType": 15001
         },
         "4": {
           "TileType": 10100,
@@ -1846,7 +1846,7 @@
           "IsSpawnNPC": false,
           "SpawnNpcType": 0,
           "IsSpawnObject": true,
-          "SpawnObjectType": 20004
+          "SpawnObjectType": 15001
         },
         "20": {
           "TileType": 10100,
@@ -1862,7 +1862,7 @@
           "IsSpawnNPC": false,
           "SpawnNpcType": 0,
           "IsSpawnObject": true,
-          "SpawnObjectType": 11205
+          "SpawnObjectType": 15001
         },
         "22": {
           "TileType": 10100,

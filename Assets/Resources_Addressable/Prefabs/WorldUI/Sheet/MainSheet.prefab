@@ -61,7 +61,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6790352834569897565
 Transform:
   m_ObjectHideFlags: 0
@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SheetParent: {fileID: 1297734893145644873}
+  SheetManager: {fileID: 0}
 --- !u!1 &2090149284826665765
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,7 +501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
+    m_Left: 1
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
@@ -735,7 +736,7 @@ GameObject:
   - component: {fileID: 3303405045305917896}
   - component: {fileID: 3401182995648496344}
   m_Layer: 0
-  m_Name: RepeatSelectButton
+  m_Name: MainSelectButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -814,9 +815,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: RepeatSheet, Assembly-CSharp
-        m_MethodName: OnClickActiveRepeat
+      - m_Target: {fileID: 5063853555135218504}
+        m_TargetAssemblyTypeName: MainSheet, Assembly-CSharp
+        m_MethodName: OnClickActiveMain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

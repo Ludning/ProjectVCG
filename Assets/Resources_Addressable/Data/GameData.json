@@ -65,7 +65,7 @@
     "102": {
       "Index": "102",
       "Description": "대쉬 블록",
-      "Type": 10,
+      "Type": 2,
       "IconBlock": "icon_dash",
       "AnimationKey": "anim_dash",
       "MoveDistance": "-",
@@ -75,7 +75,7 @@
     "201": {
       "Index": "201",
       "Description": "좌회전 블록",
-      "Type": 2,
+      "Type": 3,
       "IconBlock": "icon_left",
       "AnimationKey": "anim_left",
       "MoveDistance": "-",
@@ -85,7 +85,7 @@
     "202": {
       "Index": "202",
       "Description": "우회전 블록",
-      "Type": 3,
+      "Type": 4,
       "IconBlock": "icon_right",
       "AnimationKey": "anim_right",
       "MoveDistance": "-",
@@ -95,7 +95,7 @@
     "203": {
       "Index": "203",
       "Description": "뒤돌기 블록",
-      "Type": 4,
+      "Type": 5,
       "IconBlock": "icon_turnback",
       "AnimationKey": "anim_turnback",
       "MoveDistance": "-",
@@ -115,7 +115,7 @@
     "302": {
       "Index": "302",
       "Description": "놓기 블록",
-      "Type": 5,
+      "Type": 7,
       "IconBlock": "icon_putdown",
       "AnimationKey": "anim_putdown",
       "MoveDistance": "-",
@@ -135,7 +135,7 @@
     "998": {
       "Index": "998",
       "Description": "함수 블록",
-      "Type": 11,
+      "Type": 8,
       "IconBlock": "icon_function",
       "AnimationKey": "anim_function",
       "MoveDistance": "-",
@@ -145,7 +145,7 @@
     "999": {
       "Index": "999",
       "Description": "반복함수 블록",
-      "Type": 12,
+      "Type": 9,
       "IconBlock": "icon_timefunction",
       "AnimationKey": "anim_timefunction",
       "MoveDistance": "-",

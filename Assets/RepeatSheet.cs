@@ -10,18 +10,16 @@ public class RepeatSheet : MonoBehaviour
     public Transform SheetParent;
     [ReadOnly] public SheetManager SheetManager;
     private int sheetIndex;
-    private Action<int> choiceSheetAction;
 
-    public void Init(SheetManager sheetManager, Action<int> choiceSheetAction, int sheetIndex)
+    public void Init(SheetManager sheetManager, int sheetIndex)
     {
         this.SheetManager = sheetManager;
-        this.choiceSheetAction = choiceSheetAction;
         this.sheetIndex = sheetIndex;
     }
 
     public void OnClickActiveRepeat()
     {
-        choiceSheetAction.Invoke(sheetIndex);
+        SheetManager.ChoiceSheet(sheetIndex);
     }
     public void SetRepeatCount(int count)
     {

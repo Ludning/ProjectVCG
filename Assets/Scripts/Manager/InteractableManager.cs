@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Oculus.Interaction;
+using System.Linq;
 using UnityEngine;
 
 public class InteractableManager : MonoBehaviour
@@ -14,9 +15,14 @@ public class InteractableManager : MonoBehaviour
     [HideInInspector]
     public InteractableUnityEventWrapper ExerciseButton;
     public Dictionary<BlockLogicType, InteractableUnityEventWrapper> InteractableButtons = new Dictionary<BlockLogicType, InteractableUnityEventWrapper>();
+    public Dictionary<int, InteractableUnityEventWrapper> FunctionInteractableButtons = new Dictionary<int, InteractableUnityEventWrapper>();
+    public Dictionary<int, InteractableUnityEventWrapper> RepeatInteractableButtons = new Dictionary<int, InteractableUnityEventWrapper>();
+    private int _sheetIndex;
 
     public void Init(string showBlockString)
     {
+        _sheetIndex = 1;
+        
         GameObject buttonPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(InteractableButtonName);
 
         InstantiateExerciseButton(buttonPrefab, ExerciseParent);
@@ -24,7 +30,6 @@ public class InteractableManager : MonoBehaviour
         List<string> blockList = new List<string>(showBlockString.Split(", "));
         foreach (var blockIndex in blockList)
         {
-            Debug.Log(blockIndex);
             CodingBlockData data = DataManager.Instance.GetGameData<CodingBlockData>(blockIndex);
             InstantiateButton(buttonPrefab, LogicButtonParent, data.Type);
         }
@@ -51,15 +56,37 @@ public class InteractableManager : MonoBehaviour
         GameObject button = Instantiate(prefab, parent);
         button.GetComponent<LoadCodeBlockMaterial>().Init(type);
         InteractableUnityEventWrapper interactableUnityEventWrapper = button.GetComponent<InteractableUnityEventWrapper>();
-        
-        InteractableButtons.Add(type, interactableUnityEventWrapper);
+
+        switch (type)
+        {
+            case BlockLogicType.Function:
+                FunctionInteractableButtons.Add(GetNextSheetIndex(), interactableUnityEventWrapper);
+                break;
+            case BlockLogicType.Repeat:
+                RepeatInteractableButtons.Add(GetNextSheetIndex(), interactableUnityEventWrapper);
+                break;
+            default:
+                InteractableButtons[type] = interactableUnityEventWrapper;
+                break;
+        }
     }
     public void Clear()
     {
         foreach (var interactableButton in InteractableButtons.Values)
-        {
             Destroy(interactableButton.gameObject);
-        }
         InteractableButtons.Clear();
+        
+        foreach (var interactableButton in FunctionInteractableButtons.Values)
+            Destroy(interactableButton.gameObject);
+        FunctionInteractableButtons.Clear();
+        
+        foreach (var interactableButton in RepeatInteractableButtons.Values)
+            Destroy(interactableButton.gameObject);
+        RepeatInteractableButtons.Clear();
+    }
+    
+    private int GetNextSheetIndex()
+    {
+        return _sheetIndex++;
     }
 }
