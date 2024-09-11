@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RotateRightLogic : BlockLogicBase
 {
     Quaternion playerTargetRot = Quaternion.identity;
+	
     public override ErrorType IsExecutable(StageManager owner)
     {
         playerTargetRot = owner.Controller.transform.rotation * Quaternion.Euler(new Vector3(0, 90, 0));
@@ -16,7 +15,7 @@ public class RotateRightLogic : BlockLogicBase
         Quaternion playerCurrentRot = owner.Controller.transform.rotation;
         owner.Controller.transform.rotation = Quaternion.Lerp(playerCurrentRot, playerTargetRot, 0.1f);
 
-        if (Quaternion.Angle(playerCurrentRot,playerTargetRot)<0.1f)
+        if (Quaternion.Angle(playerCurrentRot,playerTargetRot) < 0.1f)
         {
             switch (owner.Controller.PlayerForwardType)
             {
@@ -33,9 +32,10 @@ public class RotateRightLogic : BlockLogicBase
                     owner.Controller.PlayerForwardType = Direction.Down;
                     break;
             }
+			
             return LogicState.Success;
         }
+		
         return LogicState.Running;
-        
     }
 }

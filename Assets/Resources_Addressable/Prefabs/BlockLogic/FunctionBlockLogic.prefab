@@ -15,11 +15,7 @@ GameObject:
   - component: {fileID: 1817733686961315303}
   - component: {fileID: 3085805670709788741}
   m_Layer: 0
-<<<<<<<< HEAD:Assets/Resources_Addressable/Prefabs/BlockLogic/FunctionBlockLogic.prefab
   m_Name: FunctionBlockLogic
-========
-  m_Name: Object_Food_Shrimp
->>>>>>>> bdd4138f84125ef09d573d657c7587cc77848ecd:Assets/Resources_Addressable/Prefabs/Items/Object_Food_Shrimp.prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

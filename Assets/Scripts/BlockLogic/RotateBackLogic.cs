@@ -1,16 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RotateBackLogic : BlockLogicBase
 {
     Quaternion playerTargetRot = Quaternion.identity;
+	
     public override ErrorType IsExecutable(StageManager owner)
     {
         playerTargetRot = owner.Controller.transform.rotation * Quaternion.Euler(new Vector3(0, 180, 0));
+		
         return ErrorType.NoError;
     }
-
+    
     public override LogicState Execute(StageManager owner)
     {
         Quaternion playerCurrentRot = owner.Controller.transform.rotation;
@@ -33,9 +33,10 @@ public class RotateBackLogic : BlockLogicBase
                     owner.Controller.PlayerForwardType = Direction.Left;
                     break;
             }
+			
             return LogicState.Success;
         }
+		
         return LogicState.Running;
-
     }
 }
