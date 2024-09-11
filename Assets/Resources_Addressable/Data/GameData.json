@@ -339,7 +339,7 @@
       "TargetCustomerIcon": "ICON_DATA_CUSTOMER",
       "TargetFoodIcon": "-",
       "StageOrder": "2",
-      "AnswerBlockAmount": "",
+      "AnswerBlockAmount": "11",
       "ShowBlock": "101, 201, 202, 301, 302",
       "ETC": "-"
     },
@@ -356,8 +356,8 @@
       "TargetCustomerIcon": "-",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "1",
-      "AnswerBlockAmount": "",
-      "ShowBlock": "101, 201, 202, 301, 302",
+      "AnswerBlockAmount": "4",
+      "ShowBlock": "101, 201, 202, 301, 302, 401",
       "ETC": "-"
     },
     "3021": {
@@ -373,8 +373,8 @@
       "TargetCustomerIcon": "-",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "2",
-      "AnswerBlockAmount": "",
-      "ShowBlock": "101, 201, 202, 301, 302",
+      "AnswerBlockAmount": "4",
+      "ShowBlock": "101, 201, 202, 301, 302, 401",
       "ETC": "-"
     },
     "3022": {
@@ -390,8 +390,8 @@
       "TargetCustomerIcon": "-",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "3",
-      "AnswerBlockAmount": "",
-      "ShowBlock": "101, 102, 201, 202, 203, 301, 302, 401, 998",
+      "AnswerBlockAmount": "4",
+      "ShowBlock": "101, 201, 202, 301, 302, 401",
       "ETC": "-"
     },
     "3023": {
@@ -407,8 +407,8 @@
       "TargetCustomerIcon": "-",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "4",
-      "AnswerBlockAmount": "",
-      "ShowBlock": "101, 102, 201, 202, 203, 301, 302, 401, 998",
+      "AnswerBlockAmount": "15",
+      "ShowBlock": "101, 201, 202, 301, 302, 401",
       "ETC": "-"
     },
     "3030": {
@@ -424,8 +424,8 @@
       "TargetCustomerIcon": "-",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "1",
-      "AnswerBlockAmount": "",
-      "ShowBlock": "101, 102, 201, 202, 203, 301, 302, 401, 998",
+      "AnswerBlockAmount": "6",
+      "ShowBlock": "101, 201, 202, 301, 302, 401, 998",
       "ETC": "-"
     },
     "3031": {
@@ -441,8 +441,8 @@
       "TargetCustomerIcon": "-",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "2",
-      "AnswerBlockAmount": "",
-      "ShowBlock": "101, 102, 201, 202, 203, 301, 302, 401, 998, 999",
+      "AnswerBlockAmount": "5",
+      "ShowBlock": "101, 201, 202, 301, 302, 401, 998",
       "ETC": "-"
     },
     "3032": {
@@ -458,8 +458,8 @@
       "TargetCustomerIcon": "-",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "3",
-      "AnswerBlockAmount": "",
-      "ShowBlock": "101, 102, 201, 202, 203, 301, 302, 401, 998, 999",
+      "AnswerBlockAmount": "3",
+      "ShowBlock": "101, 201, 202, 301, 302, 401, 998",
       "ETC": "-"
     },
     "3033": {
@@ -475,8 +475,8 @@
       "TargetCustomerIcon": "-",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "4",
-      "AnswerBlockAmount": "",
-      "ShowBlock": "101, 102, 201, 202, 203, 301, 302, 401, 998, 999",
+      "AnswerBlockAmount": "4",
+      "ShowBlock": "101, 201, 202, 301, 302, 401, 998",
       "ETC": "-"
     },
     "3040": {
@@ -493,7 +493,7 @@
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "1",
       "AnswerBlockAmount": "1",
-      "ShowBlock": "101, 102, 201, 202, 203, 301, 302, 401, 998, 999",
+      "ShowBlock": "101, 201, 202, 301, 302, 401, 998, 999",
       "ETC": "-"
     },
     "3041": {
@@ -510,90 +510,160 @@
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "2",
       "AnswerBlockAmount": "2",
-      "ShowBlock": "101, 102, 201, 202, 203, 301, 302, 401, 998, 999",
+      "ShowBlock": "101, 201, 202, 301, 302, 401, 998, 999",
       "ETC": "-"
     }
   },
   "StageGoal": {
     "5000": {
       "Index": "5000",
-      "Description": "1-1스테이지에 대한 설명",
-      "Context": "서빙을 하는 스테이지야~"
+      "Description": "튜토리얼 챕터 이동 스테이지에 대한 설명",
+      "Context": "목적지까지 도착해야하는 스테이지야"
     },
     "5001": {
       "Index": "5001",
-      "Description": "1-2스테이지에 대한 설명",
-      "Context": "서빙을 하는 스테이지야~"
+      "Description": "튜토리얼 챕터 회전 스테이지에 대한 설명",
+      "Context": "목적지까지 도착해야하는 스테이지야"
     },
     "5002": {
       "Index": "5002",
-      "Description": "2-1스테이지에 대한 설명",
-      "Context": "서빙을 하는 스테이지야~"
+      "Description": "튜토리얼 챕터 들기/놓기 스테이지에 대한 설명",
+      "Context": "주방 할아버지가 만든 요리를 서빙을 처음 배워보는 스테이지야"
     },
-    "5003": {
-      "Index": "5003",
-      "Description": "2-2스테이지에 대한 설명",
-      "Context": "서빙을 하는 스테이지야~"
+    "5010": {
+      "Index": "5010",
+      "Description": "1챕터 1스테이지에 대한 설명",
+      "Context": "주방 할아버지가 만든 요리를 서빙을 하는 스테이지야"
     },
-    "5004": {
-      "Index": "5004",
+    "5011": {
+      "Index": "5011",
+      "Description": "1챕터 2스테이지에 대한 설명",
+      "Context": "주방 할아버지가 만든 요리를 서빙을 하는 스테이지야"
+    },
+    "5020": {
+      "Index": "5020",
       "Description": "2챕터 1스테이지에 대한 설명",
-      "Context": "주어진 요리 재료를 알맞은 조리 도구를 사용해 요리를 완성시키는 스테이지야!"
+      "Context": "새우를 썰어보는 스테이지야"
     },
-    "5005": {
-      "Index": "5005",
+    "5021": {
+      "Index": "5021",
       "Description": "2챕터 2스테이지에 대한 설명",
-      "Context": "주어진 요리 재료를 알맞은 조리 도구를 사용해 요리를 완성시키는 스테이지야!"
+      "Context": "새우를 튀겨보는 스테이지야"
     },
-    "5006": {
-      "Index": "5006",
+    "5022": {
+      "Index": "5022",
       "Description": "2챕터 3스테이지에 대한 설명",
-      "Context": "완성된 요리 2개를 주문한 손님께 서빙하는 스테이지야"
+      "Context": "쌀로 밥을 지어보는 스테이지야"
     },
-    "5007": {
-      "Index": "5007",
+    "5023": {
+      "Index": "5023",
+      "Description": "2챕터 4스테이지에 대한 설명",
+      "Context": "재료를 사용해 요리하는 스테이지야"
+    },
+    "5030": {
+      "Index": "5030",
       "Description": "3챕터 1스테이지에 대한 설명",
-      "Context": "주어진 요리 재료를 알맞은 조리 도구를 사용해 요리를 완성시키는 스테이지야!"
+      "Context": "함수 블록을 사용해 단일 재료를 요리하는 스테이지야"
+    },
+    "5031": {
+      "Index": "5031",
+      "Description": "3챕터 2스테이지에 대한 설명",
+      "Context": "함수 블록을 사용해 단일 재료를 요리하는 스테이지야"
+    },
+    "5032": {
+      "Index": "5032",
+      "Description": "3챕터 3스테이지에 대한 설명",
+      "Context": "함수 블록을 사용해 복수의 재료를 요리하는 스테이지야"
+    },
+    "5033": {
+      "Index": "5033",
+      "Description": "3챕터 4스테이지에 대한 설명",
+      "Context": "함수 블록을 사용해 복수의 재료를 요리하는 스테이지야"
+    },
+    "5040": {
+      "Index": "5040",
+      "Description": "4챕터 1스테이지에 대한 설명",
+      "Context": "반복 함수 블록을 사용해 완성된 요리를 서빙하는 스테이지야"
+    },
+    "5041": {
+      "Index": "5041",
+      "Description": "4챕터 2스테이지에 대한 설명",
+      "Context": "반복 함수 블록을 사용해 요리하는 스테이지야"
     },
     "5500": {
       "Index": "5500",
-      "Description": "1-1스테이지의 클리어 목표에 대한 설명",
-      "Context": "포케를 옆집아주머니 테이블에 서빙해~"
+      "Description": "튜토리얼 이동 스테이지 클리어 목표에 대한 설명",
+      "Context": "이동 블록을 사용해 목적지까지 이동해보자"
     },
     "5501": {
       "Index": "5501",
-      "Description": "1-2스테이지의 클리어 목표에 대한 설명",
-      "Context": "포케를 옆집아주머니 테이블에 서빙해~"
+      "Description": "튜토리얼 회전 스테이지 클리어 목표에 대한 설명",
+      "Context": "이동 블록과 회전 블록을 사용해 목적지까지 이동해보자"
     },
     "5502": {
       "Index": "5502",
-      "Description": "2-1스테이지의 클리어 목표에 대한 설명",
-      "Context": "햄버거 세트를 앞집 아저씨 테이블에 서빙해~"
+      "Description": "튜토리얼 들기/놓기 스테이지 클리어 목표에 대한 설명",
+      "Context": "들기/놓기 블록을 사용해 음식을 서빙해보자"
     },
-    "5503": {
-      "Index": "5503",
-      "Description": "2-2스테이지의 클리어 목표에 대한 설명",
-      "Context": "햄버거 세트를 앞집 아저씨 테이블에 서빙해~"
+    "5510": {
+      "Index": "5510",
+      "Description": "1챕터 1스테이지의 클리어 목표에 대한 설명",
+      "Context": "앞서 배운 블록들을 활용해 1개의 음식을 1명의 손님에게 서빙해보자"
     },
-    "5504": {
-      "Index": "5504",
-      "Description": "2챕터 1스테이지 클리어 목표에 대한 설명",
-      "Context": "아시아 남성 손님이 새우초밥을 주문했어! 새우초밥을 요리해볼까?"
+    "5511": {
+      "Index": "5511",
+      "Description": "1챕터 2스테이지의 클리어 목표에 대한 설명",
+      "Context": "앞서 배운 블록들을 활용해 2개의 음식을 2명의 손님에게 서빙해보자"
     },
-    "5505": {
-      "Index": "5505",
-      "Description": "2챕터 2스테이지 클리어 목표에 대한 설명",
-      "Context": "아프리카 여성 손님이 새우튀김 덮밥을 주문했어! 새우튀김 덮밥을 요리해볼까?"
+    "5520": {
+      "Index": "5520",
+      "Description": "2챕터 1스테이지의 클리어 목표에 대한 설명",
+      "Context": "앞서 배운 블록들을 활용해 새우를 도마에서 조리해보자"
     },
-    "5506": {
-      "Index": "5506",
-      "Description": "2챕터 3스테이지 클리어 목표에 대한 설명",
-      "Context": "아시아 남성 손님에게는 새우초밥, 아프리카 여성 손님에게는 새우튀김 덮밥을 서빙해줘"
+    "5521": {
+      "Index": "5521",
+      "Description": "2챕터 2스테이지의 클리어 목표에 대한 설명",
+      "Context": "앞서 배운 블록들을 활용해 새우를 튀김기에서 조리해보자"
     },
-    "5507": {
-      "Index": "5507",
-      "Description": "3챕터 1스테이지 클리어 목표에 대한 설명",
-      "Context": "백인 여성 손님이 생선회를 주문했어! 생선회를 요리해볼까?"
+    "5522": {
+      "Index": "5522",
+      "Description": "2챕터 3스테이지의 클리어 목표에 대한 설명",
+      "Context": "앞서 배운 블록들을 활용해 쌀을 밥솥에서 조리해보자"
+    },
+    "5523": {
+      "Index": "5523",
+      "Description": "2챕터 4스테이지의 클리어 목표에 대한 설명",
+      "Context": "앞서 배운 블록들을 활용해 2개의 요리를 조리해보자"
+    },
+    "5530": {
+      "Index": "5530",
+      "Description": "3챕터 1스테이지의 클리어 목표에 대한 설명",
+      "Context": "함수 블록을 사용해 단일 재료로 2개의 요리를 조리해보자"
+    },
+    "5531": {
+      "Index": "5531",
+      "Description": "3챕터 2스테이지의 클리어 목표에 대한 설명",
+      "Context": "함수 블록을 사용해 단일 재료로 2개의 요리를 조리해보자"
+    },
+    "5532": {
+      "Index": "5532",
+      "Description": "3챕터 3스테이지의 클리어 목표에 대한 설명",
+      "Context": "함수 블록을 사용해 복수의 재료로 2개의 요리를 조리해보자"
+    },
+    "5533": {
+      "Index": "5533",
+      "Description": "3챕터 4스테이지의 클리어 목표에 대한 설명",
+      "Context": "함수 블록을 사용해 복수의 재료로 2개의 요리를 조리해보자"
+    },
+    "5540": {
+      "Index": "5540",
+      "Description": "4챕터 1스테이지의 클리어 목표에 대한 설명",
+      "Context": "반복 함수를 사용해 3명의 손님에게 서빙해보자"
+    },
+    "5541": {
+      "Index": "5541",
+      "Description": "4챕터 2스테이지의 클리어 목표에 대한 설명",
+      "Context": "반복 함수를 사용해 이동하고 요리를 조리해보자"
     }
   },
   "Tile": {
