@@ -23,6 +23,7 @@ public class SheetManager : MonoBehaviour
 
     [SerializeField] private InteractableManager InteractableManager;
     [SerializeField] private NPCManager NPCManager;
+    [SerializeField] private RepeatFunctionSheetContainer RepeatFunctionSheetContainer;
 
 
     //MainSheet
@@ -30,7 +31,7 @@ public class SheetManager : MonoBehaviour
     private List<BlockLogicBase> _mainBlockLogicBases = new List<BlockLogicBase>();
 
     //SubSheet
-    private Dictionary<int, RepeatSheet> RepeatSheets = new Dictionary<int, RepeatSheet>();
+    private Dictionary<int, RepeatSheet> RepeatFunctionSheets = new Dictionary<int, RepeatSheet>();
     private Dictionary<int, List<BlockLogicBase>> _repeatBlockLogicBasesDictionary =
         new Dictionary<int, List<BlockLogicBase>>();
 
@@ -126,17 +127,17 @@ public class SheetManager : MonoBehaviour
             interactableButton.Value.WhenSelect.AddListener(action);
 
             GameObject sheetPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("FunctionSheet");
-            RepeatSheet repeatSheet = Instantiate(sheetPrefab, _repeatFunctionSheetParent).GetComponent<RepeatSheet>();
+            RepeatSheet functionSheet = Instantiate(sheetPrefab, _repeatFunctionSheetParent).GetComponent<RepeatSheet>();
             
             //TODO 위치 조정 스크립트도 작성해야함
             
-            RepeatSheets.Add(interactableButton.Key, repeatSheet);
+            RepeatFunctionSheets.Add(interactableButton.Key, functionSheet);
             _repeatBlockLogicBasesDictionary.Add(interactableButton.Key, new List<BlockLogicBase>());
             _sheetIndexDictionary.Add(interactableButton.Value, interactableButton.Key);
-            repeatSheet.GetComponent<RepeatSheet>().Init(this, interactableButton.Key);
+            functionSheet.GetComponent<RepeatSheet>().Init(this, interactableButton.Key);
             _repeatCountDictionary.Add(interactableButton.Key, 1);
 
-            SetSheet(interactableButton.Key, _repeatBlockLogicBasesDictionary[interactableButton.Key], repeatSheet.SheetParent);
+            SetSheet(interactableButton.Key, _repeatBlockLogicBasesDictionary[interactableButton.Key], functionSheet.SheetParent);
         }
         foreach (var interactableButton in InteractableManager.RepeatInteractableButtons)
         {
@@ -148,7 +149,7 @@ public class SheetManager : MonoBehaviour
             
             //TODO 위치 조정 스크립트도 작성해야함
             
-            RepeatSheets.Add(interactableButton.Key, repeatSheet);
+            RepeatFunctionSheets.Add(interactableButton.Key, repeatSheet);
             _repeatBlockLogicBasesDictionary.Add(interactableButton.Key, new List<BlockLogicBase>());
             _sheetIndexDictionary.Add(interactableButton.Value, interactableButton.Key);
             repeatSheet.GetComponent<RepeatSheet>().Init(this, interactableButton.Key);
@@ -156,12 +157,18 @@ public class SheetManager : MonoBehaviour
 
             SetSheet(interactableButton.Key, _repeatBlockLogicBasesDictionary[interactableButton.Key], repeatSheet.SheetParent);
         }
+        List<Transform> sheetTransformList = new List<Transform>();
+        foreach(var sheet in RepeatFunctionSheets.Values)
+        {
+            sheetTransformList.Add(sheet.transform);
+        }
+        RepeatFunctionSheetContainer.AddSheet(sheetTransformList);
 
         SetSheet(0, _mainBlockLogicBases, MainSheet.SheetParent);
         SetSheet(-1, _exBlockLogicBases, ExSheet.SheetParent);
 
         MainSheet.gameObject.SetActive(true);
-        foreach (var repeatSheet in RepeatSheets.Values)
+        foreach (var repeatSheet in RepeatFunctionSheets.Values)
             repeatSheet.gameObject.SetActive(true);
         ExSheet.gameObject.SetActive(false);
 
@@ -469,11 +476,11 @@ public class SheetManager : MonoBehaviour
 
         _repeatBlockLogicBasesDictionary.Clear();
 
-        foreach (var repeatSheet in RepeatSheets)
+        foreach (var repeatSheet in RepeatFunctionSheets)
         {
             Destroy(repeatSheet.Value.gameObject);
         }
 
-        RepeatSheets.Clear();
+        RepeatFunctionSheets.Clear();
     }
 }

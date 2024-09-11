@@ -402,6 +402,31 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c9a66dbcd5a141d4a8fe13569c7ff7a0
+    m_Address: Assets/Resources_Addressable/Textures/CookingProperty/Icon_Cooking_Tile_Pot.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7c449c93558cb1d4bb4c70b595d9226c
+    m_Address: Assets/Resources_Addressable/Textures/CookingProperty/Icon_Cooking_Tile_Cut.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c4b3206d4c7b46a4783b9e5475394fdc
+    m_Address: Assets/Resources_Addressable/Textures/CookingProperty/Icon_Cooking_Tile_Frier.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6a20eb873f6d6304fad79fe26521bd0d
+    m_Address: Assets/Resources_Addressable/Textures/CookingProperty/Icon_Cooking_Tile_Tray.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 88fda64bf76dacc448ecc052ad2ed7d0
+    m_Address: Assets/Resources_Addressable/Textures/CookingProperty/Icon_Cooking_Tile_Fan.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8b1dc452034a1734db8ae1cd6cb6a1de, type: 2}
   m_SchemaSet:

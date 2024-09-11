@@ -38,7 +38,12 @@
     "Prefab_Fryer_Shrimp": "Assets/Resources_Addressable/Prefabs/Items/Prefab_Fryer_Shrimp.prefab",
     "Prefab_Sushi_Shrimp": "Assets/Resources_Addressable/Prefabs/Items/Prefab_Sushi_Shrimp.prefab",
     "RepeatSheet": "Assets/Resources_Addressable/Prefabs/WorldUI/Sheet/RepeatSheet.prefab",
-    "FunctionSheet": "Assets/Resources_Addressable/Prefabs/WorldUI/Sheet/FunctionSheet.prefab"
+    "FunctionSheet": "Assets/Resources_Addressable/Prefabs/WorldUI/Sheet/FunctionSheet.prefab",
+    "Icon_Cooking_Tile_Cut": "Assets/Resources_Addressable/Textures/CookingProperty/Icon_Cooking_Tile_Cut.png",
+    "Icon_Cooking_Tile_Pot": "Assets/Resources_Addressable/Textures/CookingProperty/Icon_Cooking_Tile_Pot.png",
+    "Icon_Cooking_Tile_Fan": "Assets/Resources_Addressable/Textures/CookingProperty/Icon_Cooking_Tile_Fan.png",
+    "Icon_Cooking_Tile_Frier": "Assets/Resources_Addressable/Textures/CookingProperty/Icon_Cooking_Tile_Frier.png",
+    "Icon_Cooking_Tile_Tray": "Assets/Resources_Addressable/Textures/CookingProperty/Icon_Cooking_Tile_Tray.png"
   },
   "Material": {
     "TempMat": "Assets/Resources_Addressable/Materials/Logic/TempMat.mat",
