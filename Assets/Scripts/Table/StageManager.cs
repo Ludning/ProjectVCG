@@ -1,4 +1,3 @@
-using Cysharp.Threading.Tasks.Triggers;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -36,6 +35,8 @@ public class StageManager : MonoBehaviour
         InteractableManager.Init(stageData.ShowBlock);
         SheetManager.Init();
         UIContainer.Init();
+        
+        RecipeManager.Init(StageData); // RecipeManager를 초기화한다.
 
 
         //SheetManager.TestLogics();
