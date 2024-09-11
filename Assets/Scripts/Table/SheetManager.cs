@@ -127,7 +127,6 @@ public class SheetManager : MonoBehaviour
 
             GameObject sheetPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("FunctionSheet");
             RepeatSheet repeatSheet = Instantiate(sheetPrefab, _repeatFunctionSheetParent).GetComponent<RepeatSheet>();
-            //FunctionSheet functionSheet = Instantiate(sheetPrefab, _repeatSheetParent).GetComponent<FunctionSheet>();
             
             //TODO 위치 조정 스크립트도 작성해야함
             
