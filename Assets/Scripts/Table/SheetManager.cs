@@ -23,21 +23,24 @@ public class SheetManager : MonoBehaviour
     [SerializeField] private StageManager StageManager;
     [SerializeField] private InteractableManager InteractableManager;
     [SerializeField] private NPCManager NPCManager;
-
+    
     
     //MainSheet
     [Header("MainSheet")]
-    [SerializeField] private Transform SheetParent;
+    [SerializeField] private MainSheet MainSheet;
     private List<BlockLogicBase> _blockLogicBases = new List<BlockLogicBase>();
-
+    
     //SubSheet
-    private Dictionary<int, Transform> repeatSheetParents = new Dictionary<int, Transform>();
+    private Dictionary<int, RepeatSheet> RepeatSheets = new Dictionary<int, RepeatSheet>();
     private Dictionary<int, List<BlockLogicBase>> _repeatBlockLogicBasesDictionary = new Dictionary<int, List<BlockLogicBase>>();
-
-    //연습장
+    
+    //ExSheet
     [Header("연습장")]
-    [SerializeField] private Transform ExSheetParent;
+    [SerializeField] private ExSheet ExSheet;
     private List<BlockLogicBase> _exBlockLogicBases = new List<BlockLogicBase>();
+    
+    //함수블럭의 반복횟수를 저장
+    private Dictionary<int, int> _repeatCountDictionary = new Dictionary<int, int>();
 
 
     private Dictionary<int, List<BlockLogicBase>> _sheetDictionary = new Dictionary<int, List<BlockLogicBase>>();
@@ -110,18 +113,19 @@ public class SheetManager : MonoBehaviour
             if(interactableButton.Key == BlockLogicType.Repeat || interactableButton.Key == BlockLogicType.Function)
             {
                 GameObject sheetPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("RepeatSheet");
-                GameObject repeatSheet = Instantiate(sheetPrefab);
+                RepeatSheet repeatSheet = Instantiate(sheetPrefab).GetComponent<RepeatSheet>();
                 //TODO 위치 조정 스크립트도 작성해야함
                 int index = GetNextSheetIndex();
-                repeatSheetParents.Add(index, repeatSheet.transform);
+                RepeatSheets.Add(index, repeatSheet);
                 _repeatBlockLogicBasesDictionary.Add(index, new List<BlockLogicBase>());
                 _sheetIndexDictionary.Add(interactableButton.Value, index);
-                repeatSheet.GetComponent<RepeatSheet>().Init(ChoiceSheet, index);
+                repeatSheet.GetComponent<RepeatSheet>().Init(this, ChoiceSheet, index);
+                _repeatCountDictionary.Add(index, 1);
             }
         }
 
-        SetSheet(0, _blockLogicBases, SheetParent);
-        SetSheet(-1, _exBlockLogicBases, ExSheetParent);
+        SetSheet(0, _blockLogicBases, MainSheet.SheetParent);
+        SetSheet(-1, _exBlockLogicBases, ExSheet.SheetParent);
 
         ChoiceSheet(0);
     }
@@ -199,20 +203,21 @@ public class SheetManager : MonoBehaviour
         {
             InteractableManager.ExerciseButton.transform.parent.FindChild("Answer");
         }*/
-        StageManager.UIContainer.ExSheetPopup.gameObject.SetActive(true);
-        ExSheetParent.gameObject.SetActive(true);
+        ExSheet.gameObject.SetActive(true);
         ChoiceSheet(-1);
     }
-    //연습장의 내용이 지워지는지에 따라 내용구현 달라짐
-    //TODO
+    //연습장의 내용을 지우며 ExSheet비활성화
     public void OnClick_ExitExercise()
     {
-        StageManager.UIContainer.ExSheetPopup.gameObject.SetActive(false);
-        ExSheetParent.gameObject.SetActive(false);
+        ExSheet.gameObject.SetActive(false);
         _currentSheet = _sheetDictionary[0];
         _currentSheetParent = _sheetParentDictionary[0];
     }
 
+    public void SetRepeatCount(int index, int count)
+    {
+        _repeatCountDictionary[index] = count;
+    }
 
     public void AddBlockLogic(BlockLogicBase blockLogic)
     {
@@ -239,6 +244,7 @@ public class SheetManager : MonoBehaviour
     public void ClearRepeatBlockLogic()
     {
     }
+    //ExBlock 비우기
     public void ClearExBlockLogic()
     {
         foreach(var blockLogicBase in _exBlockLogicBases)
@@ -289,7 +295,7 @@ public class SheetManager : MonoBehaviour
             {
                 if (sheetIndex == 0)
                 {
-                    ActiveError(SheetParent, tempLenght);
+                    ActiveError(MainSheet.SheetParent, tempLenght);
                     Debug.LogError($"ErrorType : {result} ErrorMessage : {DataManager.Instance.GetGameData<ErrorMessageData>(((int)result).ToString()).Context}");
                     NPCManager.GetMessage(result);
                     _isLogicRunning = false;
@@ -298,7 +304,7 @@ public class SheetManager : MonoBehaviour
             }
             else
             {
-                ActiveHint(SheetParent,tempLenght);
+                ActiveHint(MainSheet.SheetParent,tempLenght);
                 NPCManager.GetMessage(result);
             }
 
@@ -315,7 +321,12 @@ public class SheetManager : MonoBehaviour
             return result;
 
         if (blockLogic is RepeatBlockLogic repeatBlockLogic)
-            return await RunBlockLogics(repeatBlockLogic.SheetIndex);
+        {
+            for (int i = 0; i < _repeatCountDictionary[repeatBlockLogic.SheetIndex]; i++)
+            {
+                return await RunBlockLogics(repeatBlockLogic.SheetIndex);
+            }
+        }
         while (true)
         {
             LogicState logicState = blockLogic.Execute(StageManager);
@@ -396,17 +407,18 @@ public class SheetManager : MonoBehaviour
             Destroy(blockLogic.gameObject);
         }
         _blockLogicBases.Clear();
-        foreach (var repeatSheetParent in repeatSheetParents)
+        
+        foreach (var repeatBlockLogicBases in _repeatBlockLogicBasesDictionary)
         {
-            //Destroy(repeatSheetParent.gameObject);
+            foreach (var blockLogic in repeatBlockLogicBases.Value)
+                Destroy(blockLogic.gameObject);
         }
-        repeatSheetParents.Clear();
-    }
-
-    public void TestLogics()
-    {
-        OnClick_SetLogic(GetButtonKeyValue(BlockLogicType.Repeat));
-        OnClick_SetLogic(GetButtonKeyValue(BlockLogicType.Repeat));
-        OnClick_SetLogic(GetButtonKeyValue(BlockLogicType.Repeat));
+        _repeatBlockLogicBasesDictionary.Clear();
+        
+        foreach (var repeatSheet in RepeatSheets)
+        {
+            Destroy(repeatSheet.Value.gameObject);
+        }
+        RepeatSheets.Clear();
     }
 }

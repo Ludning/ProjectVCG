@@ -3,15 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class RepeatSheet : MonoBehaviour
 {
-    public GameObject RepeatSheetParent;
+    public Transform SheetParent;
+    [ReadOnly] public SheetManager SheetManager;
     private int sheetIndex;
     private Action<int> choiceSheetAction;
 
-    public void Init(Action<int> choiceSheetAction, int sheetIndex)
+    public void Init(SheetManager sheetManager, Action<int> choiceSheetAction, int sheetIndex)
     {
+        this.SheetManager = sheetManager;
         this.choiceSheetAction = choiceSheetAction;
         this.sheetIndex = sheetIndex;
     }
@@ -19,5 +22,9 @@ public class RepeatSheet : MonoBehaviour
     public void OnClickActiveRepeat()
     {
         choiceSheetAction.Invoke(sheetIndex);
+    }
+    public void SetRepeatCount(int count)
+    {
+        SheetManager.SetRepeatCount(sheetIndex, count);
     }
 }

@@ -6,5 +6,4 @@ using UnityEngine;
 public class RepeatBlockLogic : BlockLogicBase
 {
     public int SheetIndex;
-    public int RepeatCount = 1;
 }
