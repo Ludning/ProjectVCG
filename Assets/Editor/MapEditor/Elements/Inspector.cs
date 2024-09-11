@@ -58,8 +58,9 @@ public class Inspector : VisualElement
         
         // TileKeyField 텍스트 박스
         int nodePosition = Vector2IntConverter.Vec2ToInt(tableData.Size, mapNode.Position);
-        if(tableData.LevelDataDictionary != null)
-            TileKeyField.value = tableData.LevelDataDictionary.GetValueOrDefault(nodePosition, "");
+        if (tableData.LevelDataDictionary != null)
+            tableData.LevelDataDictionary = new Dictionary<int, string>();
+        TileKeyField.value = tableData.LevelDataDictionary.GetValueOrDefault(nodePosition, "");
         TileKeyField.RegisterValueChangedCallback(evt => OnTileKeyChanged(evt, mapNode));
         Add(TileKeyField);
         

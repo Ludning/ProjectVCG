@@ -2218,7 +2218,7 @@
           "SpawnObjectType": 0
         }
       },
-      "LevelDataDictionary": null
+      "LevelDataDictionary": {}
     },
     "3021": {
       "Size": {
@@ -2308,7 +2308,7 @@
           "SpawnObjectType": 0
         }
       },
-      "LevelDataDictionary": null
+      "LevelDataDictionary": {}
     },
     "3022": {
       "Size": {
@@ -2398,7 +2398,7 @@
           "SpawnObjectType": 0
         }
       },
-      "LevelDataDictionary": null
+      "LevelDataDictionary": {}
     },
     "3023": {
       "Size": {
@@ -2488,7 +2488,7 @@
           "SpawnObjectType": 0
         }
       },
-      "LevelDataDictionary": null
+      "LevelDataDictionary": {}
     },
     "3030": {
       "Size": {
@@ -2554,7 +2554,7 @@
           "SpawnObjectType": 15003
         }
       },
-      "LevelDataDictionary": null
+      "LevelDataDictionary": {}
     },
     "3031": {
       "Size": {
@@ -2644,7 +2644,7 @@
           "SpawnObjectType": 0
         }
       },
-      "LevelDataDictionary": null
+      "LevelDataDictionary": {}
     },
     "3032": {
       "Size": {
@@ -2710,7 +2710,7 @@
           "SpawnObjectType": 0
         }
       },
-      "LevelDataDictionary": null
+      "LevelDataDictionary": {}
     },
     "3033": {
       "Size": {
@@ -2824,7 +2824,7 @@
           "SpawnObjectType": 0
         }
       },
-      "LevelDataDictionary": null
+      "LevelDataDictionary": {}
     },
     "3040": {
       "Size": {
@@ -3264,7 +3264,7 @@
           "SpawnObjectType": 0
         }
       },
-      "LevelDataDictionary": null
+      "LevelDataDictionary": {}
     }
   }
 }
