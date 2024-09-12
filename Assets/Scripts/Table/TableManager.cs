@@ -18,7 +18,8 @@ public class TableManager : MonoBehaviour
             GameObject tile = Instantiate(tilePrefab, tableParent);
             tile.transform.localPosition = new Vector3(position.x, 0, position.y);
             TileBase tileBase = tile.GetComponent<TileBase>();
-            tileBase.InitTile(tileData.Value);
+            string levelKey = tableData.LevelDataDictionary.GetValueOrDefault(tileData.Key);
+            tileBase.InitTile(tileData.Value, levelKey);
             map.Add(position, tileBase);
             
             if (tileData.Value.SpawnObjectType != ItemType.Null)

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class UIContainer : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class UIContainer : MonoBehaviour
     public StageSelectPopup StageSelectPopup;
     public StageClearPopup StageClearPopup;
     public NPCMessagePopup NPCMessagePopup;
-    public RecipePopup RecipePopup;
+    [FormerlySerializedAs("RecipePopup")] public LevelPopup levelPopup;
     public GameMenuPopup GameMenuPopup;
     public InventoryPopup InventoryPopup;
 
@@ -18,7 +19,7 @@ public class UIContainer : MonoBehaviour
         StageSelectPopup.gameObject.SetActive(false);
         StageClearPopup.gameObject.SetActive(false);
         NPCMessagePopup.gameObject.SetActive(false);
-        RecipePopup.gameObject.SetActive(false);
+        levelPopup.gameObject.SetActive(false);
         GameMenuPopup.gameObject.SetActive(false);
         InventoryPopup.gameObject.SetActive(false);
     }
@@ -29,7 +30,7 @@ public class UIContainer : MonoBehaviour
         StageSelectPopup.gameObject.SetActive(false);
         StageClearPopup.gameObject.SetActive(false);
         NPCMessagePopup.gameObject.SetActive(false);
-        RecipePopup.gameObject.SetActive(true);
+        levelPopup.gameObject.SetActive(true);
         GameMenuPopup.gameObject.SetActive(true);
         InventoryPopup.gameObject.SetActive(true);
     }
@@ -40,7 +41,7 @@ public class UIContainer : MonoBehaviour
         StageSelectPopup.gameObject.SetActive(false);
         StageClearPopup.gameObject.SetActive(false);
         NPCMessagePopup.gameObject.SetActive(false);
-        RecipePopup.gameObject.SetActive(false);
+        levelPopup.gameObject.SetActive(false);
         GameMenuPopup.gameObject.SetActive(false);
         InventoryPopup.gameObject.SetActive(false);
     }

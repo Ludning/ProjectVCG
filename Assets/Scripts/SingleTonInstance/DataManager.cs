@@ -44,6 +44,8 @@ public class DataManager : Singleton<DataManager>
                 return _gameData.Stage as Dictionary<string, T>;
             case "StageGoalData":
                 return _gameData.StageGoal as Dictionary<string, T>;
+            case "LevelData":
+                return _gameData.Level as Dictionary<string, T>;
             case "TileData":
                 return _gameData.Tile as Dictionary<string, T>;
             case "FoodData":

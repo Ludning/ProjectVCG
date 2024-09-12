@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class TileBase : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class TileBase : MonoBehaviour
     public TileType TileType;
     public TileAttributeType TileAttributeType;
 
+    public string LevelKey;
     private int InventoryCount = 0;
 
     public ItemBase NoRimitItemMesh;
@@ -23,8 +25,9 @@ public class TileBase : MonoBehaviour
     public bool IsInventoryEmptyOrFull => (InventoryCount == 0 || InventoryStack.Count == InventoryCount) ? true : false;
 
 
-    public void InitTile(NodeData nodeData)
+    public void InitTile(NodeData nodeData, string levelIndex)
     {
+        LevelKey = levelIndex;
         string tileKey = ((int)nodeData.TileType).ToString();
         TileData tileData = DataManager.Instance.GetGameData<TileData>(tileKey);
 

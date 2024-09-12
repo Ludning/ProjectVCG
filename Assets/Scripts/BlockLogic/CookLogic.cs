@@ -23,8 +23,9 @@ public class CookLogic : BlockLogicBase
         if (!owner.TableManager.TryGetTileItemNameList(position, out List<string> itemNameList))
             return ErrorType.UnKnownError;
         
-        //레시피 체크
-        if(owner.RecipeManager.CheckRecipe(itemNameList) == false)
+        //레벨 체크 (이번 조리가 레시피랑 일치한지)
+        TileBase tile = owner.TableManager.PeekTile(position);
+        if(!owner.levelManager.CheckLevel(tile))
             return ErrorType.InvalidCookCombo;
         
         
@@ -35,14 +36,22 @@ public class CookLogic : BlockLogicBase
     {
         var position = owner.Controller.PlayerForwardPosition;
         TileBase tile =  owner.TableManager.PeekTile(position);
-        string resultName = owner.RecipeManager.CurrentRecipe.Result;
-
-        GameObject foodPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(resultName);
 
         tile.ClearItem();
-        GameObject food = Instantiate(foodPrefab);
-        tile.SetItem(food.GetComponent<ItemBase>());
-        owner.RecipeManager.CompleteCurrentRecipe();
+
+        switch (owner.levelManager.CurrentLevelUnit)
+        {
+            case RecipeUnit_Clear recipeUnit_Clear:
+                tile.SetItem(recipeUnit_Clear.SpawnProductFood().GetComponent<ItemBase>());
+                recipeUnit_Clear.OnComplete();
+                break;
+            case RecipeUnit recipeUnit:
+                tile.SetItem(recipeUnit.SpawnProductFood().GetComponent<ItemBase>());
+                break;
+            default:
+                return LogicState.Failure;
+        }
+        owner.levelManager.CompleteCurrentRecipe();
         return LogicState.Success;
     }
 }

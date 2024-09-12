@@ -16,7 +16,7 @@
     "StageClearPopup": "Assets/Resources_Addressable/Prefabs/WorldUI/StageClearPopup.prefab",
     "StageSelectPopup": "Assets/Resources_Addressable/Prefabs/WorldUI/StageSelectPopup.prefab",
     "NPCMessagePopup": "Assets/Resources_Addressable/Prefabs/WorldUI/NPCMessagePopup.prefab",
-    "RecipePopup": "Assets/Resources_Addressable/Prefabs/WorldUI/RecipePopup.prefab",
+    "LevelPopup": "Assets/Resources_Addressable/Prefabs/WorldUI/LevelPopup.prefab",
     "ButtonToggle": "Assets/Resources_Addressable/Prefabs/WorldUI/Elements/Toggle.prefab",
     "Tile": "Assets/Resources_Addressable/Prefabs/Tile.prefab",
     "ErrorWarning": "Assets/Resources_Addressable/Prefabs/UI/ErrorWarning.prefab",
@@ -38,7 +38,9 @@
     "Prefab_Fryer_Shrimp": "Assets/Resources_Addressable/Prefabs/Items/Prefab_Fryer_Shrimp.prefab",
     "Prefab_Sushi_Shrimp": "Assets/Resources_Addressable/Prefabs/Items/Prefab_Sushi_Shrimp.prefab",
     "RepeatSheet": "Assets/Resources_Addressable/Prefabs/WorldUI/Sheet/RepeatSheet.prefab",
-    "FunctionSheet": "Assets/Resources_Addressable/Prefabs/WorldUI/Sheet/FunctionSheet.prefab"
+    "FunctionSheet": "Assets/Resources_Addressable/Prefabs/WorldUI/Sheet/FunctionSheet.prefab",
+    "RecipeElement": "Assets/Resources_Addressable/Prefabs/WorldUI/Elements/RecipeElement.prefab",
+    "RecipeUnit_ClearUIElement": "Assets/Resources_Addressable/Prefabs/WorldUI/Elements/RecipeUnit_ClearUIElement.prefab"
   },
   "Material": {
     "TempMat": "Assets/Resources_Addressable/Materials/Logic/TempMat.mat",

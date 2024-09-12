@@ -59,8 +59,8 @@
       "IconBlock": "icon_move",
       "AnimationKey": "anim_move",
       "MoveDistance": "1",
-      "Angle": "-",
-      "Distance": "-"
+      "Angle": "",
+      "Distance": ""
     },
     "102": {
       "Index": "102",
@@ -68,9 +68,9 @@
       "Type": 2,
       "IconBlock": "icon_dash",
       "AnimationKey": "anim_dash",
-      "MoveDistance": "-",
-      "Angle": "-",
-      "Distance": "-"
+      "MoveDistance": "",
+      "Angle": "",
+      "Distance": ""
     },
     "201": {
       "Index": "201",
@@ -78,9 +78,9 @@
       "Type": 3,
       "IconBlock": "icon_left",
       "AnimationKey": "anim_left",
-      "MoveDistance": "-",
+      "MoveDistance": "",
       "Angle": "-90",
-      "Distance": "-"
+      "Distance": ""
     },
     "202": {
       "Index": "202",
@@ -88,9 +88,9 @@
       "Type": 4,
       "IconBlock": "icon_right",
       "AnimationKey": "anim_right",
-      "MoveDistance": "-",
+      "MoveDistance": "",
       "Angle": "90",
-      "Distance": "-"
+      "Distance": ""
     },
     "203": {
       "Index": "203",
@@ -98,9 +98,9 @@
       "Type": 5,
       "IconBlock": "icon_turnback",
       "AnimationKey": "anim_turnback",
-      "MoveDistance": "-",
+      "MoveDistance": "",
       "Angle": "180",
-      "Distance": "-"
+      "Distance": ""
     },
     "301": {
       "Index": "301",
@@ -108,8 +108,8 @@
       "Type": 6,
       "IconBlock": "icon_pickup",
       "AnimationKey": "anim_pickup",
-      "MoveDistance": "-",
-      "Angle": "-",
+      "MoveDistance": "",
+      "Angle": "",
       "Distance": "1"
     },
     "302": {
@@ -118,8 +118,8 @@
       "Type": 7,
       "IconBlock": "icon_putdown",
       "AnimationKey": "anim_putdown",
-      "MoveDistance": "-",
-      "Angle": "-",
+      "MoveDistance": "",
+      "Angle": "",
       "Distance": "1"
     },
     "401": {
@@ -128,8 +128,8 @@
       "Type": 0,
       "IconBlock": "icon_cook",
       "AnimationKey": "anim_cook",
-      "MoveDistance": "-",
-      "Angle": "-",
+      "MoveDistance": "",
+      "Angle": "",
       "Distance": "1"
     },
     "998": {
@@ -138,9 +138,9 @@
       "Type": 8,
       "IconBlock": "icon_function",
       "AnimationKey": "anim_function",
-      "MoveDistance": "-",
-      "Angle": "-",
-      "Distance": "-"
+      "MoveDistance": "",
+      "Angle": "",
+      "Distance": ""
     },
     "999": {
       "Index": "999",
@@ -148,9 +148,9 @@
       "Type": 9,
       "IconBlock": "icon_timefunction",
       "AnimationKey": "anim_timefunction",
-      "MoveDistance": "-",
-      "Angle": "-",
-      "Distance": "-"
+      "MoveDistance": "",
+      "Angle": "",
+      "Distance": ""
     }
   },
   "Feedback": {
@@ -264,16 +264,17 @@
       "Stage": 1,
       "Description": "튜토리얼 챕터 이동 스테이지",
       "PrefabName": "Stage_Tuto_Move.prefab",
-      "ClearCondition": "ARRIVE",
       "StageLevelTable": "TblLevel_001",
       "StageContext": "5000",
       "StageContext2": "5500",
-      "TargetCustomerIcon": "-",
-      "TargetFoodIcon": "-",
+      "TargetCustomerIcon": "",
+      "TargetIngredientIcon": "",
+      "TargetFoodIcon": "",
       "StageOrder": "1",
       "AnswerBlockAmount": "3",
       "ShowBlock": "101",
-      "ETC": "-"
+      "StageClearCondition": "4000",
+      "ETC": ""
     },
     "3001": {
       "Index": "3001",
@@ -281,16 +282,17 @@
       "Stage": 2,
       "Description": "튜토리얼 챕터 회전 스테이지",
       "PrefabName": "Stage_Tuto_Rot.prefab",
-      "ClearCondition": "ARRIVE",
       "StageLevelTable": "TblLevel_002",
       "StageContext": "5001",
       "StageContext2": "5501",
-      "TargetCustomerIcon": "-",
-      "TargetFoodIcon": "-",
+      "TargetCustomerIcon": "",
+      "TargetIngredientIcon": "",
+      "TargetFoodIcon": "",
       "StageOrder": "2",
       "AnswerBlockAmount": "5",
       "ShowBlock": "101, 201, 202",
-      "ETC": "-"
+      "StageClearCondition": "4001",
+      "ETC": ""
     },
     "3002": {
       "Index": "3002",
@@ -298,16 +300,17 @@
       "Stage": 3,
       "Description": "튜토리얼 챕터 들기/놓기 스테이지",
       "PrefabName": "Stage_Tuto_Put.prefab",
-      "ClearCondition": "SERVING",
       "StageLevelTable": "TblLevel_003",
       "StageContext": "5002",
       "StageContext2": "5502",
-      "TargetCustomerIcon": "-",
-      "TargetFoodIcon": "-",
+      "TargetCustomerIcon": "ICON_DATA_CUSTOMER",
+      "TargetIngredientIcon": "ICON_DATA_PRODUCT",
+      "TargetFoodIcon": "",
       "StageOrder": "3",
       "AnswerBlockAmount": "6",
       "ShowBlock": "101, 201, 202, 301, 302",
-      "ETC": "-"
+      "StageClearCondition": "4100",
+      "ETC": ""
     },
     "3010": {
       "Index": "3010",
@@ -315,16 +318,17 @@
       "Stage": 1,
       "Description": "1챕터 1스테이지",
       "PrefabName": "Stage_1_1.prefab",
-      "ClearCondition": "SERVING",
       "StageLevelTable": "TblLevel_004",
       "StageContext": "5010",
       "StageContext2": "5510",
       "TargetCustomerIcon": "ICON_DATA_CUSTOMER",
-      "TargetFoodIcon": "-",
+      "TargetIngredientIcon": "ICON_DATA_PRODUCT",
+      "TargetFoodIcon": "",
       "StageOrder": "1",
       "AnswerBlockAmount": "4",
       "ShowBlock": "101, 201, 202, 301, 302",
-      "ETC": "-"
+      "StageClearCondition": "4101",
+      "ETC": ""
     },
     "3011": {
       "Index": "3011",
@@ -332,16 +336,17 @@
       "Stage": 2,
       "Description": "1챕터 2스테이지",
       "PrefabName": "Stage_1_2.prefab",
-      "ClearCondition": "SERVING",
       "StageLevelTable": "TblLevel_005",
       "StageContext": "5011",
       "StageContext2": "5511",
       "TargetCustomerIcon": "ICON_DATA_CUSTOMER",
-      "TargetFoodIcon": "-",
+      "TargetIngredientIcon": "ICON_DATA_PRODUCT",
+      "TargetFoodIcon": "",
       "StageOrder": "2",
       "AnswerBlockAmount": "11",
       "ShowBlock": "101, 201, 202, 301, 302",
-      "ETC": "-"
+      "StageClearCondition": "4102, 4103",
+      "ETC": ""
     },
     "3020": {
       "Index": "3020",
@@ -349,16 +354,17 @@
       "Stage": 1,
       "Description": "2챕터 1스테이지",
       "PrefabName": "Stage_2_1.prefab",
-      "ClearCondition": "RECIPE",
       "StageLevelTable": "TblLevel_006",
       "StageContext": "5020",
       "StageContext2": "5520",
-      "TargetCustomerIcon": "-",
+      "TargetCustomerIcon": "",
+      "TargetIngredientIcon": "ICON_DATA_PRODUCT",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "1",
       "AnswerBlockAmount": "4",
       "ShowBlock": "101, 201, 202, 301, 302, 401",
-      "ETC": "-"
+      "StageClearCondition": "4200",
+      "ETC": ""
     },
     "3021": {
       "Index": "3021",
@@ -366,16 +372,17 @@
       "Stage": 2,
       "Description": "2챕터 2스테이지",
       "PrefabName": "Stage_2_2.prefab",
-      "ClearCondition": "RECIPE",
       "StageLevelTable": "TblLevel_007",
       "StageContext": "5021",
       "StageContext2": "5521",
-      "TargetCustomerIcon": "-",
+      "TargetCustomerIcon": "",
+      "TargetIngredientIcon": "ICON_DATA_PRODUCT",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "2",
       "AnswerBlockAmount": "4",
       "ShowBlock": "101, 201, 202, 301, 302, 401",
-      "ETC": "-"
+      "StageClearCondition": "4201",
+      "ETC": ""
     },
     "3022": {
       "Index": "3022",
@@ -383,16 +390,17 @@
       "Stage": 3,
       "Description": "2챕터 3스테이지",
       "PrefabName": "Stage_2_3.prefab",
-      "ClearCondition": "RECIPE",
       "StageLevelTable": "TblLevel_008",
       "StageContext": "5022",
       "StageContext2": "5522",
-      "TargetCustomerIcon": "-",
+      "TargetCustomerIcon": "",
+      "TargetIngredientIcon": "ICON_DATA_PRODUCT",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "3",
       "AnswerBlockAmount": "4",
       "ShowBlock": "101, 201, 202, 301, 302, 401",
-      "ETC": "-"
+      "StageClearCondition": "4202",
+      "ETC": ""
     },
     "3023": {
       "Index": "3023",
@@ -400,16 +408,17 @@
       "Stage": 4,
       "Description": "2챕터 4스테이지",
       "PrefabName": "Stage_2_4.prefab",
-      "ClearCondition": "RECIPE",
       "StageLevelTable": "TblLevel_009",
       "StageContext": "5023",
       "StageContext2": "5523",
-      "TargetCustomerIcon": "-",
+      "TargetCustomerIcon": "",
+      "TargetIngredientIcon": "ICON_DATA_PRODUCT",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "4",
       "AnswerBlockAmount": "15",
       "ShowBlock": "101, 201, 202, 301, 302, 401",
-      "ETC": "-"
+      "StageClearCondition": "4203, 4204",
+      "ETC": ""
     },
     "3030": {
       "Index": "3030",
@@ -417,16 +426,17 @@
       "Stage": 1,
       "Description": "3챕터 1스테이지",
       "PrefabName": "Stage_3_1.prefab",
-      "ClearCondition": "RECIPE",
       "StageLevelTable": "TblLevel_010",
       "StageContext": "5030",
       "StageContext2": "5530",
-      "TargetCustomerIcon": "-",
+      "TargetCustomerIcon": "",
+      "TargetIngredientIcon": "ICON_DATA_PRODUCT",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "1",
       "AnswerBlockAmount": "6",
       "ShowBlock": "101, 201, 202, 301, 302, 401, 998",
-      "ETC": "-"
+      "StageClearCondition": "4205",
+      "ETC": ""
     },
     "3031": {
       "Index": "3031",
@@ -434,16 +444,17 @@
       "Stage": 2,
       "Description": "3챕터 2스테이지",
       "PrefabName": "Stage_3_2.prefab",
-      "ClearCondition": "RECIPE",
       "StageLevelTable": "TblLevel_011",
       "StageContext": "5031",
       "StageContext2": "5531",
-      "TargetCustomerIcon": "-",
+      "TargetCustomerIcon": "",
+      "TargetIngredientIcon": "ICON_DATA_PRODUCT",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "2",
       "AnswerBlockAmount": "5",
       "ShowBlock": "101, 201, 202, 301, 302, 401, 998",
-      "ETC": "-"
+      "StageClearCondition": "4206, 4207",
+      "ETC": ""
     },
     "3032": {
       "Index": "3032",
@@ -451,16 +462,17 @@
       "Stage": 3,
       "Description": "3챕터 3스테이지",
       "PrefabName": "Stage_3_3.prefab",
-      "ClearCondition": "RECIPE",
       "StageLevelTable": "TblLevel_012",
       "StageContext": "5032",
       "StageContext2": "5532",
-      "TargetCustomerIcon": "-",
+      "TargetCustomerIcon": "",
+      "TargetIngredientIcon": "ICON_DATA_PRODUCT",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "3",
       "AnswerBlockAmount": "3",
       "ShowBlock": "101, 201, 202, 301, 302, 401, 998",
-      "ETC": "-"
+      "StageClearCondition": "4208",
+      "ETC": ""
     },
     "3033": {
       "Index": "3033",
@@ -468,16 +480,17 @@
       "Stage": 4,
       "Description": "3챕터 4스테이지",
       "PrefabName": "Stage_3_4.prefab",
-      "ClearCondition": "RECIPE",
       "StageLevelTable": "TblLevel_013",
       "StageContext": "5033",
       "StageContext2": "5533",
-      "TargetCustomerIcon": "-",
+      "TargetCustomerIcon": "",
+      "TargetIngredientIcon": "ICON_DATA_PRODUCT",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "4",
       "AnswerBlockAmount": "4",
       "ShowBlock": "101, 201, 202, 301, 302, 401, 998",
-      "ETC": "-"
+      "StageClearCondition": "4209",
+      "ETC": ""
     },
     "3040": {
       "Index": "3040",
@@ -485,16 +498,17 @@
       "Stage": 1,
       "Description": "4챕터 1스테이지",
       "PrefabName": "Stage_4_1.prefab",
-      "ClearCondition": "RECIPE",
       "StageLevelTable": "TblLevel_014",
       "StageContext": "5040",
       "StageContext2": "5540",
-      "TargetCustomerIcon": "-",
-      "TargetFoodIcon": "ICON_DATA_INGREDIENT",
+      "TargetCustomerIcon": "ICON_DATA_CUSTOMER",
+      "TargetIngredientIcon": "ICON_DATA_PRODUCT",
+      "TargetFoodIcon": "",
       "StageOrder": "1",
       "AnswerBlockAmount": "1",
       "ShowBlock": "101, 201, 202, 301, 302, 401, 998, 999",
-      "ETC": "-"
+      "StageClearCondition": "4104, 4105, 4106",
+      "ETC": ""
     },
     "3041": {
       "Index": "3041",
@@ -502,16 +516,17 @@
       "Stage": 2,
       "Description": "4챕터 2스테이지",
       "PrefabName": "Stage_4_2.prefab",
-      "ClearCondition": "RECIPE",
       "StageLevelTable": "TblLevel_015",
       "StageContext": "5041",
       "StageContext2": "5541",
-      "TargetCustomerIcon": "-",
+      "TargetCustomerIcon": "",
+      "TargetIngredientIcon": "ICON_DATA_PRODUCT",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "2",
       "AnswerBlockAmount": "2",
       "ShowBlock": "101, 201, 202, 301, 302, 401, 998, 999",
-      "ETC": "-"
+      "StageClearCondition": "4210",
+      "ETC": ""
     }
   },
   "StageGoal": {
@@ -664,6 +679,228 @@
       "Index": "5541",
       "Description": "4챕터 2스테이지의 클리어 목표에 대한 설명",
       "Context": "반복 함수를 사용해 이동하고 요리를 조리해보자"
+    }
+  },
+  "Level": {
+    "4000": {
+      "Index": "4000",
+      "Description": "목적지 타일",
+      "Sort_Clear": 0,
+      "Tile_Index": "10001",
+      "Recipe_Index": "",
+      "Tile_Key": "1",
+      "Contents_Key": "",
+      "Contents_Count": "",
+      "NPC_Index": ""
+    },
+    "4001": {
+      "Index": "4001",
+      "Description": "목적지 타일",
+      "Sort_Clear": 0,
+      "Tile_Index": "10001",
+      "Recipe_Index": "",
+      "Tile_Key": "2",
+      "Contents_Key": "",
+      "Contents_Count": "",
+      "NPC_Index": ""
+    },
+    "4100": {
+      "Index": "4100",
+      "Description": "손님테이블 / 된 밥 / 아시아 여성",
+      "Sort_Clear": 1,
+      "Tile_Index": "10111",
+      "Recipe_Index": "",
+      "Tile_Key": "3",
+      "Contents_Key": "POT_RICE",
+      "Contents_Count": "1",
+      "NPC_Index": "15"
+    },
+    "4101": {
+      "Index": "4101",
+      "Description": "손님테이블 / 썬 새우 / 아시아 남성",
+      "Sort_Clear": 1,
+      "Tile_Index": "10111",
+      "Recipe_Index": "",
+      "Tile_Key": "4",
+      "Contents_Key": "CUT_SHRIMP",
+      "Contents_Count": "1",
+      "NPC_Index": "16"
+    },
+    "4102": {
+      "Index": "4102",
+      "Description": "손님테이블 / 튀긴 새우 / 아프리카 여성",
+      "Sort_Clear": 1,
+      "Tile_Index": "10111",
+      "Recipe_Index": "",
+      "Tile_Key": "5",
+      "Contents_Key": "FRYER_SHRIMP",
+      "Contents_Count": "1",
+      "NPC_Index": "13"
+    },
+    "4103": {
+      "Index": "4103",
+      "Description": "손님테이블 / 튀긴 새우 / 아프리카 남성",
+      "Sort_Clear": 1,
+      "Tile_Index": "10111",
+      "Recipe_Index": "",
+      "Tile_Key": "6",
+      "Contents_Key": "FRYER_SHRIMP",
+      "Contents_Count": "1",
+      "NPC_Index": "14"
+    },
+    "4200": {
+      "Index": "4200",
+      "Description": "레시피 / 썬 새우",
+      "Sort_Clear": 3,
+      "Tile_Index": "",
+      "Recipe_Index": "20001",
+      "Tile_Key": "",
+      "Contents_Key": "CUT_SHRIMP",
+      "Contents_Count": "1",
+      "NPC_Index": ""
+    },
+    "4201": {
+      "Index": "4201",
+      "Description": "레시피 / 튀긴 새우",
+      "Sort_Clear": 3,
+      "Tile_Index": "",
+      "Recipe_Index": "20003",
+      "Tile_Key": "",
+      "Contents_Key": "FRYER_SHRIMP",
+      "Contents_Count": "1",
+      "NPC_Index": ""
+    },
+    "4202": {
+      "Index": "4202",
+      "Description": "레시피 / 된 밥",
+      "Sort_Clear": 3,
+      "Tile_Index": "",
+      "Recipe_Index": "20002",
+      "Tile_Key": "",
+      "Contents_Key": "POT_RICE",
+      "Contents_Count": "2",
+      "NPC_Index": ""
+    },
+    "4203": {
+      "Index": "4203",
+      "Description": "레시피 / 새우 초밥",
+      "Sort_Clear": 3,
+      "Tile_Index": "",
+      "Recipe_Index": "21001",
+      "Tile_Key": "",
+      "Contents_Key": "SUSHI_SHRIMP",
+      "Contents_Count": "1",
+      "NPC_Index": ""
+    },
+    "4204": {
+      "Index": "4204",
+      "Description": "레시피 / 새우튀김 덮밥",
+      "Sort_Clear": 3,
+      "Tile_Index": "",
+      "Recipe_Index": "21002",
+      "Tile_Key": "",
+      "Contents_Key": "EBIDON",
+      "Contents_Count": "1",
+      "NPC_Index": ""
+    },
+    "4205": {
+      "Index": "4205",
+      "Description": "레시피 / 생선회",
+      "Sort_Clear": 3,
+      "Tile_Index": "",
+      "Recipe_Index": "20004",
+      "Tile_Key": "",
+      "Contents_Key": "CUT_FISH",
+      "Contents_Count": "2",
+      "NPC_Index": ""
+    },
+    "4206": {
+      "Index": "4206",
+      "Description": "레시피 / 썬 새우",
+      "Sort_Clear": 3,
+      "Tile_Index": "",
+      "Recipe_Index": "20001",
+      "Tile_Key": "",
+      "Contents_Key": "CUT_SHRIMP",
+      "Contents_Count": "1",
+      "NPC_Index": ""
+    },
+    "4207": {
+      "Index": "4207",
+      "Description": "레시피 / 튀긴 새우",
+      "Sort_Clear": 3,
+      "Tile_Index": "",
+      "Recipe_Index": "20003",
+      "Tile_Key": "",
+      "Contents_Key": "FRYER_SHRIMP",
+      "Contents_Count": "1",
+      "NPC_Index": ""
+    },
+    "4208": {
+      "Index": "4208",
+      "Description": "레시피 / 새우 초밥",
+      "Sort_Clear": 3,
+      "Tile_Index": "",
+      "Recipe_Index": "21001",
+      "Tile_Key": "",
+      "Contents_Key": "SUSHI_SHRIMP",
+      "Contents_Count": "1",
+      "NPC_Index": ""
+    },
+    "4209": {
+      "Index": "4209",
+      "Description": "레시피 / 새우튀김 덮밥",
+      "Sort_Clear": 3,
+      "Tile_Index": "",
+      "Recipe_Index": "21002",
+      "Tile_Key": "",
+      "Contents_Key": "EBIDON",
+      "Contents_Count": "1",
+      "NPC_Index": ""
+    },
+    "4104": {
+      "Index": "4104",
+      "Description": "손님테이블 / 생선회 / 아시아 여성",
+      "Sort_Clear": 1,
+      "Tile_Index": "10111",
+      "Recipe_Index": "",
+      "Tile_Key": "7",
+      "Contents_Key": "CUT_FISH",
+      "Contents_Count": "1",
+      "NPC_Index": "11"
+    },
+    "4105": {
+      "Index": "4105",
+      "Description": "손님테이블 / 생선회 / 아시아 남성",
+      "Sort_Clear": 1,
+      "Tile_Index": "10111",
+      "Recipe_Index": "",
+      "Tile_Key": "8",
+      "Contents_Key": "CUT_FISH",
+      "Contents_Count": "1",
+      "NPC_Index": "12"
+    },
+    "4106": {
+      "Index": "4106",
+      "Description": "손님테이블 / 생선회 / 아프리카 여성",
+      "Sort_Clear": 1,
+      "Tile_Index": "10111",
+      "Recipe_Index": "",
+      "Tile_Key": "9",
+      "Contents_Key": "CUT_FISH",
+      "Contents_Count": "1",
+      "NPC_Index": "15"
+    },
+    "4210": {
+      "Index": "4210",
+      "Description": "레시피 / 생선회",
+      "Sort_Clear": 3,
+      "Tile_Index": "",
+      "Recipe_Index": "20004",
+      "Tile_Key": "",
+      "Contents_Key": "CUT_FISH",
+      "Contents_Count": "2",
+      "NPC_Index": ""
     }
   },
   "Tile": {
@@ -894,9 +1131,9 @@
       "Product": "CUT_SHRIMP",
       "Cookery": "CUT",
       "Ingre_01": "SHRIMP",
-      "Ingre_02": "-",
-      "Ingre_03": "-",
-      "Ingre_04": "-"
+      "Ingre_02": "",
+      "Ingre_03": "",
+      "Ingre_04": ""
     },
     "20002": {
       "Index": "20002",
@@ -904,9 +1141,9 @@
       "Product": "POT_RICE",
       "Cookery": "POT",
       "Ingre_01": "RICE",
-      "Ingre_02": "-",
-      "Ingre_03": "-",
-      "Ingre_04": "-"
+      "Ingre_02": "",
+      "Ingre_03": "",
+      "Ingre_04": ""
     },
     "20003": {
       "Index": "20003",
@@ -914,9 +1151,9 @@
       "Product": "FRYER_SHRIMP",
       "Cookery": "FRYER",
       "Ingre_01": "SHRIMP",
-      "Ingre_02": "-",
-      "Ingre_03": "-",
-      "Ingre_04": "-"
+      "Ingre_02": "",
+      "Ingre_03": "",
+      "Ingre_04": ""
     },
     "20004": {
       "Index": "20004",
@@ -924,9 +1161,9 @@
       "Product": "CUT_FISH",
       "Cookery": "CUT",
       "Ingre_01": "FISH",
-      "Ingre_02": "-",
-      "Ingre_03": "-",
-      "Ingre_04": "-"
+      "Ingre_02": "",
+      "Ingre_03": "",
+      "Ingre_04": ""
     },
     "21001": {
       "Index": "21001",
@@ -935,8 +1172,8 @@
       "Cookery": "TRAY",
       "Ingre_01": "CUT_SHRIMP",
       "Ingre_02": "POT_RICE",
-      "Ingre_03": "-",
-      "Ingre_04": "-"
+      "Ingre_03": "",
+      "Ingre_04": ""
     },
     "21002": {
       "Index": "21002",
@@ -945,8 +1182,8 @@
       "Cookery": "TRAY",
       "Ingre_01": "FRYER_SHRIMP",
       "Ingre_02": "POT_RICE",
-      "Ingre_03": "-",
-      "Ingre_04": "-"
+      "Ingre_03": "",
+      "Ingre_04": ""
     }
   }
 }

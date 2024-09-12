@@ -89,9 +89,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a762cc1f0f695b34bb8c2b812b546fb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExerciseParent: {fileID: 0}
   LogicButtonParent: {fileID: 0}
   StartParent: {fileID: 0}
   ClearParent: {fileID: 0}
+  ExerciseButton: {fileID: 0}
 --- !u!1 &4052659004184919315
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,10 +138,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb2cc5bf0aebf94da8b0e0cee164f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Stage: {fileID: 2324106997134201195}
+  _isLogicRunning: 0
+  _isExBlockLogic: 0
+  StageManager: {fileID: 2324106997134201195}
   InteractableManager: {fileID: 7022657531795921493}
   NPCManager: {fileID: 6699213579640648353}
-  SheetParent: {fileID: 0}
+  MainSheet: {fileID: 0}
+  ExSheet: {fileID: 0}
+  _repeatFunctionSheetParent: {fileID: 0}
 --- !u!1 &5172011013339461665
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,7 +157,7 @@ GameObject:
   - component: {fileID: 5794458582964898340}
   - component: {fileID: 974716058251498038}
   m_Layer: 0
-  m_Name: RecipeManager
+  m_Name: LevelManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b14251914c67b4982ffb6f70c4404a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recipePopup: {fileID: 0}
+  levelPopup: {fileID: 0}
 --- !u!1 &5245920724353730381
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tableParent: {fileID: 0}
+  itemParent: {fileID: 0}
 --- !u!1 &7431368590363060570
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,9 +321,9 @@ MonoBehaviour:
   TableManager: {fileID: 7103794928054253303}
   SheetManager: {fileID: 4470865141629060255}
   InteractableManager: {fileID: 7022657531795921493}
-  RecipeManager: {fileID: 974716058251498038}
+  levelManager: {fileID: 974716058251498038}
   NPCManager: {fileID: 6699213579640648353}
-  uiContainer: {fileID: 0}
+  UIContainer: {fileID: 0}
   Items: {fileID: 0}
   Controller: {fileID: 0}
   Inventory: {fileID: 0}

@@ -8,8 +8,8 @@ public class StageManager : MonoBehaviour
     public TableManager TableManager;
     public SheetManager SheetManager;
     public InteractableManager InteractableManager;
-    public RecipeManager RecipeManager;
     public NPCManager NPCManager;
+    public LevelManager levelManager;
 
     [Header("Component")]
     [FormerlySerializedAs("ui")] public UIContainer UIContainer;
@@ -36,9 +36,7 @@ public class StageManager : MonoBehaviour
         InteractableManager.Init(stageData.ShowBlock);
         SheetManager.Init();
         UIContainer.Init();
-
-
-        //SheetManager.TestLogics();
+        levelManager.Init(stageData.StageClearCondition);
     }
 
     public void ClearStage()
@@ -46,7 +44,7 @@ public class StageManager : MonoBehaviour
         TableManager.Clear();
         SheetManager.Clear();
         InteractableManager.Clear();
-        RecipeManager.Clear();
+        levelManager.Clear();
         NPCManager.Clear();
         UIContainer.Clear();
         Clear();

@@ -123,7 +123,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ec7a5d13e7a42ea4c8312f07d90de914
-    m_Address: Assets/Resources_Addressable/Prefabs/WorldUI/Elements/Recipe.prefab
+    m_Address: Assets/Resources_Addressable/Prefabs/WorldUI/Elements/ArriveUnitUIElement.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -148,7 +148,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 680dadc8403fde74e9d71a4986b68fb3
-    m_Address: Assets/Resources_Addressable/Prefabs/WorldUI/RecipePopup.prefab
+    m_Address: Assets/Resources_Addressable/Prefabs/WorldUI/LevelPopup.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -399,6 +399,21 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 13e815505216b874684963fe27ba6625
     m_Address: Assets/Resources_Addressable/Prefabs/BlockLogic/FunctionBlockLogic.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0f7a3786987bf354aba87d954fa494a4
+    m_Address: Assets/Resources_Addressable/Prefabs/WorldUI/Elements/ServingUnitUIElement.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ad582202626e68b41b6f8622d5e8a4ed
+    m_Address: Assets/Resources_Addressable/Prefabs/WorldUI/Elements/RecipeUnit_ClearUIElement.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 043bf7eac27a0f34aa91504b0ba07f7f
+    m_Address: Assets/Resources_Addressable/Prefabs/WorldUI/Elements/RecipeUnitUIElement.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

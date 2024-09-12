@@ -5,6 +5,14 @@ public enum NpcType
     
 }
 
+public enum SortClearType
+{
+    ARRIVE,         //목적지 도달
+    SERVING,        //서빙
+    RECIPE,         //레시피
+    RECIPE_CLEAR,   //레시피 클리어
+}
+
 public enum ItemType
 {
     Null,
@@ -17,7 +25,6 @@ public enum ItemType
     CUT_SHRIMP = 15504,
     EBIDON = 19001,
     SUSHI_SHRIMP = 19002,
-
 }
 
 public enum UIType

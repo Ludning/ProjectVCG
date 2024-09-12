@@ -136,6 +136,8 @@ public class DataConverter
                     else if (type == typeof(string))
                     {
                         var value = table.Rows[i].ItemArray[columnTypeDic[fieldInfo.Name]].ToString();
+                        if (value == "-")
+                            value = "";
                         fieldInfo.SetValue(obj, Convert.ChangeType(value, type));
                     }
                     else if (type.IsPrimitive)

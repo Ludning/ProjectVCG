@@ -9,6 +9,7 @@ public class GameData
     public Dictionary<string, ErrorMessageData> ErrorMessage;
     public Dictionary<string, StageData> Stage;
     public Dictionary<string, StageGoalData> StageGoal;
+    public Dictionary<string, LevelData> Level;
     public Dictionary<string, TileData> Tile;
     public Dictionary<string, FoodData> Food;
     public Dictionary<string, CookingPropertyData> CookingProperty;
