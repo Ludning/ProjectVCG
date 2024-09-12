@@ -1,0 +1,11 @@
+경로
+/Prefabs/Demo
+
+index / 프리팹 파일명
+
+011 - Ch_0CP01F01Br
+012 - Ch_0CP00M00Br
+013 - Ch_0CP00F00Bn
+014 - Ch_0CP01M00Bn
+015 - Ch_0CP01F01R
+016 - Ch_0CP01M01R
