@@ -6,8 +6,9 @@ using UnityEngine;
 public class ArriveUnitUIElement : LevelUnitUIElement
 {
     [SerializeField] private TextMeshProUGUI ArriveContext;
-    public override void Init()
+    public override void Init(string levelDataKey)
     {
-        ArriveContext.text = "";
+        LevelData levelData = DataManager.Instance.GetGameData<LevelData>(levelDataKey);
+        ArriveContext.text = levelData.DisplayContext;
     }
 }

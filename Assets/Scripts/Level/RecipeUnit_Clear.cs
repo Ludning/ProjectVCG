@@ -16,7 +16,7 @@ public class RecipeUnit_Clear : RecipeUnit
         GameObject prefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("RecipeUnit_ClearUIElement");
         GameObject uiObject = Object.Instantiate(prefab, uiParent);
         RecipeUnit_ClearUIElement temp = uiObject.GetComponent<RecipeUnit_ClearUIElement>();
-        temp.Init();
+        temp.Init(_recipeIndex);
         LevelUnitUIElement = temp;
     }
     public override void OnComplete()

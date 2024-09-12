@@ -5,9 +5,11 @@ using UnityEngine;
 //도달체크
 public class ArriveUnit : LevelUnitBase
 {
+    private string _levelKey;
     private string _tileKey;
-    public ArriveUnit(string tileKey, Transform uiParent)
+    public ArriveUnit(string levelKey, string tileKey, Transform uiParent)
     {
+        _levelKey = levelKey;
         _tileKey = tileKey;
         InitUIElement(uiParent);
     }
@@ -16,7 +18,7 @@ public class ArriveUnit : LevelUnitBase
         GameObject prefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("ArriveUnitUIElement");
         GameObject uiObject = Object.Instantiate(prefab, uiParent);
         ArriveUnitUIElement temp = uiObject.GetComponent<ArriveUnitUIElement>();
-        temp.Init();
+        temp.Init(_levelKey);
         LevelUnitUIElement = temp;
     }
     public override bool CheakLevel(TileBase tileBase)

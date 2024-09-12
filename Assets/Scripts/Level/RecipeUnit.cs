@@ -37,7 +37,7 @@ public class RecipeUnit : LevelUnitBase
         GameObject prefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("RecipeUnitUIElement");
         GameObject uiObject = Object.Instantiate(prefab, uiParent);
         RecipeUnitUIElement temp = uiObject.GetComponent<RecipeUnitUIElement>();
-        temp.Init();
+        temp.Init(_recipeIndex);
         LevelUnitUIElement = temp;
     }
     public override bool CheakLevel(TileBase tileBase)

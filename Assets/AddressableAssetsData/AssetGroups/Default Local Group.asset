@@ -248,7 +248,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f45967b523302e143bc7a0d6ca4f1910
-    m_Address: Assets/Resources_Addressable/Prefabs/WorldUI/Elements/Ingredient.prefab
+    m_Address: Assets/Resources_Addressable/Prefabs/WorldUI/Elements/IngredientUIElement.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

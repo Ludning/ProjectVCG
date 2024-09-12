@@ -25,19 +25,18 @@ public class LevelManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManage
             switch (data.Sort_Clear)
             {
                 case SortClearType.ARRIVE:
-                    AddLevelUnit(SortClearType.ARRIVE, data.Tile_Key);
+                    AddLevelUnit(SortClearType.ARRIVE, data.Index, data.Tile_Key);
                     break;
                 case SortClearType.SERVING:
-                    AddLevelUnit(SortClearType.SERVING, data.Tile_Key);
+                    AddLevelUnit(SortClearType.SERVING, data.Index, data.Tile_Key);
                     break;
                 case SortClearType.RECIPE:
-                    AddLevelUnit(SortClearType.RECIPE, data.Recipe_Index);
+                    AddLevelUnit(SortClearType.RECIPE, data.Index, data.Recipe_Index);
                     break;
                 case SortClearType.RECIPE_CLEAR:
-                    AddLevelUnit(SortClearType.RECIPE_CLEAR, data.Recipe_Index);
+                    AddLevelUnit(SortClearType.RECIPE_CLEAR, data.Index, data.Recipe_Index);
                     break;
             }
-            
         }
     }
     
@@ -54,16 +53,16 @@ public class LevelManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManage
     }
 	
     // Recipe 목록에 Recipe를 추가한다.
-    private void AddLevelUnit(SortClearType type, string value)
+    private void AddLevelUnit(SortClearType type, string levelKey, string value)
     {
         switch (type)
         {
             case SortClearType.ARRIVE:
-                LevelUnitBase arriveUnit = new ArriveUnit(value, levelPopup.LevelUIParent);
+                LevelUnitBase arriveUnit = new ArriveUnit(levelKey, value, levelPopup.LevelUIParent);
                 _levelUnitList.Add(arriveUnit);
                 break;
             case SortClearType.SERVING:
-                LevelUnitBase servingUnit = new ServingUnit(value, levelPopup.LevelUIParent);
+                LevelUnitBase servingUnit = new ServingUnit(levelKey, value, levelPopup.LevelUIParent);
                 _levelUnitList.Add(servingUnit);
                 break;
             case SortClearType.RECIPE:
@@ -93,19 +92,11 @@ public class LevelManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManage
     {
         if (!string.IsNullOrWhiteSpace(itemName))
         {
-            ItemType itemType = ParserStringToEnum<ItemType>(itemName);
+            ItemType itemType = StringEnumConverter.ParserStringToEnum<ItemType>(itemName);
             FoodData foodData = DataManager.Instance.GetGameData<FoodData>(((int)itemType).ToString());
             if(!string.IsNullOrWhiteSpace(foodData.Recipe_Index))
-                AddLevelUnit(type, foodData.Recipe_Index);
+                AddLevelUnit(type, null, foodData.Recipe_Index);
         }
-    }
-    private T ParserStringToEnum<T>(string context) where T : struct, Enum
-    {
-        T enumValue;
-        if (Enum.TryParse(context, out enumValue))
-            return enumValue;
-        else
-            return default(T);
     }
     
     public bool CheckLevel(TileBase tile)

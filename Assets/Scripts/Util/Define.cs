@@ -5,6 +5,16 @@ public enum NpcType
     
 }
 
+public enum CookingPropertyType
+{
+    NULL,
+    CUT = 30000,
+    POT = 30001,
+    FAN = 30002,
+    FRIER = 30003,
+    TRAY = 30004,
+}
+
 public enum SortClearType
 {
     ARRIVE,         //목적지 도달

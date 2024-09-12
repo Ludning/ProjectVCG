@@ -43,7 +43,8 @@
     "ArriveUnitUIElement": "Assets/Resources_Addressable/Prefabs/WorldUI/Elements/ArriveUnitUIElement.prefab",
     "ServingUnitUIElement": "Assets/Resources_Addressable/Prefabs/WorldUI/Elements/ServingUnitUIElement.prefab",
     "RecipeUnitUIElement": "Assets/Resources_Addressable/Prefabs/WorldUI/Elements/RecipeUnitUIElement.prefab",
-    "RecipeUnit_ClearUIElement": "Assets/Resources_Addressable/Prefabs/WorldUI/Elements/RecipeUnit_ClearUIElement.prefab"
+    "RecipeUnit_ClearUIElement": "Assets/Resources_Addressable/Prefabs/WorldUI/Elements/RecipeUnit_ClearUIElement.prefab",
+    "IngredientUIElement": "Assets/Resources_Addressable/Prefabs/WorldUI/Elements/IngredientUIElement.prefab"
   },
   "Material": {
     "TempMat": "Assets/Resources_Addressable/Materials/Logic/TempMat.mat",

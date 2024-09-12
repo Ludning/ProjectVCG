@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ServingUnit : LevelUnitBase
 {
+    private string _levelKey;
     private string _tileKey;
-    public ServingUnit(string tileKey, Transform uiParent)
+    public ServingUnit(string levelKey, string tileKey, Transform uiParent)
     {
+        _levelKey = levelKey;
         _tileKey = tileKey;
         InitUIElement(uiParent);
     }
@@ -15,7 +17,7 @@ public class ServingUnit : LevelUnitBase
         GameObject prefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("ServingUnitUIElement");
         GameObject uiObject = Object.Instantiate(prefab, uiParent);
         ServingUnitUIElement temp = uiObject.GetComponent<ServingUnitUIElement>();
-        temp.Init();
+        temp.Init(_levelKey);
         LevelUnitUIElement = temp;
     }
     public override bool CheakLevel(TileBase tileBase)
