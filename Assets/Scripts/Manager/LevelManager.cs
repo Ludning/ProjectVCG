@@ -17,11 +17,27 @@ public class LevelManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManage
     
     public void Init(string stageClearCondition)
     {
+        Debug.Log($"LevelManager : {stageClearCondition}");
         string[] clearIndexs = stageClearCondition.Split(", ");
         foreach (var clearIndex in clearIndexs)
         {
             LevelData data = DataManager.Instance.GetGameData<LevelData>(clearIndex);
-            AddLevelUnit(data);
+            switch (data.Sort_Clear)
+            {
+                case SortClearType.ARRIVE:
+                    AddLevelUnit(SortClearType.ARRIVE, data.Tile_Key);
+                    break;
+                case SortClearType.SERVING:
+                    AddLevelUnit(SortClearType.SERVING, data.Tile_Key);
+                    break;
+                case SortClearType.RECIPE:
+                    AddLevelUnit(SortClearType.RECIPE, data.Recipe_Index);
+                    break;
+                case SortClearType.RECIPE_CLEAR:
+                    AddLevelUnit(SortClearType.RECIPE_CLEAR, data.Recipe_Index);
+                    break;
+            }
+            
         }
     }
     
@@ -38,30 +54,58 @@ public class LevelManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManage
     }
 	
     // Recipe 목록에 Recipe를 추가한다.
-    public void AddLevelUnit(LevelData data)
+    private void AddLevelUnit(SortClearType type, string value)
     {
-        switch (data.Sort_Clear)
+        switch (type)
         {
             case SortClearType.ARRIVE:
-                LevelUnitBase arriveUnit = new ArriveUnit(data);
+                LevelUnitBase arriveUnit = new ArriveUnit(value, levelPopup.LevelUIParent);
                 _levelUnitList.Add(arriveUnit);
                 break;
             case SortClearType.SERVING:
-                LevelUnitBase servingUnit = new ServingUnit(data);
+                LevelUnitBase servingUnit = new ServingUnit(value, levelPopup.LevelUIParent);
                 _levelUnitList.Add(servingUnit);
                 break;
             case SortClearType.RECIPE:
-                LevelUnitBase recipeUnit = new RecipeUnit(data);
+                RecipeData recipeData = DataManager.Instance.GetGameData<RecipeData>(value);
+                RecursionAddLevelUnit(SortClearType.RECIPE, recipeData.Ingre_01);
+                RecursionAddLevelUnit(SortClearType.RECIPE, recipeData.Ingre_02);
+                RecursionAddLevelUnit(SortClearType.RECIPE, recipeData.Ingre_03);
+                RecursionAddLevelUnit(SortClearType.RECIPE, recipeData.Ingre_04);
+                LevelUnitBase recipeUnit = new RecipeUnit(value, levelPopup.LevelUIParent);
                 _levelUnitList.Add(recipeUnit);
                 break;
             case SortClearType.RECIPE_CLEAR:
-                LevelUnitBase recipeUnit_Clear = new RecipeUnit_Clear(data);
+                RecipeData recipeClearData = DataManager.Instance.GetGameData<RecipeData>(value);
+                RecursionAddLevelUnit(SortClearType.RECIPE, recipeClearData.Ingre_01);
+                RecursionAddLevelUnit(SortClearType.RECIPE, recipeClearData.Ingre_02);
+                RecursionAddLevelUnit(SortClearType.RECIPE, recipeClearData.Ingre_03);
+                RecursionAddLevelUnit(SortClearType.RECIPE, recipeClearData.Ingre_04);
+                LevelUnitBase recipeUnit_Clear = new RecipeUnit_Clear(value, levelPopup.LevelUIParent);
                 _levelUnitList.Add(recipeUnit_Clear);
                 break;
             default:
                 return;
         }
-        //levelPopup.DisplayLevel(data);
+    }
+
+    private void RecursionAddLevelUnit(SortClearType type, string itemName)
+    {
+        if (!string.IsNullOrWhiteSpace(itemName))
+        {
+            ItemType itemType = ParserStringToEnum<ItemType>(itemName);
+            FoodData foodData = DataManager.Instance.GetGameData<FoodData>(((int)itemType).ToString());
+            if(!string.IsNullOrWhiteSpace(foodData.Recipe_Index))
+                AddLevelUnit(type, foodData.Recipe_Index);
+        }
+    }
+    private T ParserStringToEnum<T>(string context) where T : struct, Enum
+    {
+        T enumValue;
+        if (Enum.TryParse(context, out enumValue))
+            return enumValue;
+        else
+            return default(T);
     }
     
     public bool CheckLevel(TileBase tile)

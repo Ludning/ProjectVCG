@@ -8,16 +8,16 @@ public class RecipeUnit_Clear : RecipeUnit
 {
     public int _waitForMiliSecondDelete = 1500;
     
-    public RecipeUnit_Clear(LevelData levelData) : base(levelData)
+    public RecipeUnit_Clear(string recipeIndex, Transform uiParent) : base(recipeIndex, uiParent)
     {
     }
-    public override void InitUIElement()
+    protected override void InitUIElement(Transform uiParent)
     {
         GameObject prefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("RecipeUnit_ClearUIElement");
-        GameObject uiObject = Object.Instantiate(prefab);
+        GameObject uiObject = Object.Instantiate(prefab, uiParent);
         RecipeUnit_ClearUIElement temp = uiObject.GetComponent<RecipeUnit_ClearUIElement>();
         temp.Init();
-        _levelUnitUIElement = temp;
+        LevelUnitUIElement = temp;
     }
     public override void OnComplete()
     {

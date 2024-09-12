@@ -685,6 +685,7 @@
     "4000": {
       "Index": "4000",
       "Description": "목적지 타일",
+      "DisplayContext": "주인 할아버지가 포키를 부르셔! 빛나는 칸에 도달해보자!",
       "Sort_Clear": 0,
       "Tile_Index": "10001",
       "Recipe_Index": "",
@@ -696,6 +697,7 @@
     "4001": {
       "Index": "4001",
       "Description": "목적지 타일",
+      "DisplayContext": "주인 할아버지가 포키를 부르셔! 빛나는 칸에 도달해보자!",
       "Sort_Clear": 0,
       "Tile_Index": "10001",
       "Recipe_Index": "",
@@ -707,6 +709,7 @@
     "4100": {
       "Index": "4100",
       "Description": "손님테이블 / 된 밥 / 아시아 여성",
+      "DisplayContext": "",
       "Sort_Clear": 1,
       "Tile_Index": "10111",
       "Recipe_Index": "",
@@ -718,6 +721,7 @@
     "4101": {
       "Index": "4101",
       "Description": "손님테이블 / 썬 새우 / 아시아 남성",
+      "DisplayContext": "",
       "Sort_Clear": 1,
       "Tile_Index": "10111",
       "Recipe_Index": "",
@@ -729,6 +733,7 @@
     "4102": {
       "Index": "4102",
       "Description": "손님테이블 / 튀긴 새우 / 아프리카 여성",
+      "DisplayContext": "",
       "Sort_Clear": 1,
       "Tile_Index": "10111",
       "Recipe_Index": "",
@@ -740,6 +745,7 @@
     "4103": {
       "Index": "4103",
       "Description": "손님테이블 / 튀긴 새우 / 아프리카 남성",
+      "DisplayContext": "",
       "Sort_Clear": 1,
       "Tile_Index": "10111",
       "Recipe_Index": "",
@@ -751,6 +757,7 @@
     "4200": {
       "Index": "4200",
       "Description": "레시피 / 썬 새우",
+      "DisplayContext": "",
       "Sort_Clear": 3,
       "Tile_Index": "",
       "Recipe_Index": "20001",
@@ -762,6 +769,7 @@
     "4201": {
       "Index": "4201",
       "Description": "레시피 / 튀긴 새우",
+      "DisplayContext": "",
       "Sort_Clear": 3,
       "Tile_Index": "",
       "Recipe_Index": "20003",
@@ -773,6 +781,7 @@
     "4202": {
       "Index": "4202",
       "Description": "레시피 / 된 밥",
+      "DisplayContext": "",
       "Sort_Clear": 3,
       "Tile_Index": "",
       "Recipe_Index": "20002",
@@ -784,6 +793,7 @@
     "4203": {
       "Index": "4203",
       "Description": "레시피 / 새우 초밥",
+      "DisplayContext": "",
       "Sort_Clear": 3,
       "Tile_Index": "",
       "Recipe_Index": "21001",
@@ -795,6 +805,7 @@
     "4204": {
       "Index": "4204",
       "Description": "레시피 / 새우튀김 덮밥",
+      "DisplayContext": "",
       "Sort_Clear": 3,
       "Tile_Index": "",
       "Recipe_Index": "21002",
@@ -806,6 +817,7 @@
     "4205": {
       "Index": "4205",
       "Description": "레시피 / 생선회",
+      "DisplayContext": "",
       "Sort_Clear": 3,
       "Tile_Index": "",
       "Recipe_Index": "20004",
@@ -817,6 +829,7 @@
     "4206": {
       "Index": "4206",
       "Description": "레시피 / 썬 새우",
+      "DisplayContext": "",
       "Sort_Clear": 3,
       "Tile_Index": "",
       "Recipe_Index": "20001",
@@ -828,6 +841,7 @@
     "4207": {
       "Index": "4207",
       "Description": "레시피 / 튀긴 새우",
+      "DisplayContext": "",
       "Sort_Clear": 3,
       "Tile_Index": "",
       "Recipe_Index": "20003",
@@ -839,6 +853,7 @@
     "4208": {
       "Index": "4208",
       "Description": "레시피 / 새우 초밥",
+      "DisplayContext": "",
       "Sort_Clear": 3,
       "Tile_Index": "",
       "Recipe_Index": "21001",
@@ -850,6 +865,7 @@
     "4209": {
       "Index": "4209",
       "Description": "레시피 / 새우튀김 덮밥",
+      "DisplayContext": "",
       "Sort_Clear": 3,
       "Tile_Index": "",
       "Recipe_Index": "21002",
@@ -861,6 +877,7 @@
     "4104": {
       "Index": "4104",
       "Description": "손님테이블 / 생선회 / 아시아 여성",
+      "DisplayContext": "",
       "Sort_Clear": 1,
       "Tile_Index": "10111",
       "Recipe_Index": "",
@@ -872,6 +889,7 @@
     "4105": {
       "Index": "4105",
       "Description": "손님테이블 / 생선회 / 아시아 남성",
+      "DisplayContext": "",
       "Sort_Clear": 1,
       "Tile_Index": "10111",
       "Recipe_Index": "",
@@ -883,6 +901,7 @@
     "4106": {
       "Index": "4106",
       "Description": "손님테이블 / 생선회 / 아프리카 여성",
+      "DisplayContext": "",
       "Sort_Clear": 1,
       "Tile_Index": "10111",
       "Recipe_Index": "",
@@ -894,6 +913,7 @@
     "4210": {
       "Index": "4210",
       "Description": "레시피 / 생선회",
+      "DisplayContext": "",
       "Sort_Clear": 3,
       "Tile_Index": "",
       "Recipe_Index": "20004",
@@ -1017,74 +1037,83 @@
     "15001": {
       "Index": "15001",
       "Description": "원재료 / 새우",
-      "Type": "ORIGINAL",
+      "FoodType": 0,
       "Icon": "Icon_Shrimp",
       "Value": "SHRIMP",
-      "PrefabName": "Prefab_Shrimp"
+      "PrefabName": "Prefab_Shrimp",
+      "Recipe_Index": ""
     },
     "15002": {
       "Index": "15002",
       "Description": "원재료 / 쌀",
-      "Type": "ORIGINAL",
+      "FoodType": 0,
       "Icon": "Icon_Rice",
       "Value": "RICE",
-      "PrefabName": "Prefab_Rice"
+      "PrefabName": "Prefab_Rice",
+      "Recipe_Index": ""
     },
     "15003": {
       "Index": "15003",
       "Description": "원재료 / 생선",
-      "Type": "ORIGINAL",
+      "FoodType": 0,
       "Icon": "Icon_Fish",
       "Value": "FISH",
-      "PrefabName": "Prefab_Fish"
+      "PrefabName": "Prefab_Fish",
+      "Recipe_Index": ""
     },
     "15512": {
       "Index": "15512",
       "Description": "가공재료 / 튀긴 새우",
-      "Type": "PROCESSED",
+      "FoodType": 1,
       "Icon": "Icon_Fryer_Shrimp",
       "Value": "FRYER_SHRIMP",
-      "PrefabName": "Prefab_Fryer_Shrimp"
+      "PrefabName": "Prefab_Fryer_Shrimp",
+      "Recipe_Index": "20003"
     },
     "15502": {
       "Index": "15502",
       "Description": "가공재료 / 밥",
-      "Type": "PROCESSED",
+      "FoodType": 1,
       "Icon": "Icon_Pot_Rice",
       "Value": "POT_RICE",
-      "PrefabName": "Prefab_Pot_Rice"
+      "PrefabName": "Prefab_Pot_Rice",
+      "Recipe_Index": "20002"
     },
     "15503": {
       "Index": "15503",
       "Description": "가공재료 / 생선 회",
-      "Type": "PROCESSED",
+      "FoodType": 1,
       "Icon": "Icon_Cut_Fish",
       "Value": "CUT_FISH",
-      "PrefabName": "Prefab_Cut_Fish"
+      "PrefabName": "Prefab_Cut_Fish",
+      "Recipe_Index": "20004"
     },
     "15504": {
       "Index": "15504",
       "Description": "가공재료 / 새우 회",
-      "Type": "PROCESSED",
+      "FoodType": 1,
       "Icon": "Icon_Cut_Shrimp",
       "Value": "CUT_SHRIMP",
-      "PrefabName": "Prefab_Cut_Shrimp"
+      "PrefabName": "Prefab_Cut_Shrimp",
+      "Recipe_Index": "20001"
     },
     "19001": {
       "Index": "19001",
       "Description": "가공재료 /새우 튀김 덮밥",
-      "Type": "PROCESSED",
+      "FoodType": 1,
       "Icon": "Icon_Ebidon",
       "Value": "EBIDON",
-      "PrefabName": "Prefab_Ebidon"
+      "PrefabName": "Prefab_Ebidon",
+      "Recipe_Index": "21002"
     },
     "19002": {
       "Index": "19002",
       "Description": "가공재료 / 새우 초밥",
-      "Type": "PROCESSED",
+      "FoodType": 1,
       "Icon": "Icon_Sushi_Shrimp",
       "Value": "SUSHI_SHRIMP",
-      "PrefabName": "Prefab_Sushi_Shrimp"
+      "PrefabName": "Prefab_Sushi_Shrimp",
+      "Recipe_Index": "21001"
     }
   },
   "CookingProperty": {

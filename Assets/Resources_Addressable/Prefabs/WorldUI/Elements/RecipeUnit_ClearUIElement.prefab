@@ -224,6 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef0c0ec0a4323b3418c01c4177391fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ProductImage: {fileID: 3792538992869112476}
   IngredientLayout: {fileID: 2862710789961967930}
 --- !u!1001 &686553904450284365
 PrefabInstance:

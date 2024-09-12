@@ -15,6 +15,7 @@ public class LevelData
 
     public string Index;
     public string Description;
+    public string DisplayContext;
     public SortClearType Sort_Clear;
     public string Tile_Index;
     public string Recipe_Index;

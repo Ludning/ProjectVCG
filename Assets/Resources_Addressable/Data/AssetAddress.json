@@ -40,6 +40,9 @@
     "RepeatSheet": "Assets/Resources_Addressable/Prefabs/WorldUI/Sheet/RepeatSheet.prefab",
     "FunctionSheet": "Assets/Resources_Addressable/Prefabs/WorldUI/Sheet/FunctionSheet.prefab",
     "RecipeElement": "Assets/Resources_Addressable/Prefabs/WorldUI/Elements/RecipeElement.prefab",
+    "ArriveUnitUIElement": "Assets/Resources_Addressable/Prefabs/WorldUI/Elements/ArriveUnitUIElement.prefab",
+    "ServingUnitUIElement": "Assets/Resources_Addressable/Prefabs/WorldUI/Elements/ServingUnitUIElement.prefab",
+    "RecipeUnitUIElement": "Assets/Resources_Addressable/Prefabs/WorldUI/Elements/RecipeUnitUIElement.prefab",
     "RecipeUnit_ClearUIElement": "Assets/Resources_Addressable/Prefabs/WorldUI/Elements/RecipeUnit_ClearUIElement.prefab"
   },
   "Material": {

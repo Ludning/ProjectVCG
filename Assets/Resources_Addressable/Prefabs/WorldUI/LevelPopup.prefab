@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5305408985564323681}
   - component: {fileID: 7193680080949869988}
   - component: {fileID: 3600312458571657555}
+  - component: {fileID: 8593475875684844734}
   - component: {fileID: 6819158229179526890}
   m_Layer: 0
   m_Name: LevelPopup
@@ -19,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5214012170049797978
 RectTransform:
   m_ObjectHideFlags: 0
@@ -104,6 +105,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8593475875684844734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398664984294465569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 1
+  m_VerticalFit: 0
 --- !u!114 &6819158229179526890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f9b6fbfa53dca04f996c63b72ae31e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  context: {fileID: 4699663931973028007}
+  LevelUIParent: {fileID: 4699663931973028007}
 --- !u!1 &3104594662862915965
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7588180500898027531}
   - component: {fileID: 3018255110899385384}
-  - component: {fileID: 3636394027653174687}
+  - component: {fileID: 8624141035957022277}
   m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
@@ -162,7 +177,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3104594662862915965}
   m_CullTransparentMesh: 1
---- !u!114 &3636394027653174687
+--- !u!114 &8624141035957022277
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -202,6 +217,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4699663931973028007}
   - component: {fileID: 1237221602225091183}
+  - component: {fileID: 4284173599926137492}
+  - component: {fileID: 4918188957848223815}
   m_Layer: 0
   m_Name: Context
   m_TagString: Untagged
@@ -254,3 +271,25 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!222 &4284173599926137492
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3979547216188385488}
+  m_CullTransparentMesh: 1
+--- !u!114 &4918188957848223815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3979547216188385488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 1
+  m_VerticalFit: 0

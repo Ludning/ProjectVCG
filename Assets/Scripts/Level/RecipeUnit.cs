@@ -5,6 +5,7 @@ using UnityEngine;
 //레시피 데이터대로 재료를 완성품으로 교체하는 기능단위
 public class RecipeUnit : LevelUnitBase
 {
+    protected string _recipeIndex;
     protected RecipeData recipeData; // Recipe의 이름
     protected GameObject productFood;
     public List<string> Ingredients = new List<string>();
@@ -13,9 +14,10 @@ public class RecipeUnit : LevelUnitBase
     public List<string> Ingredients = new List<string>();
     public string ResultItem;*/
 
-    public RecipeUnit(LevelData levelData) : base(levelData)
+    public RecipeUnit(string recipeIndex, Transform uiParent)
     {
-        RecipeData recipeData = DataManager.Instance.GetGameData<RecipeData>(_levelData.Recipe_Index);
+        _recipeIndex = recipeIndex;
+        RecipeData recipeData = DataManager.Instance.GetGameData<RecipeData>(_recipeIndex);
         this.recipeData = recipeData;
         
         if(!string.IsNullOrWhiteSpace(recipeData.Ingre_01))
@@ -27,16 +29,16 @@ public class RecipeUnit : LevelUnitBase
         if(!string.IsNullOrWhiteSpace(recipeData.Ingre_04))
             Ingredients.Add(recipeData.Ingre_04);
         
-        InitUIElement();
+        InitUIElement(uiParent);
         Reset();
     }
-    public override void InitUIElement()
+    protected virtual void InitUIElement(Transform uiParent)
     {
         GameObject prefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("RecipeUnitUIElement");
-        GameObject uiObject = Object.Instantiate(prefab);
+        GameObject uiObject = Object.Instantiate(prefab, uiParent);
         RecipeUnitUIElement temp = uiObject.GetComponent<RecipeUnitUIElement>();
         temp.Init();
-        _levelUnitUIElement = temp;
+        LevelUnitUIElement = temp;
     }
     public override bool CheakLevel(TileBase tileBase)
     {

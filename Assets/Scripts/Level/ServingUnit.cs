@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class ServingUnit : LevelUnitBase
 {
-    public ServingUnit(LevelData levelData) : base(levelData)
+    private string _tileKey;
+    public ServingUnit(string tileKey, Transform uiParent)
     {
-        InitUIElement();
+        _tileKey = tileKey;
+        InitUIElement(uiParent);
     }
-    public override void InitUIElement()
+    private void InitUIElement(Transform uiParent)
     {
         GameObject prefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("ServingUnitUIElement");
-        GameObject uiObject = Object.Instantiate(prefab);
+        GameObject uiObject = Object.Instantiate(prefab, uiParent);
         ServingUnitUIElement temp = uiObject.GetComponent<ServingUnitUIElement>();
         temp.Init();
-        _levelUnitUIElement = temp;
+        LevelUnitUIElement = temp;
     }
     public override bool CheakLevel(TileBase tileBase)
     {
         if(string.IsNullOrWhiteSpace(tileBase.LevelKey))
             return false;
-        return tileBase.LevelKey == _levelData.Tile_Key;
+        return tileBase.LevelKey == _tileKey;
     }
 }

@@ -5,22 +5,24 @@ using UnityEngine;
 //도달체크
 public class ArriveUnit : LevelUnitBase
 {
-    public ArriveUnit(LevelData levelData) : base(levelData)
+    private string _tileKey;
+    public ArriveUnit(string tileKey, Transform uiParent)
     {
-        InitUIElement();
+        _tileKey = tileKey;
+        InitUIElement(uiParent);
     }
-    public override void InitUIElement()
+    private void InitUIElement(Transform uiParent)
     {
         GameObject prefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("ArriveUnitUIElement");
-        GameObject uiObject = Object.Instantiate(prefab);
+        GameObject uiObject = Object.Instantiate(prefab, uiParent);
         ArriveUnitUIElement temp = uiObject.GetComponent<ArriveUnitUIElement>();
         temp.Init();
-        _levelUnitUIElement = temp;
+        LevelUnitUIElement = temp;
     }
     public override bool CheakLevel(TileBase tileBase)
     {
         if(string.IsNullOrWhiteSpace(tileBase.LevelKey))
             return false;
-        return tileBase.LevelKey == _levelData.Tile_Key;
+        return tileBase.LevelKey == _tileKey;
     }
 }

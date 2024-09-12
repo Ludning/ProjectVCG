@@ -27,6 +27,13 @@ public enum ItemType
     SUSHI_SHRIMP = 19002,
 }
 
+public enum FoodType
+{
+    ORIGINAL,
+    PROCESSED
+
+}
+
 public enum UIType
 {
     MainUI,
