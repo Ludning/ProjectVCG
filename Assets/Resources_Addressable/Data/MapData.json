@@ -1450,8 +1450,8 @@
         "3": {
           "TileType": 10111,
           "CookingPropertyType": 0,
-          "IsSpawnNPC": false,
-          "SpawnNpcType": 0,
+          "IsSpawnNPC": true,
+          "SpawnNpcType": 15,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
@@ -1995,8 +1995,8 @@
         "7": {
           "TileType": 10111,
           "CookingPropertyType": 0,
-          "IsSpawnNPC": false,
-          "SpawnNpcType": 0,
+          "IsSpawnNPC": true,
+          "SpawnNpcType": 16,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
@@ -2111,16 +2111,16 @@
         "10": {
           "TileType": 10111,
           "CookingPropertyType": 0,
-          "IsSpawnNPC": false,
-          "SpawnNpcType": 0,
+          "IsSpawnNPC": true,
+          "SpawnNpcType": 14,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
         "11": {
           "TileType": 10111,
           "CookingPropertyType": 0,
-          "IsSpawnNPC": false,
-          "SpawnNpcType": 0,
+          "IsSpawnNPC": true,
+          "SpawnNpcType": 13,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         }
@@ -2868,8 +2868,8 @@
         "3": {
           "TileType": 10111,
           "CookingPropertyType": 0,
-          "IsSpawnNPC": false,
-          "SpawnNpcType": 0,
+          "IsSpawnNPC": true,
+          "SpawnNpcType": 15,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
@@ -2996,8 +2996,8 @@
         "19": {
           "TileType": 10111,
           "CookingPropertyType": 0,
-          "IsSpawnNPC": false,
-          "SpawnNpcType": 0,
+          "IsSpawnNPC": true,
+          "SpawnNpcType": 11,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
@@ -3012,8 +3012,8 @@
         "21": {
           "TileType": 10111,
           "CookingPropertyType": 0,
-          "IsSpawnNPC": false,
-          "SpawnNpcType": 0,
+          "IsSpawnNPC": true,
+          "SpawnNpcType": 12,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
         },
