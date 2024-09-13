@@ -16,7 +16,7 @@ public class RepeatFunctionSheetContainer : MonoBehaviour
         currentHeight = 0;
         if (sheetTransform.Count == 1)
         {
-            sheetTransform[0].position = Vector3.up * additiveHeight;
+            sheetTransform[0].localPosition = Vector3.up * additiveHeight;
         }
         else
         {

@@ -143,9 +143,9 @@ MonoBehaviour:
   StageManager: {fileID: 2324106997134201195}
   InteractableManager: {fileID: 7022657531795921493}
   NPCManager: {fileID: 6699213579640648353}
+  RepeatFunctionSheetContainer: {fileID: 0}
   MainSheet: {fileID: 0}
   ExSheet: {fileID: 0}
-  _repeatFunctionSheetParent: {fileID: 0}
 --- !u!1 &5172011013339461665
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,8 +321,8 @@ MonoBehaviour:
   TableManager: {fileID: 7103794928054253303}
   SheetManager: {fileID: 4470865141629060255}
   InteractableManager: {fileID: 7022657531795921493}
-  levelManager: {fileID: 974716058251498038}
   NPCManager: {fileID: 6699213579640648353}
+  levelManager: {fileID: 974716058251498038}
   UIContainer: {fileID: 0}
   Items: {fileID: 0}
   Controller: {fileID: 0}

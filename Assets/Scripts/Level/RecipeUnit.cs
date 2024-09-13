@@ -59,6 +59,8 @@ public class RecipeUnit : LevelUnitBase
     public GameObject SpawnProductFood()
     {
         GameObject prefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(recipeData.Product);
+        //TODO
+        //아이템의 위치를 지정해줘야함
         productFood = Object.Instantiate(prefab);
         return prefab;
     }

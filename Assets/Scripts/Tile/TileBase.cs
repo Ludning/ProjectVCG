@@ -115,7 +115,9 @@ public class TileBase : MonoBehaviour
     }
     public void ClearItem()
     {
-        //TODO
+        foreach (var itemBase in InventoryStack)
+            Destroy(itemBase);
+        InventoryStack.Clear();
     }
     public void OnItemSpawn()
     {

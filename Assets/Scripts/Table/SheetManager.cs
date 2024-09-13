@@ -50,8 +50,6 @@ public class SheetManager : MonoBehaviour
     private List<BlockLogicBase> _currentSheet;
     private Transform _currentSheetParent;
 
-    public Transform _repeatFunctionSheetParent;
-
     //private int _sheetIndex;
     private Dictionary<InteractableUnityEventWrapper, int> _sheetIndexDictionary =
         new Dictionary<InteractableUnityEventWrapper, int>();
@@ -127,7 +125,7 @@ public class SheetManager : MonoBehaviour
             interactableButton.Value.WhenSelect.AddListener(action);
 
             GameObject sheetPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("FunctionSheet");
-            RepeatSheet functionSheet = Instantiate(sheetPrefab, _repeatFunctionSheetParent).GetComponent<RepeatSheet>();
+            RepeatSheet functionSheet = Instantiate(sheetPrefab, RepeatFunctionSheetContainer.transform).GetComponent<RepeatSheet>();
             
             //TODO 위치 조정 스크립트도 작성해야함
             
@@ -143,11 +141,9 @@ public class SheetManager : MonoBehaviour
         {
             UnityAction action = GetLogicEvent(BlockLogicType.Repeat, interactableButton.Value);
             interactableButton.Value.WhenSelect.AddListener(action);
-
-            GameObject sheetPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("RepeatSheet");
-            RepeatSheet repeatSheet = Instantiate(sheetPrefab, _repeatFunctionSheetParent).GetComponent<RepeatSheet>();
             
-            //TODO 위치 조정 스크립트도 작성해야함
+            GameObject sheetPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("RepeatSheet");
+            RepeatSheet repeatSheet = Instantiate(sheetPrefab, RepeatFunctionSheetContainer.transform).GetComponent<RepeatSheet>();
             
             RepeatFunctionSheets.Add(interactableButton.Key, repeatSheet);
             _repeatBlockLogicBasesDictionary.Add(interactableButton.Key, new List<BlockLogicBase>());

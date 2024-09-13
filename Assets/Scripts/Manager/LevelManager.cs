@@ -13,10 +13,13 @@ public class LevelManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManage
     
     private int _cursor = 0; // Index for Recipe List
     public LevelUnitBase CurrentLevelUnit => _levelUnitList[_cursor]; // Getter for Index Item of Recipe List
+    // 모든 레시피가 완료되었는지 확인하는 프로퍼티
+    public bool IsAllComplete => _levelUnitList.All(recipe => CurrentLevelUnit.IsComplete);
     #endregion Fields
     
     public void Init(string stageClearCondition)
     {
+        Clear();
         string[] clearIndexs = stageClearCondition.Split(", ");
         foreach (var clearIndex in clearIndexs)
         {
@@ -38,9 +41,6 @@ public class LevelManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManage
             }
         }
     }
-    
-    // 모든 레시피가 완료되었는지 확인하는 프로퍼티
-    public bool IsAllComplete => _levelUnitList.All(recipe => CurrentLevelUnit.IsComplete);
 
     // Recipe 목록에 있는 모든 Recipe의 isComplete를 false로 초기화한다.
     public void ResetRecipeState()
