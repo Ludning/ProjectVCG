@@ -34,9 +34,7 @@ public class MapInfoListView : ListView
             var rowItem = visualElement as RowItem;
             (visualElement as RowItem).Position.text = _rowDatas[index].Position;
             (visualElement as RowItem).TileType.text = _rowDatas[index].TileType;
-            (visualElement as RowItem).CookingPropertyType.text = (_rowDatas[index].CookingPropertyType != "NULL")
-                ? _rowDatas[index].CookingPropertyType
-                : "";
+            (visualElement as RowItem).CookingPropertyType.text = (_rowDatas[index].CookingPropertyType != "NULL") ? _rowDatas[index].CookingPropertyType : "";
             (visualElement as RowItem).TileId.text = _rowDatas[index].TileId;
             (visualElement as RowItem).SpawnNpc.text = _rowDatas[index].SpawnNpc;
             (visualElement as RowItem).SpawnObject.text = _rowDatas[index].SpawnObject;

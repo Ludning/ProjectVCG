@@ -2,7 +2,14 @@ using System;
 
 public enum NpcType
 {
-    
+    Null,
+    Dummy = 10,
+    Asian_Male = 11,
+    Asian_Female = 12,
+    European_Male = 13,
+    European_Female = 14,
+    African_Female = 15,
+    African_Male = 16
 }
 
 public enum CookingPropertyType
