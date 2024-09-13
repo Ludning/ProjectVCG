@@ -2203,7 +2203,7 @@
         },
         "7": {
           "TileType": 10301,
-          "CookingPropertyType": 0,
+          "CookingPropertyType": 30000,
           "IsSpawnNPC": false,
           "SpawnNpcType": 0,
           "IsSpawnObject": false,
@@ -2293,7 +2293,7 @@
         },
         "7": {
           "TileType": 10301,
-          "CookingPropertyType": 0,
+          "CookingPropertyType": 30003,
           "IsSpawnNPC": false,
           "SpawnNpcType": 0,
           "IsSpawnObject": false,
@@ -2383,7 +2383,7 @@
         },
         "7": {
           "TileType": 10301,
-          "CookingPropertyType": 0,
+          "CookingPropertyType": 30001,
           "IsSpawnNPC": false,
           "SpawnNpcType": 0,
           "IsSpawnObject": false,
@@ -2425,7 +2425,7 @@
         },
         "1": {
           "TileType": 10301,
-          "CookingPropertyType": 0,
+          "CookingPropertyType": 30004,
           "IsSpawnNPC": false,
           "SpawnNpcType": 0,
           "IsSpawnObject": false,
@@ -2523,7 +2523,7 @@
         },
         "2": {
           "TileType": 10301,
-          "CookingPropertyType": 0,
+          "CookingPropertyType": 30000,
           "IsSpawnNPC": false,
           "SpawnNpcType": 0,
           "IsSpawnObject": false,
@@ -2597,7 +2597,7 @@
         },
         "3": {
           "TileType": 10301,
-          "CookingPropertyType": 0,
+          "CookingPropertyType": 30000,
           "IsSpawnNPC": false,
           "SpawnNpcType": 0,
           "IsSpawnObject": false,
@@ -2613,7 +2613,7 @@
         },
         "5": {
           "TileType": 10301,
-          "CookingPropertyType": 0,
+          "CookingPropertyType": 30003,
           "IsSpawnNPC": false,
           "SpawnNpcType": 0,
           "IsSpawnObject": false,
@@ -2679,7 +2679,7 @@
         },
         "2": {
           "TileType": 10301,
-          "CookingPropertyType": 0,
+          "CookingPropertyType": 30000,
           "IsSpawnNPC": false,
           "SpawnNpcType": 0,
           "IsSpawnObject": false,
@@ -2703,7 +2703,7 @@
         },
         "5": {
           "TileType": 10301,
-          "CookingPropertyType": 0,
+          "CookingPropertyType": 30001,
           "IsSpawnNPC": false,
           "SpawnNpcType": 0,
           "IsSpawnObject": false,
@@ -2737,7 +2737,7 @@
         },
         "1": {
           "TileType": 10301,
-          "CookingPropertyType": 0,
+          "CookingPropertyType": 30004,
           "IsSpawnNPC": false,
           "SpawnNpcType": 0,
           "IsSpawnObject": false,
@@ -2769,7 +2769,7 @@
         },
         "5": {
           "TileType": 10301,
-          "CookingPropertyType": 0,
+          "CookingPropertyType": 30003,
           "IsSpawnNPC": false,
           "SpawnNpcType": 0,
           "IsSpawnObject": false,
@@ -2793,7 +2793,7 @@
         },
         "8": {
           "TileType": 10301,
-          "CookingPropertyType": 0,
+          "CookingPropertyType": 30001,
           "IsSpawnNPC": false,
           "SpawnNpcType": 0,
           "IsSpawnObject": false,
@@ -3185,7 +3185,7 @@
         },
         "15": {
           "TileType": 10301,
-          "CookingPropertyType": 0,
+          "CookingPropertyType": 30000,
           "IsSpawnNPC": false,
           "SpawnNpcType": 0,
           "IsSpawnObject": false,
