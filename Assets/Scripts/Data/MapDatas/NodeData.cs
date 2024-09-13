@@ -6,7 +6,8 @@ using UnityEngine;
 public class NodeData
 {
     public TileType TileType;
-    public TileDetailType TileDetailType;
+    //public TileDetailType TileDetailType;
+    public CookingPropertyType CookingPropertyType;
     public bool IsSpawnNPC;
     public NpcType SpawnNpcType;
     public bool IsSpawnObject;

@@ -7,7 +7,8 @@ public class Inspector : VisualElement
 {
     private EnumField TileTypeDropdown;
     private TextField TileKeyField;
-    private EnumField TileDetailTypeDropdown;
+    //private EnumField TileDetailTypeDropdown;
+    private EnumField CookingPropertyTypeDropdown;
     private Toggle IsPlayerPositionToggle;
     private EnumField PlayerDirectionDropdown;
     private Toggle SpawnObjectToggle;
@@ -44,7 +45,8 @@ public class Inspector : VisualElement
         
         TileTypeDropdown = new EnumField("바닥 유형", mapNode.Node.TileType);
         TileKeyField = new TextField("타일 고유번호");
-        TileDetailTypeDropdown = new EnumField("바닥 속성", mapNode.Node.TileDetailType);
+        //TileDetailTypeDropdown = new EnumField("바닥 속성", mapNode.Node.TileDetailType);
+        CookingPropertyTypeDropdown = new EnumField("타일 속성", mapNode.Node.CookingPropertyType);
         IsPlayerPositionToggle = new Toggle("플레이어 시작 위치");
         PlayerDirectionDropdown = new EnumField("플레이어 방향", tableData.PlayerDirection);
         SpawnObjectToggle = new Toggle("아이템 스폰");
@@ -64,9 +66,14 @@ public class Inspector : VisualElement
         Add(TileKeyField);
         
         // TileType 드롭다운
-        TileDetailTypeDropdown.Init(mapNode.Node.TileDetailType);
-        TileDetailTypeDropdown.RegisterValueChangedCallback(evt => OnTileTypeChanged(evt, mapNode));
-        Add(TileDetailTypeDropdown);
+        //TileDetailTypeDropdown.Init(mapNode.Node.TileDetailType);
+        //TileDetailTypeDropdown.RegisterValueChangedCallback(evt => OnTileTypeChanged(evt, mapNode));
+        //Add(TileDetailTypeDropdown);
+        
+        // CookingPropertyType 드롭다운
+        CookingPropertyTypeDropdown.Init(mapNode.Node.CookingPropertyType);
+        CookingPropertyTypeDropdown.RegisterValueChangedCallback(evt => OnCookingPropertyTypeChanged(evt, mapNode));
+        Add(CookingPropertyTypeDropdown);
 
         // IsPlayerPosition 체크박스
         IsPlayerPositionToggle.value = (tableData.PlayerPosition == mapNode.Position) ? true : false;
@@ -96,13 +103,17 @@ public class Inspector : VisualElement
         // TileType이 Empty일 경우 요소 비활성화
         if (mapNode.Node.TileType == TileType.EMPTY)
         {
-            TileDetailTypeDropdown.SetEnabled(false);
+            //TileDetailTypeDropdown.SetEnabled(false);
             IsPlayerPositionToggle.SetEnabled(false);
             TileKeyField.SetEnabled(false);
             PlayerDirectionDropdown.SetEnabled(false);
             SpawnObjectToggle.SetEnabled(false);
             SpawnObjectTypeDropdown.SetEnabled(false);
         }
+        if (mapNode.Node.TileType == TileType.COOKING)
+            CookingPropertyTypeDropdown.SetEnabled(true);
+        else
+            CookingPropertyTypeDropdown.SetEnabled(false);
     }
 
     // 외부로 분리한 콜백 함수들
@@ -116,8 +127,17 @@ public class Inspector : VisualElement
         PlayerDirectionDropdown.SetEnabled(isEnabled && IsPlayerPositionToggle.value);
         SpawnObjectToggle.SetEnabled(isEnabled);
         SpawnObjectTypeDropdown.SetEnabled(isEnabled && mapNode.Node.IsSpawnObject);
+
+        bool isCookingEnabled = mapNode.Node.TileType == TileType.COOKING;
+        if (isCookingEnabled == false)
+            mapNode.Node.CookingPropertyType = CookingPropertyType.NULL;
+        else
+            CookingPropertyTypeDropdown.SetEnabled(mapNode.Node.TileType == TileType.COOKING);
     }
-    
+    private void OnCookingPropertyTypeChanged(ChangeEvent<Enum> evt, MapDrawSpaceNode mapNode)
+    {
+        mapNode.Node.CookingPropertyType = (CookingPropertyType)evt.newValue;
+    }
     private void OnTileKeyChanged(ChangeEvent<string> evt, MapDrawSpaceNode mapNode)
     {
         int nodePosition = Vector2IntConverter.Vec2ToInt(tableData.Size, mapNode.Position);

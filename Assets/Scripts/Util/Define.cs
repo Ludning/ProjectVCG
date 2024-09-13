@@ -164,6 +164,7 @@ public enum AssetType
 public enum ErrorType
 {
     NoError = 2015, // 에러 없음
+    StageClear = 2016, // 클리어
     UnKnownError = 2014, // 알수 없는 에러
     NoTile = 2013, // 타일 없음
     NotMove = 2000, // 이동 불가 오류

@@ -34,7 +34,9 @@ public class MapInfoListView : ListView
             var rowItem = visualElement as RowItem;
             (visualElement as RowItem).Position.text = _rowDatas[index].Position;
             (visualElement as RowItem).TileType.text = _rowDatas[index].TileType;
-            (visualElement as RowItem).TileDetail.text = _rowDatas[index].TileDetail;
+            (visualElement as RowItem).CookingPropertyType.text = (_rowDatas[index].CookingPropertyType != "NULL")
+                ? _rowDatas[index].CookingPropertyType
+                : "";
             (visualElement as RowItem).TileId.text = _rowDatas[index].TileId;
             (visualElement as RowItem).SpawnNpc.text = _rowDatas[index].SpawnNpc;
             (visualElement as RowItem).SpawnObject.text = _rowDatas[index].SpawnObject;
@@ -85,7 +87,7 @@ public class MapInfoListView : ListView
             Vector2Int pos = Vector2IntConverter.IntToVec2(tableData.Size, nodeData.Key);
             string position = $"({pos.x}, {pos.y})";
             string tileType = nodeData.Value.TileType.ToString();
-            string tileDetail = nodeData.Value.TileDetailType.ToString();
+            string cookingPropertyType = nodeData.Value.CookingPropertyType.ToString();
             string tileId = tableData.LevelDataDictionary.GetValueOrDefault(nodeData.Key, "");
             string spawnNpc = (nodeData.Value.IsSpawnNPC) ? nodeData.Value.SpawnNpcType.ToString() : "";
             string spawnObject = (nodeData.Value.IsSpawnObject) ? nodeData.Value.SpawnObjectType.ToString() : "";
@@ -95,7 +97,7 @@ public class MapInfoListView : ListView
                 positionIndex = nodeData.Key,
                 Position = position,
                 TileType = tileType,
-                TileDetail = tileDetail,
+                CookingPropertyType = cookingPropertyType,
                 TileId = tileId,
                 SpawnNpc = spawnNpc,
                 SpawnObject = spawnObject,

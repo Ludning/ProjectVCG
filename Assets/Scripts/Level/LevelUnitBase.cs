@@ -7,16 +7,7 @@ public class LevelUnitBase // Assets/Scripts/Recipe/RecipeBase.cs
     
     // Recipe가 완료되었는지를 판별하는 변수
     private bool _isComplete;
-    public bool IsComplete
-    {
-        get => _isComplete;
-        set
-        {
-            _isComplete = value;
-            if (_isComplete == true)
-                OnComplete();
-        }
-    }
+    public bool IsComplete => _isComplete;
     public virtual bool CheakLevel(TileBase tileBase)
     {
         return true;
@@ -24,11 +15,12 @@ public class LevelUnitBase // Assets/Scripts/Recipe/RecipeBase.cs
 
     public virtual void OnComplete()
     {
+        _isComplete = true;
         HideUI();
     }
     public void Reset()
     {
-        IsComplete = false;
+        _isComplete = false;
         ShowUI();
     }
     public void Clear()

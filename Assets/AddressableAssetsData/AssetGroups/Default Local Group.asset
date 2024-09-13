@@ -487,6 +487,36 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1b7f0bb27cf07f54aa89c88e46a79116
+    m_Address: Assets/Resources_Addressable/Textures/Npc/Icon_Npc_African_Male.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5fc727bf9f3bbc84e9cf037b52ce50ec
+    m_Address: Assets/Resources_Addressable/Textures/Npc/Icon_Npc_Asian_Female.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5db39812e96aabf47b86f76cf52d274d
+    m_Address: Assets/Resources_Addressable/Textures/Npc/Icon_Npc_European_Female.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: edda3206c056eb54c9333eb060e907d6
+    m_Address: Assets/Resources_Addressable/Textures/Npc/Icon_Npc_African_Female.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8adc0402278aee742b3479658cf68bca
+    m_Address: Assets/Resources_Addressable/Textures/Npc/Icon_Npc_European_Male.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fcd79f42866d3444a81a6d69b166afb9
+    m_Address: Assets/Resources_Addressable/Textures/Npc/Icon_Npc_Asian_Male.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8b1dc452034a1734db8ae1cd6cb6a1de, type: 2}
   m_SchemaSet:

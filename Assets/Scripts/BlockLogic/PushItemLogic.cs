@@ -39,4 +39,7 @@ public class PushItemLogic : BlockLogicBase
         owner.Inventory.PushItem(item);
         return LogicState.Success;
     }
+    public override void CheakClear(StageManager owner)
+    {
+    }
 }

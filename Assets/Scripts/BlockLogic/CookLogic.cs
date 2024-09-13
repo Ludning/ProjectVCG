@@ -54,4 +54,11 @@ public class CookLogic : BlockLogicBase
         owner.levelManager.CompleteCurrentRecipe();
         return LogicState.Success;
     }
+    public override void CheakClear(StageManager owner)
+    {
+        var cookTilePosition = owner.Controller.PlayerForwardPosition;
+        TileBase tile = owner.TableManager.PeekTile(cookTilePosition);
+        if(owner.levelManager.CheckLevel(tile) == true)
+            owner.levelManager.CompleteCurrentRecipe();
+    }
 }

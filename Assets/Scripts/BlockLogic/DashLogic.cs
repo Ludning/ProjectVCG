@@ -48,4 +48,11 @@ public class DashLogic : BlockLogicBase
         }
         return LogicState.Running;
     }
+    public override void CheakClear(StageManager owner)
+    {
+        var playerPosition = owner.Controller.PlayerPosition;
+        TileBase tile = owner.TableManager.PeekTile(playerPosition);
+        if(owner.levelManager.CheckLevel(tile) == true)
+            owner.levelManager.CompleteCurrentRecipe();
+    }
 }

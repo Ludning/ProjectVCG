@@ -10,9 +10,13 @@ public class ServingUnitUIElement : LevelUnitUIElement
     public override void Init(string levelDataKey)
     {
         LevelData levelData = DataManager.Instance.GetGameData<LevelData>(levelDataKey);
-        FoodData foodData = DataManager.Instance.GetGameData<FoodData>(levelData.Contents_Key);
         
-        NpcImage.sprite = ResourceManager.Instance.LoadResourceWithCaching<Sprite>(levelData.Contents_Key);
-        ItemImage.sprite = ResourceManager.Instance.LoadResourceWithCaching<Sprite>(foodData.PrefabName);
+        ItemType itemType = StringEnumConverter.ParserStringToEnum<ItemType>(levelData.Contents_Key);
+        FoodData foodData = DataManager.Instance.GetGameData<FoodData>(((int)itemType).ToString());
+        
+        NpcData npcData = DataManager.Instance.GetGameData<NpcData>(levelData.NPC_Index);
+        
+        NpcImage.sprite = ResourceManager.Instance.LoadResourceWithCaching<Sprite>(npcData.Icon);
+        ItemImage.sprite = ResourceManager.Instance.LoadResourceWithCaching<Sprite>(foodData.Icon);
     }
 }

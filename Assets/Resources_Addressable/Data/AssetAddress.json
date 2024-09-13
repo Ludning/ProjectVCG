@@ -87,18 +87,12 @@
     "Icon_Cooking_Tile_Fan": "Assets/Resources_Addressable/Textures/CookingProperty/Icon_Cooking_Tile_Fan.png",
     "Icon_Cooking_Tile_Frier": "Assets/Resources_Addressable/Textures/CookingProperty/Icon_Cooking_Tile_Frier.png",
     "Icon_Cooking_Tile_Tray": "Assets/Resources_Addressable/Textures/CookingProperty/Icon_Cooking_Tile_Tray.png",
-    "Image_Food_Poke": "",
-    "Image_Food_Hamburger_Set": "",
-    "Image_Food_Cut_Potato": "",
-    "Image_Food_Pot_Rice": "",
-    "Image_Food_Cut_Shirimp": "",
-    "Image_Food_Pot_Rice_2": "",
-    "Image_Food_Frier_Shirimp": "",
-    "Image_Food_Cut_Fish": "",
-    "Image_Food_Potato": "",
-    "Image_Food_Tuna": "",
-    "Image_Food_Rice": "",
-    "Image_Food_Fish": "",
-    "Image_Food_Shirimp": ""
+    "Icon_Npc_Dummy": "",
+    "Icon_Npc_Asian_Male": "Assets/Resources_Addressable/Textures/Npc/Icon_Npc_Asian_Male.png",
+    "Icon_Npc_Asian_Female": "Assets/Resources_Addressable/Textures/Npc/Icon_Npc_Asian_Female.png",
+    "Icon_Npc_European_Male": "Assets/Resources_Addressable/Textures/Npc/Icon_Npc_European_Male.png",
+    "Icon_Npc_European_Female": "Assets/Resources_Addressable/Textures/Npc/Icon_Npc_European_Female.png",
+    "Icon_Npc_African_Female": "Assets/Resources_Addressable/Textures/Npc/Icon_Npc_African_Female.png",
+    "Icon_Npc_African_Male": "Assets/Resources_Addressable/Textures/Npc/Icon_Npc_African_Male.png"
   }
 }

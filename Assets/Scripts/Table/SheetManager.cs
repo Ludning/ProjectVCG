@@ -328,10 +328,17 @@ public class SheetManager : MonoBehaviour
     {
         int tempLenght = 0;
 
-        //foreach (var blockLogic in _blockLogicBases)
         foreach (var blockLogic in _sheetDictionary[sheetIndex])
         {
             ErrorType result = await RunBlockLogic(blockLogic);
+            if (result == ErrorType.StageClear)
+            {
+                _isLogicRunning = false;
+                //TODO
+                //승리시 UI 출력
+                Debug.Log("StageClear");
+                return ErrorType.StageClear;
+            }
             if (result != ErrorType.NoError)
             {
                 if (sheetIndex == 0)
@@ -380,7 +387,10 @@ public class SheetManager : MonoBehaviour
         {
             LogicState logicState = blockLogic.Execute(StageManager);
             if (logicState == LogicState.Success)
-                return ErrorType.NoError;
+            {
+                blockLogic.CheakClear(StageManager);
+                return (StageManager.levelManager.IsAllComplete == true) ? ErrorType.StageClear : ErrorType.NoError;
+            }
             await UniTask.NextFrame();
         }
     }

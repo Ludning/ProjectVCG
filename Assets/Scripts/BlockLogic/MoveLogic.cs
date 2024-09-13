@@ -19,7 +19,6 @@ public class MoveLogic : BlockLogicBase
             return ErrorType.NotMove;
         
         return ErrorType.NoError;
-
     }
 
     public override LogicState Execute(StageManager owner)
@@ -39,5 +38,12 @@ public class MoveLogic : BlockLogicBase
             return LogicState.Success;
         }
         return LogicState.Running;
+    }
+    public override void CheakClear(StageManager owner)
+    {
+        var playerPosition = owner.Controller.PlayerPosition;
+        TileBase tile = owner.TableManager.PeekTile(playerPosition);
+        if(owner.levelManager.CheckLevel(tile) == true)
+            owner.levelManager.CompleteCurrentRecipe();
     }
 }

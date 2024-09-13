@@ -27,4 +27,11 @@ public class PopItemLogic : BlockLogicBase
         item.transform.position = owner.TableManager.GetTilePosition(position);
         return LogicState.Success;
     }
+    public override void CheakClear(StageManager owner)
+    {
+        var servingTilePosition = owner.Controller.PlayerForwardPosition;
+        TileBase servingTile = owner.TableManager.PeekTile(servingTilePosition);
+        if(owner.levelManager.CheckLevel(servingTile) == true)
+            owner.levelManager.CompleteCurrentRecipe();
+    }
 }

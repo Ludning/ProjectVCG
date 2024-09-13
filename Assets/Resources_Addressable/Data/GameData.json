@@ -10,42 +10,49 @@
   "Npc": {
     "10": {
       "Index": "10",
+      "Icon": "Icon_Npc_Dummy",
       "Description": "프로토타입용 더미 NPC",
       "PrefabName": "Dummy",
       "AnimationController": "Dummy"
     },
     "11": {
       "Index": "11",
+      "Icon": "Icon_Npc_Asian_Male",
       "Description": "아시아계 여성",
       "PrefabName": "Asian_Male",
       "AnimationController": "Male"
     },
     "12": {
       "Index": "12",
+      "Icon": "Icon_Npc_Asian_Female",
       "Description": "아시아계 남성",
       "PrefabName": "Asian_Female",
       "AnimationController": "Female"
     },
     "13": {
       "Index": "13",
+      "Icon": "Icon_Npc_European_Male",
       "Description": "백인계 여성",
       "PrefabName": "European_Male",
       "AnimationController": "Male"
     },
     "14": {
       "Index": "14",
+      "Icon": "Icon_Npc_European_Female",
       "Description": "백인계 남성",
       "PrefabName": "European_Female",
       "AnimationController": "Female"
     },
     "15": {
       "Index": "15",
+      "Icon": "Icon_Npc_African_Female",
       "Description": "아프라카계 여성",
       "PrefabName": "African_Female",
       "AnimationController": "Female"
     },
     "16": {
       "Index": "16",
+      "Icon": "Icon_Npc_African_Male",
       "Description": "아프리카계 남성",
       "PrefabName": "African_Male",
       "AnimationController": "Male"
@@ -104,7 +111,7 @@
     },
     "301": {
       "Index": "301",
-      "Description": "들기 블록",
+      "Description": "놓기 블록",
       "Type": 6,
       "IconBlock": "icon_pickup",
       "AnimationKey": "anim_pickup",
@@ -114,7 +121,7 @@
     },
     "302": {
       "Index": "302",
-      "Description": "놓기 블록",
+      "Description": "들기 블록",
       "Type": 7,
       "IconBlock": "icon_putdown",
       "AnimationKey": "anim_putdown",

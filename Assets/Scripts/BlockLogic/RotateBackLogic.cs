@@ -39,4 +39,7 @@ public class RotateBackLogic : BlockLogicBase
 		
         return LogicState.Running;
     }
+    public override void CheakClear(StageManager owner)
+    {
+    }
 }

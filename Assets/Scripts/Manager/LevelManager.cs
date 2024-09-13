@@ -15,7 +15,7 @@ public class LevelManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManage
     public LevelUnitBase CurrentLevelUnit => _levelUnitList[_cursor]; // Getter for Index Item of Recipe List
     // 모든 레시피가 완료되었는지 확인하는 프로퍼티
     public bool IsAllComplete => _levelUnitList.All(recipe => CurrentLevelUnit.IsComplete);
-    #endregion Fields
+    #endregion
     
     public void Init(string stageClearCondition)
     {
@@ -105,21 +105,11 @@ public class LevelManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManage
 
     public void CompleteCurrentRecipe()
     {
-        CurrentLevelUnit.IsComplete = true;
-        //levelPopup.HideRecipe(CurrentLevelUnit.RecipeName);
+        if (_levelUnitList.Count <= _cursor)
+            return;
+        CurrentLevelUnit.OnComplete();
         _cursor++;
     }
-
-    private async UniTask<LogicState> RunBlockLogics()
-    {
-        return LogicState.Success;
-    }
-
-    private async UniTask<LogicState> BlockLogic(BlockLogicBase block)
-    {
-        return LogicState.Success;
-    }
-    
     public void Clear()
     {
         foreach (var levelUnit in _levelUnitList)

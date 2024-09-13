@@ -77,7 +77,7 @@ public class MapEditorTool : EditorWindow
         
         header.Position.text = "위치";
         header.TileType.text = "타일 종류";
-        header.TileDetail.text = "타일 속성";
+        header.CookingPropertyType.text = "타일 속성";
         header.TileId.text = "타일 아이디";
         header.SpawnObject.text = "스폰될 아이템";
         header.SpawnNpc.text = "스폰될 Npc";

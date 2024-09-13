@@ -17,7 +17,7 @@ public class RowItem : VisualElement
 {
     public Label Position;
     public Label TileType;
-    public Label TileDetail;
+    public Label CookingPropertyType;
     public Label TileId;
     public Label SpawnNpc;
     public Label SpawnObject;
@@ -28,7 +28,7 @@ public class RowItem : VisualElement
     {
         Position = new Label();
         TileType = new Label();
-        TileDetail = new Label();
+        CookingPropertyType = new Label();
         TileId = new Label();
         SpawnNpc = new Label();
         SpawnObject = new Label();
@@ -38,7 +38,7 @@ public class RowItem : VisualElement
         // RowItem에 레이블 추가
         Add(Position);
         Add(TileType);
-        Add(TileDetail);
+        Add(CookingPropertyType);
         Add(TileId);
         Add(SpawnNpc);
         Add(SpawnObject);
@@ -53,7 +53,7 @@ public class RowItem : VisualElement
         
         SetLabelStyle(Position, LabelType.Position, isHeader);
         SetLabelStyle(TileType, LabelType.TileType, isHeader);
-        SetLabelStyle(TileDetail, LabelType.TileDetail, isHeader);
+        SetLabelStyle(CookingPropertyType, LabelType.TileDetail, isHeader);
         SetLabelStyle(TileId, LabelType.TileId, isHeader);
         SetLabelStyle(SpawnNpc, LabelType.SpawnNpc, isHeader);
         SetLabelStyle(SpawnObject, LabelType.SpawnObject, isHeader);
