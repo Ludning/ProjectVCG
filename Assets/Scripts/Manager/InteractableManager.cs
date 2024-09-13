@@ -52,7 +52,7 @@ public class InteractableManager : MonoBehaviour
     }
     private void InstantiateButton(GameObject prefab, Transform parent, BlockLogicType type)
     {
-        Debug.Log(type);
+        //Debug.Log(type);
         GameObject button = Instantiate(prefab, parent);
         button.GetComponent<LoadCodeBlockMaterial>().Init(type);
         InteractableUnityEventWrapper interactableUnityEventWrapper = button.GetComponent<InteractableUnityEventWrapper>();

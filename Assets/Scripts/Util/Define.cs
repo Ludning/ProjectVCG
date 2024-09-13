@@ -11,7 +11,7 @@ public enum CookingPropertyType
     CUT = 30000,
     POT = 30001,
     FAN = 30002,
-    FRIER = 30003,
+    FRYER = 30003,
     TRAY = 30004,
 }
 

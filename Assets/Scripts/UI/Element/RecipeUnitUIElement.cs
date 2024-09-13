@@ -51,6 +51,7 @@ public class RecipeUnitUIElement : LevelUnitUIElement
             return null;
         CookingPropertyType cookingPropertyType = StringEnumConverter.ParserStringToEnum<CookingPropertyType>(cookeryName);
         CookingPropertyData cookingPropertyData = DataManager.Instance.GetGameData<CookingPropertyData>(((int)cookingPropertyType).ToString());
+        Debug.Log(cookingPropertyData.IconName);
         Sprite sprite = ResourceManager.Instance.LoadResourceWithCaching<Sprite>(cookingPropertyData.IconName);
         return sprite;
     }

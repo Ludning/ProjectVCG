@@ -26,11 +26,9 @@ public class TableManager : MonoBehaviour
             {
                 string itemIndex = ((int)tileData.Value.SpawnObjectType).ToString();
                 FoodData data = DataManager.Instance.GetGameData<FoodData>(itemIndex);
-                Debug.Log($"{tileData.Value.SpawnObjectType}");
-                Debug.Log($"{itemIndex}");
-                if(data == null)
-                    Debug.Log("NULL");
-                Debug.Log($"{data.PrefabName}");
+                //Debug.Log($"{tileData.Value.SpawnObjectType}");
+                //Debug.Log($"{itemIndex}");
+                //Debug.Log($"{data.PrefabName}");
                 GameObject foodPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(data.PrefabName);
                 tileBase.NoRimitItemMesh = Instantiate(foodPrefab).GetComponent<ItemBase>();
                 tileBase.NoRimitItemMesh.transform.SetParent(itemParent, false);

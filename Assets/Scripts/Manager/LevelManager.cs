@@ -17,7 +17,6 @@ public class LevelManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManage
     
     public void Init(string stageClearCondition)
     {
-        Debug.Log($"LevelManager : {stageClearCondition}");
         string[] clearIndexs = stageClearCondition.Split(", ");
         foreach (var clearIndex in clearIndexs)
         {
