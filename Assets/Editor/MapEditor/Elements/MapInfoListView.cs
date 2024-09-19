@@ -38,6 +38,8 @@ public class MapInfoListView : ListView
             (visualElement as RowItem).TileId.text = _rowDatas[index].TileId;
             (visualElement as RowItem).SpawnNpc.text = _rowDatas[index].SpawnNpc;
             (visualElement as RowItem).SpawnObject.text = _rowDatas[index].SpawnObject;
+            (visualElement as RowItem).PlayerPosition.text = (_rowDatas[index].PlayerPosition) ? "TRUE" : "";
+            
             
             rowItem.SetSelected(IsItemSelected(index));
         };
@@ -89,6 +91,8 @@ public class MapInfoListView : ListView
             string tileId = tableData.LevelDataDictionary.GetValueOrDefault(nodeData.Key, "");
             string spawnNpc = (nodeData.Value.IsSpawnNPC) ? nodeData.Value.SpawnNpcType.ToString() : "";
             string spawnObject = (nodeData.Value.IsSpawnObject) ? nodeData.Value.SpawnObjectType.ToString() : "";
+            bool playerPosition = (tableData.PlayerPosition == new Vector2Int(pos.x, pos.y)) ? true : false;
+            
 
             RowData rowData = new RowData()
             {
@@ -99,6 +103,7 @@ public class MapInfoListView : ListView
                 TileId = tileId,
                 SpawnNpc = spawnNpc,
                 SpawnObject = spawnObject,
+                PlayerPosition = playerPosition,
             };
             _rowDatas.Add(rowData);
         }

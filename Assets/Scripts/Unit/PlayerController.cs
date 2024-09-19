@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Transform LogicHint;
+    public LogicHint LogicHint;
     
+    [ReadOnly]
     public Direction PlayerForwardType;
+    [ReadOnly]
     public Vector2Int PlayerPosition;
     public Vector2Int PlayerForwardPosition => PlayerPosition + PlayerForward;
     public Vector2Int PlayerForward
@@ -30,7 +32,7 @@ public class PlayerController : MonoBehaviour
     public void Init(Vector2Int position, Vector3 wolrdPosition, Direction forwardType)
     {
         transform.position = wolrdPosition;
-        transform.position = new Vector3(transform.position.x, 0.8f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, GameManager.Instance.PlayerPositionAdditive, transform.position.z);
         
         PlayerPosition = position;
         PlayerForwardType = forwardType;

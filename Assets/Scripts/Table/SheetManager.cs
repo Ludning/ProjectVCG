@@ -1,24 +1,18 @@
-
 using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using Cysharp.Threading.Tasks.Triggers;
-using UnityEditor.SceneManagement;
 using Oculus.Interaction;
 using System.Linq;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Rendering;
-using UnityEngine.Serialization;
-using UnityEngine.UIElements;
 
 public class SheetManager : MonoBehaviour
 {
     [SerializeField, ReadOnly] private bool _isLogicRunning = false;
     [SerializeField, ReadOnly] private bool _isExBlockLogic = false;
 
-    [FormerlySerializedAs("Stage")] [Header("Manager")] [SerializeField]
+    [Header("Manager")] [SerializeField]
     private StageManager StageManager;
 
     [SerializeField] private InteractableManager InteractableManager;
@@ -75,33 +69,33 @@ public class SheetManager : MonoBehaviour
         
         
         if (Input.GetKeyDown(KeyCode.C))
-            ClickLogic(BlockLogicType.Cook, InteractableButtons[BlockLogicType.Cook]);
+            ClickLogicButton(BlockLogicType.Cook, InteractableButtons[BlockLogicType.Cook]);
 
         if (Input.GetKeyDown(KeyCode.M))
-            ClickLogic(BlockLogicType.Move, InteractableButtons[BlockLogicType.Move]);
+            ClickLogicButton(BlockLogicType.Move, InteractableButtons[BlockLogicType.Move]);
 
         if (Input.GetKeyDown(KeyCode.P))
-            ClickLogic(BlockLogicType.PushItem, InteractableButtons[BlockLogicType.PushItem]);
+            ClickLogicButton(BlockLogicType.PushItem, InteractableButtons[BlockLogicType.PushItem]);
 
         if (Input.GetKeyDown(KeyCode.L))
-            ClickLogic(BlockLogicType.RotateLeft, InteractableButtons[BlockLogicType.RotateLeft]);
+            ClickLogicButton(BlockLogicType.RotateLeft, InteractableButtons[BlockLogicType.RotateLeft]);
 
         if (Input.GetKeyDown(KeyCode.R))
-            ClickLogic(BlockLogicType.RotateRight, InteractableButtons[BlockLogicType.RotateRight]);
+            ClickLogicButton(BlockLogicType.RotateRight, InteractableButtons[BlockLogicType.RotateRight]);
 
         if (Input.GetKeyDown(KeyCode.I))
-            ClickLogic(BlockLogicType.PopItem, InteractableButtons[BlockLogicType.PopItem]);
+            ClickLogicButton(BlockLogicType.PopItem, InteractableButtons[BlockLogicType.PopItem]);
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Debug.Log("Alpha1");
-            ClickLogic(BlockLogicType.Function, FunctionInteractableButtons.First().Value);
+            ClickLogicButton(BlockLogicType.Function, FunctionInteractableButtons.First().Value);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             Debug.Log("Alpha2");
-            ClickLogic(BlockLogicType.Repeat, RepeatInteractableButtons.First().Value);
+            ClickLogicButton(BlockLogicType.Repeat, RepeatInteractableButtons.First().Value);
         }
 
         if (Input.GetKeyDown(KeyCode.O))
@@ -196,11 +190,11 @@ public class SheetManager : MonoBehaviour
             case BlockLogicType.Clear:
                 return ClearAllBlockLogic;
             default:
-                return () => { ClickLogic(type, interactableUnityEventWrapper); };
+                return () => { ClickLogicButton(type, interactableUnityEventWrapper); };
         }
         return null;
     }
-    private void ClickLogic(BlockLogicType type, InteractableUnityEventWrapper interactableUnityEventWrapper)
+    private void ClickLogicButton(BlockLogicType type, InteractableUnityEventWrapper interactableUnityEventWrapper)
     {
         //함수 시트에 함수가 들어가지 못하게 막기용 기능
         if (_currentSheet != _mainBlockLogicBases)
@@ -213,6 +207,15 @@ public class SheetManager : MonoBehaviour
         AddOutlineComponent(tempPrefab);
 
         BlockLogicBase logicBase = Instantiate(tempPrefab).GetComponent<BlockLogicBase>();
+        var dataDictionary = DataManager.Instance.GetGameDataDictionary<CodingBlockData>();
+        foreach (var codingBlockData in dataDictionary.Values)
+        {
+            if (codingBlockData.Type == type)
+            {
+                logicBase.BlockIcon = ResourceManager.Instance.LoadResourceWithCaching<Sprite>(codingBlockData.IconBlock);
+                break;
+            }
+        }
         if (logicBase != null)
         {
             AddBlockLogic(logicBase);
@@ -226,6 +229,7 @@ public class SheetManager : MonoBehaviour
     }
     #endregion
     
+    #region 연습장
     private void OnClick_OpenExercise()
     {
         ExSheet.gameObject.SetActive(true);
@@ -239,6 +243,7 @@ public class SheetManager : MonoBehaviour
         _currentSheet = _sheetDictionary[0];
         _currentSheetParent = _sheetParentDictionary[0];
     }
+    #endregion
 
     public void SetRepeatCount(int index, int count)
     {
@@ -303,7 +308,7 @@ public class SheetManager : MonoBehaviour
         StageManager.TableManager.ClearTable();
     }
 
-    public void RunSheetBlock()
+    public async void RunSheetBlock()
     {
         if (_isLogicRunning == true)
         {
@@ -320,7 +325,39 @@ public class SheetManager : MonoBehaviour
         StageManager.InteractableManager.InteractableButtons[BlockLogicType.Start].gameObject.SetActive(false);
         StageManager.InteractableManager.InteractableButtons[BlockLogicType.Reset].gameObject.SetActive(true);
         _isLogicRunning = true;
-        RunBlockLogics(0).Forget();
+        ErrorType result = await RunBlockLogics(0);
+        OnTaskCompleted(result);
+    }
+
+    private void OnTaskCompleted(ErrorType type)
+    {
+        Debug.Log($"ErrorType : {type}");
+        if (type == ErrorType.StageClear)
+        {
+            if (GameManager.Instance.HasNextStage())
+            {
+                StageManager.ClearStage();
+                
+                //다음 스테이지가 있을 시 자동으로 넘어감
+                GameManager.Instance.SelectedStageIndex++;
+                StageManager.InitStage();
+                Debug.Log("다음 스테이지가 있을 시 자동으로 넘어감");
+            }
+            else
+            {
+                if (GameManager.Instance.HasNextChapter())
+                {
+                    //다음 스테이지가 없을 시 Clear Popup을 띄움
+                    StageManager.UIContainer.ClearPopup.gameObject.SetActive(true);
+                    Debug.Log("다음 스테이지가 없을 시 Clear Popup을 띄움");
+                }
+                else
+                {
+                    //다음 스테이지가 없고 다음 챕터도 없을 때는?
+                    Debug.Log("다음 스테이지가 없고 다음 챕터도 없을 때는?");
+                }
+            }
+        }
     }
 
     #region BlockLogic 구동부
@@ -334,9 +371,8 @@ public class SheetManager : MonoBehaviour
             if (result == ErrorType.StageClear)
             {
                 _isLogicRunning = false;
-                //TODO
-                //승리시 UI 출력
                 Debug.Log("StageClear");
+                GameManager.Instance.HasNextStage();
                 return ErrorType.StageClear;
             }
             if (result != ErrorType.NoError)
@@ -378,7 +414,8 @@ public class SheetManager : MonoBehaviour
                     return repeatResult;
             }
         }
-
+        
+        StageManager.Controller.LogicHint.SetLogicImage(blockLogic.BlockIcon);
         ErrorType result = blockLogic.IsExecutable(StageManager);
         if (result != ErrorType.NoError)
             return result;

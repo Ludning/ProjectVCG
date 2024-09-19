@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelUnitBase // Assets/Scripts/Recipe/RecipeBase.cs
 {
@@ -25,8 +26,15 @@ public class LevelUnitBase // Assets/Scripts/Recipe/RecipeBase.cs
     }
     public void Clear()
     {
-        if(LevelUnitUIElement != null)
+        if (LevelUnitUIElement != null)
+        {
+            LayoutGroup layoutGroup = LevelUnitUIElement.transform.parent.GetComponent<LayoutGroup>();
             Object.Destroy(LevelUnitUIElement.gameObject);
+            if (layoutGroup != null)
+            {
+                LayoutRebuilder.ForceRebuildLayoutImmediate(layoutGroup.GetComponent<RectTransform>());
+            }
+        }
     }
     private void ShowUI()
     {

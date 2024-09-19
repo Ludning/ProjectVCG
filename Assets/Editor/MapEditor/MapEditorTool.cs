@@ -81,6 +81,7 @@ public class MapEditorTool : EditorWindow
         header.TileId.text = "타일 아이디";
         header.SpawnObject.text = "스폰될 아이템";
         header.SpawnNpc.text = "스폰될 Npc";
+        header.PlayerPosition.text = "플레이어";
         
         
         // 스타일 설정 (필요에 따라 변경)

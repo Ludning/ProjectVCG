@@ -12,6 +12,7 @@ public enum LabelType
     TileId,
     SpawnNpc,
     SpawnObject,
+    PlayerPosition,
 }
 public class RowItem : VisualElement
 {
@@ -21,6 +22,7 @@ public class RowItem : VisualElement
     public Label TileId;
     public Label SpawnNpc;
     public Label SpawnObject;
+    public Label PlayerPosition;
     
     private bool _isSelected;
 
@@ -32,6 +34,7 @@ public class RowItem : VisualElement
         TileId = new Label();
         SpawnNpc = new Label();
         SpawnObject = new Label();
+        PlayerPosition = new Label();
         
         SetStyle(isHeader);
         
@@ -42,6 +45,7 @@ public class RowItem : VisualElement
         Add(TileId);
         Add(SpawnNpc);
         Add(SpawnObject);
+        Add(PlayerPosition);
     }
 
     private void SetStyle(bool isHeader = false)
@@ -57,6 +61,7 @@ public class RowItem : VisualElement
         SetLabelStyle(TileId, LabelType.TileId, isHeader);
         SetLabelStyle(SpawnNpc, LabelType.SpawnNpc, isHeader);
         SetLabelStyle(SpawnObject, LabelType.SpawnObject, isHeader);
+        SetLabelStyle(PlayerPosition, LabelType.PlayerPosition, isHeader);
     }
     private void SetLabelStyle(Label label, LabelType type, bool isHeader = false)
     {
@@ -73,28 +78,32 @@ public class RowItem : VisualElement
         switch (type)
         {
             case LabelType.Position:
+                label.style.minWidth = 40;
+                label.style.maxWidth = 40;
+                break;
+            case LabelType.TileType:
                 label.style.minWidth = 50;
                 label.style.maxWidth = 50;
                 break;
-            case LabelType.TileType:
+            case LabelType.TileDetail:
                 label.style.minWidth = 60;
                 label.style.maxWidth = 60;
                 break;
-            case LabelType.TileDetail:
+            case LabelType.TileId:
                 label.style.minWidth = 70;
                 label.style.maxWidth = 70;
-                break;
-            case LabelType.TileId:
-                label.style.minWidth = 80;
-                label.style.maxWidth = 80;
                 break;
             case LabelType.SpawnNpc:
                 label.style.minWidth = 110;
                 label.style.maxWidth = 110;
                 break;
             case LabelType.SpawnObject:
-                label.style.minWidth = 110;
-                label.style.maxWidth = 110;
+                label.style.minWidth = 120;
+                label.style.maxWidth = 120;
+                break;
+            case LabelType.PlayerPosition:
+                label.style.minWidth = 30;
+                label.style.maxWidth = 30;
                 break;
         }
     }

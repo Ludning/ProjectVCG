@@ -93,6 +93,18 @@
     "Icon_Npc_European_Male": "Assets/Resources_Addressable/Textures/Npc/Icon_Npc_European_Male.png",
     "Icon_Npc_European_Female": "Assets/Resources_Addressable/Textures/Npc/Icon_Npc_European_Female.png",
     "Icon_Npc_African_Female": "Assets/Resources_Addressable/Textures/Npc/Icon_Npc_African_Female.png",
-    "Icon_Npc_African_Male": "Assets/Resources_Addressable/Textures/Npc/Icon_Npc_African_Male.png"
+    "Icon_Npc_African_Male": "Assets/Resources_Addressable/Textures/Npc/Icon_Npc_African_Male.png",
+    "icon_start": "Assets/Resources_Addressable/Textures/BlockLogics/icon_start.png",
+    "icon_reset": "Assets/Resources_Addressable/Textures/BlockLogics/icon_reset.png",
+    "icon_clear": "Assets/Resources_Addressable/Textures/BlockLogics/icon_clear.png",
+    "icon_move": "Assets/Resources_Addressable/Textures/BlockLogics/icon_move.png",
+    "icon_dash": "Assets/Resources_Addressable/Textures/BlockLogics/icon_dash.png",
+    "icon_left": "Assets/Resources_Addressable/Textures/BlockLogics/icon_left.png",
+    "icon_right": "Assets/Resources_Addressable/Textures/BlockLogics/icon_right.png",
+    "icon_turnback": "Assets/Resources_Addressable/Textures/BlockLogics/icon_turnback.png",
+    "icon_putdown": "Assets/Resources_Addressable/Textures/BlockLogics/icon_pickdown.png",
+    "icon_pickup": "Assets/Resources_Addressable/Textures/BlockLogics/icon_pickup.png",
+    "icon_function": "Assets/Resources_Addressable/Textures/BlockLogics/icon_function.png",
+    "icon_repeat": "Assets/Resources_Addressable/Textures/BlockLogics/icon_repeat.png"
   }
 }

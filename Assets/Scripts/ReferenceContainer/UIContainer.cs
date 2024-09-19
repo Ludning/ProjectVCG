@@ -7,42 +7,42 @@ public class UIContainer : MonoBehaviour
 {
     public ChapterSelectPopup ChapterSelectPopup;
     public StageSelectPopup StageSelectPopup;
-    public StageClearPopup StageClearPopup;
     public NPCMessagePopup NPCMessagePopup;
-    [FormerlySerializedAs("RecipePopup")] public LevelPopup levelPopup;
+    public LevelPopup levelPopup;
     public GameMenuPopup GameMenuPopup;
     public InventoryPopup InventoryPopup;
+    public ClearPopup ClearPopup;
 
-    private void OnEnable()
-    {
-        ChapterSelectPopup.gameObject.SetActive(true);
-        StageSelectPopup.gameObject.SetActive(false);
-        StageClearPopup.gameObject.SetActive(false);
-        NPCMessagePopup.gameObject.SetActive(false);
-        levelPopup.gameObject.SetActive(false);
-        GameMenuPopup.gameObject.SetActive(false);
-        InventoryPopup.gameObject.SetActive(false);
-    }
-
-    public void Init()
+    public void InitGame()
     {
         ChapterSelectPopup.gameObject.SetActive(false);
         StageSelectPopup.gameObject.SetActive(false);
-        StageClearPopup.gameObject.SetActive(false);
         NPCMessagePopup.gameObject.SetActive(false);
         levelPopup.gameObject.SetActive(true);
         GameMenuPopup.gameObject.SetActive(true);
         InventoryPopup.gameObject.SetActive(true);
+        ClearPopup.gameObject.SetActive(false);
     }
     
-    public void Clear()
+    public void InitStageSelect()
     {
         ChapterSelectPopup.gameObject.SetActive(true);
         StageSelectPopup.gameObject.SetActive(false);
-        StageClearPopup.gameObject.SetActive(false);
         NPCMessagePopup.gameObject.SetActive(false);
         levelPopup.gameObject.SetActive(false);
         GameMenuPopup.gameObject.SetActive(false);
         InventoryPopup.gameObject.SetActive(false);
+        ClearPopup.gameObject.SetActive(false);
+    }
+
+    public void Clear()
+    {
+        ChapterSelectPopup.gameObject.SetActive(false);
+        StageSelectPopup.gameObject.SetActive(false);
+        NPCMessagePopup.gameObject.SetActive(false);
+        levelPopup.gameObject.SetActive(false);
+        GameMenuPopup.gameObject.SetActive(false);
+        InventoryPopup.gameObject.SetActive(false);
+        ClearPopup.gameObject.SetActive(false);
     }
 }

@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -18,26 +20,34 @@ public class StageManager : MonoBehaviour
     public PlayerController Controller;
     public PlayerInventory Inventory;
 
-    private StageData StageData;
-    
-    public void InitStage(StageData stageData)
+
+    public void InitStage()
     {
-        StageData = stageData;
+        StageData stageData = GameManager.Instance.GetCurrentStageData();
         
         Controller.gameObject.SetActive(true);
         Items.SetActive(true);
         
-        TableData tableData = DataManager.Instance.GetTableData(StageData.Index);
+        TableData tableData = DataManager.Instance.GetTableData(stageData.Index);
         
         TableManager.InitTable(tableData);
         Vector3 playerPosition = TableManager.GetTilePosition(tableData.PlayerPosition);
         Controller.Init(tableData.PlayerPosition, playerPosition, tableData.PlayerDirection);
         InteractableManager.Init(stageData.ShowBlock);
         SheetManager.Init();
-        UIContainer.Init();
+        UIContainer.InitGame();
         levelManager.Init(stageData.StageClearCondition);
     }
-
+    public void InitMain()
+    {
+        TableManager.Clear();
+        SheetManager.Clear();
+        InteractableManager.Clear();
+        levelManager.Clear();
+        NPCManager.Clear();
+        UIContainer.InitStageSelect();
+        Clear();
+    }
     public void ClearStage()
     {
         TableManager.Clear();

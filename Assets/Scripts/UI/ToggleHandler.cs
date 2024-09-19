@@ -33,9 +33,11 @@ public class ToggleHandler : MonoBehaviour
         switch (type)
         {
             case ValueType.Chapter:
+                Debug.Log(Value);
                 GameManager.Instance.SelectedChapterIndex = Value;
                 break;
             case ValueType.Stage:
+                Debug.Log(Value);
                 GameManager.Instance.SelectedStageIndex = Value;
                 break;
         }

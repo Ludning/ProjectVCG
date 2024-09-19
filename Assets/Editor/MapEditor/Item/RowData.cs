@@ -11,4 +11,5 @@ public class RowData
     public string TileId { get; set; }
     public string SpawnNpc { get; set; }
     public string SpawnObject { get; set; }
+    public bool PlayerPosition { get; set; }
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class BlockLogicBase : MonoBehaviour
 {
+    public Sprite BlockIcon = null;
     public virtual ErrorType IsExecutable(StageManager owner)
     {
         return ErrorType.UnKnownError;

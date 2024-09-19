@@ -1,16 +1,24 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelPopup : MonoBehaviour, IUIBase // Assets/Scripts/UI/RecipePopup.cs
 {
     public Transform LevelUIParent;
     
+    public LayoutGroup layoutGroup;
+
+    public void Reset()
+    {
+        if (layoutGroup != null)
+            LayoutRebuilder.ForceRebuildLayoutImmediate(layoutGroup.GetComponent<RectTransform>());
+    }
     /*// 한 스테이지 내의 모든 레시피를 등록하는 함수
     public void Init()
     {
-        
+
     }
-    
+
     // UI 화면에 레시피를 출력하는 함수
     public void AddLevel(GameObject levelUIElement)
     {
@@ -22,7 +30,7 @@ public class LevelPopup : MonoBehaviour, IUIBase // Assets/Scripts/UI/RecipePopu
 
     public void ClearLevel()
     {
-        
+
     }*/
     
     // UI 화면에서 레시피를 삭제하는 함수

@@ -13,28 +13,22 @@ public class StageSelectPopup : MonoBehaviour, IUIBase
     public Button PrevChapterBtn;
     public Button NextChapterBtn;
 
-    public List<StageData> StageDatas = new List<StageData>();
-
     public void OnClick_OK()
     {
-        if (GameManager.Instance.SelectedStageIndex == 0)
-            return;
-        if (StageDatas == null || StageDatas.Count == 0)
+        int chapter = GameManager.Instance.SelectedChapterIndex;
+        int stage = GameManager.Instance.SelectedStageIndex;
+        Debug.Log($"{chapter}, {stage}");
+        
+        if (GameManager.Instance.OutOfRange_StageIndex(chapter))
             return;
         
-        int stageIndex = GameManager.Instance.SelectedStageIndex;
-
-        StageData stageData = GameManager.Instance.GetStage(StageDatas, stageIndex);
-        
-        StageManager.InitStage(stageData);
+        StageManager.InitStage();
         
         this.gameObject.SetActive(false);
     }
     public void OnClick_Back()
     {
-        StageDatas.Clear();
-        
-        GameManager.Instance.SelectedStageIndex = 0;
+        GameManager.Instance.SelectedStageIndex = -1;
         PrevUI.SetActive(true);
         this.gameObject.SetActive(false);
     }
@@ -73,9 +67,29 @@ public class StageSelectPopup : MonoBehaviour, IUIBase
         GameObject buttonTogglePrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("ButtonToggle");
         
         int chapterIndex = GameManager.Instance.SelectedChapterIndex;
-        StageDatas = GameManager.Instance.GetChapterStageList(chapterIndex);
+        //StageDatas = GameManager.Instance.GetChapterStageList(chapterIndex);
+
+        Debug.Log($"chapterIndex = {chapterIndex}");
+        Debug.Log($"firstChapterIndex = {GameManager.Instance.firstChapterIndex}");
+        Debug.Log($"lastChapterIndex = {GameManager.Instance.lastChapterIndex}");
         
-        switch (chapterIndex)
+        if (chapterIndex == GameManager.Instance.firstChapterIndex)
+        {
+            PrevChapterBtn.gameObject.SetActive(false);
+            NextChapterBtn.gameObject.SetActive(true);
+        }
+        else if (chapterIndex == GameManager.Instance.firstChapterIndex)
+        {
+            PrevChapterBtn.gameObject.SetActive(true);
+            NextChapterBtn.gameObject.SetActive(false);
+        }
+        else
+        {
+            PrevChapterBtn.gameObject.SetActive(true);
+            NextChapterBtn.gameObject.SetActive(true);
+        }
+        
+        /*switch (chapterIndex)
         {
             case 1:
                 PrevChapterBtn.gameObject.SetActive(false);
@@ -87,18 +101,20 @@ public class StageSelectPopup : MonoBehaviour, IUIBase
             case 3:
                 NextChapterBtn.gameObject.SetActive(false);
                 break;
-        }
+        }*/
         ChapterText.text = $"{chapterIndex}챕터 \n 스테이지 선택";
 
-        foreach (var stageData in StageDatas)
+        List<int> stageIndexList = GameManager.Instance.GetStageIndexList(chapterIndex);
+        
+        foreach (var stageIndex in stageIndexList)
         {
             ToggleHandler handler = Instantiate(buttonTogglePrefab, ToggleGroup.transform).GetComponent<ToggleHandler>();
             handler.type = ValueType.Stage;
-            handler.Value = stageData.Stage;
-            handler.Context.text = $"{stageData.Chapter} - {stageData.Stage}";
+            handler.Value = stageIndex;
+            handler.Context.text = $"{chapterIndex} - {stageIndex}";
             
             handler.toggle.onValueChanged.AddListener(handler.OnToggleValueChanged);
-            handler.GetComponent<Toggle>().group = ToggleGroup;
+            handler.toggle.group = ToggleGroup;
         }
     }
 }
