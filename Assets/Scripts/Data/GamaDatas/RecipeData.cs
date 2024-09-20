@@ -5,10 +5,10 @@ public class RecipeData
 {
     public string Index;
     public string Name;
-    public string Product;
-    public string Cookery;
-    public string Ingre_01;
-    public string Ingre_02;
-    public string Ingre_03;
-    public string Ingre_04;
+    public ItemType Product;
+    public CookingPropertyType Cookery;
+    public ItemType Ingre_01;
+    public ItemType Ingre_02;
+    public ItemType Ingre_03;
+    public ItemType Ingre_04;
 }

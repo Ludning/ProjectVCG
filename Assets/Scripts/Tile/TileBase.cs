@@ -12,7 +12,7 @@ public class TileBase : MonoBehaviour
     public string LevelKey;
     private int InventoryCount = 0;
 
-    public ItemBase NoRimitItemMesh;
+    public GameObject DisplayMesh;
     
     public Stack<ItemBase> InventoryStack = new Stack<ItemBase>();
 
@@ -23,8 +23,7 @@ public class TileBase : MonoBehaviour
     public bool IsCookAble => (TileAttributeType & TileAttributeType.Cookable) != 0;
     public bool IsInventoryEmpty => (InventoryCount == 0) ? true : false;
     public bool IsInventoryEmptyOrFull => (InventoryCount == 0 || InventoryStack.Count == InventoryCount) ? true : false;
-
-
+    
     public void InitTile(NodeData nodeData, string levelIndex)
     {
         LevelKey = levelIndex;
@@ -88,22 +87,28 @@ public class TileBase : MonoBehaviour
         return attributes;
     }
 
-    public List<string> GetItemNameList()
+    public List<ItemType> GetItemTypeList()
     {
-        List<string> itemNames = new List<string>();
+        List<ItemType> itemTypes = new List<ItemType>();
 
         foreach (ItemBase item in InventoryStack)
         {
-            itemNames.Add(item.ItemName);
+            itemTypes.Add(item.ItemType);
         }
 
-        return itemNames;
+        return itemTypes;
     }
     //아이템을 가져가는 함수
     public ItemBase TakeItem()
     {
         if (InventoryCount == -1)
-            return Instantiate(NoRimitItemMesh.gameObject).GetComponent<ItemBase>();
+        {
+            if (Instantiate(DisplayMesh).TryGetComponent(out ItemBase itemBase))
+                return itemBase;
+            Debug.Log("Error TakeItem DisplayMesh Dont Have ItemBase Component");
+            return null;
+        }
+            
         return InventoryStack.Count > 0 ? InventoryStack.Pop() : null;
     }
     //아이템을 놓는 함수
@@ -111,12 +116,13 @@ public class TileBase : MonoBehaviour
     {
         InventoryStack.Push(item);
         item.transform.SetParent(transform, false);
-        item.transform.localPosition = transform.position + Vector3.up * 1.5f;
+        item.transform.localPosition = transform.position + Vector3.up * GameManager.Instance.ItemPositionAdditive;
     }
     public void ClearItem()
     {
         foreach (var itemBase in InventoryStack)
             Destroy(itemBase);
+        Destroy(DisplayMesh);
         InventoryStack.Clear();
     }
     public void OnItemSpawn()

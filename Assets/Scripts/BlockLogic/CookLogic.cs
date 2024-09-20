@@ -20,7 +20,7 @@ public class CookLogic : BlockLogicBase
             return ErrorType.NoIngredientOnTile;
 
         //타일 아이템 리스트 반환
-        if (!owner.TableManager.TryGetTileItemNameList(position, out List<string> itemNameList))
+        if (!owner.TableManager.TryGetTileItemNameList(position, out List<ItemType> itemTypeList))
             return ErrorType.UnKnownError;
         
         //레벨 체크 (이번 조리가 레시피랑 일치한지)

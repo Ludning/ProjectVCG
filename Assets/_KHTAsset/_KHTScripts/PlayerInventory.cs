@@ -1,12 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    int MaxCount = 10;
     Stack<ItemBase> itemStack = new Stack<ItemBase>();
     [SerializeField] Transform inventoryParent;
+    
     public Vector3 ItemStackPosition
     {
         get
@@ -15,11 +16,20 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    public bool IsInventoryOverflow => itemStack.Count >= MaxCount;
+    public bool IsInventoryOverflow => itemStack.Count >= DataManager.Instance.GetGameData<PcData>("0").InventoryMax;
 
+    public void Init()
+    {
+        
+    }
+    public void Clear()
+    {
+        itemStack.Clear();
+    }
+    
     public void PushItem(ItemBase item)
     {
-        if(itemStack.Count < MaxCount)
+        if(itemStack.Count < DataManager.Instance.GetGameData<PcData>("0").InventoryMax)
         {
             item.transform.SetParent(inventoryParent);
             

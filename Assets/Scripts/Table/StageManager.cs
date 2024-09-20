@@ -20,24 +20,7 @@ public class StageManager : MonoBehaviour
     public PlayerController Controller;
     public PlayerInventory Inventory;
 
-
-    public void InitStage()
-    {
-        StageData stageData = GameManager.Instance.GetCurrentStageData();
-        
-        Controller.gameObject.SetActive(true);
-        Items.SetActive(true);
-        
-        TableData tableData = DataManager.Instance.GetTableData(stageData.Index);
-        
-        TableManager.InitTable(tableData);
-        Vector3 playerPosition = TableManager.GetTilePosition(tableData.PlayerPosition);
-        Controller.Init(tableData.PlayerPosition, playerPosition, tableData.PlayerDirection);
-        InteractableManager.Init(stageData.ShowBlock);
-        SheetManager.Init();
-        UIContainer.InitGame();
-        levelManager.Init(stageData.StageClearCondition);
-    }
+    //메인화면(스테이지선택화면)으로 초기화
     public void InitMain()
     {
         TableManager.Clear();
@@ -48,6 +31,27 @@ public class StageManager : MonoBehaviour
         UIContainer.InitStageSelect();
         Clear();
     }
+
+    //스테이지 초기화
+    public void InitStage()
+    {
+        StageData stageData = GameManager.Instance.GetCurrentStageData();
+        
+        Controller.gameObject.SetActive(true);
+        Items.SetActive(true);
+        
+        TableData tableData = DataManager.Instance.GetTableData(stageData.Index);
+        
+        TableManager.InitTable(tableData);
+        /*Vector3 playerPosition = TableManager.GetTilePosition(tableData.PlayerPosition, PositionType.Player);
+        Controller.Init(tableData.PlayerPosition, playerPosition, tableData.PlayerDirection);*/
+        InteractableManager.Init(stageData.ShowBlock);
+        SheetManager.Init();
+        UIContainer.InitGame();
+        levelManager.Init(stageData.StageClearCondition);
+    }
+    
+    //스테이지 비우기
     public void ClearStage()
     {
         TableManager.Clear();
@@ -56,6 +60,8 @@ public class StageManager : MonoBehaviour
         levelManager.Clear();
         NPCManager.Clear();
         UIContainer.Clear();
+        Controller.Clear();
+        Inventory.Clear();
         Clear();
     }
     public void Clear()

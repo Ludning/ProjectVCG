@@ -6,14 +6,14 @@ public class RotateLeftLogic : BlockLogicBase
 	
     public override ErrorType IsExecutable(StageManager owner)
     {
-        playerTargetRot = owner.Controller.transform.rotation * Quaternion.Euler(new Vector3(0, -90, 0));
+        playerTargetRot = owner.Controller.transform.localRotation * Quaternion.Euler(new Vector3(0, -90, 0));
         return ErrorType.NoError;
     }
 
     public override LogicState Execute(StageManager owner)
     {
-        Quaternion playerCurrentRot = owner.Controller.transform.rotation;
-        owner.Controller.transform.rotation = Quaternion.Lerp(playerCurrentRot, playerTargetRot, 0.1f);
+        Quaternion playerCurrentRot = owner.Controller.transform.localRotation;
+        owner.Controller.transform.localRotation = Quaternion.Lerp(playerCurrentRot, playerTargetRot, 0.1f);
 
         if (Quaternion.Angle(playerCurrentRot,playerTargetRot) < 0.1f)
         {

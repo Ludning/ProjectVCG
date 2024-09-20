@@ -2,5 +2,5 @@ using UnityEngine;
 
 public class ItemBase : MonoBehaviour
 {
-    public string ItemName { get; private set; }
+    public ItemType ItemType { get; set; }
 }

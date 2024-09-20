@@ -32,7 +32,7 @@ public enum SortClearType
 
 public enum ItemType
 {
-    Null,
+    NULL,
     SHRIMP = 15001,
     RICE = 15002,
     FISH = 15003,
@@ -117,8 +117,8 @@ public enum BlockLogicType
     Function,
     Repeat,
     Start,
-    Clear,
-    Reset,
+    Clear, //
+    Reset, //
 }
 public enum Rotate
 {

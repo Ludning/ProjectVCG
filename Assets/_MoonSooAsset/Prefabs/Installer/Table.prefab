@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6255363202120301756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9207040927495621281}
+  m_Layer: 0
+  m_Name: Npcs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9207040927495621281
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6255363202120301756}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5582274363760482868}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7634300203167344618
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,6 +137,7 @@ Transform:
   m_Children:
   - {fileID: 5883153139393230488}
   - {fileID: 6837109035535172099}
+  - {fileID: 9207040927495621281}
   - {fileID: 6626303195357419279}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -170,7 +202,17 @@ PrefabInstance:
     - target: {fileID: 5149776923026234145, guid: e8bcfa07eb37d7545b6ae472fa89fb83,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5930694052329698802, guid: e8bcfa07eb37d7545b6ae472fa89fb83,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5930694052329698802, guid: e8bcfa07eb37d7545b6ae472fa89fb83,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6876798800688087862, guid: e8bcfa07eb37d7545b6ae472fa89fb83,
         type: 3}
@@ -242,14 +284,54 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8810234248744020966, guid: e8bcfa07eb37d7545b6ae472fa89fb83,
+        type: 3}
+      propertyPath: LogicHint
+      value: 
+      objectReference: {fileID: 6999951072265341229}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8117264724985339481, guid: e8bcfa07eb37d7545b6ae472fa89fb83,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6999951072265341229}
   m_SourcePrefab: {fileID: 100100000, guid: e8bcfa07eb37d7545b6ae472fa89fb83, type: 3}
+--- !u!114 &5332132693043446792 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5577037281645170737, guid: e8bcfa07eb37d7545b6ae472fa89fb83,
+    type: 3}
+  m_PrefabInstance: {fileID: 331603588982248505}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6626303195357419279 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6876798800688087862, guid: e8bcfa07eb37d7545b6ae472fa89fb83,
     type: 3}
   m_PrefabInstance: {fileID: 331603588982248505}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8375647436609636960 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8117264724985339481, guid: e8bcfa07eb37d7545b6ae472fa89fb83,
+    type: 3}
+  m_PrefabInstance: {fileID: 331603588982248505}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6999951072265341229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8375647436609636960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23774fe202f156b469b760efc8daf1c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Image: {fileID: 5332132693043446792}

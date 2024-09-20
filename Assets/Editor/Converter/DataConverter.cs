@@ -124,14 +124,17 @@ public class DataConverter
                 // T가 클래스인 경우
                 var obj = Activator.CreateInstance<T>(); // T에 대해 객체 생성
 
-                
                 foreach (var fieldInfo in fieldInfos)
                 {
                     Type type = fieldInfo.FieldType;
+                    Debug.Log($"DataType : {typeof(T)}, FieldType : {type}");
                     if (type.IsEnum)
                     {
                         var value = table.Rows[i].ItemArray[columnTypeDic[fieldInfo.Name]].ToString();
-                        fieldInfo.SetValue(obj, Enum.Parse(type, value));
+                        if (!string.IsNullOrEmpty(value) && Enum.IsDefined(fieldInfo.FieldType, value))
+                            fieldInfo.SetValue(obj, Enum.Parse(type, value));
+                        else
+                            fieldInfo.SetValue(obj, Enum.GetValues(fieldInfo.FieldType).GetValue(0));
                     }
                     else if (type == typeof(string))
                     {

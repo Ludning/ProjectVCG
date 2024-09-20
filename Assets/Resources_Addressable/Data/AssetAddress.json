@@ -44,7 +44,13 @@
     "ServingUnitUIElement": "Assets/Resources_Addressable/Prefabs/WorldUI/Elements/ServingUnitUIElement.prefab",
     "RecipeUnitUIElement": "Assets/Resources_Addressable/Prefabs/WorldUI/Elements/RecipeUnitUIElement.prefab",
     "RecipeUnit_ClearUIElement": "Assets/Resources_Addressable/Prefabs/WorldUI/Elements/RecipeUnit_ClearUIElement.prefab",
-    "IngredientUIElement": "Assets/Resources_Addressable/Prefabs/WorldUI/Elements/IngredientUIElement.prefab"
+    "IngredientUIElement": "Assets/Resources_Addressable/Prefabs/WorldUI/Elements/IngredientUIElement.prefab",
+    "African_Female": "Assets/Resources_Addressable/Prefabs/Npcs/African_Female.prefab",
+    "African_Male": "Assets/Resources_Addressable/Prefabs/Npcs/African_Male.prefab",
+    "Asian_Female": "Assets/Resources_Addressable/Prefabs/Npcs/Asian_Female.prefab",
+    "Asian_Male": "Assets/Resources_Addressable/Prefabs/Npcs/Asian_Male.prefab",
+    "European_Female": "Assets/Resources_Addressable/Prefabs/Npcs/European_Female.prefab",
+    "European_Male": "Assets/Resources_Addressable/Prefabs/Npcs/European_Male.prefab"
   },
   "Material": {
     "TempMat": "Assets/Resources_Addressable/Materials/Logic/TempMat.mat",

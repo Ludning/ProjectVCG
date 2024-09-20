@@ -22,5 +22,4 @@ public class LevelData
     public string Tile_Key;
     public string Contents_Key;
     public string Contents_Count;
-    public string NPC_Index;
 }

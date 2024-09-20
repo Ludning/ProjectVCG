@@ -24,7 +24,7 @@ public class PopItemLogic : BlockLogicBase
         var position = owner.Controller.PlayerForwardPosition;
         var item = owner.Inventory.PopItem(position);
         owner.TableManager.PushTileItem(position, item);
-        item.transform.position = owner.TableManager.GetTilePosition(position);
+        item.transform.position = owner.TableManager.GetTilePosition(position, PositionType.Item);
         return LogicState.Success;
     }
     public override void CheakClear(StageManager owner)

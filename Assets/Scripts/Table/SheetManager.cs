@@ -363,6 +363,7 @@ public class SheetManager : MonoBehaviour
     #region BlockLogic 구동부
     async UniTask<ErrorType> RunBlockLogics(int sheetIndex)
     {
+        StageManager.Controller.LogicHint.HideLogicHint();
         int tempLenght = 0;
 
         foreach (var blockLogic in _sheetDictionary[sheetIndex])
@@ -370,6 +371,7 @@ public class SheetManager : MonoBehaviour
             ErrorType result = await RunBlockLogic(blockLogic);
             if (result == ErrorType.StageClear)
             {
+                StageManager.Controller.LogicHint.HideLogicHint();
                 _isLogicRunning = false;
                 Debug.Log("StageClear");
                 GameManager.Instance.HasNextStage();
@@ -415,6 +417,7 @@ public class SheetManager : MonoBehaviour
             }
         }
         
+        StageManager.Controller.LogicHint.ShowLogicHint();
         StageManager.Controller.LogicHint.SetLogicImage(blockLogic.BlockIcon);
         ErrorType result = blockLogic.IsExecutable(StageManager);
         if (result != ErrorType.NoError)

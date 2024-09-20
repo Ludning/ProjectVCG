@@ -28,7 +28,7 @@ public class DashLogic : BlockLogicBase
         Debug.Log("Execute");
         var targetPosition = owner.Controller.PlayerForwardPosition;
 
-        Vector3 targetWorldPosition = owner.TableManager.GetTilePosition(targetPosition);
+        Vector3 targetWorldPosition = owner.TableManager.GetTilePosition(targetPosition, PositionType.Player);
         Vector3 playerWorldPosition = owner.Controller.transform.position;
         owner.Controller.transform.position =
             Vector3.Lerp(owner.Controller.transform.position, targetWorldPosition, 0.1f);

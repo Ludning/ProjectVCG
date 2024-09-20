@@ -153,8 +153,8 @@
       "Index": "999",
       "Description": "반복함수 블록",
       "Type": 9,
-      "IconBlock": "icon_timefunction",
-      "AnimationKey": "anim_timefunction",
+      "IconBlock": "icon_repeat",
+      "AnimationKey": "anim_repeat",
       "MoveDistance": "",
       "Angle": "",
       "Distance": ""
@@ -698,8 +698,7 @@
       "Recipe_Index": "",
       "Tile_Key": "1",
       "Contents_Key": "",
-      "Contents_Count": "",
-      "NPC_Index": ""
+      "Contents_Count": ""
     },
     "4001": {
       "Index": "4001",
@@ -710,8 +709,7 @@
       "Recipe_Index": "",
       "Tile_Key": "2",
       "Contents_Key": "",
-      "Contents_Count": "",
-      "NPC_Index": ""
+      "Contents_Count": ""
     },
     "4100": {
       "Index": "4100",
@@ -722,8 +720,7 @@
       "Recipe_Index": "",
       "Tile_Key": "3",
       "Contents_Key": "POT_RICE",
-      "Contents_Count": "1",
-      "NPC_Index": "15"
+      "Contents_Count": "1"
     },
     "4101": {
       "Index": "4101",
@@ -734,8 +731,7 @@
       "Recipe_Index": "",
       "Tile_Key": "4",
       "Contents_Key": "CUT_SHRIMP",
-      "Contents_Count": "1",
-      "NPC_Index": "16"
+      "Contents_Count": "1"
     },
     "4102": {
       "Index": "4102",
@@ -746,8 +742,7 @@
       "Recipe_Index": "",
       "Tile_Key": "5",
       "Contents_Key": "FRYER_SHRIMP",
-      "Contents_Count": "1",
-      "NPC_Index": "13"
+      "Contents_Count": "1"
     },
     "4103": {
       "Index": "4103",
@@ -758,8 +753,7 @@
       "Recipe_Index": "",
       "Tile_Key": "6",
       "Contents_Key": "FRYER_SHRIMP",
-      "Contents_Count": "1",
-      "NPC_Index": "14"
+      "Contents_Count": "1"
     },
     "4200": {
       "Index": "4200",
@@ -770,8 +764,7 @@
       "Recipe_Index": "20001",
       "Tile_Key": "",
       "Contents_Key": "CUT_SHRIMP",
-      "Contents_Count": "1",
-      "NPC_Index": ""
+      "Contents_Count": "1"
     },
     "4201": {
       "Index": "4201",
@@ -782,8 +775,7 @@
       "Recipe_Index": "20003",
       "Tile_Key": "",
       "Contents_Key": "FRYER_SHRIMP",
-      "Contents_Count": "1",
-      "NPC_Index": ""
+      "Contents_Count": "1"
     },
     "4202": {
       "Index": "4202",
@@ -794,8 +786,7 @@
       "Recipe_Index": "20002",
       "Tile_Key": "",
       "Contents_Key": "POT_RICE",
-      "Contents_Count": "2",
-      "NPC_Index": ""
+      "Contents_Count": "2"
     },
     "4203": {
       "Index": "4203",
@@ -806,8 +797,7 @@
       "Recipe_Index": "21001",
       "Tile_Key": "",
       "Contents_Key": "SUSHI_SHRIMP",
-      "Contents_Count": "1",
-      "NPC_Index": ""
+      "Contents_Count": "1"
     },
     "4204": {
       "Index": "4204",
@@ -818,8 +808,7 @@
       "Recipe_Index": "21002",
       "Tile_Key": "",
       "Contents_Key": "EBIDON",
-      "Contents_Count": "1",
-      "NPC_Index": ""
+      "Contents_Count": "1"
     },
     "4205": {
       "Index": "4205",
@@ -830,8 +819,7 @@
       "Recipe_Index": "20004",
       "Tile_Key": "",
       "Contents_Key": "CUT_FISH",
-      "Contents_Count": "2",
-      "NPC_Index": ""
+      "Contents_Count": "2"
     },
     "4206": {
       "Index": "4206",
@@ -842,8 +830,7 @@
       "Recipe_Index": "20001",
       "Tile_Key": "",
       "Contents_Key": "CUT_SHRIMP",
-      "Contents_Count": "1",
-      "NPC_Index": ""
+      "Contents_Count": "1"
     },
     "4207": {
       "Index": "4207",
@@ -854,8 +841,7 @@
       "Recipe_Index": "20003",
       "Tile_Key": "",
       "Contents_Key": "FRYER_SHRIMP",
-      "Contents_Count": "1",
-      "NPC_Index": ""
+      "Contents_Count": "1"
     },
     "4208": {
       "Index": "4208",
@@ -866,8 +852,7 @@
       "Recipe_Index": "21001",
       "Tile_Key": "",
       "Contents_Key": "SUSHI_SHRIMP",
-      "Contents_Count": "1",
-      "NPC_Index": ""
+      "Contents_Count": "1"
     },
     "4209": {
       "Index": "4209",
@@ -878,8 +863,7 @@
       "Recipe_Index": "21002",
       "Tile_Key": "",
       "Contents_Key": "EBIDON",
-      "Contents_Count": "1",
-      "NPC_Index": ""
+      "Contents_Count": "1"
     },
     "4104": {
       "Index": "4104",
@@ -890,8 +874,7 @@
       "Recipe_Index": "",
       "Tile_Key": "7",
       "Contents_Key": "CUT_FISH",
-      "Contents_Count": "1",
-      "NPC_Index": "11"
+      "Contents_Count": "1"
     },
     "4105": {
       "Index": "4105",
@@ -902,8 +885,7 @@
       "Recipe_Index": "",
       "Tile_Key": "8",
       "Contents_Key": "CUT_FISH",
-      "Contents_Count": "1",
-      "NPC_Index": "12"
+      "Contents_Count": "1"
     },
     "4106": {
       "Index": "4106",
@@ -914,8 +896,7 @@
       "Recipe_Index": "",
       "Tile_Key": "9",
       "Contents_Key": "CUT_FISH",
-      "Contents_Count": "1",
-      "NPC_Index": "15"
+      "Contents_Count": "1"
     },
     "4210": {
       "Index": "4210",
@@ -926,8 +907,7 @@
       "Recipe_Index": "20004",
       "Tile_Key": "",
       "Contents_Key": "CUT_FISH",
-      "Contents_Count": "2",
-      "NPC_Index": ""
+      "Contents_Count": "2"
     }
   },
   "Tile": {
@@ -1164,62 +1144,62 @@
     "20001": {
       "Index": "20001",
       "Name": "자른 새우(새우회) 만드는 레시피 레시피",
-      "Product": "CUT_SHRIMP",
-      "Cookery": "CUT",
-      "Ingre_01": "SHRIMP",
-      "Ingre_02": "",
-      "Ingre_03": "",
-      "Ingre_04": ""
+      "Product": 15504,
+      "Cookery": 30000,
+      "Ingre_01": 15001,
+      "Ingre_02": 0,
+      "Ingre_03": 0,
+      "Ingre_04": 0
     },
     "20002": {
       "Index": "20002",
       "Name": "밥짓는 레시피",
-      "Product": "POT_RICE",
-      "Cookery": "POT",
-      "Ingre_01": "RICE",
-      "Ingre_02": "",
-      "Ingre_03": "",
-      "Ingre_04": ""
+      "Product": 15502,
+      "Cookery": 30001,
+      "Ingre_01": 15002,
+      "Ingre_02": 0,
+      "Ingre_03": 0,
+      "Ingre_04": 0
     },
     "20003": {
       "Index": "20003",
       "Name": "튀긴 새우 만드는 레시피 레시피",
-      "Product": "FRYER_SHRIMP",
-      "Cookery": "FRYER",
-      "Ingre_01": "SHRIMP",
-      "Ingre_02": "",
-      "Ingre_03": "",
-      "Ingre_04": ""
+      "Product": 15512,
+      "Cookery": 30003,
+      "Ingre_01": 15001,
+      "Ingre_02": 0,
+      "Ingre_03": 0,
+      "Ingre_04": 0
     },
     "20004": {
       "Index": "20004",
       "Name": "생선회 레시피",
-      "Product": "CUT_FISH",
-      "Cookery": "CUT",
-      "Ingre_01": "FISH",
-      "Ingre_02": "",
-      "Ingre_03": "",
-      "Ingre_04": ""
+      "Product": 15503,
+      "Cookery": 30000,
+      "Ingre_01": 15003,
+      "Ingre_02": 0,
+      "Ingre_03": 0,
+      "Ingre_04": 0
     },
     "21001": {
       "Index": "21001",
       "Name": "새우 초밥 만드는 레시피",
-      "Product": "SUSHI_SHRIMP",
-      "Cookery": "TRAY",
-      "Ingre_01": "CUT_SHRIMP",
-      "Ingre_02": "POT_RICE",
-      "Ingre_03": "",
-      "Ingre_04": ""
+      "Product": 19002,
+      "Cookery": 30004,
+      "Ingre_01": 15504,
+      "Ingre_02": 15502,
+      "Ingre_03": 0,
+      "Ingre_04": 0
     },
     "21002": {
       "Index": "21002",
       "Name": "새우 튀김 덮밥 만드는 레시피",
-      "Product": "EBIDON",
-      "Cookery": "TRAY",
-      "Ingre_01": "FRYER_SHRIMP",
-      "Ingre_02": "POT_RICE",
-      "Ingre_03": "",
-      "Ingre_04": ""
+      "Product": 19001,
+      "Cookery": 30004,
+      "Ingre_01": 15512,
+      "Ingre_02": 15502,
+      "Ingre_03": 0,
+      "Ingre_04": 0
     }
   }
 }

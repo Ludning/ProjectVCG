@@ -537,6 +537,36 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 325122830da2ad04fabf7491a6089057
+    m_Address: Assets/Resources_Addressable/Prefabs/Npcs/European_Female.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 759618cfc55c45649b76de1549ea172e
+    m_Address: Assets/Resources_Addressable/Prefabs/Npcs/Asian_Male.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 58dc7e50917fb9b4cb8aa0630b2fdf65
+    m_Address: Assets/Resources_Addressable/Prefabs/Npcs/Asian_Female.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e41904ecb444dd8489ab31299bfe1684
+    m_Address: Assets/Resources_Addressable/Prefabs/Npcs/African_Female.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 855bb7f1600668b4aacc453cadc3c1fe
+    m_Address: Assets/Resources_Addressable/Prefabs/Npcs/European_Male.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1dc960f9c27f5be4b96c24ef6dd6d135
+    m_Address: Assets/Resources_Addressable/Prefabs/Npcs/African_Male.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8b1dc452034a1734db8ae1cd6cb6a1de, type: 2}
   m_SchemaSet:

@@ -1,10 +1,22 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+
+public enum PositionType
+{
+    Null,
+    Player,
+    Item,
+    Npc
+}
 
 public class TableManager : MonoBehaviour
 {
     [SerializeField] private Transform tableParent;
     [SerializeField] private Transform itemParent;
+    [SerializeField] private Transform npcParent;
+    
+    [SerializeField] private PlayerController Controller;
     
     private Dictionary<Vector2Int, TileBase> map = new Dictionary<Vector2Int, TileBase>();
     public Dictionary<Vector2Int, TileBase> Map => map;
@@ -22,17 +34,25 @@ public class TableManager : MonoBehaviour
             tileBase.InitTile(tileData.Value, levelKey);
             map.Add(position, tileBase);
             
-            if (tileData.Value.SpawnObjectType != ItemType.Null)
+            if (tileData.Value.IsSpawnObject && tileData.Value.SpawnObjectType != ItemType.NULL)
             {
                 string itemIndex = ((int)tileData.Value.SpawnObjectType).ToString();
                 FoodData data = DataManager.Instance.GetGameData<FoodData>(itemIndex);
                 GameObject foodPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(data.PrefabName);
-                tileBase.NoRimitItemMesh = Instantiate(foodPrefab).GetComponent<ItemBase>();
-                tileBase.NoRimitItemMesh.transform.SetParent(itemParent, false);
-                tileBase.NoRimitItemMesh.transform.position = GetTilePosition(position);
+                tileBase.DisplayMesh = Instantiate(foodPrefab, itemParent, false);
+                tileBase.DisplayMesh.transform.position = GetTilePosition(position, PositionType.Item);
+            }
+            if (tileData.Value.IsSpawnNPC && tileData.Value.SpawnNpcType != NpcType.Null)
+            {
+                string npcIndex = ((int)tileData.Value.SpawnNpcType).ToString();
+                NpcData data = DataManager.Instance.GetGameData<NpcData>(npcIndex);
+                GameObject npcPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(data.PrefabName);
+                tileBase.DisplayMesh = Instantiate(npcPrefab, npcParent, false);
+                tileBase.DisplayMesh.transform.position = GetTilePosition(position, PositionType.Npc);
             }
         }
-        
+        Vector3 playerPosition = GetTilePosition(tableData.PlayerPosition, PositionType.Null);
+        Controller.Init(tableData.PlayerPosition, playerPosition, tableData.PlayerDirection);
     }
 
     public void ClearTable()
@@ -70,11 +90,21 @@ public class TableManager : MonoBehaviour
     /// <summary>
     /// 타일 위치를 반환받는 함수
     /// </summary>
-    public Vector3 GetTilePosition(Vector2Int position)
+    public Vector3 GetTilePosition(Vector2Int position, PositionType type)
     {
         if (Map.TryGetValue(position, out TileBase tileBase))
         {
-            return tileBase.transform.position + Vector3.up * GameManager.Instance.PlayerPositionAdditive;
+            switch (type)
+            {
+                case PositionType.Player:
+                    return tileBase.transform.position + tileBase.transform.up * GameManager.Instance.PlayerPositionAdditive;
+                case PositionType.Item:
+                    return tileBase.transform.position + tileBase.transform.up * GameManager.Instance.ItemPositionAdditive;
+                case PositionType.Npc:
+                    return tileBase.transform.position + tileBase.transform.up * GameManager.Instance.NpcPositionAdditive;
+                default:
+                    return tileBase.transform.position;
+            }
         }
         return Vector3.zero;
     }
@@ -107,14 +137,14 @@ public class TableManager : MonoBehaviour
     /// <summary>
     /// 타일의 아이템 이름 리스트를 반환하는 함수
     /// </summary>
-    public bool TryGetTileItemNameList(Vector2Int position, out List<string> itemNameList)
+    public bool TryGetTileItemNameList(Vector2Int position, out List<ItemType> itemTypeList)
     {
         if (TryGetTile(position, out TileBase tile))
         {
-            itemNameList = tile.GetItemNameList();
+            itemTypeList = tile.GetItemTypeList();
             return true;
         }
-        itemNameList = null;
+        itemTypeList = null;
         return false;
     }
     /// <summary>
@@ -128,6 +158,7 @@ public class TableManager : MonoBehaviour
     {
         foreach (var tileBase in map.Values)
         {
+            tileBase.ClearItem();
             Destroy(tileBase.gameObject);
         }
         map.Clear();

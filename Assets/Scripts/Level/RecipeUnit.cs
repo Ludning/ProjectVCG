@@ -8,7 +8,7 @@ public class RecipeUnit : LevelUnitBase
     protected string _recipeIndex;
     protected RecipeData recipeData; // Recipe의 이름
     protected GameObject productFood;
-    public List<string> Ingredients = new List<string>();
+    public List<ItemType> Ingredients = new List<ItemType>();
     
     /*public string RecipeName { get; private set; } // Recipe의 이름
     public List<string> Ingredients = new List<string>();
@@ -20,13 +20,13 @@ public class RecipeUnit : LevelUnitBase
         RecipeData recipeData = DataManager.Instance.GetGameData<RecipeData>(_recipeIndex);
         this.recipeData = recipeData;
         
-        if(!string.IsNullOrWhiteSpace(recipeData.Ingre_01))
+        if(recipeData.Ingre_01 != ItemType.NULL)
             Ingredients.Add(recipeData.Ingre_01);
-        if(!string.IsNullOrWhiteSpace(recipeData.Ingre_02))
+        if(recipeData.Ingre_02 != ItemType.NULL)
             Ingredients.Add(recipeData.Ingre_02);
-        if(!string.IsNullOrWhiteSpace(recipeData.Ingre_03))
+        if(recipeData.Ingre_03 != ItemType.NULL)
             Ingredients.Add(recipeData.Ingre_03);
-        if(!string.IsNullOrWhiteSpace(recipeData.Ingre_04))
+        if(recipeData.Ingre_04 != ItemType.NULL)
             Ingredients.Add(recipeData.Ingre_04);
         
         InitUIElement(uiParent);
@@ -45,20 +45,20 @@ public class RecipeUnit : LevelUnitBase
         if (Ingredients.Count != tileBase.InventoryStack.Count)
             return false;
         
-        List<string> deepCopiedList = new List<string>(Ingredients);
+        List<ItemType> deepCopiedList = new List<ItemType>(Ingredients);
         
         foreach (ItemBase item in tileBase.InventoryStack)
         {
-            if (!deepCopiedList.Contains(item.ItemName))
+            if (!deepCopiedList.Contains(item.ItemType))
                 return false;
-            deepCopiedList.Remove(item.ItemName);
+            deepCopiedList.Remove(item.ItemType);
         }
         
         return true;
     }
     public GameObject SpawnProductFood()
     {
-        GameObject prefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(recipeData.Product);
+        GameObject prefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(recipeData.Product.ToString());
         //TODO
         //아이템의 위치를 지정해줘야함
         productFood = Object.Instantiate(prefab);

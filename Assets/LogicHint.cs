@@ -15,11 +15,16 @@ public class LogicHint : MonoBehaviour
     private void Update()
     {
         transform.LookAt(_camera.transform);
+        transform.Rotate(0, 180, 0);
     }
 
     public void SetLogicImage(Sprite iconImage)
     {
         Image.sprite = iconImage;
+    }
+    public void ShowLogicHint()
+    {
+        gameObject.SetActive(true);
     }
     public void HideLogicHint()
     {

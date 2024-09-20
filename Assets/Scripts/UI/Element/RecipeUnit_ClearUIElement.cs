@@ -8,7 +8,7 @@ public class RecipeUnit_ClearUIElement : LevelUnitUIElement
     [SerializeField] private Image ProductImage;
     [SerializeField] private Image CookingPropertyImage;
     [SerializeField] private Transform IngredientLayout;
-    public override void Init(string recipeIndex)
+    public override void Init(string recipeIndex, NodeData nodeData = null)
     {
         RecipeData recipeData = DataManager.Instance.GetGameData<RecipeData>(recipeIndex);
 
@@ -27,28 +27,26 @@ public class RecipeUnit_ClearUIElement : LevelUnitUIElement
         InstantiateIngredientUI(ingredientPrefab, recipeData.Ingre_03);
         InstantiateIngredientUI(ingredientPrefab, recipeData.Ingre_04);
     }
-    private void InstantiateIngredientUI(GameObject prefab, string itemName)
+    private void InstantiateIngredientUI(GameObject prefab, ItemType itemType)
     {
-        if (string.IsNullOrWhiteSpace(itemName))
+        if (itemType == ItemType.NULL)
             return;
         GameObject ingredientUIElement = Instantiate(prefab, IngredientLayout);
         Image image = ingredientUIElement.GetComponent<Image>();
-        image.sprite = LoadFoodSprite(itemName);
+        image.sprite = LoadFoodSprite(itemType);
     }
-    private Sprite LoadFoodSprite(string itemName)
+    private Sprite LoadFoodSprite(ItemType itemType)
     {
-        if (string.IsNullOrWhiteSpace(itemName))
+        if (itemType == ItemType.NULL)
             return null;
-        ItemType foodType = StringEnumConverter.ParserStringToEnum<ItemType>(itemName);
-        FoodData foodData = DataManager.Instance.GetGameData<FoodData>(((int)foodType).ToString());
+        FoodData foodData = DataManager.Instance.GetGameData<FoodData>(((int)itemType).ToString());
         Sprite sprite = ResourceManager.Instance.LoadResourceWithCaching<Sprite>(foodData.Icon);
         return sprite;
     }
-    private Sprite LoadCookingPropertySprite(string cookeryName)
+    private Sprite LoadCookingPropertySprite(CookingPropertyType cookingPropertyType)
     {
-        if (string.IsNullOrWhiteSpace(cookeryName))
+        if (cookingPropertyType == CookingPropertyType.NULL)
             return null;
-        CookingPropertyType cookingPropertyType = StringEnumConverter.ParserStringToEnum<CookingPropertyType>(cookeryName);
         CookingPropertyData cookingPropertyData = DataManager.Instance.GetGameData<CookingPropertyData>(((int)cookingPropertyType).ToString());
         Sprite sprite = ResourceManager.Instance.LoadResourceWithCaching<Sprite>(cookingPropertyData.IconName);
         return sprite;

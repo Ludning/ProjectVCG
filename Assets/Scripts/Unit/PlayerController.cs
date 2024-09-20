@@ -29,27 +29,32 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    public void Init(Vector2Int position, Vector3 wolrdPosition, Direction forwardType)
+    public void Init(Vector2Int position, Vector3 worldPosition, Direction forwardType)
     {
-        transform.position = wolrdPosition;
-        transform.position = new Vector3(transform.position.x, GameManager.Instance.PlayerPositionAdditive, transform.position.z);
+        transform.position = worldPosition;
+        transform.position += transform.up * GameManager.Instance.PlayerPositionAdditive;
         
         PlayerPosition = position;
         PlayerForwardType = forwardType;
         switch (forwardType)
         {
             case Direction.Up:
-                transform.rotation = Quaternion.Euler(0, 180, 0);
+                transform.localRotation = Quaternion.Euler(0, 90, 0);
                 break;
             case Direction.Down:
-                transform.rotation = Quaternion.Euler(0, 0, 0);
+                transform.localRotation = Quaternion.Euler(0, 270, 0);
                 break;
             case Direction.Left:
-                transform.rotation = Quaternion.Euler(0, 90, 0);
+                transform.localRotation = Quaternion.Euler(0, 0, 0);
                 break;
             case Direction.Right:
-                transform.rotation = Quaternion.Euler(0, 270, 0);
+                transform.localRotation = Quaternion.Euler(0, 180, 0);
                 break;
         }
+    }
+
+    public void Clear()
+    {
+        LogicHint.HideLogicHint();;
     }
 }
