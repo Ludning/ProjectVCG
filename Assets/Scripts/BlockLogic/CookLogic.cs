@@ -50,15 +50,14 @@ public class CookLogic : BlockLogicBase
             default:
                 return LogicState.Failure;
         }
-        owner.levelManager.CompleteCurrentRecipe();
+        owner.levelManager.CompleteCurrentLevel();
         return LogicState.Success;
     }
-    
     public override void CheakClear(StageManager owner)
     {
         var cookTilePosition = owner.Controller.PlayerForwardPosition;
         TileBase tile = owner.TableManager.PeekTile(cookTilePosition);
         if(owner.levelManager.CheckLevel(tile) == true)
-            owner.levelManager.CompleteCurrentRecipe();
+            owner.levelManager.CompleteCurrentLevel();
     }
 }

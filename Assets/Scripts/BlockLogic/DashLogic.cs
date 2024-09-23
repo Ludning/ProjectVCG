@@ -53,6 +53,6 @@ public class DashLogic : BlockLogicBase
         var playerPosition = owner.Controller.PlayerPosition;
         TileBase tile = owner.TableManager.PeekTile(playerPosition);
         if(owner.levelManager.CheckLevel(tile) == true)
-            owner.levelManager.CompleteCurrentRecipe();
+            owner.levelManager.CompleteCurrentLevel();
     }
 }

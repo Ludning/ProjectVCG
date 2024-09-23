@@ -117,7 +117,7 @@ public class LevelManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManage
         return CurrentLevelUnit.CheakLevel(tile);
     }
 
-    public void CompleteCurrentRecipe()
+    public void CompleteCurrentLevel()
     {
         if (_levelUnitList.Count <= _cursor)
             return;

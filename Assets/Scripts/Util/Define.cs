@@ -85,12 +85,12 @@ public enum TileDetailType
 [Flags]
 public enum TileAttributeType
 {
-    None,
-    Moveable,
-    Pushable,
-    Popable,
-    Stackable,
-    Cookable,
+    None = 0,
+    Moveable = 1 << 0,
+    Pushable  = 1 << 1,
+    Popable  = 1 << 2,
+    Stackable  = 1 << 3,
+    Cookable  = 1 << 4,
 }
 
 public enum TileAttributeCheckType

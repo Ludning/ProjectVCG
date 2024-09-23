@@ -17,6 +17,7 @@ public class PopItemLogic : BlockLogicBase
             return ErrorType.NoDropableItem;
         
         //내려놓을 수 있는 타일인지 체크
+        TileBase tile = owner.TableManager.PeekTile(position);
         if (!owner.TableManager.PeekTile(position).IsPopAble)
             return ErrorType.InvalidDropTile;
         
@@ -35,6 +36,6 @@ public class PopItemLogic : BlockLogicBase
         var servingTilePosition = owner.Controller.PlayerForwardPosition;
         TileBase servingTile = owner.TableManager.PeekTile(servingTilePosition);
         if(owner.levelManager.CheckLevel(servingTile) == true)
-            owner.levelManager.CompleteCurrentRecipe();
+            owner.levelManager.CompleteCurrentLevel();
     }
 }

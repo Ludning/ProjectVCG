@@ -14,7 +14,7 @@ public class PushItemLogic : BlockLogicBase
         if(owner.TableManager.PeekTile(position) == null)
             return ErrorType.NoTile; 
         
-        //타일이 비어있는지 체크
+        //주울 수 있는 타일인지 체크
         if (!owner.TableManager.PeekTile(position).IsPushAble)
             return ErrorType.InvalidDropTile;
         
