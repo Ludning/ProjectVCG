@@ -2413,7 +2413,7 @@
         "magnitude": 1.41421354,
         "sqrMagnitude": 2
       },
-      "PlayerDirection": 4,
+      "PlayerDirection": 1,
       "Table": {
         "0": {
           "TileType": 10100,
@@ -2445,7 +2445,7 @@
           "IsSpawnNPC": false,
           "SpawnNpcType": 0,
           "IsSpawnObject": true,
-          "SpawnObjectType": 15504
+          "SpawnObjectType": 19001
         },
         "4": {
           "TileType": 10000,
@@ -2461,7 +2461,7 @@
           "IsSpawnNPC": false,
           "SpawnNpcType": 0,
           "IsSpawnObject": true,
-          "SpawnObjectType": 15512
+          "SpawnObjectType": 19002
         },
         "6": {
           "TileType": 10100,
@@ -2472,12 +2472,12 @@
           "SpawnObjectType": 0
         },
         "7": {
-          "TileType": 10201,
+          "TileType": 10100,
           "CookingPropertyType": 0,
           "IsSpawnNPC": false,
           "SpawnNpcType": 0,
-          "IsSpawnObject": true,
-          "SpawnObjectType": 15502
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
         },
         "8": {
           "TileType": 10100,
@@ -2503,7 +2503,7 @@
         "magnitude": 1.0,
         "sqrMagnitude": 1
       },
-      "PlayerDirection": 3,
+      "PlayerDirection": 4,
       "Table": {
         "0": {
           "TileType": 10100,
@@ -2569,7 +2569,7 @@
         "magnitude": 1.0,
         "sqrMagnitude": 1
       },
-      "PlayerDirection": 3,
+      "PlayerDirection": 4,
       "Table": {
         "0": {
           "TileType": 10100,
@@ -2725,7 +2725,7 @@
         "magnitude": 1.41421354,
         "sqrMagnitude": 2
       },
-      "PlayerDirection": 3,
+      "PlayerDirection": 4,
       "Table": {
         "0": {
           "TileType": 10100,
