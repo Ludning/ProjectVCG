@@ -258,12 +258,10 @@ public class SheetManager : MonoBehaviour
 
     public void ClearAllBlockLogic()
     {
-        //_sheetIndex = 1;
         ClearMainBlockLogic();
         ClearRepeatBlockLogic();
         ClearExBlockLogic();
     }
-
     public void ClearMainBlockLogic()
     {
         foreach (var blockLogicBase in _mainBlockLogicBases)
@@ -272,7 +270,6 @@ public class SheetManager : MonoBehaviour
         }
         _mainBlockLogicBases.Clear();
     }
-
     public void ClearRepeatBlockLogic()
     {
         foreach (var blockLogicBaseKeyValue in _repeatBlockLogicBasesDictionary)
@@ -285,8 +282,6 @@ public class SheetManager : MonoBehaviour
         }
         _repeatBlockLogicBasesDictionary.Clear();
     }
-
-    //ExBlock 비우기
     public void ClearExBlockLogic()
     {
         foreach (var blockLogicBase in _exBlockLogicBases)
@@ -306,6 +301,9 @@ public class SheetManager : MonoBehaviour
         StageManager.InteractableManager.InteractableButtons[BlockLogicType.Start].gameObject.SetActive(true);
         StageManager.InteractableManager.InteractableButtons[BlockLogicType.Reset].gameObject.SetActive(false);
         StageManager.TableManager.ClearTable();
+
+        //TODO
+        //StageManager.TableManager.ResetStage();
     }
 
     public async void RunSheetBlock()
@@ -528,5 +526,8 @@ public class SheetManager : MonoBehaviour
         }
 
         RepeatFunctionSheets.Clear();
+        
+        MainSheet.gameObject.SetActive(false);
+        ExSheet.gameObject.SetActive(false);
     }
 }

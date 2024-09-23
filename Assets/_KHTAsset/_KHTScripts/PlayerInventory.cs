@@ -16,6 +16,7 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    public bool IsInventoryEmpty => itemStack.Count == 0;
     public bool IsInventoryOverflow => itemStack.Count >= DataManager.Instance.GetGameData<PcData>("0").InventoryMax;
 
     public void Init()

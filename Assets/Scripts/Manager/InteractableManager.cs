@@ -72,6 +72,8 @@ public class InteractableManager : MonoBehaviour
     }
     public void Clear()
     {
+        Destroy(ExerciseButton.gameObject);
+        
         foreach (var interactableButton in InteractableButtons.Values)
             Destroy(interactableButton.gameObject);
         InteractableButtons.Clear();

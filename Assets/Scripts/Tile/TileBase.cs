@@ -23,6 +23,8 @@ public class TileBase : MonoBehaviour
     public bool IsCookAble => (TileAttributeType & TileAttributeType.Cookable) != 0;
     public bool IsInventoryEmpty => (InventoryCount == 0) ? true : false;
     public bool IsInventoryEmptyOrFull => (InventoryCount == 0 || InventoryStack.Count == InventoryCount) ? true : false;
+
+    private ItemHintUI _itemHintUI;
     
     public void InitTile(NodeData nodeData, string levelIndex)
     {
@@ -108,15 +110,39 @@ public class TileBase : MonoBehaviour
             Debug.Log("Error TakeItem DisplayMesh Dont Have ItemBase Component");
             return null;
         }
-            
-        return InventoryStack.Count > 0 ? InventoryStack.Pop() : null;
+
+        if (InventoryStack.Count <= 0)
+            return null;
+
+        ItemBase item = InventoryStack.Pop();
+        _itemHintUI.RemoveImage();
+        if (InventoryStack.Count == 0)
+            _itemHintUI.gameObject.SetActive(false);
+        return item;
     }
+
     //아이템을 놓는 함수
-    public void SetItem(ItemBase item)
+    public void SetItem(ItemBase item, bool display = true)
     {
         InventoryStack.Push(item);
         item.transform.SetParent(transform, false);
         item.transform.localPosition = transform.position + Vector3.up * GameManager.Instance.ItemPositionAdditive;
+
+        if (display == false)
+            return;
+        
+        if (_itemHintUI == null)
+            InstantiateItemHintUI();
+        
+        _itemHintUI.gameObject.SetActive(true);
+        _itemHintUI.PushImage(item.ItemType);
+        //DataManager.Instance.GetGameData<>();
+    }
+
+    private void InstantiateItemHintUI()
+    {
+        GameObject itemHintUIPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("ItemHintUI");
+        _itemHintUI = Instantiate(itemHintUIPrefab, transform, false).GetComponent<ItemHintUI>();
     }
     public void ClearItem()
     {

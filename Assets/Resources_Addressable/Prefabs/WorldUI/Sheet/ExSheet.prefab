@@ -32,10 +32,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3520637103242065872}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 86.4, y: -79.35}
-  m_SizeDelta: {x: 140.8, y: 64.87}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3254126113583764015
 CanvasRenderer:
@@ -312,8 +312,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ExSheetPopup, Assembly-CSharp
+      - m_Target: {fileID: 6219435904256263982}
+        m_TargetAssemblyTypeName: ExSheet, Assembly-CSharp
         m_MethodName: OnClick_ExitExercise
         m_Mode: 1
         m_Arguments:
@@ -413,10 +413,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6521130455347471503}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1360.94, y: -56.255}
-  m_SizeDelta: {x: 2713.88, y: 80.51}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2716990386490496
 CanvasRenderer:
@@ -977,9 +977,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ExSheetPopup, Assembly-CSharp
-        m_MethodName: OnClick_Close
+      - m_Target: {fileID: 6219435904256263982}
+        m_TargetAssemblyTypeName: ExSheet, Assembly-CSharp
+        m_MethodName: OnClick_Clear
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1175,10 +1175,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 8249520550327691231}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 62.16, y: -69.01}
-  m_SizeDelta: {x: 92.32, y: 37.15}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1263256574333089850
 CanvasRenderer:

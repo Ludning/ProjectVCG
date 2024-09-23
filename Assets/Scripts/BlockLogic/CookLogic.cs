@@ -28,7 +28,6 @@ public class CookLogic : BlockLogicBase
         if(!owner.levelManager.CheckLevel(tile))
             return ErrorType.InvalidCookCombo;
         
-        
         return ErrorType.NoError;
     }
 
@@ -42,7 +41,7 @@ public class CookLogic : BlockLogicBase
         switch (owner.levelManager.CurrentLevelUnit)
         {
             case RecipeUnit_Clear recipeUnit_Clear:
-                tile.SetItem(recipeUnit_Clear.SpawnProductFood().GetComponent<ItemBase>());
+                tile.SetItem(recipeUnit_Clear.SpawnProductFood().GetComponent<ItemBase>(), false);
                 recipeUnit_Clear.OnComplete();
                 break;
             case RecipeUnit recipeUnit:
@@ -54,6 +53,7 @@ public class CookLogic : BlockLogicBase
         owner.levelManager.CompleteCurrentRecipe();
         return LogicState.Success;
     }
+    
     public override void CheakClear(StageManager owner)
     {
         var cookTilePosition = owner.Controller.PlayerForwardPosition;

@@ -10,7 +10,11 @@ public class PopItemLogic : BlockLogicBase
 
         //타일 존재 체크
         if(owner.TableManager.PeekTile(position) == null)
-            return ErrorType.NoTile; 
+            return ErrorType.NoTile;
+
+        //인벤토리가 비어있는지 체크
+        if (owner.Inventory.IsInventoryEmpty == true)
+            return ErrorType.NoDropableItem;
         
         //내려놓을 수 있는 타일인지 체크
         if (!owner.TableManager.PeekTile(position).IsPopAble)
@@ -24,7 +28,6 @@ public class PopItemLogic : BlockLogicBase
         var position = owner.Controller.PlayerForwardPosition;
         var item = owner.Inventory.PopItem(position);
         owner.TableManager.PushTileItem(position, item);
-        item.transform.position = owner.TableManager.GetTilePosition(position, PositionType.Item);
         return LogicState.Success;
     }
     public override void CheakClear(StageManager owner)

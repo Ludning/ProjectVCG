@@ -9,5 +9,6 @@ public class GameMenuPopup : MonoBehaviour, IUIBase
     public void OnClick_OK()
     {
         StageManager.ClearStage();
+        StageManager.InitMain();
     }
 }

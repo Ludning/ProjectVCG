@@ -153,6 +153,7 @@ public class TableManager : MonoBehaviour
     public void PushTileItem(Vector2Int position, ItemBase item)
     {
         Map[position].SetItem(item);
+        item.transform.position = GetTilePosition(position, PositionType.Item);
     }
     public void Clear()
     {

@@ -25,10 +25,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         firstChapterIndex = int.MaxValue;
         lastChapterIndex = int.MinValue;
         
-        Debug.Log("haha");
-        
+        Debug.Log("Get StageData Start");
         var stageDataDictionary =  DataManager.Instance.GetGameDataDictionary<StageData>();
-
+        Debug.Log("Get StageData End");
+        
         foreach (var stageData in stageDataDictionary.Values)
         {
             Vector2Int key = new Vector2Int(stageData.Chapter, stageData.Stage);

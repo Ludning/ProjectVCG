@@ -58,7 +58,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dfd15997559a7fe4bb1233af44595faf
-    m_Address: Assets/Resources_Addressable/Prefabs/[BuildingBlock] Camera Rig.prefab
+    m_Address: Assets/Resources_Addressable/Prefabs/VRCameraRig.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -564,6 +564,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1dc960f9c27f5be4b96c24ef6dd6d135
     m_Address: Assets/Resources_Addressable/Prefabs/Npcs/African_Male.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5170ee92acef79541a2072d5bfaa858f
+    m_Address: Assets/Resources_Addressable/Textures/BlockLogics/icon_cook.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 19dd992b846807144ba0b9d808889707
+    m_Address: Assets/Resources_Addressable/Prefabs/ItemHintUI.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
