@@ -422,7 +422,7 @@
       "TargetIngredientIcon": "ICON_DATA_PRODUCT",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "4",
-      "AnswerBlockAmount": "15",
+      "AnswerBlockAmount": "6",
       "ShowBlock": "101, 201, 202, 301, 302, 401",
       "StageClearCondition": "4203, 4204",
       "ETC": ""
@@ -442,7 +442,7 @@
       "StageOrder": "1",
       "AnswerBlockAmount": "6",
       "ShowBlock": "101, 201, 202, 301, 302, 401, 998",
-      "StageClearCondition": "4205",
+      "StageClearCondition": "4205, 4206",
       "ETC": ""
     },
     "3031": {
@@ -460,7 +460,7 @@
       "StageOrder": "2",
       "AnswerBlockAmount": "5",
       "ShowBlock": "101, 201, 202, 301, 302, 401, 998",
-      "StageClearCondition": "4206, 4207",
+      "StageClearCondition": "4207, 4208",
       "ETC": ""
     },
     "3032": {
@@ -478,7 +478,7 @@
       "StageOrder": "3",
       "AnswerBlockAmount": "3",
       "ShowBlock": "101, 201, 202, 301, 302, 401, 998",
-      "StageClearCondition": "4208",
+      "StageClearCondition": "4209",
       "ETC": ""
     },
     "3033": {
@@ -496,7 +496,7 @@
       "StageOrder": "4",
       "AnswerBlockAmount": "4",
       "ShowBlock": "101, 201, 202, 301, 302, 401, 998",
-      "StageClearCondition": "4209",
+      "StageClearCondition": "4210",
       "ETC": ""
     },
     "3040": {
@@ -532,7 +532,7 @@
       "StageOrder": "2",
       "AnswerBlockAmount": "2",
       "ShowBlock": "101, 201, 202, 301, 302, 401, 998, 999",
-      "StageClearCondition": "4210",
+      "StageClearCondition": "4211, 4212",
       "ETC": ""
     }
   },
@@ -580,7 +580,7 @@
     "5023": {
       "Index": "5023",
       "Description": "2챕터 4스테이지에 대한 설명",
-      "Context": "재료를 사용해 요리하는 스테이지야"
+      "Context": "완성된 요리를 트레이에서 요리하는 스테이지야"
     },
     "5030": {
       "Index": "5030",
@@ -655,7 +655,7 @@
     "5523": {
       "Index": "5523",
       "Description": "2챕터 4스테이지의 클리어 목표에 대한 설명",
-      "Context": "앞서 배운 블록들을 활용해 2개의 요리를 조리해보자"
+      "Context": "앞서 배운 블록들을 활용해 완성된 2개의 요리를 트레이에서 조리해보자"
     },
     "5530": {
       "Index": "5530",
@@ -819,10 +819,21 @@
       "Recipe_Index": "20004",
       "Tile_Key": "",
       "Contents_Key": "CUT_FISH",
-      "Contents_Count": "2"
+      "Contents_Count": "1"
     },
     "4206": {
       "Index": "4206",
+      "Description": "레시피 / 생선회",
+      "DisplayContext": "",
+      "Sort_Clear": 3,
+      "Tile_Index": "",
+      "Recipe_Index": "20004",
+      "Tile_Key": "",
+      "Contents_Key": "CUT_FISH",
+      "Contents_Count": "1"
+    },
+    "4207": {
+      "Index": "4207",
       "Description": "레시피 / 썬 새우",
       "DisplayContext": "",
       "Sort_Clear": 3,
@@ -832,8 +843,8 @@
       "Contents_Key": "CUT_SHRIMP",
       "Contents_Count": "1"
     },
-    "4207": {
-      "Index": "4207",
+    "4208": {
+      "Index": "4208",
       "Description": "레시피 / 튀긴 새우",
       "DisplayContext": "",
       "Sort_Clear": 3,
@@ -843,8 +854,8 @@
       "Contents_Key": "FRYER_SHRIMP",
       "Contents_Count": "1"
     },
-    "4208": {
-      "Index": "4208",
+    "4209": {
+      "Index": "4209",
       "Description": "레시피 / 새우 초밥",
       "DisplayContext": "",
       "Sort_Clear": 3,
@@ -854,8 +865,8 @@
       "Contents_Key": "SUSHI_SHRIMP",
       "Contents_Count": "1"
     },
-    "4209": {
-      "Index": "4209",
+    "4210": {
+      "Index": "4210",
       "Description": "레시피 / 새우튀김 덮밥",
       "DisplayContext": "",
       "Sort_Clear": 3,
@@ -898,8 +909,8 @@
       "Contents_Key": "CUT_FISH",
       "Contents_Count": "1"
     },
-    "4210": {
-      "Index": "4210",
+    "4211": {
+      "Index": "4211",
       "Description": "레시피 / 생선회",
       "DisplayContext": "",
       "Sort_Clear": 3,
@@ -907,7 +918,18 @@
       "Recipe_Index": "20004",
       "Tile_Key": "",
       "Contents_Key": "CUT_FISH",
-      "Contents_Count": "2"
+      "Contents_Count": "1"
+    },
+    "4212": {
+      "Index": "4212",
+      "Description": "레시피 / 생선회",
+      "DisplayContext": "",
+      "Sort_Clear": 3,
+      "Tile_Index": "",
+      "Recipe_Index": "20004",
+      "Tile_Key": "",
+      "Contents_Key": "CUT_FISH",
+      "Contents_Count": "1"
     }
   },
   "Tile": {
