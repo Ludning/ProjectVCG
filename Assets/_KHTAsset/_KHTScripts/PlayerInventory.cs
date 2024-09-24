@@ -5,26 +5,24 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    Stack<ItemBase> itemStack = new Stack<ItemBase>();
     [SerializeField] Transform inventoryParent;
     
-    public Vector3 ItemStackPosition
-    {
-        get
-        {
-            return itemStack.Count * new Vector3(0, 1, 0);
-        }
-    }
+    Stack<ItemBase> itemStack = new Stack<ItemBase>();
+    public Vector3 ItemStackPosition => itemStack.Count * new Vector3(0, 1, 0);
 
     public bool IsInventoryEmpty => itemStack.Count == 0;
     public bool IsInventoryOverflow => itemStack.Count >= DataManager.Instance.GetGameData<PcData>("0").InventoryMax;
 
     public void Init()
     {
-        
+        Clear();
     }
     public void Clear()
     {
+        foreach (var itemBase in itemStack)
+        {
+            Destroy(itemBase.gameObject);
+        }
         itemStack.Clear();
     }
     

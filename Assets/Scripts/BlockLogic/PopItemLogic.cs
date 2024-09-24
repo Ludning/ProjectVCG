@@ -35,7 +35,7 @@ public class PopItemLogic : BlockLogicBase
     {
         var servingTilePosition = owner.Controller.PlayerForwardPosition;
         TileBase servingTile = owner.TableManager.PeekTile(servingTilePosition);
-        if(owner.levelManager.CheckLevel(servingTile) == true)
+        if(owner.levelManager.CheckLevel(servingTile, BlockLogicType.PopItem) == true)
             owner.levelManager.CompleteCurrentLevel();
     }
 }

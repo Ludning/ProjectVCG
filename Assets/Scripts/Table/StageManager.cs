@@ -50,6 +50,20 @@ public class StageManager : MonoBehaviour
         UIContainer.InitGame();
         levelManager.Init(stageData.StageClearCondition);
     }
+
+    public void ResetStage()
+    {
+        StageData stageData = GameManager.Instance.GetCurrentStageData();
+        TableData tableData = DataManager.Instance.GetTableData(stageData.Index);
+        
+        Controller.Clear();
+        Inventory.Clear();
+        
+        TableManager.ResetTable(tableData);
+        levelManager.ResetLevelState();
+        //NPCManager.Clear();
+        UIContainer.InitGame();
+    }
     
     //스테이지 비우기
     public void ClearStage()

@@ -8,7 +8,7 @@ public class RecipeUnit_Clear : RecipeUnit
 {
     public int _waitForMiliSecondDelete = 1500;
     
-    public RecipeUnit_Clear(string recipeIndex, Transform uiParent) : base(recipeIndex, uiParent)
+    public RecipeUnit_Clear(string recipeIndex, string tileKey, Transform uiParent) : base(recipeIndex, tileKey, uiParent)
     {
     }
     protected override void InitUIElement(Transform uiParent)
@@ -21,14 +21,17 @@ public class RecipeUnit_Clear : RecipeUnit
     }
     public override void OnComplete()
     {
-        HideProduct().Forget();
+        ClearProductWaitForSecond().Forget();
         base.OnComplete();
     }
 
-    async UniTaskVoid HideProduct()
+    async UniTaskVoid ClearProductWaitForSecond()
     {
+        Debug.Log("HideProduct");
+        GameObject tempProductFood = productFood;
+        productFood = null;
         await UniTask.Delay(_waitForMiliSecondDelete);
-        if(productFood != null)
-            Object.Destroy(productFood);
+        if(tempProductFood != null)
+            Object.Destroy(tempProductFood);
     }
 }

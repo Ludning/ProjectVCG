@@ -20,12 +20,12 @@ public class CookLogic : BlockLogicBase
             return ErrorType.NoIngredientOnTile;
 
         //타일 아이템 리스트 반환
-        if (!owner.TableManager.TryGetTileItemNameList(position, out List<ItemType> itemTypeList))
+        if (!owner.TableManager.TryGetTileItemTypeList(position, out List<ItemType> itemTypeList))
             return ErrorType.UnKnownError;
         
         //레벨 체크 (이번 조리가 레시피랑 일치한지)
         TileBase tile = owner.TableManager.PeekTile(position);
-        if(!owner.levelManager.CheckLevel(tile))
+        if(!owner.levelManager.CheckLevel(tile, BlockLogicType.Cook))
             return ErrorType.InvalidCookCombo;
         
         return ErrorType.NoError;
@@ -41,8 +41,7 @@ public class CookLogic : BlockLogicBase
         switch (owner.levelManager.CurrentLevelUnit)
         {
             case RecipeUnit_Clear recipeUnit_Clear:
-                tile.SetItem(recipeUnit_Clear.SpawnProductFood().GetComponent<ItemBase>(), false);
-                recipeUnit_Clear.OnComplete();
+                tile.SetDisplayItem(recipeUnit_Clear.SpawnProductFood().GetComponent<ItemBase>());
                 break;
             case RecipeUnit recipeUnit:
                 tile.SetItem(recipeUnit.SpawnProductFood().GetComponent<ItemBase>());
@@ -50,14 +49,13 @@ public class CookLogic : BlockLogicBase
             default:
                 return LogicState.Failure;
         }
-        owner.levelManager.CompleteCurrentLevel();
         return LogicState.Success;
     }
     public override void CheakClear(StageManager owner)
     {
         var cookTilePosition = owner.Controller.PlayerForwardPosition;
         TileBase tile = owner.TableManager.PeekTile(cookTilePosition);
-        if(owner.levelManager.CheckLevel(tile) == true)
-            owner.levelManager.CompleteCurrentLevel();
+        //if(owner.levelManager.CheckLevel(tile, BlockLogicType.Cook) == true)
+        owner.levelManager.CompleteCurrentLevel();
     }
 }

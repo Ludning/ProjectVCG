@@ -46,7 +46,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public StageData GetCurrentStageData()
     {
         Vector2Int chapterStageVector = new Vector2Int(SelectedChapterIndex, SelectedStageIndex);
-        Debug.Log($"현재 스테이지 : {chapterStageVector}");
+        //Debug.Log($"현재 스테이지 : {chapterStageVector}");
         return stageDatas[chapterStageVector];
     }
 

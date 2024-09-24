@@ -65,7 +65,7 @@ public class SheetManager : MonoBehaviour
             ClearAllBlockLogic();
 
         if (Input.GetKeyDown(KeyCode.Z))
-            ResetSheetBlock();
+            ResetStage();
         
         
         if (Input.GetKeyDown(KeyCode.C))
@@ -186,7 +186,7 @@ public class SheetManager : MonoBehaviour
             case BlockLogicType.Start:
                 return RunSheetBlock;
             case BlockLogicType.Reset:
-                return ResetSheetBlock;
+                return ResetStage;
             case BlockLogicType.Clear:
                 return ClearAllBlockLogic;
             default:
@@ -293,17 +293,16 @@ public class SheetManager : MonoBehaviour
     }
 
 
-    public void ResetSheetBlock()
+    public void ResetStage()
     {
         //기능 답안지  유지, 스테이지 원래상태 복귀
         //RunBlockLogic를 중지해야함
 
-        StageManager.InteractableManager.InteractableButtons[BlockLogicType.Start].gameObject.SetActive(true);
-        StageManager.InteractableManager.InteractableButtons[BlockLogicType.Reset].gameObject.SetActive(false);
-        StageManager.TableManager.ClearTable();
+        //StageManager.InteractableManager.InteractableButtons[BlockLogicType.Start].gameObject.SetActive(true);
+        //StageManager.InteractableManager.InteractableButtons[BlockLogicType.Reset].gameObject.SetActive(false);
+        //StageManager.TableManager.ResetTable();
 
-        //TODO
-        //StageManager.TableManager.ResetStage();
+        StageManager.ResetStage();
     }
 
     public async void RunSheetBlock()
@@ -324,6 +323,7 @@ public class SheetManager : MonoBehaviour
         StageManager.InteractableManager.InteractableButtons[BlockLogicType.Reset].gameObject.SetActive(true);
         _isLogicRunning = true;
         ErrorType result = await RunBlockLogics(0);
+        Debug.Log(result);
         OnTaskCompleted(result);
     }
 
@@ -367,6 +367,7 @@ public class SheetManager : MonoBehaviour
         foreach (var blockLogic in _sheetDictionary[sheetIndex])
         {
             ErrorType result = await RunBlockLogic(blockLogic);
+            
             if (result == ErrorType.StageClear)
             {
                 StageManager.Controller.LogicHint.HideLogicHint();
@@ -400,7 +401,7 @@ public class SheetManager : MonoBehaviour
 
     async UniTask<ErrorType> RunBlockLogic(BlockLogicBase blockLogic)
     {
-        Debug.Log("RunBlockLogic");
+        Debug.Log($"CurrentLogicType : {blockLogic.GetType()}");
         if (blockLogic is FunctionBlockLogic functionBlockLogic)
         {
             return await RunBlockLogics(functionBlockLogic.SheetIndex);
@@ -526,7 +527,7 @@ public class SheetManager : MonoBehaviour
         }
 
         RepeatFunctionSheets.Clear();
-        
+        _repeatCountDictionary.Clear();
         MainSheet.gameObject.SetActive(false);
         ExSheet.gameObject.SetActive(false);
     }

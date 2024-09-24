@@ -20,10 +20,15 @@ public class ServingUnit : LevelUnitBase
         temp.Init(_levelKey, nodeData);
         LevelUnitUIElement = temp;
     }
-    public override bool CheakLevel(TileBase tileBase)
+    public override bool CheakLevel(TileBase tileBase, BlockLogicType type)
     {
+        if (type != BlockLogicType.PopItem)
+            return false;
         if(string.IsNullOrWhiteSpace(tileBase.LevelKey))
             return false;
+        
+        if(string.IsNullOrWhiteSpace(_tileKey))
+            return true;
         return tileBase.LevelKey == _tileKey;
     }
 }

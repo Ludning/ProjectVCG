@@ -8,11 +8,12 @@ public class TileBase : MonoBehaviour
     //타일의 속성(열거형)
     public TileType TileType;
     public TileAttributeType TileAttributeType;
+    public CookingPropertyType CookingPropertyType;
 
     public string LevelKey;
     private int InventoryCount = 0;
 
-    public GameObject DisplayMesh;
+    public GameObject IngredientItem;
     
     public Stack<ItemBase> InventoryStack = new Stack<ItemBase>();
 
@@ -37,8 +38,9 @@ public class TileBase : MonoBehaviour
             (tileData.Moveable ? TileAttributeType.Moveable : 0) |
             (tileData.Pushable ? TileAttributeType.Pushable : 0) |
             (tileData.Popable ? TileAttributeType.Popable : 0) |
-            (tileData.Stackable ? TileAttributeType.Stackable : 0);
-
+            (tileData.Stackable ? TileAttributeType.Stackable : 0) |
+            (tileData.TileType == TileType.COOKING ? TileAttributeType.Cookable : 0);
+        CookingPropertyType = nodeData.CookingPropertyType;
         InventoryCount = tileData.InventoryCount;
 
         /*if (nodeData.SpawnObjectType != ItemType.Null)
@@ -105,7 +107,7 @@ public class TileBase : MonoBehaviour
     {
         if (InventoryCount == -1)
         {
-            if (Instantiate(DisplayMesh).TryGetComponent(out ItemBase itemBase))
+            if (Instantiate(IngredientItem).TryGetComponent(out ItemBase itemBase))
                 return itemBase;
             Debug.Log("Error TakeItem DisplayMesh Dont Have ItemBase Component");
             return null;
@@ -126,7 +128,7 @@ public class TileBase : MonoBehaviour
     {
         InventoryStack.Push(item);
         item.transform.SetParent(transform, false);
-        item.transform.localPosition = transform.position + Vector3.up * GameManager.Instance.ItemPositionAdditive;
+        item.transform.localPosition = Vector3.up * GameManager.Instance.ItemPositionAdditive;
 
         if (display == false)
             return;
@@ -136,20 +138,28 @@ public class TileBase : MonoBehaviour
         
         _itemHintUI.gameObject.SetActive(true);
         _itemHintUI.PushImage(item.ItemType);
-        //DataManager.Instance.GetGameData<>();
+    }
+    public void SetDisplayItem(ItemBase item)
+    {
+        item.transform.SetParent(transform, false);
+        item.transform.localPosition = Vector3.up * GameManager.Instance.ItemPositionAdditive;
     }
 
     private void InstantiateItemHintUI()
     {
+        Debug.Log("Instantiate ItemHint UI");
         GameObject itemHintUIPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("ItemHintUI");
         _itemHintUI = Instantiate(itemHintUIPrefab, transform, false).GetComponent<ItemHintUI>();
     }
     public void ClearItem()
     {
         foreach (var itemBase in InventoryStack)
-            Destroy(itemBase);
-        Destroy(DisplayMesh);
+            Destroy(itemBase.gameObject);
+        if(IngredientItem != null)
+            Destroy(IngredientItem);
         InventoryStack.Clear();
+        Debug.Log("ClearTileItem");
+        _itemHintUI?.Clear();
     }
     public void OnItemSpawn()
     {

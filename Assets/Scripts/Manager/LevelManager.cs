@@ -16,7 +16,8 @@ public class LevelManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManage
     // 모든 레시피가 완료되었는지 확인하는 프로퍼티
     public bool IsAllComplete => _levelUnitList.All(recipe => recipe.IsComplete);
     #endregion
-    
+
+    #region 초기화
     public void Init(string stageClearCondition)
     {
         StageData stageData = GameManager.Instance.GetCurrentStageData();
@@ -41,58 +42,53 @@ public class LevelManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManage
                     AddServingUnit(levelData.Index, levelData.Tile_Key, nodeData);
                     break;
                 case SortClearType.RECIPE:
-                    AddRecipeUnit(levelData.Recipe_Index);
+                    AddRecipeUnit(levelData.Recipe_Index, levelData.Tile_Key);
                     break;
                 case SortClearType.RECIPE_CLEAR:
-                    AddRecipeClearUnit(levelData.Recipe_Index);
+                    AddRecipeClearUnit(levelData.Recipe_Index, levelData.Tile_Key);
                     break;
             }
         }
         Debug.Log("Init End");
     }
-    private void AddArriveUnit(string levelKey, string value)
+    private void AddArriveUnit(string levelKey, string tileKey)
     {
-        LevelUnitBase arriveUnit = new ArriveUnit(levelKey, value, levelPopup.LevelUIParent);
+        LevelUnitBase arriveUnit = new ArriveUnit(levelKey, tileKey, levelPopup.LevelUIParent);
         _levelUnitList.Add(arriveUnit);
     }
-    private void AddServingUnit(string levelKey, string value, NodeData nodeData)
+    private void AddServingUnit(string levelKey, string tileKey, NodeData nodeData)
     {
-        LevelUnitBase servingUnit = new ServingUnit(levelKey, value, levelPopup.LevelUIParent, nodeData);
+        LevelUnitBase servingUnit = new ServingUnit(levelKey, tileKey, levelPopup.LevelUIParent, nodeData);
         _levelUnitList.Add(servingUnit);
     }
-    private void AddRecipeUnit(string recipeIndex)
+    private void AddRecipeUnit(string recipeIndex, string tileKey)
     {
         RecipeData recipeData = DataManager.Instance.GetGameData<RecipeData>(recipeIndex);
 
-        FoodData foodData = DataManager.Instance.GetGameData<FoodData>(((int)recipeData.Product).ToString());
+        //FoodData foodData = DataManager.Instance.GetGameData<FoodData>(((int)recipeData.Product).ToString());
         //if (foodData.FoodType != FoodType.ORIGINAL)
-        //{
-            AddIngreRecipeUnit(recipeData.Ingre_01);
-            AddIngreRecipeUnit(recipeData.Ingre_02);
-            AddIngreRecipeUnit(recipeData.Ingre_03);
-            AddIngreRecipeUnit(recipeData.Ingre_04);
-        //}
-        
-        LevelUnitBase recipeUnit = new RecipeUnit(recipeIndex, levelPopup.LevelUIParent);
+        AddIngreRecipeUnit(recipeData.Ingre_01);
+        AddIngreRecipeUnit(recipeData.Ingre_02);
+        AddIngreRecipeUnit(recipeData.Ingre_03);
+        AddIngreRecipeUnit(recipeData.Ingre_04);
+
+        LevelUnitBase recipeUnit = new RecipeUnit(recipeIndex, tileKey, levelPopup.LevelUIParent);
         _levelUnitList.Add(recipeUnit);
     }
-    private void AddRecipeClearUnit(string recipeIndex)
+    private void AddRecipeClearUnit(string recipeIndex, string tileKey)
     {
         RecipeData recipeClearData = DataManager.Instance.GetGameData<RecipeData>(recipeIndex);
-        
-        FoodData foodData = DataManager.Instance.GetGameData<FoodData>(((int)recipeClearData.Product).ToString());
-        //if (foodData.FoodType != FoodType.ORIGINAL)
-        //{
-            AddIngreRecipeUnit(recipeClearData.Ingre_01);
-            AddIngreRecipeUnit(recipeClearData.Ingre_02);
-            AddIngreRecipeUnit(recipeClearData.Ingre_03);
-            AddIngreRecipeUnit(recipeClearData.Ingre_04);
-        //}
 
-        LevelUnitBase recipeUnit_Clear = new RecipeUnit_Clear(recipeIndex, levelPopup.LevelUIParent);
+        //FoodData foodData = DataManager.Instance.GetGameData<FoodData>(((int)recipeClearData.Product).ToString());
+        //if (foodData.FoodType != FoodType.ORIGINAL)
+        AddIngreRecipeUnit(recipeClearData.Ingre_01);
+        AddIngreRecipeUnit(recipeClearData.Ingre_02);
+        AddIngreRecipeUnit(recipeClearData.Ingre_03);
+        AddIngreRecipeUnit(recipeClearData.Ingre_04);
+
+        LevelUnitBase recipeUnit_Clear = new RecipeUnit_Clear(recipeIndex, tileKey, levelPopup.LevelUIParent);
         _levelUnitList.Add(recipeUnit_Clear);
     }
-    
     private void AddIngreRecipeUnit(ItemType itemType)
     {
         if (itemType == ItemType.NULL)
@@ -101,7 +97,7 @@ public class LevelManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManage
         string ingreIndex = ((int)ingreType).ToString();
         FoodData ingreData = DataManager.Instance.GetGameData<FoodData>(ingreIndex);
         if (ingreData.FoodType != FoodType.ORIGINAL)
-            AddRecipeUnit(ingreData.Recipe_Index);
+            AddRecipeUnit(ingreData.Recipe_Index, "");
         
         /*RecipeData recipeData = DataManager.Instance.GetGameData<RecipeData>(ingreData.Recipe_Index);
         LevelUnitBase recipeUnit = new RecipeUnit(recipeData.Index, levelPopup.LevelUIParent);
@@ -111,27 +107,12 @@ public class LevelManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManage
         if(!string.IsNullOrWhiteSpace(foodData.Recipe_Index))
             AddLevelUnit(type, null, foodData.Recipe_Index);*/
     }
-
-    public bool CheckLevel(TileBase tile)
-    {
-        return CurrentLevelUnit.CheakLevel(tile);
-    }
-
-    public void CompleteCurrentLevel()
-    {
-        if (_levelUnitList.Count <= _cursor)
-            return;
-        CurrentLevelUnit.OnComplete();
-        _cursor++;
-    }
-    
     // Recipe 목록에 있는 모든 Recipe의 isComplete를 false로 초기화한다.
-    public void ResetRecipeState()
+    public void ResetLevelState()
     {
-        foreach (LevelUnitBase recipe in _levelUnitList)
-        {
-            recipe.Reset();
-        }
+        _cursor = 0;
+        foreach (LevelUnitBase levelUnit in _levelUnitList)
+            levelUnit.Reset();
     }
     public void Clear()
     {
@@ -140,5 +121,27 @@ public class LevelManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManage
         levelPopup.Reset();
         _levelUnitList.Clear();
         _cursor = 0;
+    }
+    #endregion
+    
+    public bool CheckLevel(TileBase tile, BlockLogicType type)
+    {
+        //Debug.Log($"Cursor {_cursor}");
+        //Debug.Log($"Count  {_levelUnitList.Count}");
+        if (_levelUnitList.Count <= _cursor)
+        {
+            Debug.Log("Out of Range");
+            return false;
+        }
+        return CurrentLevelUnit.CheakLevel(tile, type);
+    }
+
+    public void CompleteCurrentLevel()
+    {
+        if (_levelUnitList.Count <= _cursor)
+            return;
+        Debug.Log("CompleteCurrentLevel********************");
+        CurrentLevelUnit.OnComplete();
+        _cursor++;
     }
 }

@@ -17,6 +17,7 @@ public class TableManager : MonoBehaviour
     [SerializeField] private Transform npcParent;
     
     [SerializeField] private PlayerController Controller;
+    [SerializeField] private PlayerInventory Inventory;
     
     private Dictionary<Vector2Int, TileBase> map = new Dictionary<Vector2Int, TileBase>();
     public Dictionary<Vector2Int, TileBase> Map => map;
@@ -39,26 +40,28 @@ public class TableManager : MonoBehaviour
                 string itemIndex = ((int)tileData.Value.SpawnObjectType).ToString();
                 FoodData data = DataManager.Instance.GetGameData<FoodData>(itemIndex);
                 GameObject foodPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(data.PrefabName);
-                tileBase.DisplayMesh = Instantiate(foodPrefab, itemParent, false);
-                tileBase.DisplayMesh.transform.position = GetTilePosition(position, PositionType.Item);
+                tileBase.IngredientItem = Instantiate(foodPrefab, itemParent, false);
+                tileBase.IngredientItem.transform.position = GetTilePosition(position, PositionType.Item);
             }
             if (tileData.Value.IsSpawnNPC && tileData.Value.SpawnNpcType != NpcType.Null)
             {
                 string npcIndex = ((int)tileData.Value.SpawnNpcType).ToString();
                 NpcData data = DataManager.Instance.GetGameData<NpcData>(npcIndex);
                 GameObject npcPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(data.PrefabName);
-                tileBase.DisplayMesh = Instantiate(npcPrefab, npcParent, false);
-                tileBase.DisplayMesh.transform.position = GetTilePosition(position, PositionType.Npc);
+                tileBase.IngredientItem = Instantiate(npcPrefab, npcParent, false);
+                tileBase.IngredientItem.transform.position = GetTilePosition(position, PositionType.Npc);
             }
         }
         Vector3 playerPosition = GetTilePosition(tableData.PlayerPosition, PositionType.Null);
         Controller.Init(tableData.PlayerPosition, playerPosition, tableData.PlayerDirection);
+        Inventory.Init();
     }
 
-    public void ClearTable()
+    public void ResetTable(TableData tableData)
     {
-        //TODO
         Debug.Log("스테이지 초기화");
+        Clear();
+        InitTable(tableData);
     }
     /// <summary>
     ///아이템이 없는지 체크하는 함수
@@ -137,7 +140,7 @@ public class TableManager : MonoBehaviour
     /// <summary>
     /// 타일의 아이템 이름 리스트를 반환하는 함수
     /// </summary>
-    public bool TryGetTileItemNameList(Vector2Int position, out List<ItemType> itemTypeList)
+    public bool TryGetTileItemTypeList(Vector2Int position, out List<ItemType> itemTypeList)
     {
         if (TryGetTile(position, out TileBase tile))
         {

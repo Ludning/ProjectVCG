@@ -21,10 +21,15 @@ public class ArriveUnit : LevelUnitBase
         temp.Init(_levelKey);
         LevelUnitUIElement = temp;
     }
-    public override bool CheakLevel(TileBase tileBase)
+    public override bool CheakLevel(TileBase tileBase, BlockLogicType type)
     {
+        if (type != BlockLogicType.Move && type != BlockLogicType.Dash)
+            return false;
         if(string.IsNullOrWhiteSpace(tileBase.LevelKey))
             return false;
+        
+        if(string.IsNullOrWhiteSpace(_tileKey))
+            return true;
         return tileBase.LevelKey == _tileKey;
     }
 }

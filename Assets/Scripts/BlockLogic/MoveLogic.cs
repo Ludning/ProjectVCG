@@ -43,7 +43,7 @@ public class MoveLogic : BlockLogicBase
     {
         var playerPosition = owner.Controller.PlayerPosition;
         TileBase tile = owner.TableManager.PeekTile(playerPosition);
-        if(owner.levelManager.CheckLevel(tile) == true)
+        if(owner.levelManager.CheckLevel(tile, BlockLogicType.Move) == true)
             owner.levelManager.CompleteCurrentLevel();
     }
 }
