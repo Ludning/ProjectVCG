@@ -17,8 +17,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public int SelectedStageIndex { get; set; }
 
     public readonly float PlayerPositionAdditive = 1.5f;
-    public readonly float ItemPositionAdditive = 2.5f;
-    public readonly float NpcPositionAdditive = 1.5f;
+    public readonly float ItemPositionAdditive = 2f;
+    public readonly float NpcPositionAdditive = 1f;
     
     public void Init()
     {
