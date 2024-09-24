@@ -122,4 +122,38 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
         return temp;
     }
+    
+    public ItemType FindPossibleRecipes(List<ItemType> heldItems, CookingPropertyType cookingPropertyType)
+    {
+        Dictionary<string, RecipeData> recipeDictionary = DataManager.Instance.GetGameDataDictionary<RecipeData>();
+        List<RecipeData> possibleRecipes = new List<RecipeData>();
+        foreach (var recipe in recipeDictionary.Values)
+        {
+            if (cookingPropertyType == recipe.Cookery)
+                possibleRecipes.Add(recipe);
+        }
+        if (possibleRecipes.Count == 0)
+            return ItemType.NULL;
+        foreach (var recipeData in possibleRecipes)
+        {
+            List<ItemType> ingreList = new List<ItemType>();
+            if (recipeData.Ingre_01 != ItemType.NULL)
+                ingreList.Add(recipeData.Ingre_01);
+            if (recipeData.Ingre_02 != ItemType.NULL)
+                ingreList.Add(recipeData.Ingre_02);
+            if (recipeData.Ingre_03 != ItemType.NULL)
+                ingreList.Add(recipeData.Ingre_03);
+            if (recipeData.Ingre_04 != ItemType.NULL)
+                ingreList.Add(recipeData.Ingre_04);
+
+            if (ingreList.Count != heldItems.Count)
+                continue;
+            
+            if (ingreList.All(ingredient => heldItems.Contains(ingredient)))
+            {
+                return recipeData.Product;
+            }
+        }
+        return ItemType.NULL;
+    }
 }

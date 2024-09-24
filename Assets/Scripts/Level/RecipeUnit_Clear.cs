@@ -19,19 +19,13 @@ public class RecipeUnit_Clear : RecipeUnit
         temp.Init(_recipeIndex);
         LevelUnitUIElement = temp;
     }
-    public override void OnComplete()
-    {
-        ClearProductWaitForSecond().Forget();
-        base.OnComplete();
-    }
 
-    async UniTaskVoid ClearProductWaitForSecond()
+    public async UniTaskVoid Async_ClearProductWaitForSecond(TileBase tile)
     {
         Debug.Log("HideProduct");
-        GameObject tempProductFood = productFood;
-        productFood = null;
+        ItemBase tempProductFood = tile.InventoryStack.Pop();
         await UniTask.Delay(_waitForMiliSecondDelete);
-        if(tempProductFood != null)
-            Object.Destroy(tempProductFood);
+        if(tempProductFood.gameObject != null)
+            Object.Destroy(tempProductFood.gameObject);
     }
 }

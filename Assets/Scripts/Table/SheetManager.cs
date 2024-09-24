@@ -23,11 +23,12 @@ public class SheetManager : MonoBehaviour
     //MainSheet
     [Header("MainSheet")] [SerializeField] private MainSheet MainSheet;
     private List<BlockLogicBase> _mainBlockLogicBases = new List<BlockLogicBase>();
+    private int _mainSheetBlockLimit;
 
     //SubSheet
     private Dictionary<int, RepeatSheet> RepeatFunctionSheets = new Dictionary<int, RepeatSheet>();
-    private Dictionary<int, List<BlockLogicBase>> _repeatBlockLogicBasesDictionary =
-        new Dictionary<int, List<BlockLogicBase>>();
+    private Dictionary<int, List<BlockLogicBase>> _repeatFunctionDictionary = new Dictionary<int, List<BlockLogicBase>>();
+    private Dictionary<int, int> _repeatFunctionSheetBlockLimit = new Dictionary<int, int>();
 
     //ExSheet
     [Header("연습장")] [SerializeField] private ExSheet ExSheet;
@@ -124,12 +125,12 @@ public class SheetManager : MonoBehaviour
             //TODO 위치 조정 스크립트도 작성해야함
             
             RepeatFunctionSheets.Add(interactableButton.Key, functionSheet);
-            _repeatBlockLogicBasesDictionary.Add(interactableButton.Key, new List<BlockLogicBase>());
+            _repeatFunctionDictionary.Add(interactableButton.Key, new List<BlockLogicBase>());
             _sheetIndexDictionary.Add(interactableButton.Value, interactableButton.Key);
             functionSheet.GetComponent<RepeatSheet>().Init(this, interactableButton.Key);
             _repeatCountDictionary.Add(interactableButton.Key, 1);
 
-            SetSheet(interactableButton.Key, _repeatBlockLogicBasesDictionary[interactableButton.Key], functionSheet.SheetParent);
+            SetSheet(interactableButton.Key, _repeatFunctionDictionary[interactableButton.Key], functionSheet.SheetParent);
         }
         foreach (var interactableButton in InteractableManager.RepeatInteractableButtons)
         {
@@ -140,12 +141,12 @@ public class SheetManager : MonoBehaviour
             RepeatSheet repeatSheet = Instantiate(sheetPrefab, RepeatFunctionSheetContainer.transform).GetComponent<RepeatSheet>();
             
             RepeatFunctionSheets.Add(interactableButton.Key, repeatSheet);
-            _repeatBlockLogicBasesDictionary.Add(interactableButton.Key, new List<BlockLogicBase>());
+            _repeatFunctionDictionary.Add(interactableButton.Key, new List<BlockLogicBase>());
             _sheetIndexDictionary.Add(interactableButton.Value, interactableButton.Key);
             repeatSheet.GetComponent<RepeatSheet>().Init(this, interactableButton.Key);
             _repeatCountDictionary.Add(interactableButton.Key, 1);
 
-            SetSheet(interactableButton.Key, _repeatBlockLogicBasesDictionary[interactableButton.Key], repeatSheet.SheetParent);
+            SetSheet(interactableButton.Key, _repeatFunctionDictionary[interactableButton.Key], repeatSheet.SheetParent);
         }
         List<Transform> sheetTransformList = new List<Transform>();
         foreach(var sheet in RepeatFunctionSheets.Values)
@@ -278,7 +279,7 @@ public class SheetManager : MonoBehaviour
     }
     public void ClearRepeatBlockLogic()
     {
-        foreach (var blockLogicBaseKeyValue in _repeatBlockLogicBasesDictionary)
+        foreach (var blockLogicBaseKeyValue in _repeatFunctionDictionary)
         {
             foreach (var blockLogicBase in blockLogicBaseKeyValue.Value)
             {
@@ -286,7 +287,7 @@ public class SheetManager : MonoBehaviour
             }
             blockLogicBaseKeyValue.Value.Clear();
         }
-        _repeatBlockLogicBasesDictionary.Clear();
+        _repeatFunctionDictionary.Clear();
     }
     public void ClearExBlockLogic()
     {
@@ -422,6 +423,9 @@ public class SheetManager : MonoBehaviour
             }
         }
         
+        if (blockLogic is CookLogic cook)
+            Debug.Log("CookLogic");
+        
         StageManager.Controller.LogicHint.ShowLogicHint();
         StageManager.Controller.LogicHint.SetLogicImage(blockLogic.BlockIcon);
         ErrorType result = blockLogic.IsExecutable(StageManager);
@@ -519,13 +523,13 @@ public class SheetManager : MonoBehaviour
 
         _mainBlockLogicBases.Clear();
 
-        foreach (var repeatBlockLogicBases in _repeatBlockLogicBasesDictionary)
+        foreach (var repeatBlockLogicBases in _repeatFunctionDictionary)
         {
             foreach (var blockLogic in repeatBlockLogicBases.Value)
                 Destroy(blockLogic.gameObject);
         }
 
-        _repeatBlockLogicBasesDictionary.Clear();
+        _repeatFunctionDictionary.Clear();
 
         foreach (var repeatSheet in RepeatFunctionSheets)
         {

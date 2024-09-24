@@ -8,7 +8,7 @@ public class RecipeUnit : LevelUnitBase
     protected string _recipeIndex;
     private string _tileKey;
     protected RecipeData recipeData; // Recipe의 이름
-    protected GameObject productFood;
+    //protected GameObject productFood;
     public List<ItemType> Ingredients = new List<ItemType>();
     
     /*public string RecipeName { get; private set; } // Recipe의 이름
@@ -66,7 +66,7 @@ public class RecipeUnit : LevelUnitBase
             return true;
         return tileBase.LevelKey == _tileKey;
     }
-    public GameObject SpawnProductFood()
+    /*public GameObject SpawnProductFood()
     {
         Debug.Log($"SpawnProductFood : {recipeData.Product}");
         FoodData foodData = DataManager.Instance.GetGameData<FoodData>(((int)recipeData.Product).ToString());
@@ -75,5 +75,5 @@ public class RecipeUnit : LevelUnitBase
         //아이템의 위치를 지정해줘야함
         productFood = Object.Instantiate(prefab);
         return productFood;
-    }
+    }*/
 }

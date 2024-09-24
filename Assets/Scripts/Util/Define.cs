@@ -152,16 +152,6 @@ public enum StageIndex
     None
 }
 
-public enum CookType
-{
-    Empty,
-    Chop,
-    Glid,
-    Boil,
-    Fry,
-    Tray,
-}
-
 public enum AssetType
 {
     GameObject,
