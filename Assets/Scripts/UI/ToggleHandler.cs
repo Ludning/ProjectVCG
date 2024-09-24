@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ public class ToggleHandler : MonoBehaviour
     public ValueType type;
     public int Value;
     public Toggle toggle;
+    private const int _delay = 500;
     
     /*private void Awake()
     {
@@ -41,5 +43,12 @@ public class ToggleHandler : MonoBehaviour
                 GameManager.Instance.SelectedStageIndex = Value;
                 break;
         }
+        EnableButtonAfterDelay().Forget();
+    }
+    private async UniTaskVoid EnableButtonAfterDelay()
+    {
+        toggle.interactable = false;
+        await UniTask.Delay(_delay);
+        toggle.interactable = true;
     }
 }

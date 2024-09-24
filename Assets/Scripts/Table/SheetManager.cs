@@ -232,6 +232,9 @@ public class SheetManager : MonoBehaviour
     #region 연습장
     private void OnClick_OpenExercise()
     {
+        MainSheet.gameObject.SetActive(false);
+        foreach (var repeatSheet in RepeatFunctionSheets.Values)
+            repeatSheet.gameObject.SetActive(false);
         ExSheet.gameObject.SetActive(true);
         ChoiceSheet(-1);
     }
@@ -239,6 +242,9 @@ public class SheetManager : MonoBehaviour
     //연습장의 내용을 지우며 ExSheet비활성화
     public void OnClick_ExitExercise()
     {
+        MainSheet.gameObject.SetActive(true);
+        foreach (var repeatSheet in RepeatFunctionSheets.Values)
+            repeatSheet.gameObject.SetActive(true);
         ExSheet.gameObject.SetActive(false);
         _currentSheet = _sheetDictionary[0];
         _currentSheetParent = _sheetParentDictionary[0];

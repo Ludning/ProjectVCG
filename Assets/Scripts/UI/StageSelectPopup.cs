@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -12,6 +13,8 @@ public class StageSelectPopup : MonoBehaviour, IUIBase
     public TextMeshProUGUI ChapterText;
     public Button PrevChapterBtn;
     public Button NextChapterBtn;
+    
+    private const int _delay = 500;
 
     public void OnClick_OK()
     {
@@ -37,12 +40,22 @@ public class StageSelectPopup : MonoBehaviour, IUIBase
         ClearChildUI();
         GameManager.Instance.SelectedChapterIndex--;
         Init();
+        EnableButtonAfterDelay().Forget();
     }
     public void OnClick_NextChapter()
     {
         ClearChildUI();
         GameManager.Instance.SelectedChapterIndex++;
         Init();
+        EnableButtonAfterDelay().Forget();
+    }
+    private async UniTaskVoid EnableButtonAfterDelay()
+    {
+        PrevChapterBtn.interactable = false;
+        NextChapterBtn.interactable = false;
+        await UniTask.Delay(_delay);
+        PrevChapterBtn.interactable = true;
+        NextChapterBtn.interactable = true;
     }
     private void OnEnable()
     {
@@ -78,7 +91,7 @@ public class StageSelectPopup : MonoBehaviour, IUIBase
             PrevChapterBtn.gameObject.SetActive(false);
             NextChapterBtn.gameObject.SetActive(true);
         }
-        else if (chapterIndex == GameManager.Instance.firstChapterIndex)
+        else if (chapterIndex == GameManager.Instance.lastChapterIndex)
         {
             PrevChapterBtn.gameObject.SetActive(true);
             NextChapterBtn.gameObject.SetActive(false);
