@@ -44,27 +44,41 @@ public class RecipeUnit : LevelUnitBase
     }
     public override bool CheakLevel(TileBase tileBase, BlockLogicType type)
     {
-        if (type != BlockLogicType.Cook)
+        if (tileBase.InventoryStack.Count != 1)
             return false;
+        if (tileBase.CookingPropertyType != recipeData.Cookery)
+            return false;
+
+        ItemBase food = tileBase.InventoryStack.Peek();
+
+        if (recipeData.Product != food.ItemType)
+            return false;
+
+        if(string.IsNullOrWhiteSpace(_tileKey))
+            return true;
         
+        return tileBase.LevelKey == _tileKey;
+        /*if (type != BlockLogicType.Cook)
+            return false;
+
         if (Ingredients.Count != tileBase.InventoryStack.Count)
             return false;
 
         if (tileBase.CookingPropertyType != recipeData.Cookery)
             return false;
-        
+
         List<ItemType> deepCopiedList = new List<ItemType>(Ingredients);
-        
+
         foreach (ItemBase item in tileBase.InventoryStack)
         {
             if (!deepCopiedList.Contains(item.ItemType))
                 return false;
             deepCopiedList.Remove(item.ItemType);
         }
-        
+
         if(string.IsNullOrWhiteSpace(_tileKey))
             return true;
-        return tileBase.LevelKey == _tileKey;
+        return tileBase.LevelKey == _tileKey;*/
     }
     /*public GameObject SpawnProductFood()
     {

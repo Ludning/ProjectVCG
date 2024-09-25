@@ -213,7 +213,7 @@ public class SheetManager : MonoBehaviour
     }
     private void ClickLogicButton(BlockLogicType type, InteractableUnityEventWrapper interactableUnityEventWrapper)
     {
-        if (_currentSheet.SheetLimit <= _currentSheet.BlockCount)
+        if (_currentSheet.SheetLimit != -1 && _currentSheet.SheetLimit <= _currentSheet.BlockCount)
             return;
         
         //함수 시트에 함수가 들어가지 못하게 막기용 기능
@@ -268,8 +268,8 @@ public class SheetManager : MonoBehaviour
         foreach (var repeatSheet in RepeatFunctionSheets.Values)
             repeatSheet.gameObject.SetActive(true);
         ExSheet.gameObject.SetActive(false);
-        _currentBlockLogicList = _blockLogicListDictionary[0];
-        _currentSheetParent = _sheetParentDictionary[0];
+        
+        ChoiceSheet(0);
     }
     #endregion
 
@@ -330,6 +330,9 @@ public class SheetManager : MonoBehaviour
         //StageManager.InteractableManager.InteractableButtons[BlockLogicType.Reset].gameObject.SetActive(false);
         //StageManager.TableManager.ResetTable();
 
+        StageManager.InteractableManager.InteractableButtons[BlockLogicType.Start].gameObject.SetActive(true);
+        StageManager.InteractableManager.InteractableButtons[BlockLogicType.Reset].gameObject.SetActive(false);
+        
         StageManager.ResetStage();
     }
 
