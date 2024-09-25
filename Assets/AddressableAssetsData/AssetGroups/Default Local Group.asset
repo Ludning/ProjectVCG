@@ -587,6 +587,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0ed9ab3639e01c146b440757528bef2b
+    m_Address: Assets/Resources_Addressable/Materials/Logic/RotateBackMat.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c43ef1f1cfa500d459029514c1b146e2
+    m_Address: Assets/Resources_Addressable/Materials/Logic/DashMat.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8b1dc452034a1734db8ae1cd6cb6a1de, type: 2}
   m_SchemaSet:

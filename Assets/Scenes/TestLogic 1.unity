@@ -668,7 +668,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798175667}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
@@ -718,7 +718,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798175667}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2518c50cb3fc6a6458d4b743c2f69c7d, type: 3}
   m_Name: 
@@ -1304,7 +1304,7 @@ PrefabInstance:
     - target: {fileID: 1333489089287864508, guid: dfd15997559a7fe4bb1233af44595faf,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1374866986180602479, guid: dfd15997559a7fe4bb1233af44595faf,
         type: 3}
@@ -4221,7 +4221,7 @@ PrefabInstance:
     - target: {fileID: 1333489089287864508, guid: dfd15997559a7fe4bb1233af44595faf,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1374866986180602479, guid: dfd15997559a7fe4bb1233af44595faf,
         type: 3}
@@ -4924,6 +4924,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -38.445
       objectReference: {fileID: 0}
+    - target: {fileID: 9141791486438162399, guid: 2ae1cf2a513810149a5df9319f86712f,
+        type: 3}
+      propertyPath: TableManager
+      value: 
+      objectReference: {fileID: 1950821530}
     - target: {fileID: 9163274028360721341, guid: 2ae1cf2a513810149a5df9319f86712f,
         type: 3}
       propertyPath: m_Name

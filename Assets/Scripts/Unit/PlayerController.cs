@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
         set
         {
             TileBase prevTile = TableManager.PeekTile(_playerPosition);
-            prevTile?.OutlineMap.ChangeCurrentTileColor(false);
+            prevTile?.OutlineMap?.ChangeCurrentTileColor(false);
             Debug.Log($"prevTile : {_playerPosition}");
             _playerPosition = value;
             TileBase nextTile = TableManager.PeekTile(_playerPosition);
