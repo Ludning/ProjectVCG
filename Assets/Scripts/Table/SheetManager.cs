@@ -292,6 +292,7 @@ public class SheetManager : MonoBehaviour
     }
     public void ClearMainBlockLogic()
     {
+        MainSheet.BlockCount = 0;
         foreach (var blockLogicBase in _mainBlockLogicBases)
         {
             Destroy(blockLogicBase.gameObject);
@@ -300,6 +301,10 @@ public class SheetManager : MonoBehaviour
     }
     public void ClearRepeatBlockLogic()
     {
+        foreach (var RepeatFunctionSheet in RepeatFunctionSheets.Values)
+        {
+            RepeatFunctionSheet.BlockCount = 0;
+        }
         foreach (var blockLogicBaseKeyValue in _repeatFunctionDictionary)
         {
             foreach (var blockLogicBase in blockLogicBaseKeyValue.Value)
@@ -330,8 +335,8 @@ public class SheetManager : MonoBehaviour
         //StageManager.InteractableManager.InteractableButtons[BlockLogicType.Reset].gameObject.SetActive(false);
         //StageManager.TableManager.ResetTable();
 
-        StageManager.InteractableManager.InteractableButtons[BlockLogicType.Start].gameObject.SetActive(true);
-        StageManager.InteractableManager.InteractableButtons[BlockLogicType.Reset].gameObject.SetActive(false);
+        //StageManager.InteractableManager.InteractableButtons[BlockLogicType.Start].gameObject.SetActive(true);
+        //StageManager.InteractableManager.InteractableButtons[BlockLogicType.Reset].gameObject.SetActive(false);
         
         StageManager.ResetStage();
     }
