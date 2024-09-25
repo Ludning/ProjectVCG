@@ -3,12 +3,27 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public TableManager TableManager;
+
     public LogicHint LogicHint;
     
     [ReadOnly]
     public Direction PlayerForwardType;
-    [ReadOnly]
-    public Vector2Int PlayerPosition;
+    private Vector2Int _playerPosition;
+    public Vector2Int PlayerPosition
+    {
+        get => _playerPosition;
+        set
+        {
+            TileBase prevTile = TableManager.PeekTile(_playerPosition);
+            prevTile?.OutlineMap.ChangeCurrentTileColor(false);
+            Debug.Log($"prevTile : {_playerPosition}");
+            _playerPosition = value;
+            TileBase nextTile = TableManager.PeekTile(_playerPosition);
+            nextTile.OutlineMap.ChangeCurrentTileColor(true);
+            Debug.Log($"nextTile : {_playerPosition}");
+        }
+    }
     public Vector2Int PlayerForwardPosition => PlayerPosition + PlayerForward;
     public Vector2Int PlayerForward
     {
