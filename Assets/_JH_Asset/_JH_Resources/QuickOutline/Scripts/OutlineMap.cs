@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 
 [DisallowMultipleComponent]
-public class Outline : MonoBehaviour
+public class OutlineMap : MonoBehaviour
 {
     private static HashSet<Mesh> registeredMeshes = new HashSet<Mesh>();
 
@@ -46,7 +46,12 @@ public class Outline : MonoBehaviour
             needsUpdate = true;
         }
     }
+    public void ChangeCurrentTileColor(bool change)
+    {
+        outlineColor = (change == true) ? Color.red : Color.blue;
+        needsUpdate = true;
 
+    }
     [Serializable]
     private class ListVector3
     {
@@ -57,11 +62,10 @@ public class Outline : MonoBehaviour
     private Mode outlineMode;
 
     [SerializeField]
-    private Color outlineColor = Color.blue; // 기본값을 파란색으로 변경
+    public Color outlineColor = Color.blue; // 기본값을 파란색으로 변경
 
     [SerializeField, Range(0f, 30f)]
     private float outlineWidth = 20f;
-
     [Header("Optional")]
     [SerializeField, Tooltip("Precompute enabled: Per-vertex calculations are performed in the editor and serialized with the object. "
       + "Precompute disabled: Per-vertex calculations are performed at runtime in Awake(). This may cause a pause for large meshes.")]
@@ -75,7 +79,7 @@ public class Outline : MonoBehaviour
 
     private Renderer[] renderers;
     private Material outlineMaskMaterial;
-    private Material outlineFillMaterial;
+    public Material outlineFillMaterial;
 
     private bool needsUpdate;
 
@@ -89,7 +93,7 @@ public class Outline : MonoBehaviour
 
         // Instantiate outline materials
         outlineMaskMaterial = Instantiate(Resources.Load<Material>(@"Materials/OutlineMask"));
-        outlineFillMaterial = Instantiate(Resources.Load<Material>(@"Materials/OutlineFill"));
+        outlineFillMaterial = Instantiate(Resources.Load<Material>(@"Materials/OutlineFillMap"));
 
         if (outlineMaskMaterial == null || outlineFillMaterial == null)
         {
@@ -98,7 +102,7 @@ public class Outline : MonoBehaviour
         }
 
         outlineMaskMaterial.name = "OutlineMask (Instance)";
-        outlineFillMaterial.name = "OutlineFill (Instance)";
+        outlineFillMaterial.name = "OutlineFillMap (Instance)";
 
         // Retrieve or generate smooth normals
         LoadSmoothNormals();
@@ -309,8 +313,9 @@ public class Outline : MonoBehaviour
     {
         Debug.Log("Outline: UpdateMaterialProperties called");
 
-        // Apply properties according to mode
+        // 스크립트의 outlineColor를 셰이더에 전달
         outlineFillMaterial.SetColor("_OutlineColor", outlineColor);
+        outlineFillMaterial.SetFloat("_Opacity", 0.30f); // 불투명도 설정
 
         switch (outlineMode)
         {
@@ -345,4 +350,5 @@ public class Outline : MonoBehaviour
                 break;
         }
     }
+
 }

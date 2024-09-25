@@ -481,14 +481,14 @@ public class SheetManager : MonoBehaviour
         {
             // The Outline component doesn't exist, so add it
             outline = tempPrefab.AddComponent<Outline>();
-            outline.OutlineWidth = 23f;
+            outline.OutlineWidth = 50f;
             outline.OutlineColor = new Color(0f, 0.87f, 1f); // Adjusted color value
 
             Debug.Log($"Outline added. Width: {outline.OutlineWidth}, Color: {outline.OutlineColor}");
         }
         else
         {
-            outline.OutlineWidth = 23f;
+            outline.OutlineWidth = 50f;
             outline.OutlineColor = new Color(0f, 0.87f, 1f); // Adjusted color value
         }
 

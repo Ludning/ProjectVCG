@@ -13,6 +13,8 @@ public class TileBase : MonoBehaviour
     public string LevelKey;
     private int InventoryCount = 0;
 
+    public OutlineMap OutlineMap;
+
     public GameObject IngredientItem;
     
     public Stack<ItemBase> InventoryStack = new Stack<ItemBase>();
@@ -42,7 +44,7 @@ public class TileBase : MonoBehaviour
             (tileData.TileType == TileType.COOKING ? TileAttributeType.Cookable : 0);
         CookingPropertyType = nodeData.CookingPropertyType;
         InventoryCount = tileData.InventoryCount;
-
+       
         /*if (nodeData.SpawnObjectType != ItemType.Null)
         {
             string itemIndex = ((int)nodeData.SpawnObjectType).ToString();
@@ -64,6 +66,14 @@ public class TileBase : MonoBehaviour
 
         GameObject tilePrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(tileName);
         GameObject go = Instantiate(tilePrefab, transform);
+        Transform childTransform = go.transform.GetChild(0); // 첫 번째 자식
+
+            // 자식 오브젝트에서 Outline 컴포넌트 확인 및 추가
+        if (!go.TryGetComponent<OutlineMap>(out OutlineMap outline) && (tileName == "Walking_Tile" || tileName == "Walking_Pass_Tile"))
+            OutlineMap = childTransform.gameObject.AddComponent<OutlineMap>(); // 자식 오브젝트에 Outline 컴포넌트 추가
+        else
+            OutlineMap = outline;
+
         go.transform.localPosition = Vector3.zero;
     }
 
