@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class RepeatFunctionSheetContainer : MonoBehaviour
 {
-    [SerializeField] Transform leftTransform;
-    [SerializeField] Transform rightTransform;
-    [SerializeField] private float additiveHeight;
+    [SerializeField] Transform sheetPositionRig;
+    [SerializeField] private float additiveHeight = 0.11f;
     [SerializeField, ReadOnly] private float currentHeight;
-    bool isLeft = true;
-    public void AddSheet(List<Transform> sheetTransform)
+    public void AddSheet(List<Transform> sheetTransformList)
     {
-        if (sheetTransform == null || sheetTransform.Count == 0)
+        if (sheetTransformList == null || sheetTransformList.Count == 0)
             return;
         currentHeight = 0;
-        if (sheetTransform.Count == 1)
+
+        foreach (var sheetTransform in sheetTransformList)
+        {
+            sheetTransform.position = sheetPositionRig.position + Vector3.up * currentHeight;
+            sheetTransform.rotation = sheetPositionRig.rotation;
+            currentHeight += additiveHeight;
+        }
+        
+        /*if (sheetTransform.Count == 1)
         {
             sheetTransform[0].localPosition = Vector3.up * additiveHeight;
         }
@@ -28,6 +34,6 @@ public class RepeatFunctionSheetContainer : MonoBehaviour
 
                 isLeft = !isLeft;
             }
-        }
+        }*/
     }
 }

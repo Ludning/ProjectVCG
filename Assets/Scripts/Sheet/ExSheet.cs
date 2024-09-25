@@ -2,12 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExSheet : MonoBehaviour
+public class ExSheet : SheetBase
 {
-    public Transform SheetParent;
-    public SheetManager SheetManager;
-
-    
     public void OnClick_ExitExercise()
     {
         SheetManager.OnClick_ExitExercise();

@@ -15,7 +15,7 @@ public class StageData
     public string TargetIngredientIcon;
     public string TargetFoodIcon;
     public string StageOrder;
-    public string AnswerBlockAmount;
+    public int AnswerBlockAmount;
     public string ShowBlock;
     public string Show_F_Block;
     public string StageClearCondition;

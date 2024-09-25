@@ -23,12 +23,10 @@ public class SheetManager : MonoBehaviour
     //MainSheet
     [Header("MainSheet")] [SerializeField] private MainSheet MainSheet;
     private List<BlockLogicBase> _mainBlockLogicBases = new List<BlockLogicBase>();
-    private int _mainSheetBlockLimit;
 
     //SubSheet
     private Dictionary<int, RepeatSheet> RepeatFunctionSheets = new Dictionary<int, RepeatSheet>();
     private Dictionary<int, List<BlockLogicBase>> _repeatFunctionDictionary = new Dictionary<int, List<BlockLogicBase>>();
-    private Dictionary<int, int> _repeatFunctionSheetBlockLimit = new Dictionary<int, int>();
 
     //ExSheet
     [Header("연습장")] [SerializeField] private ExSheet ExSheet;
@@ -38,11 +36,13 @@ public class SheetManager : MonoBehaviour
     private Dictionary<int, int> _repeatCountDictionary = new Dictionary<int, int>();
     
     
-    private Dictionary<int, List<BlockLogicBase>> _sheetDictionary = new Dictionary<int, List<BlockLogicBase>>();
+    private Dictionary<int, SheetBase> _sheetDictionary = new Dictionary<int, SheetBase>();
+    private Dictionary<int, List<BlockLogicBase>> _blockLogicListDictionary = new Dictionary<int, List<BlockLogicBase>>();
     private Dictionary<int, Transform> _sheetParentDictionary = new Dictionary<int, Transform>();
 
     //현재 활성화된 시트
-    private List<BlockLogicBase> _currentSheet;
+    private SheetBase _currentSheet;
+    private List<BlockLogicBase> _currentBlockLogicList;
     private Transform _currentSheetParent;
 
     //private int _sheetIndex;
@@ -109,6 +109,15 @@ public class SheetManager : MonoBehaviour
     {
         InteractableManager.ExerciseButton.WhenSelect.AddListener(OnClick_OpenExercise);
 
+        StageData stageData = GameManager.Instance.GetCurrentStageData();
+        MainSheet.BlockCount = 0;
+        Debug.Log($"Index : {stageData.Index}");
+        Debug.Log($"Chapter : {stageData.Chapter}, Stage : {stageData.Stage}");
+        Debug.Log($"AnswerBlockAmount : {stageData.AnswerBlockAmount}");
+        MainSheet.SheetLimit = stageData.AnswerBlockAmount;
+        ExSheet.BlockCount = 0;
+        ExSheet.SheetLimit = -1;
+        
         foreach (var interactableButton in InteractableManager.InteractableButtons)
         {
             UnityAction action = GetLogicEvent(interactableButton.Key, interactableButton.Value);
@@ -122,15 +131,18 @@ public class SheetManager : MonoBehaviour
             GameObject sheetPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("FunctionSheet");
             RepeatSheet functionSheet = Instantiate(sheetPrefab, RepeatFunctionSheetContainer.transform).GetComponent<RepeatSheet>();
             
-            FunctionBlockName functionBlockName = interactableButton.Value.GetComponent<FunctionBlockName>();
+            FunctionBlockData functionBlockData = interactableButton.Value.GetComponent<FunctionBlockData>();
+            
+            //TODO count
+            functionSheet.SheetLimit = functionBlockData.functionLimit;
             
             RepeatFunctionSheets.Add(interactableButton.Key, functionSheet);
             _repeatFunctionDictionary.Add(interactableButton.Key, new List<BlockLogicBase>());
             _sheetIndexDictionary.Add(interactableButton.Value, interactableButton.Key);
-            functionSheet.GetComponent<RepeatSheet>().Init(this, interactableButton.Key, functionBlockName.sheetName);
+            functionSheet.GetComponent<RepeatSheet>().Init(this, interactableButton.Key, functionBlockData.sheetName);
             _repeatCountDictionary.Add(interactableButton.Key, 1);
 
-            SetSheet(interactableButton.Key, _repeatFunctionDictionary[interactableButton.Key], functionSheet.SheetParent);
+            SetSheet(interactableButton.Key, functionSheet, _repeatFunctionDictionary[interactableButton.Key], functionSheet.SheetParent);
         }
         foreach (var interactableButton in InteractableManager.RepeatInteractableButtons)
         {
@@ -140,15 +152,15 @@ public class SheetManager : MonoBehaviour
             GameObject sheetPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("RepeatSheet");
             RepeatSheet repeatSheet = Instantiate(sheetPrefab, RepeatFunctionSheetContainer.transform).GetComponent<RepeatSheet>();
             
-            FunctionBlockName functionBlockName = interactableButton.Value.GetComponent<FunctionBlockName>();
+            FunctionBlockData functionBlockData = interactableButton.Value.GetComponent<FunctionBlockData>();
             
             RepeatFunctionSheets.Add(interactableButton.Key, repeatSheet);
             _repeatFunctionDictionary.Add(interactableButton.Key, new List<BlockLogicBase>());
             _sheetIndexDictionary.Add(interactableButton.Value, interactableButton.Key);
-            repeatSheet.GetComponent<RepeatSheet>().Init(this, interactableButton.Key, functionBlockName.sheetName);
+            repeatSheet.GetComponent<RepeatSheet>().Init(this, interactableButton.Key, functionBlockData.sheetName);
             _repeatCountDictionary.Add(interactableButton.Key, 1);
 
-            SetSheet(interactableButton.Key, _repeatFunctionDictionary[interactableButton.Key], repeatSheet.SheetParent);
+            SetSheet(interactableButton.Key, repeatSheet, _repeatFunctionDictionary[interactableButton.Key], repeatSheet.SheetParent);
         }
         List<Transform> sheetTransformList = new List<Transform>();
         foreach(var sheet in RepeatFunctionSheets.Values)
@@ -157,8 +169,8 @@ public class SheetManager : MonoBehaviour
         }
         RepeatFunctionSheetContainer.AddSheet(sheetTransformList);
 
-        SetSheet(0, _mainBlockLogicBases, MainSheet.SheetParent);
-        SetSheet(-1, _exBlockLogicBases, ExSheet.SheetParent);
+        SetSheet(0, MainSheet, _mainBlockLogicBases, MainSheet.SheetParent);
+        SetSheet(-1, ExSheet, _exBlockLogicBases, ExSheet.SheetParent);
 
         MainSheet.gameObject.SetActive(true);
         foreach (var repeatSheet in RepeatFunctionSheets.Values)
@@ -168,9 +180,10 @@ public class SheetManager : MonoBehaviour
         ChoiceSheet(0);
     }
 
-    private void SetSheet(int index, List<BlockLogicBase> blockLogicList, Transform sheetParent)
+    private void SetSheet(int index, SheetBase sheetBase, List<BlockLogicBase> blockLogicList, Transform sheetParent)
     {
-        _sheetDictionary.TryAdd(index, blockLogicList);
+        _sheetDictionary.TryAdd(index, sheetBase);
+        _blockLogicListDictionary.TryAdd(index, blockLogicList);
         _sheetParentDictionary.TryAdd(index, sheetParent);
     }
 
@@ -178,6 +191,7 @@ public class SheetManager : MonoBehaviour
     {
         _isExBlockLogic = (index == -1) ? true : false;
         _currentSheet = _sheetDictionary[index];
+        _currentBlockLogicList = _blockLogicListDictionary[index];
         _currentSheetParent = _sheetParentDictionary[index];
     }
 
@@ -199,8 +213,11 @@ public class SheetManager : MonoBehaviour
     }
     private void ClickLogicButton(BlockLogicType type, InteractableUnityEventWrapper interactableUnityEventWrapper)
     {
+        if (_currentSheet.SheetLimit <= _currentSheet.BlockCount)
+            return;
+        
         //함수 시트에 함수가 들어가지 못하게 막기용 기능
-        if (_currentSheet != _mainBlockLogicBases)
+        if (_currentBlockLogicList != _mainBlockLogicBases)
         {
             if (type == BlockLogicType.Repeat || type == BlockLogicType.Function)
                 return;
@@ -229,6 +246,8 @@ public class SheetManager : MonoBehaviour
                 if (_sheetIndexDictionary.TryGetValue(interactableUnityEventWrapper, out int index))
                     fBlockLogic.SheetIndex = index;
         }
+        if(_currentSheet.SheetLimit != -1)
+            _currentSheet.BlockCount++;
     }
     #endregion
     
@@ -249,7 +268,7 @@ public class SheetManager : MonoBehaviour
         foreach (var repeatSheet in RepeatFunctionSheets.Values)
             repeatSheet.gameObject.SetActive(true);
         ExSheet.gameObject.SetActive(false);
-        _currentSheet = _sheetDictionary[0];
+        _currentBlockLogicList = _blockLogicListDictionary[0];
         _currentSheetParent = _sheetParentDictionary[0];
     }
     #endregion
@@ -262,7 +281,7 @@ public class SheetManager : MonoBehaviour
     public void AddBlockLogic(BlockLogicBase blockLogic)
     {
         blockLogic.transform.SetParent(_currentSheetParent, false);
-        _currentSheet.Add(blockLogic);
+        _currentBlockLogicList.Add(blockLogic);
     }
 
     public void ClearAllBlockLogic()
@@ -373,7 +392,7 @@ public class SheetManager : MonoBehaviour
         StageManager.Controller.LogicHint.HideLogicHint();
         int tempLenght = 0;
 
-        foreach (var blockLogic in _sheetDictionary[sheetIndex])
+        foreach (var blockLogic in _blockLogicListDictionary[sheetIndex])
         {
             ErrorType result = await RunBlockLogic(blockLogic);
             

@@ -43,7 +43,7 @@ public class InteractableManager : MonoBehaviour
             foreach (var functionBlockIndex in functionBlockList)
             {
                 FunctionData functionData = DataManager.Instance.GetGameData<FunctionData>(functionBlockIndex);
-                InstantiateFunctionButton(functionButtonPrefab, LogicButtonParent, functionData.Type, functionData.Name);
+                InstantiateFunctionButton(functionButtonPrefab, LogicButtonParent, functionData.Type, functionData.Name, functionData.FunctionAmount);
             }
         }
         
@@ -83,10 +83,10 @@ public class InteractableManager : MonoBehaviour
                 break;
         }*/
     }
-    private void InstantiateFunctionButton(GameObject prefab, Transform parent, BlockLogicType type, string functionName)
+    private void InstantiateFunctionButton(GameObject prefab, Transform parent, BlockLogicType type, string functionName, int functionLimit)
     {
         GameObject button = Instantiate(prefab, parent);
-        button.GetComponent<FunctionBlockName>().Init(functionName);
+        button.GetComponent<FunctionBlockData>().Init(functionName, functionLimit);
         InteractableUnityEventWrapper interactableUnityEventWrapper = button.GetComponent<InteractableUnityEventWrapper>();
 
         switch (type)

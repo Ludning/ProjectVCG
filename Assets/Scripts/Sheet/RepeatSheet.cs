@@ -6,11 +6,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class RepeatSheet : MonoBehaviour
+public class RepeatSheet : SheetBase
 {
-    public Transform SheetParent;
     public TextMeshProUGUI TMP_SheetName;
-    [ReadOnly] public SheetManager SheetManager;
     private int sheetIndex;
 
     public void Init(SheetManager sheetManager, int sheetIndex, string sheetName)

@@ -10,5 +10,5 @@ public class FunctionData
     public string Description;
     public BlockLogicType Type;
     public string Name;
-    public string FunctionAmount;
+    public int FunctionAmount;
 }
