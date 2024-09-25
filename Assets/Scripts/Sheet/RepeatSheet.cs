@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -8,13 +9,15 @@ using UnityEngine.Serialization;
 public class RepeatSheet : MonoBehaviour
 {
     public Transform SheetParent;
+    public TextMeshProUGUI TMP_SheetName;
     [ReadOnly] public SheetManager SheetManager;
     private int sheetIndex;
 
-    public void Init(SheetManager sheetManager, int sheetIndex)
+    public void Init(SheetManager sheetManager, int sheetIndex, string sheetName)
     {
         this.SheetManager = sheetManager;
         this.sheetIndex = sheetIndex;
+        this.TMP_SheetName.text = sheetName;
     }
 
     public void OnClickActiveRepeat()

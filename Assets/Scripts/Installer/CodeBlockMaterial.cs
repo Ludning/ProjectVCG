@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LoadCodeBlockMaterial : MonoBehaviour
+public class CodeBlockMaterial : MonoBehaviour
 {
     [SerializeField] private MeshRenderer meshRenderer;
     

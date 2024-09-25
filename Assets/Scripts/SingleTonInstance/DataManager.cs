@@ -36,6 +36,8 @@ public class DataManager : Singleton<DataManager>
                 return _gameData.Npc as Dictionary<string, T>;
             case "CodingBlockData":
                 return _gameData.CodingBlock as Dictionary<string, T>;
+            case "FunctionData":
+                return _gameData.Function as Dictionary<string, T>;
             case "FeedbackData":
                 return _gameData.Feedback as Dictionary<string, T>;
             case "ErrorMessageData":

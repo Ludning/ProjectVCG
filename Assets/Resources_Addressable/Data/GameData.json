@@ -160,6 +160,71 @@
       "Distance": ""
     }
   },
+  "Function": {
+    "3_1_A": {
+      "Index": "3_1_A",
+      "Description": "3챕터 1스테이지 A 함수 블록",
+      "Type": 8,
+      "Name": "A",
+      "FunctionAmount": "3"
+    },
+    "3_2_A": {
+      "Index": "3_2_A",
+      "Description": "3챕터 2스테이지 A 함수 블록",
+      "Type": 8,
+      "Name": "A",
+      "FunctionAmount": "4"
+    },
+    "3_2_B": {
+      "Index": "3_2_B",
+      "Description": "3챕터 2스테이지 B 함수 블록",
+      "Type": 8,
+      "Name": "B",
+      "FunctionAmount": "4"
+    },
+    "3_3_A": {
+      "Index": "3_3_A",
+      "Description": "3챕터 3스테이지 A 함수 블록",
+      "Type": 8,
+      "Name": "A",
+      "FunctionAmount": "5"
+    },
+    "3_4_A": {
+      "Index": "3_4_A",
+      "Description": "3챕터 4스테이지 A 함수 블록",
+      "Type": 8,
+      "Name": "A",
+      "FunctionAmount": "6"
+    },
+    "3_4_B": {
+      "Index": "3_4_B",
+      "Description": "3챕터 4스테이지 B 함수 블록",
+      "Type": 8,
+      "Name": "B",
+      "FunctionAmount": "6"
+    },
+    "4_1_A": {
+      "Index": "4_1_A",
+      "Description": "4챕터 1스테이지 A 함수 블록",
+      "Type": 8,
+      "Name": "A",
+      "FunctionAmount": "6"
+    },
+    "4_2_A": {
+      "Index": "4_2_A",
+      "Description": "4챕터 2스테이지 A 함수 블록",
+      "Type": 9,
+      "Name": "A",
+      "FunctionAmount": "4"
+    },
+    "4_2_B": {
+      "Index": "4_2_B",
+      "Description": "4챕터 2스테이지 B 함수 블록",
+      "Type": 9,
+      "Name": "B",
+      "FunctionAmount": "5"
+    }
+  },
   "Feedback": {
     "1000": {
       "Index": "1000",
@@ -280,6 +345,7 @@
       "StageOrder": "1",
       "AnswerBlockAmount": "3",
       "ShowBlock": "101",
+      "Show_F_Block": "",
       "StageClearCondition": "4000",
       "ETC": ""
     },
@@ -298,6 +364,7 @@
       "StageOrder": "2",
       "AnswerBlockAmount": "5",
       "ShowBlock": "101, 201, 202",
+      "Show_F_Block": "",
       "StageClearCondition": "4001",
       "ETC": ""
     },
@@ -316,6 +383,7 @@
       "StageOrder": "3",
       "AnswerBlockAmount": "6",
       "ShowBlock": "101, 201, 202, 301, 302",
+      "Show_F_Block": "",
       "StageClearCondition": "4100",
       "ETC": ""
     },
@@ -334,6 +402,7 @@
       "StageOrder": "1",
       "AnswerBlockAmount": "4",
       "ShowBlock": "101, 201, 202, 301, 302",
+      "Show_F_Block": "",
       "StageClearCondition": "4101",
       "ETC": ""
     },
@@ -352,6 +421,7 @@
       "StageOrder": "2",
       "AnswerBlockAmount": "11",
       "ShowBlock": "101, 201, 202, 301, 302",
+      "Show_F_Block": "",
       "StageClearCondition": "4102, 4103",
       "ETC": ""
     },
@@ -370,6 +440,7 @@
       "StageOrder": "1",
       "AnswerBlockAmount": "4",
       "ShowBlock": "101, 201, 202, 301, 302, 401",
+      "Show_F_Block": "",
       "StageClearCondition": "4200",
       "ETC": ""
     },
@@ -388,6 +459,7 @@
       "StageOrder": "2",
       "AnswerBlockAmount": "4",
       "ShowBlock": "101, 201, 202, 301, 302, 401",
+      "Show_F_Block": "",
       "StageClearCondition": "4201",
       "ETC": ""
     },
@@ -406,6 +478,7 @@
       "StageOrder": "3",
       "AnswerBlockAmount": "4",
       "ShowBlock": "101, 201, 202, 301, 302, 401",
+      "Show_F_Block": "",
       "StageClearCondition": "4202",
       "ETC": ""
     },
@@ -424,6 +497,7 @@
       "StageOrder": "4",
       "AnswerBlockAmount": "6",
       "ShowBlock": "101, 201, 202, 301, 302, 401",
+      "Show_F_Block": "",
       "StageClearCondition": "4203, 4204",
       "ETC": ""
     },
@@ -441,7 +515,8 @@
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "1",
       "AnswerBlockAmount": "6",
-      "ShowBlock": "101, 201, 202, 301, 302, 401, 998",
+      "ShowBlock": "101, 201, 202, 301, 302, 401",
+      "Show_F_Block": "3_1_A",
       "StageClearCondition": "4205, 4206",
       "ETC": ""
     },
@@ -459,7 +534,8 @@
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "2",
       "AnswerBlockAmount": "5",
-      "ShowBlock": "101, 201, 202, 301, 302, 401, 998",
+      "ShowBlock": "101, 201, 202, 301, 302, 401",
+      "Show_F_Block": "3_2_A, 3_2_B",
       "StageClearCondition": "4207, 4208",
       "ETC": ""
     },
@@ -477,7 +553,8 @@
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "3",
       "AnswerBlockAmount": "3",
-      "ShowBlock": "101, 201, 202, 301, 302, 401, 998",
+      "ShowBlock": "101, 201, 202, 301, 302, 401",
+      "Show_F_Block": "3_3_A",
       "StageClearCondition": "4209",
       "ETC": ""
     },
@@ -495,7 +572,8 @@
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "4",
       "AnswerBlockAmount": "4",
-      "ShowBlock": "101, 201, 202, 301, 302, 401, 998",
+      "ShowBlock": "101, 201, 202, 301, 302, 401",
+      "Show_F_Block": "3_4_A, 3_4_B",
       "StageClearCondition": "4210",
       "ETC": ""
     },
@@ -513,7 +591,8 @@
       "TargetFoodIcon": "",
       "StageOrder": "1",
       "AnswerBlockAmount": "1",
-      "ShowBlock": "101, 201, 202, 301, 302, 401, 998, 999",
+      "ShowBlock": "101, 201, 202, 301, 302, 401",
+      "Show_F_Block": "4_1_A",
       "StageClearCondition": "4104, 4105, 4106",
       "ETC": ""
     },
@@ -531,7 +610,8 @@
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "2",
       "AnswerBlockAmount": "2",
-      "ShowBlock": "101, 201, 202, 301, 302, 401, 998, 999",
+      "ShowBlock": "101, 201, 202, 301, 302, 401",
+      "Show_F_Block": "4_2_A, 4_2_B",
       "StageClearCondition": "4211, 4212",
       "ETC": ""
     }

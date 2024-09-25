@@ -6,6 +6,7 @@ using UnityEngine;
 public class InteractableManager : MonoBehaviour
 {
     private const string InteractableButtonName = "ButtonInteractable";
+    private const string FunctionInteractableButtonName = "FunctionButtonInteractable";
 
     [SerializeField] private Transform ExerciseParent;
     [SerializeField] private Transform LogicButtonParent;
@@ -19,19 +20,31 @@ public class InteractableManager : MonoBehaviour
     public Dictionary<int, InteractableUnityEventWrapper> RepeatInteractableButtons = new Dictionary<int, InteractableUnityEventWrapper>();
     private int _sheetIndex;
 
-    public void Init(string showBlockString)
+    //public void Init(string showBlockString)
+    public void Init(StageData stageData)
     {
         _sheetIndex = 1;
         
         GameObject buttonPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(InteractableButtonName);
+        GameObject functionButtonPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(FunctionInteractableButtonName);
 
         InstantiateExerciseButton(buttonPrefab, ExerciseParent);
 
-        List<string> blockList = new List<string>(showBlockString.Split(", "));
+        List<string> blockList = new List<string>(stageData.ShowBlock.Split(", "));
         foreach (var blockIndex in blockList)
         {
             CodingBlockData data = DataManager.Instance.GetGameData<CodingBlockData>(blockIndex);
             InstantiateButton(buttonPrefab, LogicButtonParent, data.Type);
+        }
+
+        if (!string.IsNullOrWhiteSpace(stageData.Show_F_Block))
+        {
+            List<string> functionBlockList = new List<string>(stageData.Show_F_Block.Split(", "));
+            foreach (var functionBlockIndex in functionBlockList)
+            {
+                FunctionData functionData = DataManager.Instance.GetGameData<FunctionData>(functionBlockIndex);
+                InstantiateFunctionButton(functionButtonPrefab, LogicButtonParent, functionData.Type, functionData.Name);
+            }
         }
         
         InstantiateButton(buttonPrefab, StartParent, BlockLogicType.Start);
@@ -45,7 +58,7 @@ public class InteractableManager : MonoBehaviour
     {
         GameObject button = Instantiate(prefab, parent);
         Material mat = ResourceManager.Instance.LoadResourceWithCaching<Material>("MemoMat");
-        button.GetComponent<LoadCodeBlockMaterial>().SetMaterial(mat);
+        button.GetComponent<CodeBlockMaterial>().SetMaterial(mat);
         InteractableUnityEventWrapper interactableUnityEventWrapper = button.GetComponent<InteractableUnityEventWrapper>();
 
         ExerciseButton = interactableUnityEventWrapper;
@@ -54,10 +67,10 @@ public class InteractableManager : MonoBehaviour
     {
         //Debug.Log(type);
         GameObject button = Instantiate(prefab, parent);
-        button.GetComponent<LoadCodeBlockMaterial>().Init(type);
+        button.GetComponent<CodeBlockMaterial>().Init(type);
         InteractableUnityEventWrapper interactableUnityEventWrapper = button.GetComponent<InteractableUnityEventWrapper>();
-
-        switch (type)
+        InteractableButtons[type] = interactableUnityEventWrapper;
+        /*switch (type)
         {
             case BlockLogicType.Function:
                 FunctionInteractableButtons.Add(GetNextSheetIndex(), interactableUnityEventWrapper);
@@ -67,6 +80,22 @@ public class InteractableManager : MonoBehaviour
                 break;
             default:
                 InteractableButtons[type] = interactableUnityEventWrapper;
+                break;
+        }*/
+    }
+    private void InstantiateFunctionButton(GameObject prefab, Transform parent, BlockLogicType type, string functionName)
+    {
+        GameObject button = Instantiate(prefab, parent);
+        button.GetComponent<FunctionBlockName>().Init(functionName);
+        InteractableUnityEventWrapper interactableUnityEventWrapper = button.GetComponent<InteractableUnityEventWrapper>();
+
+        switch (type)
+        {
+            case BlockLogicType.Function:
+                FunctionInteractableButtons.Add(GetNextSheetIndex(), interactableUnityEventWrapper);
+                break;
+            case BlockLogicType.Repeat:
+                RepeatInteractableButtons.Add(GetNextSheetIndex(), interactableUnityEventWrapper);
                 break;
         }
     }

@@ -17,6 +17,7 @@ public class StageData
     public string StageOrder;
     public string AnswerBlockAmount;
     public string ShowBlock;
+    public string Show_F_Block;
     public string StageClearCondition;
     public string ETC;
 

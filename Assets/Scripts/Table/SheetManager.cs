@@ -123,11 +123,12 @@ public class SheetManager : MonoBehaviour
             RepeatSheet functionSheet = Instantiate(sheetPrefab, RepeatFunctionSheetContainer.transform).GetComponent<RepeatSheet>();
             
             //TODO 위치 조정 스크립트도 작성해야함
+            FunctionBlockName functionBlockName = interactableButton.Value.GetComponent<FunctionBlockName>();
             
             RepeatFunctionSheets.Add(interactableButton.Key, functionSheet);
             _repeatFunctionDictionary.Add(interactableButton.Key, new List<BlockLogicBase>());
             _sheetIndexDictionary.Add(interactableButton.Value, interactableButton.Key);
-            functionSheet.GetComponent<RepeatSheet>().Init(this, interactableButton.Key);
+            functionSheet.GetComponent<RepeatSheet>().Init(this, interactableButton.Key, functionBlockName.name);
             _repeatCountDictionary.Add(interactableButton.Key, 1);
 
             SetSheet(interactableButton.Key, _repeatFunctionDictionary[interactableButton.Key], functionSheet.SheetParent);

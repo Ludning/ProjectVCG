@@ -2,6 +2,7 @@
   "GameObject": {
     "LogicBlock": "Assets/Resources_Addressable/Prefabs/LogicBlock.prefab",
     "ButtonInteractable": "Assets/Resources_Addressable/Prefabs/ButtonInteractable.prefab",
+    "FunctionButtonInteractable": "Assets/Resources_Addressable/Prefabs/FunctionButtonInteractable.prefab",
     "CookBlockLogic": "Assets/Resources_Addressable/Prefabs/BlockLogic/CookBlockLogic.prefab",
     "MoveBlockLogic": "Assets/Resources_Addressable/Prefabs/BlockLogic/MoveBlockLogic.prefab",
     "DashBlockLogic": "Assets/Resources_Addressable/Prefabs/BlockLogic/DashBlockLogic.prefab",
