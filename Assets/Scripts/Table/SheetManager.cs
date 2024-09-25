@@ -122,13 +122,12 @@ public class SheetManager : MonoBehaviour
             GameObject sheetPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("FunctionSheet");
             RepeatSheet functionSheet = Instantiate(sheetPrefab, RepeatFunctionSheetContainer.transform).GetComponent<RepeatSheet>();
             
-            //TODO 위치 조정 스크립트도 작성해야함
             FunctionBlockName functionBlockName = interactableButton.Value.GetComponent<FunctionBlockName>();
             
             RepeatFunctionSheets.Add(interactableButton.Key, functionSheet);
             _repeatFunctionDictionary.Add(interactableButton.Key, new List<BlockLogicBase>());
             _sheetIndexDictionary.Add(interactableButton.Value, interactableButton.Key);
-            functionSheet.GetComponent<RepeatSheet>().Init(this, interactableButton.Key, functionBlockName.name);
+            functionSheet.GetComponent<RepeatSheet>().Init(this, interactableButton.Key, functionBlockName.sheetName);
             _repeatCountDictionary.Add(interactableButton.Key, 1);
 
             SetSheet(interactableButton.Key, _repeatFunctionDictionary[interactableButton.Key], functionSheet.SheetParent);
@@ -141,10 +140,12 @@ public class SheetManager : MonoBehaviour
             GameObject sheetPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("RepeatSheet");
             RepeatSheet repeatSheet = Instantiate(sheetPrefab, RepeatFunctionSheetContainer.transform).GetComponent<RepeatSheet>();
             
+            FunctionBlockName functionBlockName = interactableButton.Value.GetComponent<FunctionBlockName>();
+            
             RepeatFunctionSheets.Add(interactableButton.Key, repeatSheet);
             _repeatFunctionDictionary.Add(interactableButton.Key, new List<BlockLogicBase>());
             _sheetIndexDictionary.Add(interactableButton.Value, interactableButton.Key);
-            repeatSheet.GetComponent<RepeatSheet>().Init(this, interactableButton.Key);
+            repeatSheet.GetComponent<RepeatSheet>().Init(this, interactableButton.Key, functionBlockName.sheetName);
             _repeatCountDictionary.Add(interactableButton.Key, 1);
 
             SetSheet(interactableButton.Key, _repeatFunctionDictionary[interactableButton.Key], repeatSheet.SheetParent);
