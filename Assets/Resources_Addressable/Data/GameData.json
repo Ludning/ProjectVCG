@@ -166,63 +166,63 @@
       "Description": "3챕터 1스테이지 A 함수 블록",
       "Type": 8,
       "Name": "A",
-      "FunctionAmount": "3"
+      "FunctionAmount": 3
     },
     "3_2_A": {
       "Index": "3_2_A",
       "Description": "3챕터 2스테이지 A 함수 블록",
       "Type": 8,
       "Name": "A",
-      "FunctionAmount": "4"
+      "FunctionAmount": 4
     },
     "3_2_B": {
       "Index": "3_2_B",
       "Description": "3챕터 2스테이지 B 함수 블록",
       "Type": 8,
       "Name": "B",
-      "FunctionAmount": "4"
+      "FunctionAmount": 4
     },
     "3_3_A": {
       "Index": "3_3_A",
       "Description": "3챕터 3스테이지 A 함수 블록",
       "Type": 8,
       "Name": "A",
-      "FunctionAmount": "5"
+      "FunctionAmount": 5
     },
     "3_4_A": {
       "Index": "3_4_A",
       "Description": "3챕터 4스테이지 A 함수 블록",
       "Type": 8,
       "Name": "A",
-      "FunctionAmount": "6"
+      "FunctionAmount": 6
     },
     "3_4_B": {
       "Index": "3_4_B",
       "Description": "3챕터 4스테이지 B 함수 블록",
       "Type": 8,
       "Name": "B",
-      "FunctionAmount": "6"
+      "FunctionAmount": 6
     },
     "4_1_A": {
       "Index": "4_1_A",
       "Description": "4챕터 1스테이지 A 함수 블록",
-      "Type": 8,
+      "Type": 9,
       "Name": "A",
-      "FunctionAmount": "6"
+      "FunctionAmount": 6
     },
     "4_2_A": {
       "Index": "4_2_A",
       "Description": "4챕터 2스테이지 A 함수 블록",
       "Type": 9,
       "Name": "A",
-      "FunctionAmount": "4"
+      "FunctionAmount": 4
     },
     "4_2_B": {
       "Index": "4_2_B",
       "Description": "4챕터 2스테이지 B 함수 블록",
       "Type": 9,
       "Name": "B",
-      "FunctionAmount": "5"
+      "FunctionAmount": 5
     }
   },
   "Feedback": {
@@ -343,7 +343,7 @@
       "TargetIngredientIcon": "",
       "TargetFoodIcon": "",
       "StageOrder": "1",
-      "AnswerBlockAmount": "3",
+      "AnswerBlockAmount": 3,
       "ShowBlock": "101",
       "Show_F_Block": "",
       "StageClearCondition": "4000",
@@ -362,7 +362,7 @@
       "TargetIngredientIcon": "",
       "TargetFoodIcon": "",
       "StageOrder": "2",
-      "AnswerBlockAmount": "5",
+      "AnswerBlockAmount": 5,
       "ShowBlock": "101, 201, 202",
       "Show_F_Block": "",
       "StageClearCondition": "4001",
@@ -381,7 +381,7 @@
       "TargetIngredientIcon": "ICON_DATA_PRODUCT",
       "TargetFoodIcon": "",
       "StageOrder": "3",
-      "AnswerBlockAmount": "6",
+      "AnswerBlockAmount": 6,
       "ShowBlock": "101, 201, 202, 301, 302",
       "Show_F_Block": "",
       "StageClearCondition": "4100",
@@ -400,7 +400,7 @@
       "TargetIngredientIcon": "ICON_DATA_PRODUCT",
       "TargetFoodIcon": "",
       "StageOrder": "1",
-      "AnswerBlockAmount": "4",
+      "AnswerBlockAmount": 4,
       "ShowBlock": "101, 201, 202, 301, 302",
       "Show_F_Block": "",
       "StageClearCondition": "4101",
@@ -419,7 +419,7 @@
       "TargetIngredientIcon": "ICON_DATA_PRODUCT",
       "TargetFoodIcon": "",
       "StageOrder": "2",
-      "AnswerBlockAmount": "11",
+      "AnswerBlockAmount": 11,
       "ShowBlock": "101, 201, 202, 301, 302",
       "Show_F_Block": "",
       "StageClearCondition": "4102, 4103",
@@ -438,7 +438,7 @@
       "TargetIngredientIcon": "ICON_DATA_PRODUCT",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "1",
-      "AnswerBlockAmount": "4",
+      "AnswerBlockAmount": 4,
       "ShowBlock": "101, 201, 202, 301, 302, 401",
       "Show_F_Block": "",
       "StageClearCondition": "4200",
@@ -457,7 +457,7 @@
       "TargetIngredientIcon": "ICON_DATA_PRODUCT",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "2",
-      "AnswerBlockAmount": "4",
+      "AnswerBlockAmount": 4,
       "ShowBlock": "101, 201, 202, 301, 302, 401",
       "Show_F_Block": "",
       "StageClearCondition": "4201",
@@ -476,7 +476,7 @@
       "TargetIngredientIcon": "ICON_DATA_PRODUCT",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "3",
-      "AnswerBlockAmount": "4",
+      "AnswerBlockAmount": 4,
       "ShowBlock": "101, 201, 202, 301, 302, 401",
       "Show_F_Block": "",
       "StageClearCondition": "4202",
@@ -495,8 +495,8 @@
       "TargetIngredientIcon": "ICON_DATA_PRODUCT",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "4",
-      "AnswerBlockAmount": "6",
-      "ShowBlock": "101, 201, 202, 301, 302, 401",
+      "AnswerBlockAmount": 15,
+      "ShowBlock": "101, 201, 202, 203, 301, 302, 401",
       "Show_F_Block": "",
       "StageClearCondition": "4203, 4204",
       "ETC": ""
@@ -514,7 +514,7 @@
       "TargetIngredientIcon": "ICON_DATA_PRODUCT",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "1",
-      "AnswerBlockAmount": "6",
+      "AnswerBlockAmount": 6,
       "ShowBlock": "101, 201, 202, 301, 302, 401",
       "Show_F_Block": "3_1_A",
       "StageClearCondition": "4205, 4206",
@@ -533,8 +533,8 @@
       "TargetIngredientIcon": "ICON_DATA_PRODUCT",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "2",
-      "AnswerBlockAmount": "5",
-      "ShowBlock": "101, 201, 202, 301, 302, 401",
+      "AnswerBlockAmount": 5,
+      "ShowBlock": "101, 201, 202, 203, 301, 302, 401",
       "Show_F_Block": "3_2_A, 3_2_B",
       "StageClearCondition": "4207, 4208",
       "ETC": ""
@@ -552,10 +552,10 @@
       "TargetIngredientIcon": "ICON_DATA_PRODUCT",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "3",
-      "AnswerBlockAmount": "3",
-      "ShowBlock": "101, 201, 202, 301, 302, 401",
+      "AnswerBlockAmount": 3,
+      "ShowBlock": "101, 201, 202, 203, 301, 302, 401",
       "Show_F_Block": "3_3_A",
-      "StageClearCondition": "4209",
+      "StageClearCondition": "4209, 4210",
       "ETC": ""
     },
     "3033": {
@@ -571,10 +571,10 @@
       "TargetIngredientIcon": "ICON_DATA_PRODUCT",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "4",
-      "AnswerBlockAmount": "4",
-      "ShowBlock": "101, 201, 202, 301, 302, 401",
+      "AnswerBlockAmount": 4,
+      "ShowBlock": "101, 201, 202, 203, 301, 302, 401",
       "Show_F_Block": "3_4_A, 3_4_B",
-      "StageClearCondition": "4210",
+      "StageClearCondition": "4211",
       "ETC": ""
     },
     "3040": {
@@ -590,8 +590,8 @@
       "TargetIngredientIcon": "ICON_DATA_PRODUCT",
       "TargetFoodIcon": "",
       "StageOrder": "1",
-      "AnswerBlockAmount": "1",
-      "ShowBlock": "101, 201, 202, 301, 302, 401",
+      "AnswerBlockAmount": 1,
+      "ShowBlock": "102, 201, 202, 301, 302, 401",
       "Show_F_Block": "4_1_A",
       "StageClearCondition": "4104, 4105, 4106",
       "ETC": ""
@@ -609,10 +609,10 @@
       "TargetIngredientIcon": "ICON_DATA_PRODUCT",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "2",
-      "AnswerBlockAmount": "2",
+      "AnswerBlockAmount": 2,
       "ShowBlock": "101, 201, 202, 301, 302, 401",
       "Show_F_Block": "4_2_A, 4_2_B",
-      "StageClearCondition": "4211, 4212",
+      "StageClearCondition": "4212, 4213",
       "ETC": ""
     }
   },
@@ -660,7 +660,7 @@
     "5023": {
       "Index": "5023",
       "Description": "2챕터 4스테이지에 대한 설명",
-      "Context": "완성된 요리를 트레이에서 요리하는 스테이지야"
+      "Context": "완성된 요리 2개를 요리해야하는 스테이지야"
     },
     "5030": {
       "Index": "5030",
@@ -735,7 +735,7 @@
     "5523": {
       "Index": "5523",
       "Description": "2챕터 4스테이지의 클리어 목표에 대한 설명",
-      "Context": "앞서 배운 블록들을 활용해 완성된 2개의 요리를 트레이에서 조리해보자"
+      "Context": "앞서 배운 블록들을 활용해 2개의 요리를 조리해보자"
     },
     "5530": {
       "Index": "5530",
@@ -936,17 +936,28 @@
     },
     "4209": {
       "Index": "4209",
-      "Description": "레시피 / 새우 초밥",
+      "Description": "레시피 / 썬 새우",
       "DisplayContext": "",
       "Sort_Clear": 3,
       "Tile_Index": "",
-      "Recipe_Index": "21001",
+      "Recipe_Index": "20001",
       "Tile_Key": "",
-      "Contents_Key": "SUSHI_SHRIMP",
+      "Contents_Key": "CUT_SHRIMP",
       "Contents_Count": "1"
     },
     "4210": {
       "Index": "4210",
+      "Description": "레시피 / 된 밥",
+      "DisplayContext": "",
+      "Sort_Clear": 3,
+      "Tile_Index": "",
+      "Recipe_Index": "20002",
+      "Tile_Key": "",
+      "Contents_Key": "POT_RICE",
+      "Contents_Count": "1"
+    },
+    "4211": {
+      "Index": "4211",
       "Description": "레시피 / 새우튀김 덮밥",
       "DisplayContext": "",
       "Sort_Clear": 3,
@@ -989,8 +1000,8 @@
       "Contents_Key": "CUT_FISH",
       "Contents_Count": "1"
     },
-    "4211": {
-      "Index": "4211",
+    "4212": {
+      "Index": "4212",
       "Description": "레시피 / 생선회",
       "DisplayContext": "",
       "Sort_Clear": 3,
@@ -1000,8 +1011,8 @@
       "Contents_Key": "CUT_FISH",
       "Contents_Count": "1"
     },
-    "4212": {
-      "Index": "4212",
+    "4213": {
+      "Index": "4213",
       "Description": "레시피 / 생선회",
       "DisplayContext": "",
       "Sort_Clear": 3,
