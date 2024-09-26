@@ -43,6 +43,7 @@ public class ChapterSelectPopup : MonoBehaviour, IUIBase
             handler.toggle.onValueChanged.AddListener(handler.OnToggleValueChanged);
             handler.toggle.group = ToggleGroup;
         }
+        
     }
     public void ClearChildUI()
     {
