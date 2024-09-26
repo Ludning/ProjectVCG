@@ -133,7 +133,6 @@ public class SheetManager : MonoBehaviour
             
             FunctionBlockData functionBlockData = interactableButton.Value.GetComponent<FunctionBlockData>();
             
-            //TODO count
             functionSheet.SheetLimit = functionBlockData.functionLimit;
             
             RepeatFunctionSheets.Add(interactableButton.Key, functionSheet);
@@ -153,6 +152,8 @@ public class SheetManager : MonoBehaviour
             RepeatSheet repeatSheet = Instantiate(sheetPrefab, RepeatFunctionSheetContainer.transform).GetComponent<RepeatSheet>();
             
             FunctionBlockData functionBlockData = interactableButton.Value.GetComponent<FunctionBlockData>();
+            
+            repeatSheet.SheetLimit = functionBlockData.functionLimit;
             
             RepeatFunctionSheets.Add(interactableButton.Key, repeatSheet);
             _repeatFunctionDictionary.Add(interactableButton.Key, new List<BlockLogicBase>());
