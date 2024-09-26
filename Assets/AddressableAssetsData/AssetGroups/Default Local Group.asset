@@ -117,7 +117,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: df9d862ea2ff69e459b15a7fcfdbf8f3
+  - m_GUID: b81e7f45cb3f4434aa26171c1608161a
     m_Address: Assets/Resources_Addressable/Prefabs/BlockLogic/RotateBackBlockLogic.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []

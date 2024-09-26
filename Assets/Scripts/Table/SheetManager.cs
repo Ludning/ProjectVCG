@@ -234,8 +234,21 @@ public class SheetManager : MonoBehaviour
         {
             if (codingBlockData.Type == type)
             {
-                logicBase.BlockIcon = ResourceManager.Instance.LoadResourceWithCaching<Sprite>(codingBlockData.IconBlock);
-                break;
+                if (logicBase is RepeatBlockLogic repeat)
+                {
+                    repeat.RepeatText.text = interactableUnityEventWrapper.GetComponent<FunctionBlockData>().sheetName;
+                    break;
+                }
+                else if(logicBase is FunctionBlockLogic function)
+                {
+                    function.FunctionText.text = interactableUnityEventWrapper.GetComponent<FunctionBlockData>().sheetName;
+                    break;
+                }
+                else
+                {
+                    logicBase.BlockIcon = ResourceManager.Instance.LoadResourceWithCaching<Sprite>(codingBlockData.IconBlock);
+                    break;
+                }
             }
         }
         if (logicBase != null)
@@ -315,7 +328,7 @@ public class SheetManager : MonoBehaviour
             }
             blockLogicBaseKeyValue.Value.Clear();
         }
-        _repeatFunctionDictionary.Clear();
+        //_repeatFunctionDictionary.Clear();
     }
     public void ClearExBlockLogic()
     {
@@ -547,27 +560,17 @@ public class SheetManager : MonoBehaviour
 
     public void Clear()
     {
-        //메인 블록 클리어
-        foreach (var blockLogic in _mainBlockLogicBases)
-        {
-            Destroy(blockLogic.gameObject);
-        }
-        _mainBlockLogicBases.Clear();
-
-        //함수 블록 클리어
-        foreach (var repeatBlockLogicBases in _repeatFunctionDictionary)
-        {
-            foreach (var blockLogic in repeatBlockLogicBases.Value)
-                Destroy(blockLogic.gameObject);
-        }
-        _repeatFunctionDictionary.Clear();
-
-        //반복 함수 블록 클리어
+        
+        //반복 함수 시트 제거
         foreach (var repeatSheet in RepeatFunctionSheets)
-        {
             Destroy(repeatSheet.Value.gameObject);
-        }
+        
         RepeatFunctionSheets.Clear();
+        
+        ClearAllBlockLogic();
+        
+        //
+        _repeatFunctionDictionary.Clear();
         
         
         _sheetDictionary.Clear();

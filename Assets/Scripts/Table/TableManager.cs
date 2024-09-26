@@ -162,6 +162,11 @@ public class TableManager : MonoBehaviour
     {
         foreach (var tileBase in map.Values)
         {
+            if (tileBase == null)
+            {
+                continue;
+            }
+            
             tileBase.ClearItem();
             Destroy(tileBase.gameObject);
         }

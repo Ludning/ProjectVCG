@@ -166,7 +166,9 @@ public class TileBase : MonoBehaviour
             Destroy(IngredientItem);
         InventoryStack.Clear();
         Debug.Log("ClearTileItem");
-        _itemHintUI?.Clear();
+        
+        if(_itemHintUI != null)
+            _itemHintUI.Clear();
     }
     public void OnItemSpawn()
     {

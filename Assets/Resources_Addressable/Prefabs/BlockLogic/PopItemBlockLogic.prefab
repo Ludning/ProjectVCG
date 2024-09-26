@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5060f1069e10c734b881aeb57e246a24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BlockIcon: {fileID: 0}
 --- !u!114 &7049636942826467340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 0
   outlineColor: {r: 0, g: 0.87, b: 1, a: 1}
-  outlineWidth: 23
+  outlineWidth: 30
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
