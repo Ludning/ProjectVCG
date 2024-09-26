@@ -26,7 +26,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _GlowIntensity: 2
-    - _Opacity: 1
+    - _Opacity: 0.516
+    - _OutlineThickness: 0.03
     - _OutlineWidth: 2
     - _ZTest: 8
     m_Colors:

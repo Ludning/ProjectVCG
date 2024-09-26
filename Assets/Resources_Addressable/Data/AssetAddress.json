@@ -53,7 +53,8 @@
     "European_Female": "Assets/Resources_Addressable/Prefabs/Npcs/European_Female.prefab",
     "European_Male": "Assets/Resources_Addressable/Prefabs/Npcs/European_Male.prefab",
     "ItemHintUI": "Assets/Resources_Addressable/Prefabs/ItemHintUI.prefab",
-    "ItemImage": "Assets/Resources_Addressable/Prefabs/WorldUI/Elements/ItemImage.prefab"
+    "ItemImage": "Assets/Resources_Addressable/Prefabs/WorldUI/Elements/ItemImage.prefab",
+    "OutLine": "Assets/Resources_Addressable/Prefabs/Tiles/OutLine/OutLine.prefab"
   },
   "Material": {
     "TempMat": "Assets/Resources_Addressable/Materials/Logic/TempMat.mat",

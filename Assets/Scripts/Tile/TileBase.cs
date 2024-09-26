@@ -13,10 +13,9 @@ public class TileBase : MonoBehaviour
     public string LevelKey;
     private int InventoryCount = 0;
 
-    public OutlineMap OutlineMap;
-
     public GameObject IngredientItem;
-    
+    public SpriteRenderer spriteRenderer;
+
     public Stack<ItemBase> InventoryStack = new Stack<ItemBase>();
 
     public bool IsWalkAble => (TileAttributeType & TileAttributeType.Moveable) != 0;
@@ -45,16 +44,6 @@ public class TileBase : MonoBehaviour
         CookingPropertyType = nodeData.CookingPropertyType;
         InventoryCount = tileData.InventoryCount;
        
-        /*if (nodeData.SpawnObjectType != ItemType.Null)
-        {
-            string itemIndex = ((int)nodeData.SpawnObjectType).ToString();
-            FoodData data = DataManager.Instance.GetGameData<FoodData>(itemIndex);
-            GameObject foodPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(data.PrefabName);
-            NoRimitItemMesh = Instantiate(foodPrefab).GetComponent<ItemBase>();
-            NoRimitItemMesh.transform.SetParent(transform, false);
-            NoRimitItemMesh.transform.localPosition = transform.position + Vector3.up * 1.5f;
-        }*/
-
         //TileLogic 설치
         InitTileMesh(tileData.PrefabName);
     }
@@ -66,13 +55,15 @@ public class TileBase : MonoBehaviour
 
         GameObject tilePrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(tileName);
         GameObject go = Instantiate(tilePrefab, transform);
-        Transform childTransform = go.transform.GetChild(0); // 첫 번째 자식
 
             // 자식 오브젝트에서 Outline 컴포넌트 확인 및 추가
-        if (!go.TryGetComponent<OutlineMap>(out OutlineMap outline) && (tileName == "Walking_Tile" || tileName == "Walking_Pass_Tile"))
-            OutlineMap = childTransform.gameObject.AddComponent<OutlineMap>(); // 자식 오브젝트에 Outline 컴포넌트 추가
-        else
-            OutlineMap = outline;
+        if (tileName == "Walking_Tile" || tileName == "Walking_Pass_Tile")
+        {
+            GameObject OutLinePrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("OutLine");
+            GameObject OutLineObject = Instantiate(OutLinePrefab, transform);
+            OutLineObject.transform.localPosition = Vector3.up * 1.01f;
+            spriteRenderer = OutLineObject.GetComponent<SpriteRenderer>();
+        }
 
         go.transform.localPosition = Vector3.zero;
     }
@@ -153,6 +144,12 @@ public class TileBase : MonoBehaviour
     {
         item.transform.SetParent(transform, false);
         item.transform.localPosition = Vector3.up * GameManager.Instance.ItemPositionAdditive;
+    }
+
+    public void ChangeCurrentTileSpriteColor(bool change)
+    {
+        if(spriteRenderer!=null)
+            spriteRenderer.color = (change == true) ? Color.red : Color.blue;
     }
 
     private void InstantiateItemHintUI()
