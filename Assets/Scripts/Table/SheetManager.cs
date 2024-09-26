@@ -6,6 +6,7 @@ using System.Linq;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class SheetManager : MonoBehaviour
 {
@@ -183,9 +184,9 @@ public class SheetManager : MonoBehaviour
 
     private void SetSheet(int index, SheetBase sheetBase, List<BlockLogicBase> blockLogicList, Transform sheetParent)
     {
-        _sheetDictionary.TryAdd(index, sheetBase);
-        _blockLogicListDictionary.TryAdd(index, blockLogicList);
-        _sheetParentDictionary.TryAdd(index, sheetParent);
+        _sheetDictionary.Add(index, sheetBase);
+        _blockLogicListDictionary.Add(index, blockLogicList);
+        _sheetParentDictionary.Add(index, sheetParent);
     }
 
     public void ChoiceSheet(int index)
@@ -546,27 +547,34 @@ public class SheetManager : MonoBehaviour
 
     public void Clear()
     {
+        //메인 블록 클리어
         foreach (var blockLogic in _mainBlockLogicBases)
         {
             Destroy(blockLogic.gameObject);
         }
-
         _mainBlockLogicBases.Clear();
 
+        //함수 블록 클리어
         foreach (var repeatBlockLogicBases in _repeatFunctionDictionary)
         {
             foreach (var blockLogic in repeatBlockLogicBases.Value)
                 Destroy(blockLogic.gameObject);
         }
-
         _repeatFunctionDictionary.Clear();
 
+        //반복 함수 블록 클리어
         foreach (var repeatSheet in RepeatFunctionSheets)
         {
             Destroy(repeatSheet.Value.gameObject);
         }
-
         RepeatFunctionSheets.Clear();
+        
+        
+        _sheetDictionary.Clear();
+        _blockLogicListDictionary.Clear();
+        _sheetParentDictionary.Clear();
+        
+        
         _repeatCountDictionary.Clear();
         MainSheet.gameObject.SetActive(false);
         ExSheet.gameObject.SetActive(false);
