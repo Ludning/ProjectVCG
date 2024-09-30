@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CookLogic : BlockLogicBase
 {
+    private float _runningTime = 1f;
     public override ErrorType IsExecutable(StageManager owner)
     {
         var position = owner.Controller.PlayerForwardPosition;
@@ -24,24 +25,27 @@ public class CookLogic : BlockLogicBase
         if (!owner.TableManager.TryGetTileItemTypeList(position, out List<ItemType> itemTypeList))
             return ErrorType.UnKnownError;
         
-        //레벨 체크 (이번 조리가 레시피랑 일치한지)
-        /*TileBase tile = owner.TableManager.PeekTile(position);
-        if(!owner.levelManager.CheckLevel(tile, BlockLogicType.Cook))
-            return ErrorType.InvalidCookCombo;*/
-        
         //레시피 체크 (해당 아이템들이 레시피에 있는지)
         TileBase tile = owner.TableManager.PeekTile(position);
         if(GameManager.Instance.FindPossibleRecipes(tile.GetItemTypeList(), tile.CookingPropertyType) == ItemType.NULL)
             return ErrorType.InvalidCookCombo;
-        
+
+        _runningTime = 1f;
+        owner.Controller.SetAnimationState(AnimationState.IsCook, true);
         return ErrorType.NoError;
     }
 
     public override LogicState Execute(StageManager owner)
     {
+        if (_runningTime > 0)
+        {
+            _runningTime -= Time.deltaTime;
+            return LogicState.Running;
+        }
+        
         var position = owner.Controller.PlayerForwardPosition;
         TileBase tile =  owner.TableManager.PeekTile(position);
-
+        
         ItemType productFood = GameManager.Instance.FindPossibleRecipes(tile.GetItemTypeList(), tile.CookingPropertyType);
         FoodData foodData = DataManager.Instance.GetGameData<FoodData>(((int)productFood).ToString());
         GameObject foodPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(foodData.PrefabName);
@@ -50,17 +54,7 @@ public class CookLogic : BlockLogicBase
         tile.ClearItem();
         tile.SetItem(food.GetComponent<ItemBase>());
         
-        /*switch (owner.levelManager.CurrentLevelUnit)
-        {
-            case RecipeUnit_Clear recipeUnit_Clear:
-                tile.SetDisplayItem(recipeUnit_Clear.SpawnProductFood().GetComponent<ItemBase>());
-                break;
-            case RecipeUnit recipeUnit:
-                tile.SetItem(recipeUnit.SpawnProductFood().GetComponent<ItemBase>());
-                break;
-            default:
-                return LogicState.Failure;
-        }*/
+        owner.Controller.SetAnimationState(AnimationState.IsCook, true);
         return LogicState.Success;
     }
     public override void CheakClear(StageManager owner)

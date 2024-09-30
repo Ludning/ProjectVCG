@@ -7,6 +7,8 @@ public class RotateRightLogic : BlockLogicBase
     public override ErrorType IsExecutable(StageManager owner)
     {
         playerTargetRot = owner.Controller.transform.localRotation * Quaternion.Euler(new Vector3(0, 90, 0));
+        
+        owner.Controller.SetAnimationState(AnimationState.IsRightTurn, true);
         return ErrorType.NoError;
     }
 
@@ -37,7 +39,8 @@ public class RotateRightLogic : BlockLogicBase
                     owner.Controller.PlayerForwardType = Direction.Down;
                     break;
             }
-			
+            
+            owner.Controller.SetAnimationState(AnimationState.IsRightTurn, false);
             return LogicState.Success;
         }
 		

@@ -8,6 +8,7 @@ public class RotateBackLogic : BlockLogicBase
     {
         playerTargetRot = owner.Controller.transform.localRotation * Quaternion.Euler(new Vector3(0, 180, 0));
 		
+        owner.Controller.SetAnimationState(AnimationState.IsTurnBack, true);
         return ErrorType.NoError;
     }
     
@@ -33,7 +34,8 @@ public class RotateBackLogic : BlockLogicBase
                     owner.Controller.PlayerForwardType = Direction.Left;
                     break;
             }
-			
+            
+            owner.Controller.SetAnimationState(AnimationState.IsTurnBack, false);
             return LogicState.Success;
         }
 		

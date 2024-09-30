@@ -18,6 +18,7 @@ public class MoveLogic : BlockLogicBase
         if(!owner.TableManager.PeekTile(position).IsInventoryEmpty)
             return ErrorType.NotMove;
         
+        owner.Controller.SetAnimationState(AnimationState.IsMove, true);
         return ErrorType.NoError;
     }
 
@@ -35,6 +36,8 @@ public class MoveLogic : BlockLogicBase
             owner.Controller.transform.position = targetWorldPosition;
             owner.Controller.PlayerPosition = targetPosition;
             Debug.Log("End Logic");
+            
+            owner.Controller.SetAnimationState(AnimationState.IsMove, false);
             return LogicState.Success;
         }
         return LogicState.Running;

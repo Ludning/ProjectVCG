@@ -11,8 +11,6 @@ public class LevelManager : MonoBehaviour // Assets/Scripts/Manager/RecipeManage
     [SerializeField] private LevelPopup levelPopup; // Recipe UI
     
     private readonly List<LevelUnitBase> _levelUnitList = new(); // Recipe List
-
-    [SerializeField] private HorizontalLayoutGroup _horizontalLayoutGroup;
     
     private int _cursor = 0; // Index for Recipe List
     public LevelUnitBase CurrentLevelUnit => _levelUnitList[_cursor]; // Getter for Index Item of Recipe List

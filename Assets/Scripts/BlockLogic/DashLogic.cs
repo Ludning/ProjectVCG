@@ -20,6 +20,7 @@ public class DashLogic : BlockLogicBase
         if (!owner.TableManager.PeekTile(position).IsInventoryEmpty)
             return ErrorType.NotMove;
 
+        owner.Controller.SetAnimationState(AnimationState.IsDash, true);
         return ErrorType.NoError;
     }
 
@@ -44,6 +45,7 @@ public class DashLogic : BlockLogicBase
                 return LogicState.Running;
             }
             Debug.Log("End Logic");
+            owner.Controller.SetAnimationState(AnimationState.IsDash, false);
             return LogicState.Success;
         }
         return LogicState.Running;

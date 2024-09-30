@@ -1,11 +1,37 @@
 using System;
 using UnityEngine;
 
+public enum AnimationState
+{
+    IsIdle,
+    IsMove,
+    IsDash,
+    IsLeftTurn,
+    IsRightTurn,
+    IsTurnBack,
+    IsCook,
+    IsPuttingDown,
+    IsLifting,
+    IsCarry,
+}
 public class PlayerController : MonoBehaviour
 {
     public TableManager TableManager;
 
     public LogicHint LogicHint;
+
+    [SerializeField] private Animator PlayerAnimator;
+    
+    private static readonly int IsIdle = Animator.StringToHash("IsIdle");
+    private static readonly int IsMove = Animator.StringToHash("IsMove");
+    private static readonly int IsDash = Animator.StringToHash("IsDash");
+    private static readonly int IsLeftTurn = Animator.StringToHash("IsLeftTurn");
+    private static readonly int IsRightTurn = Animator.StringToHash("IsRightTurn");
+    private static readonly int IsTurnBack = Animator.StringToHash("IsTurnBack");
+    private static readonly int IsCook = Animator.StringToHash("IsCook");
+    private static readonly int IsPuttingDown = Animator.StringToHash("IsPuttingDown");
+    private static readonly int IsLifting = Animator.StringToHash("IsLifting");
+    private static readonly int IsCarry = Animator.StringToHash("IsCarry");
     
     [ReadOnly]
     public Direction PlayerForwardType;
@@ -54,17 +80,56 @@ public class PlayerController : MonoBehaviour
         switch (forwardType)
         {
             case Direction.Up:
-                transform.localRotation = Quaternion.Euler(0, 90, 0);
-                break;
-            case Direction.Down:
                 transform.localRotation = Quaternion.Euler(0, 270, 0);
                 break;
-            case Direction.Left:
-                transform.localRotation = Quaternion.Euler(0, 0, 0);
+            case Direction.Down:
+                transform.localRotation = Quaternion.Euler(0, 90, 0);
                 break;
-            case Direction.Right:
+            case Direction.Left:
                 transform.localRotation = Quaternion.Euler(0, 180, 0);
                 break;
+            case Direction.Right:
+                transform.localRotation = Quaternion.Euler(0, 0, 0);
+                break;
+        }
+    }
+
+    public void SetAnimationState(AnimationState state, bool value)
+    {
+        switch (state)
+        {
+            case AnimationState.IsIdle:
+                PlayerAnimator.SetBool(IsIdle, value);
+                break;
+            case AnimationState.IsMove:
+                PlayerAnimator.SetBool(IsMove, value);
+                break;
+            case AnimationState.IsDash:
+                PlayerAnimator.SetBool(IsDash, value);
+                break;
+            case AnimationState.IsLeftTurn:
+                PlayerAnimator.SetBool(IsLeftTurn, value);
+                break;
+            case AnimationState.IsRightTurn:
+                PlayerAnimator.SetBool(IsRightTurn, value);
+                break;
+            case AnimationState.IsTurnBack:
+                PlayerAnimator.SetBool(IsTurnBack, value);
+                break;
+            case AnimationState.IsCook:
+                PlayerAnimator.SetBool(IsCook, value);
+                break;
+            case AnimationState.IsPuttingDown:
+                PlayerAnimator.SetBool(IsPuttingDown, value);
+                break;
+            case AnimationState.IsLifting:
+                PlayerAnimator.SetBool(IsLifting, value);
+                break;
+            case AnimationState.IsCarry:
+                PlayerAnimator.SetBool(IsCarry, value);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(state), state, null);
         }
     }
 

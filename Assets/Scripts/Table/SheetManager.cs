@@ -373,6 +373,10 @@ public class SheetManager : MonoBehaviour
         StageManager.InteractableManager.InteractableButtons[BlockLogicType.Start].gameObject.SetActive(false);
         StageManager.InteractableManager.InteractableButtons[BlockLogicType.Reset].gameObject.SetActive(true);
         _isLogicRunning = true;
+        
+        StageManager.Controller.SetAnimationState(AnimationState.IsIdle, true);
+        StageManager.Controller.SetAnimationState(AnimationState.IsCarry, false);
+        
         ErrorType result = await RunBlockLogics(0);
         Debug.Log(result);
         OnTaskCompleted(result);
@@ -474,13 +478,18 @@ public class SheetManager : MonoBehaviour
         StageManager.Controller.LogicHint.SetLogicImage(blockLogic.BlockIcon);
         ErrorType result = blockLogic.IsExecutable(StageManager);
         if (result != ErrorType.NoError)
+        {
+            StageManager.Controller.SetAnimationState(AnimationState.IsIdle, true);
             return result;
-
+        }
+        
+        StageManager.Controller.SetAnimationState(AnimationState.IsIdle, false);
         while (true)
         {
             LogicState logicState = blockLogic.Execute(StageManager);
             if (logicState == LogicState.Success)
             {
+                StageManager.Controller.SetAnimationState(AnimationState.IsIdle, true);
                 blockLogic.CheakClear(StageManager);
                 return (StageManager.levelManager.IsAllComplete == true) ? ErrorType.StageClear : ErrorType.NoError;
             }
@@ -560,23 +569,17 @@ public class SheetManager : MonoBehaviour
 
     public void Clear()
     {
-        
         //반복 함수 시트 제거
         foreach (var repeatSheet in RepeatFunctionSheets)
             Destroy(repeatSheet.Value.gameObject);
         
         RepeatFunctionSheets.Clear();
-        
         ClearAllBlockLogic();
-        
-        //
         _repeatFunctionDictionary.Clear();
-        
         
         _sheetDictionary.Clear();
         _blockLogicListDictionary.Clear();
         _sheetParentDictionary.Clear();
-        
         
         _repeatCountDictionary.Clear();
         MainSheet.gameObject.SetActive(false);

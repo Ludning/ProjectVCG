@@ -6,6 +6,8 @@ using UnityEngine.UIElements;
 
 public class PushItemLogic : BlockLogicBase
 {
+    private float _runningTime = 1.5f;
+    
     public override ErrorType IsExecutable(StageManager owner)
     {
         var position = owner.Controller.PlayerForwardPosition;
@@ -26,17 +28,27 @@ public class PushItemLogic : BlockLogicBase
         if(owner.Inventory.IsInventoryOverflow)
             return ErrorType.InventoryOverflow;
         
+        _runningTime = 1.5f;
+        owner.Controller.SetAnimationState(AnimationState.IsLifting, true);
         return ErrorType.NoError;
     }
 
     public override LogicState Execute(StageManager owner)
     {
+        if (_runningTime > 0)
+        {
+            _runningTime -= Time.deltaTime;
+            return LogicState.Running;
+        }
+
         var position = owner.Controller.PlayerForwardPosition;
         var item = owner.TableManager.PopTileItem(position);
         if(item == null)
             return LogicState.Failure;
-        //owner.TableManager.PushTileItem(position, null);
         owner.Inventory.PushItem(item);
+        
+        owner.Controller.SetAnimationState(AnimationState.IsLifting, false);
+        owner.Controller.SetAnimationState(AnimationState.IsCarry, true);
         return LogicState.Success;
     }
     public override void CheakClear(StageManager owner)
