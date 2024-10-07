@@ -2808,7 +2808,7 @@
           "SpawnObjectType": 0
         },
         "10": {
-          "TileType": 10401,
+          "TileType": 10100,
           "CookingPropertyType": 0,
           "IsSpawnNPC": false,
           "SpawnNpcType": 0,
