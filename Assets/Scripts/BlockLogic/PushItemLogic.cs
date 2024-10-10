@@ -47,6 +47,8 @@ public class PushItemLogic : BlockLogicBase
             return LogicState.Failure;
         owner.Inventory.PushItem(item);
         
+        owner.UIContainer.InventoryPopup.AddItem(item.ItemType);
+        
         owner.Controller.SetAnimationState(AnimationState.IsLifting, false);
         owner.Controller.SetAnimationState(AnimationState.IsCarry, true);
         return LogicState.Success;

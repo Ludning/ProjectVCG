@@ -37,6 +37,7 @@ public class PlayerInventory : MonoBehaviour
             
             item.transform.localPosition = Vector3.zero;
             itemStack.Push(item);
+            
         }
     }
 

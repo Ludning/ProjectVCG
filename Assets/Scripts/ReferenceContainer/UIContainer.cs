@@ -22,6 +22,8 @@ public class UIContainer : MonoBehaviour
         GameMenuPopup.gameObject.SetActive(true);
         InventoryPopup.gameObject.SetActive(true);
         ClearPopup.gameObject.SetActive(false);
+        
+        InventoryPopup.Init();
     }
     
     public void InitStageSelect()

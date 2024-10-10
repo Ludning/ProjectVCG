@@ -13,6 +13,8 @@ public class SheetManager : MonoBehaviour
     [SerializeField, ReadOnly] private bool _isLogicRunning = false;
     [SerializeField, ReadOnly] private bool _isExBlockLogic = false;
 
+    private bool _isStartResetWaiting = false;
+
     [Header("Manager")] [SerializeField]
     private StageManager StageManager;
 
@@ -341,23 +343,32 @@ public class SheetManager : MonoBehaviour
     }
 
 
+    private async UniTaskVoid StartResetWaiting()
+    {
+        _isStartResetWaiting = true;
+        await UniTask.Delay(2000);
+        _isStartResetWaiting = false;
+    }
     public void ResetStage()
     {
-        //기능 답안지  유지, 스테이지 원래상태 복귀
-        //RunBlockLogic를 중지해야함
-
-        //StageManager.InteractableManager.InteractableButtons[BlockLogicType.Start].gameObject.SetActive(true);
-        //StageManager.InteractableManager.InteractableButtons[BlockLogicType.Reset].gameObject.SetActive(false);
-        //StageManager.TableManager.ResetTable();
-
-        //StageManager.InteractableManager.InteractableButtons[BlockLogicType.Start].gameObject.SetActive(true);
-        //StageManager.InteractableManager.InteractableButtons[BlockLogicType.Reset].gameObject.SetActive(false);
+        if (_isStartResetWaiting == true)
+        {
+            Debug.Log("IsStartResetWaiting");
+            return;
+        }
         
+        StartResetWaiting().Forget();
         StageManager.ResetStage();
     }
 
     public async void RunSheetBlock()
     {
+        if (_isStartResetWaiting == true)
+        {
+            Debug.Log("IsStartResetWaiting");
+            return;
+        }
+        
         if (_isLogicRunning == true)
         {
             Debug.Log("IsLogicRunning");
@@ -369,6 +380,8 @@ public class SheetManager : MonoBehaviour
             Debug.Log("IsExBlockLogic");
             return;
         }
+        
+        StartResetWaiting().Forget();
 
         StageManager.InteractableManager.InteractableButtons[BlockLogicType.Start].gameObject.SetActive(false);
         StageManager.InteractableManager.InteractableButtons[BlockLogicType.Reset].gameObject.SetActive(true);

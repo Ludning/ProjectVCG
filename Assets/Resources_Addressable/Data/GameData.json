@@ -113,8 +113,8 @@
       "Index": "301",
       "Description": "놓기 블록",
       "Type": 6,
-      "IconBlock": "icon_pickup",
-      "AnimationKey": "anim_pickup",
+      "IconBlock": "icon_putdown",
+      "AnimationKey": "anim_putdown",
       "MoveDistance": "",
       "Angle": "",
       "Distance": "1"
@@ -123,8 +123,8 @@
       "Index": "302",
       "Description": "들기 블록",
       "Type": 7,
-      "IconBlock": "icon_putdown",
-      "AnimationKey": "anim_putdown",
+      "IconBlock": "icon_pickup",
+      "AnimationKey": "anim_pickup",
       "MoveDistance": "",
       "Angle": "",
       "Distance": "1"
