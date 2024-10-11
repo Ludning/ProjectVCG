@@ -6,10 +6,10 @@ public class BlockSlot : MonoBehaviour
 {
     private GameObject BlockLogic;
     
-    public void SetBlockLogic(string blockLogicName)
+    public void SetBlockLogic(BlockLogicBase blockLogic)
     {
-        GameObject logicDisplayPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(blockLogicName);
-        BlockLogic = Instantiate(logicDisplayPrefab, transform, false);
+        blockLogic.transform.SetParent(transform, false);
+        blockLogic.transform.localPosition = Vector3.zero;
     }
 
     public void ClearBlockLogic()

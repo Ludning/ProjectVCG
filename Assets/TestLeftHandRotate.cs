@@ -12,8 +12,6 @@ public class TestLeftHandRotate : MonoBehaviour
 
     void Update()
     {
-        Debug.Log($"leftHand.IsTracked : {leftHand.IsTracked}");
-        
         if (!leftHand.IsTracked && isRotateMode == true)
         {
             OnRotateEnd();

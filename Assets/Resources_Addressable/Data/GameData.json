@@ -1115,7 +1115,7 @@
       "ImageName": "Cooking_Image",
       "TileType": 10301,
       "Moveable": false,
-      "Pushable": false,
+      "Pushable": true,
       "Popable": true,
       "Stackable": false,
       "InventoryCount": 4

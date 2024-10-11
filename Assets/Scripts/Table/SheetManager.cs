@@ -41,12 +41,10 @@ public class SheetManager : MonoBehaviour
     
     private Dictionary<int, SheetBase> _sheetDictionary = new Dictionary<int, SheetBase>();
     private Dictionary<int, List<BlockLogicBase>> _blockLogicListDictionary = new Dictionary<int, List<BlockLogicBase>>();
-    private Dictionary<int, Transform> _sheetParentDictionary = new Dictionary<int, Transform>();
 
     //현재 활성화된 시트
     private SheetBase _currentSheet;
     private List<BlockLogicBase> _currentBlockLogicList;
-    private Transform _currentSheetParent;
 
     //private int _sheetIndex;
     private Dictionary<InteractableUnityEventWrapper, int> _sheetIndexDictionary =
@@ -113,13 +111,9 @@ public class SheetManager : MonoBehaviour
         InteractableManager.ExerciseButton.WhenSelect.AddListener(OnClick_OpenExercise);
 
         StageData stageData = GameManager.Instance.GetCurrentStageData();
-        MainSheet.BlockCount = 0;
-        Debug.Log($"Index : {stageData.Index}");
-        Debug.Log($"Chapter : {stageData.Chapter}, Stage : {stageData.Stage}");
-        Debug.Log($"AnswerBlockAmount : {stageData.AnswerBlockAmount}");
-        MainSheet.SheetLimit = stageData.AnswerBlockAmount;
-        ExSheet.BlockCount = 0;
-        ExSheet.SheetLimit = -1;
+        
+        MainSheet.Init(stageData.AnswerBlockAmount);
+        ExSheet.Init(-1);
         
         foreach (var interactableButton in InteractableManager.InteractableButtons)
         {
@@ -134,7 +128,7 @@ public class SheetManager : MonoBehaviour
             RepeatSheet functionSheet = InstantiateRepeatSheet("FunctionSheet", interactableButton.Value);
 
             AddRepeatFunctionSheet(functionSheet, interactableButton.Key, interactableButton.Value);
-            SetSheet(interactableButton.Key, functionSheet, _repeatFunctionDictionary[interactableButton.Key], functionSheet.SheetParent);
+            SetSheet(interactableButton.Key, functionSheet, _repeatFunctionDictionary[interactableButton.Key]);
         }
         foreach (var interactableButton in InteractableManager.RepeatInteractableButtons)
         {
@@ -144,7 +138,7 @@ public class SheetManager : MonoBehaviour
             RepeatSheet repeatSheet = InstantiateRepeatSheet("RepeatSheet", interactableButton.Value);
 
             AddRepeatFunctionSheet(repeatSheet, interactableButton.Key, interactableButton.Value);
-            SetSheet(interactableButton.Key, repeatSheet, _repeatFunctionDictionary[interactableButton.Key], repeatSheet.SheetParent);
+            SetSheet(interactableButton.Key, repeatSheet, _repeatFunctionDictionary[interactableButton.Key]);
         }
         List<Transform> sheetTransformList = new List<Transform>();
         foreach(var sheet in RepeatFunctionSheets.Values)
@@ -153,8 +147,8 @@ public class SheetManager : MonoBehaviour
         }
         RepeatFunctionSheetContainer.AddSheet(sheetTransformList);
 
-        SetSheet(0, MainSheet, _mainBlockLogicBases, MainSheet.SheetParent);
-        SetSheet(-1, ExSheet, _exBlockLogicBases, ExSheet.SheetParent);
+        SetSheet(0, MainSheet, _mainBlockLogicBases);
+        SetSheet(-1, ExSheet, _exBlockLogicBases);
 
         MainSheet.gameObject.SetActive(true);
         foreach (var repeatSheet in RepeatFunctionSheets.Values)
@@ -170,7 +164,7 @@ public class SheetManager : MonoBehaviour
         RepeatSheet repeatSheet = Instantiate(sheetPrefab, RepeatFunctionSheetContainer.transform).GetComponent<RepeatSheet>();
         
         FunctionBlockData functionBlockData = interactableUnityEventWrapper.GetComponent<FunctionBlockData>();
-        repeatSheet.SheetLimit = functionBlockData.functionLimit;
+        repeatSheet.Init(functionBlockData.functionLimit);
         repeatSheet.SheetName = functionBlockData.sheetName;
         
         return repeatSheet;
@@ -180,21 +174,19 @@ public class SheetManager : MonoBehaviour
         RepeatFunctionSheets.Add(index, sheet);
         _repeatFunctionDictionary.Add(index, new List<BlockLogicBase>());
         _sheetIndexDictionary.Add(interactableUnityEventWrapper, index);
-        sheet.Init(this, index);
+        sheet.InitRepeat(this, index);
         _repeatCountDictionary.Add(index, 1);
     }
-    private void SetSheet(int index, SheetBase sheetBase, List<BlockLogicBase> blockLogicList, Transform sheetParent)
+    private void SetSheet(int index, SheetBase sheetBase, List<BlockLogicBase> blockLogicList)
     {
         _sheetDictionary.Add(index, sheetBase);
         _blockLogicListDictionary.Add(index, blockLogicList);
-        _sheetParentDictionary.Add(index, sheetParent);
     }
     public void ChoiceSheet(int index)
     {
         _isExBlockLogic = (index == -1) ? true : false;
         _currentSheet = _sheetDictionary[index];
         _currentBlockLogicList = _blockLogicListDictionary[index];
-        _currentSheetParent = _sheetParentDictionary[index];
     }
 
     #region 블록로직 오브젝트 생성
@@ -295,7 +287,7 @@ public class SheetManager : MonoBehaviour
 
     public void AddBlockLogic(BlockLogicBase blockLogic)
     {
-        blockLogic.transform.SetParent(_currentSheetParent, false);
+        _currentSheet.Push(blockLogic);
         _currentBlockLogicList.Add(blockLogic);
     }
 
@@ -432,6 +424,7 @@ public class SheetManager : MonoBehaviour
 
         foreach (var blockLogic in _blockLogicListDictionary[sheetIndex])
         {
+            ActiveHint(blockLogic);
             ErrorType result = await RunBlockLogic(blockLogic);
             
             if (result == ErrorType.StageClear)
@@ -442,11 +435,11 @@ public class SheetManager : MonoBehaviour
                 GameManager.Instance.HasNextStage();
                 return ErrorType.StageClear;
             }
-            if (result != ErrorType.NoError)
+            if (result != ErrorType.NoError && result != ErrorType.OmissionError)
             {
                 if (sheetIndex == 0)
                 {
-                    ActiveError(MainSheet.SheetParent, tempLenght);
+                    ActiveError(blockLogic);
                     Debug.LogError(
                         $"ErrorType : {result} ErrorMessage : {DataManager.Instance.GetGameData<ErrorMessageData>(((int)result).ToString()).Context}");
                     NPCManager.GetMessage(result);
@@ -456,7 +449,7 @@ public class SheetManager : MonoBehaviour
             }
             else
             {
-                ActiveHint(MainSheet.SheetParent, tempLenght);
+                //ActiveHint(blockLogic);
                 NPCManager.GetMessage(result);
             }
             tempLenght++;
@@ -530,56 +523,29 @@ public class SheetManager : MonoBehaviour
         outline.enabled = false;
     }
 
-    public void ActiveHint(Transform trs, int len)
+    private Outline prevOutline;
+    public void ActiveHint(BlockLogicBase blockLogicBase)
     {
-        for (int i = 0; i < trs.childCount; i++)
-        {
-            Transform child = trs.GetChild(i);
-            Outline outline = child.GetComponent<Outline>();
-            // 자식 오브젝트가 있는 경우 삭제
-            if (child.childCount > 0)
-            {
-                for (int j = 0; j < child.childCount; j++)
-                {
-                    Destroy(child.GetChild(j).gameObject);
-                }
-            }
-
-            if (outline != null)
-            {
-                // Enable the Outline component on the child at index 'len'
-                outline.enabled = (i == len);
-            }
-        }
+        if (prevOutline != null)
+            prevOutline.enabled = false;
+        Outline outline = blockLogicBase.GetComponent<Outline>();
+        outline.enabled = true;
+        prevOutline = outline;
     }
 
-    public void ActiveError(Transform trs, int len)
+    public void ActiveError(BlockLogicBase blockLogicBase)
     {
-        for (int i = 0; i < trs.childCount; i++)
-        {
-            Transform child = trs.GetChild(i);
-            Outline outline = child.GetComponent<Outline>();
-
-            if (outline != null)
-            {
-                // Enable the Outline component on the child at index 'len'
-                outline.enabled = false;
-
-                GameObject errorWarningPrefab =
-                    ResourceManager.Instance.LoadResourceWithCaching<GameObject>("ErrorWarning");
-                if (i == len && errorWarningPrefab && child.childCount < 1)
-                {
-
-                    Instantiate(errorWarningPrefab, child);
-                }
-            }
-        }
+        Outline outline = blockLogicBase.GetComponent<Outline>();
+        outline.enabled = false;
+        GameObject errorWarningPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("ErrorWarning");
+        Instantiate(errorWarningPrefab, blockLogicBase.transform);
     }
 
     #endregion
 
     public void Clear()
     {
+        MainSheet.Clear();
         //반복 함수 시트 제거
         foreach (var repeatSheet in RepeatFunctionSheets)
             Destroy(repeatSheet.Value.gameObject);
@@ -590,7 +556,6 @@ public class SheetManager : MonoBehaviour
         
         _sheetDictionary.Clear();
         _blockLogicListDictionary.Clear();
-        _sheetParentDictionary.Clear();
         
         _repeatCountDictionary.Clear();
         MainSheet.gameObject.SetActive(false);

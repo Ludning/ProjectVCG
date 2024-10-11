@@ -13,20 +13,35 @@ public class SheetBase : MonoBehaviour
 
     public List<BlockSlot> BlockSlots = new List<BlockSlot>();
 
-    public void Init()
+    public void Init(int sheetLimit)
     {
         Clear();
+        BlockCount = 0;
+        SheetLimit = sheetLimit;
+        
         for (int i = 0; i < SheetLimit; i++)
         {
+            Debug.Log("Instantiate blockSlot");
             GameObject slotPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("BlockSlot");
             BlockSlot slot = Instantiate(slotPrefab, SheetParent).GetComponent<BlockSlot>();
             BlockSlots.Add(slot);
         }
     }
+
     public void Clear()
     {
         foreach (var blockSlot in BlockSlots)
-            Destroy(blockSlot);
+        {
+            Debug.Log("Destroy blockSlot");
+            blockSlot.ClearBlockLogic();
+            Destroy(blockSlot.gameObject);
+        }
         BlockSlots.Clear();
+    }
+
+    public void Push(BlockLogicBase blockLogic)
+    {
+        Debug.Log($"BlockCount : {BlockCount}");
+        BlockSlots[BlockCount].SetBlockLogic(blockLogic);
     }
 }
