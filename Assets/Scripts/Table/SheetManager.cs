@@ -131,19 +131,9 @@ public class SheetManager : MonoBehaviour
             UnityAction action = GetLogicEvent(BlockLogicType.Function, interactableButton.Value);
             interactableButton.Value.WhenSelect.AddListener(action);
 
-            GameObject sheetPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("FunctionSheet");
-            RepeatSheet functionSheet = Instantiate(sheetPrefab, RepeatFunctionSheetContainer.transform).GetComponent<RepeatSheet>();
-            
-            FunctionBlockData functionBlockData = interactableButton.Value.GetComponent<FunctionBlockData>();
-            
-            functionSheet.SheetLimit = functionBlockData.functionLimit;
-            
-            RepeatFunctionSheets.Add(interactableButton.Key, functionSheet);
-            _repeatFunctionDictionary.Add(interactableButton.Key, new List<BlockLogicBase>());
-            _sheetIndexDictionary.Add(interactableButton.Value, interactableButton.Key);
-            functionSheet.GetComponent<RepeatSheet>().Init(this, interactableButton.Key, functionBlockData.sheetName);
-            _repeatCountDictionary.Add(interactableButton.Key, 1);
+            RepeatSheet functionSheet = InstantiateRepeatSheet("FunctionSheet", interactableButton.Value);
 
+            AddRepeatFunctionSheet(functionSheet, interactableButton.Key, interactableButton.Value);
             SetSheet(interactableButton.Key, functionSheet, _repeatFunctionDictionary[interactableButton.Key], functionSheet.SheetParent);
         }
         foreach (var interactableButton in InteractableManager.RepeatInteractableButtons)
@@ -151,19 +141,9 @@ public class SheetManager : MonoBehaviour
             UnityAction action = GetLogicEvent(BlockLogicType.Repeat, interactableButton.Value);
             interactableButton.Value.WhenSelect.AddListener(action);
             
-            GameObject sheetPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("RepeatSheet");
-            RepeatSheet repeatSheet = Instantiate(sheetPrefab, RepeatFunctionSheetContainer.transform).GetComponent<RepeatSheet>();
-            
-            FunctionBlockData functionBlockData = interactableButton.Value.GetComponent<FunctionBlockData>();
-            
-            repeatSheet.SheetLimit = functionBlockData.functionLimit;
-            
-            RepeatFunctionSheets.Add(interactableButton.Key, repeatSheet);
-            _repeatFunctionDictionary.Add(interactableButton.Key, new List<BlockLogicBase>());
-            _sheetIndexDictionary.Add(interactableButton.Value, interactableButton.Key);
-            repeatSheet.GetComponent<RepeatSheet>().Init(this, interactableButton.Key, functionBlockData.sheetName);
-            _repeatCountDictionary.Add(interactableButton.Key, 1);
+            RepeatSheet repeatSheet = InstantiateRepeatSheet("RepeatSheet", interactableButton.Value);
 
+            AddRepeatFunctionSheet(repeatSheet, interactableButton.Key, interactableButton.Value);
             SetSheet(interactableButton.Key, repeatSheet, _repeatFunctionDictionary[interactableButton.Key], repeatSheet.SheetParent);
         }
         List<Transform> sheetTransformList = new List<Transform>();
@@ -184,13 +164,31 @@ public class SheetManager : MonoBehaviour
         ChoiceSheet(0);
     }
 
+    private RepeatSheet InstantiateRepeatSheet(string sheetName, InteractableUnityEventWrapper interactableUnityEventWrapper)
+    {
+        GameObject sheetPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(sheetName);
+        RepeatSheet repeatSheet = Instantiate(sheetPrefab, RepeatFunctionSheetContainer.transform).GetComponent<RepeatSheet>();
+        
+        FunctionBlockData functionBlockData = interactableUnityEventWrapper.GetComponent<FunctionBlockData>();
+        repeatSheet.SheetLimit = functionBlockData.functionLimit;
+        repeatSheet.SheetName = functionBlockData.sheetName;
+        
+        return repeatSheet;
+    }
+    private void AddRepeatFunctionSheet(RepeatSheet sheet, int index, InteractableUnityEventWrapper interactableUnityEventWrapper)
+    {
+        RepeatFunctionSheets.Add(index, sheet);
+        _repeatFunctionDictionary.Add(index, new List<BlockLogicBase>());
+        _sheetIndexDictionary.Add(interactableUnityEventWrapper, index);
+        sheet.Init(this, index);
+        _repeatCountDictionary.Add(index, 1);
+    }
     private void SetSheet(int index, SheetBase sheetBase, List<BlockLogicBase> blockLogicList, Transform sheetParent)
     {
         _sheetDictionary.Add(index, sheetBase);
         _blockLogicListDictionary.Add(index, blockLogicList);
         _sheetParentDictionary.Add(index, sheetParent);
     }
-
     public void ChoiceSheet(int index)
     {
         _isExBlockLogic = (index == -1) ? true : false;
