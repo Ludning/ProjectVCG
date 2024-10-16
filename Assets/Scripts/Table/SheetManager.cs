@@ -25,15 +25,15 @@ public class SheetManager : MonoBehaviour
 
     //MainSheet
     [Header("MainSheet")] [SerializeField] private MainSheet MainSheet;
-    private List<BlockLogicBase> _mainBlockLogicBases = new List<BlockLogicBase>();
+    //private List<BlockLogicBase> _mainBlockLogicBases = new List<BlockLogicBase>();
 
     //SubSheet
     private Dictionary<int, RepeatSheet> RepeatFunctionSheets = new Dictionary<int, RepeatSheet>();
-    private Dictionary<int, List<BlockLogicBase>> _repeatFunctionDictionary = new Dictionary<int, List<BlockLogicBase>>();
+    //private Dictionary<int, List<BlockLogicBase>> _repeatFunctionDictionary = new Dictionary<int, List<BlockLogicBase>>();
 
     //ExSheet
     [Header("연습장")] [SerializeField] private ExSheet ExSheet;
-    private List<BlockLogicBase> _exBlockLogicBases = new List<BlockLogicBase>();
+    //private List<BlockLogicBase> _exBlockLogicBases = new List<BlockLogicBase>();
 
     //함수블럭의 반복횟수를 저장
     private Dictionary<int, int> _repeatCountDictionary = new Dictionary<int, int>();
@@ -47,18 +47,14 @@ public class SheetManager : MonoBehaviour
     private List<BlockLogicBase> _currentBlockLogicList;
 
     //private int _sheetIndex;
-    private Dictionary<InteractableUnityEventWrapper, int> _sheetIndexDictionary =
-        new Dictionary<InteractableUnityEventWrapper, int>();
+    private Dictionary<GrapAndPoke, int> _sheetIndexDictionary = new Dictionary<GrapAndPoke, int>();
 
     //임시 코드
     private void Update()
     {
-        Dictionary<BlockLogicType, InteractableUnityEventWrapper> InteractableButtons =
-            InteractableManager.InteractableButtons;
-        Dictionary<int, InteractableUnityEventWrapper> FunctionInteractableButtons =
-            InteractableManager.FunctionInteractableButtons;
-        Dictionary<int, InteractableUnityEventWrapper> RepeatInteractableButtons =
-            InteractableManager.RepeatInteractableButtons;
+        Dictionary<BlockLogicType, GrapAndPoke> InteractableButtons = InteractableManager.GrapAndPokeObjects;
+        Dictionary<int, GrapAndPoke> FunctionInteractableButtons = InteractableManager.FunctionGrapAndPokeObjects;
+        Dictionary<int, GrapAndPoke> RepeatInteractableButtons = InteractableManager.RepeatGrapAndPokeObjects;
 
         if (Input.GetKeyDown(KeyCode.S))
             RunSheetBlock();
@@ -109,36 +105,39 @@ public class SheetManager : MonoBehaviour
     public void Init()
     {
         InteractableManager.ExerciseButton.WhenSelect.AddListener(OnClick_OpenExercise);
-
+        InteractableManager.StartButton.WhenSelect.AddListener(RunSheetBlock);
+        InteractableManager.ResetButton.WhenSelect.AddListener(ResetStage);
+        InteractableManager.ClearButton.WhenSelect.AddListener(ClearAllBlockLogic);
+        
         StageData stageData = GameManager.Instance.GetCurrentStageData();
         
         MainSheet.Init(stageData.AnswerBlockAmount);
         ExSheet.Init(-1);
         
-        foreach (var interactableButton in InteractableManager.InteractableButtons)
+        foreach (var grapAndPoke in InteractableManager.GrapAndPokeObjects)
         {
-            UnityAction action = GetLogicEvent(interactableButton.Key, interactableButton.Value);
-            interactableButton.Value.WhenSelect.AddListener(action);
+            UnityAction action = GetLogicEvent(grapAndPoke.Key, grapAndPoke.Value);
+            grapAndPoke.Value.pokeInteractable.WhenSelect.AddListener(action);
         }
-        foreach (var interactableButton in InteractableManager.FunctionInteractableButtons)
+        foreach (var grapAndPoke in InteractableManager.FunctionGrapAndPokeObjects)
         {
-            UnityAction action = GetLogicEvent(BlockLogicType.Function, interactableButton.Value);
-            interactableButton.Value.WhenSelect.AddListener(action);
+            UnityAction action = GetLogicEvent(BlockLogicType.Function, grapAndPoke.Value);
+            grapAndPoke.Value.pokeInteractable.WhenSelect.AddListener(action);
 
-            RepeatSheet functionSheet = InstantiateRepeatSheet("FunctionSheet", interactableButton.Value);
+            RepeatSheet functionSheet = InstantiateRepeatSheet("FunctionSheet", grapAndPoke.Value);
 
-            AddRepeatFunctionSheet(functionSheet, interactableButton.Key, interactableButton.Value);
-            SetSheet(interactableButton.Key, functionSheet, _repeatFunctionDictionary[interactableButton.Key]);
+            AddRepeatFunctionSheet(functionSheet, grapAndPoke.Key, grapAndPoke.Value);
+            SetSheet(grapAndPoke.Key, functionSheet, _repeatFunctionDictionary[grapAndPoke.Key]);
         }
-        foreach (var interactableButton in InteractableManager.RepeatInteractableButtons)
+        foreach (var grapAndPoke in InteractableManager.RepeatGrapAndPokeObjects)
         {
-            UnityAction action = GetLogicEvent(BlockLogicType.Repeat, interactableButton.Value);
-            interactableButton.Value.WhenSelect.AddListener(action);
+            UnityAction action = GetLogicEvent(BlockLogicType.Repeat, grapAndPoke.Value);
+            grapAndPoke.Value.pokeInteractable.WhenSelect.AddListener(action);
             
-            RepeatSheet repeatSheet = InstantiateRepeatSheet("RepeatSheet", interactableButton.Value);
+            RepeatSheet repeatSheet = InstantiateRepeatSheet("RepeatSheet", grapAndPoke.Value);
 
-            AddRepeatFunctionSheet(repeatSheet, interactableButton.Key, interactableButton.Value);
-            SetSheet(interactableButton.Key, repeatSheet, _repeatFunctionDictionary[interactableButton.Key]);
+            AddRepeatFunctionSheet(repeatSheet, grapAndPoke.Key, grapAndPoke.Value);
+            SetSheet(grapAndPoke.Key, repeatSheet, _repeatFunctionDictionary[grapAndPoke.Key]);
         }
         List<Transform> sheetTransformList = new List<Transform>();
         foreach(var sheet in RepeatFunctionSheets.Values)
@@ -158,22 +157,22 @@ public class SheetManager : MonoBehaviour
         ChoiceSheet(0);
     }
 
-    private RepeatSheet InstantiateRepeatSheet(string sheetName, InteractableUnityEventWrapper interactableUnityEventWrapper)
+    private RepeatSheet InstantiateRepeatSheet(string sheetName, GrapAndPoke grapAndPoke)
     {
         GameObject sheetPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(sheetName);
         RepeatSheet repeatSheet = Instantiate(sheetPrefab, RepeatFunctionSheetContainer.transform).GetComponent<RepeatSheet>();
         
-        FunctionBlockData functionBlockData = interactableUnityEventWrapper.GetComponent<FunctionBlockData>();
+        FunctionBlockData functionBlockData = grapAndPoke.GetComponent<FunctionBlockData>();
         repeatSheet.Init(functionBlockData.functionLimit);
         repeatSheet.SheetName = functionBlockData.sheetName;
         
         return repeatSheet;
     }
-    private void AddRepeatFunctionSheet(RepeatSheet sheet, int index, InteractableUnityEventWrapper interactableUnityEventWrapper)
+    private void AddRepeatFunctionSheet(RepeatSheet sheet, int index, GrapAndPoke grapAndPoke)
     {
         RepeatFunctionSheets.Add(index, sheet);
         _repeatFunctionDictionary.Add(index, new List<BlockLogicBase>());
-        _sheetIndexDictionary.Add(interactableUnityEventWrapper, index);
+        _sheetIndexDictionary.Add(grapAndPoke, index);
         sheet.InitRepeat(this, index);
         _repeatCountDictionary.Add(index, 1);
     }
@@ -190,22 +189,23 @@ public class SheetManager : MonoBehaviour
     }
 
     #region 블록로직 오브젝트 생성
-    private UnityAction GetLogicEvent(BlockLogicType type, InteractableUnityEventWrapper interactableUnityEventWrapper)
+    private UnityAction GetLogicEvent(BlockLogicType type, GrapAndPoke grapAndPoke)
     {
         switch (type)
         {
             case BlockLogicType.Start:
-                return RunSheetBlock;
+                Debug.LogError("GetLogicEvent Start");
+                break;
             case BlockLogicType.Reset:
-                return ResetStage;
+                Debug.LogError("GetLogicEvent Reset");
+                break;
             case BlockLogicType.Clear:
-                return ClearAllBlockLogic;
-            default:
-                return () => { ClickLogicButton(type, interactableUnityEventWrapper); };
+                Debug.LogError("GetLogicEvent Clear");
+                break;
         }
-        return null;
+        return () => { ClickLogicButton(type, grapAndPoke); };
     }
-    private void ClickLogicButton(BlockLogicType type, InteractableUnityEventWrapper interactableUnityEventWrapper)
+    private void ClickLogicButton(BlockLogicType type, GrapAndPoke grapAndPoke)
     {
         if (_currentSheet.SheetLimit != -1 && _currentSheet.SheetLimit <= _currentSheet.BlockCount)
             return;
@@ -228,12 +228,12 @@ public class SheetManager : MonoBehaviour
             {
                 if (logicBase is RepeatBlockLogic repeat)
                 {
-                    repeat.RepeatText.text = interactableUnityEventWrapper.GetComponent<FunctionBlockData>().sheetName;
+                    repeat.RepeatText.text = grapAndPoke.GetComponent<FunctionBlockData>().sheetName;
                     break;
                 }
                 else if(logicBase is FunctionBlockLogic function)
                 {
-                    function.FunctionText.text = interactableUnityEventWrapper.GetComponent<FunctionBlockData>().sheetName;
+                    function.FunctionText.text = grapAndPoke.GetComponent<FunctionBlockData>().sheetName;
                     break;
                 }
                 else
@@ -247,10 +247,10 @@ public class SheetManager : MonoBehaviour
         {
             AddBlockLogic(logicBase);
             if (logicBase is RepeatBlockLogic rBlockLogic)
-                if (_sheetIndexDictionary.TryGetValue(interactableUnityEventWrapper, out int index))
+                if (_sheetIndexDictionary.TryGetValue(grapAndPoke, out int index))
                     rBlockLogic.SheetIndex = index;
             if (logicBase is FunctionBlockLogic fBlockLogic)
-                if (_sheetIndexDictionary.TryGetValue(interactableUnityEventWrapper, out int index))
+                if (_sheetIndexDictionary.TryGetValue(grapAndPoke, out int index))
                     fBlockLogic.SheetIndex = index;
         }
         if(_currentSheet.SheetLimit != -1)
@@ -373,8 +373,8 @@ public class SheetManager : MonoBehaviour
         
         StartResetWaiting().Forget();
 
-        StageManager.InteractableManager.InteractableButtons[BlockLogicType.Start].gameObject.SetActive(false);
-        StageManager.InteractableManager.InteractableButtons[BlockLogicType.Reset].gameObject.SetActive(true);
+        StageManager.InteractableManager.GrapAndPokeObjects[BlockLogicType.Start].gameObject.SetActive(false);
+        StageManager.InteractableManager.GrapAndPokeObjects[BlockLogicType.Reset].gameObject.SetActive(true);
         _isLogicRunning = true;
         
         StageManager.Controller.SetAnimationState(AnimationState.IsIdle, true);

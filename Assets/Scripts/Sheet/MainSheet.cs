@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,5 +9,10 @@ public class MainSheet : SheetBase
     public void OnClickActiveMain()
     {
         SheetManager.ChoiceSheet(0);
+    }
+
+    private async UniTask UniTask_SheetShifting()
+    {
+        await UniTask.Delay(1000);
     }
 }

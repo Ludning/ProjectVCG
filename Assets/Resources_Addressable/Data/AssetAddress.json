@@ -55,7 +55,9 @@
     "ItemHintUI": "Assets/Resources_Addressable/Prefabs/ItemHintUI.prefab",
     "ItemImage": "Assets/Resources_Addressable/Prefabs/WorldUI/Elements/ItemImage.prefab",
     "OutLine": "Assets/Resources_Addressable/Prefabs/Tiles/OutLine/OutLine.prefab",
-    "BlockSlot": "Assets/Resources_Addressable/Prefabs/BlockSlot.prefab"
+    "BlockSlot": "Assets/Resources_Addressable/Prefabs/BlockSlot.prefab",
+    "GrapAndPokeObject": "Assets/Resources_Addressable/Prefabs/GrapAndPokeObject.prefab",
+    "GrapAndPokeObject_Function": "Assets/Resources_Addressable/Prefabs/GrapAndPokeObject_Function.prefab"
   },
   "Material": {
     "TempMat": "Assets/Resources_Addressable/Materials/Logic/TempMat.mat",

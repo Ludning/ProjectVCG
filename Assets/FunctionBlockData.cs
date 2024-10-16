@@ -6,7 +6,8 @@ using UnityEngine.Serialization;
 
 public class FunctionBlockData : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI textComponent;
+    [SerializeField] private TextMeshProUGUI PokeTextComponent;
+    [SerializeField] private TextMeshProUGUI GrapTextComponent;
     public int functionLimit;
     public string sheetName;
     
@@ -14,6 +15,7 @@ public class FunctionBlockData : MonoBehaviour
     {
         this.functionLimit = functionLimit;
         this.sheetName = sheetName;
-        textComponent.text = sheetName;
+        PokeTextComponent.text = sheetName;
+        GrapTextComponent.text = sheetName;
     }
 }

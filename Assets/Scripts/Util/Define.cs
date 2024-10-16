@@ -117,8 +117,9 @@ public enum BlockLogicType
     Function,
     Repeat,
     Start,
-    Clear, //
-    Reset, //
+    Clear,
+    Reset,
+    Exercise,
 }
 public enum Rotate
 {

@@ -612,6 +612,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b1e10e9a599594448a059a934e36ca6
+    m_Address: Assets/Resources_Addressable/Prefabs/GrapAndPokeObject.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 76600a094ce89cb4b90178539b859560
+    m_Address: Assets/Resources_Addressable/Prefabs/GrapAndPokeObject_Function.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8b1dc452034a1734db8ae1cd6cb6a1de, type: 2}
   m_SchemaSet:

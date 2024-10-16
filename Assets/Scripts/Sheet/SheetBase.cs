@@ -12,6 +12,8 @@ public class SheetBase : MonoBehaviour
     public int BlockCount { get; set; }
 
     public List<BlockSlot> BlockSlots = new List<BlockSlot>();
+    
+    private List<BlockLogicBase> _blockLogicBases = new List<BlockLogicBase>();
 
     public void Init(int sheetLimit)
     {

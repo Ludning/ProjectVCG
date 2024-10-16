@@ -327,6 +327,11 @@
       "Index": "2015",
       "Description": "에러 없음",
       "Context": "에러 없음"
+    },
+    "2017": {
+      "Index": "2017",
+      "Description": "무시할 수 있는 에러",
+      "Context": "함수 블록을 생략한다"
     }
   },
   "Stage": {
