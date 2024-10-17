@@ -221,28 +221,6 @@ public class SheetManager : MonoBehaviour
 
         BlockLogicBase logicBase = Instantiate(tempPrefab).GetComponent<BlockLogicBase>();
         SetBlockLogicData(logicBase, grapAndPoke, type);
-        /*var dataDictionary = DataManager.Instance.GetGameDataDictionary<CodingBlockData>();
-        foreach (var codingBlockData in dataDictionary.Values)
-        {
-            if (codingBlockData.Type == type)
-            {
-                if (logicBase is RepeatBlockLogic repeat)
-                {
-                    repeat.RepeatText.text = grapAndPoke.GetComponent<FunctionBlockData>().sheetName;
-                    break;
-                }
-                else if(logicBase is FunctionBlockLogic function)
-                {
-                    function.FunctionText.text = grapAndPoke.GetComponent<FunctionBlockData>().sheetName;
-                    break;
-                }
-                else
-                {
-                    logicBase.BlockIcon = ResourceManager.Instance.LoadResourceWithCaching<Sprite>(codingBlockData.IconBlock);
-                    break;
-                }
-            }
-        }*/
         if (logicBase != null)
         {
             AddBlockLogic(logicBase);

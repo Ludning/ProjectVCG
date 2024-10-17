@@ -37,8 +37,8 @@ public class SheetBase : MonoBehaviour
 
         if (_boxCollider == null)
             return;
-        float width = 0.8f + ((SheetLimit > 1) ? SheetLimit * 1.2f : 1.2f);
-        float center = (this is MainSheet) ? width / 2 : -width / 2;
+        float width = 0.08f + ((SheetLimit > 1) ? SheetLimit * 0.12f : 0.12f);
+        float center = (this is MainSheet) ? width * 0.5f : -width * 0.5f;
         _boxCollider.size = new Vector3(width, _boxCollider.size.y, _boxCollider.size.z);
         _boxCollider.center = new Vector3(center, _boxCollider.center.y, _boxCollider.center.z);
     }

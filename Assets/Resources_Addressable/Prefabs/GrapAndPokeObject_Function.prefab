@@ -264,7 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handGrabInteractable: {fileID: 2011865435811973688}
   pokeInteractable: {fileID: 1083834706768199900}
-  _grapBlock: {fileID: 0}
+  _grapBlock: {fileID: 328140950448982726}
 --- !u!114 &8854780177721115008
 MonoBehaviour:
   m_ObjectHideFlags: 0

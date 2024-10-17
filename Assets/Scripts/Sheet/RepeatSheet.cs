@@ -17,7 +17,6 @@ public class RepeatSheet : SheetBase
         this.sheetIndex = sheetIndex;
         this.TMP_SheetName.text = SheetName;
     }
-
     public void OnClickActiveRepeat()
     {
         SheetManager.ChoiceSheet(sheetIndex);

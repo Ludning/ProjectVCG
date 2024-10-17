@@ -59,6 +59,8 @@ public class InteractableManager : MonoBehaviour
                 InstantiateFunctionButton(functionButtonPrefab, LogicButtonParent, functionData.Type, functionData.Name, functionData.FunctionAmount);
             }
         }
+        
+        StartButton.gameObject.SetActive(true);
         ResetButton.gameObject.SetActive(false);
     }
 
