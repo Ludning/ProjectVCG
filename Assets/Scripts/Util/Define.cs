@@ -15,11 +15,11 @@ public enum NpcType
 public enum CookingPropertyType
 {
     NULL,
-    CUT = 30000,
-    POT = 30001,
-    FAN = 30002,
-    FRYER = 30003,
-    TRAY = 30004,
+    CUT = 30000, //도마
+    POT = 30001, //냄비
+    FAN = 30002, //프라이팬
+    FRYER = 30003, //튀김기
+    TRAY = 30004, //쟁반
 }
 
 public enum SortClearType
@@ -117,8 +117,9 @@ public enum BlockLogicType
     Function,
     Repeat,
     Start,
-    Clear, //
-    Reset, //
+    Clear,
+    Reset,
+    Exercise,
 }
 public enum Rotate
 {
@@ -162,6 +163,7 @@ public enum ErrorType
 {
     NoError = 2015, // 에러 없음
     StageClear = 2016, // 클리어
+    OmissionError = 2014, // 무시할 수 있는 에러(함수블록을 생략한다)
     UnKnownError = 2014, // 알수 없는 에러
     NoTile = 2013, // 타일 없음
     NotMove = 2000, // 이동 불가 오류

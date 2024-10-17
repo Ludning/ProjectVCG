@@ -113,8 +113,8 @@
       "Index": "301",
       "Description": "놓기 블록",
       "Type": 6,
-      "IconBlock": "icon_pickup",
-      "AnimationKey": "anim_pickup",
+      "IconBlock": "icon_putdown",
+      "AnimationKey": "anim_putdown",
       "MoveDistance": "",
       "Angle": "",
       "Distance": "1"
@@ -123,8 +123,8 @@
       "Index": "302",
       "Description": "들기 블록",
       "Type": 7,
-      "IconBlock": "icon_putdown",
-      "AnimationKey": "anim_putdown",
+      "IconBlock": "icon_pickup",
+      "AnimationKey": "anim_pickup",
       "MoveDistance": "",
       "Angle": "",
       "Distance": "1"
@@ -201,7 +201,7 @@
       "Description": "3챕터 4스테이지 B 함수 블록",
       "Type": 8,
       "Name": "B",
-      "FunctionAmount": 6
+      "FunctionAmount": 5
     },
     "4_1_A": {
       "Index": "4_1_A",
@@ -327,6 +327,11 @@
       "Index": "2015",
       "Description": "에러 없음",
       "Context": "에러 없음"
+    },
+    "2017": {
+      "Index": "2017",
+      "Description": "무시할 수 있는 에러",
+      "Context": "함수 블록을 생략한다"
     }
   },
   "Stage": {
@@ -552,7 +557,7 @@
       "TargetIngredientIcon": "ICON_DATA_PRODUCT",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "3",
-      "AnswerBlockAmount": 3,
+      "AnswerBlockAmount": 4,
       "ShowBlock": "101, 201, 202, 203, 301, 302, 401",
       "Show_F_Block": "3_3_A",
       "StageClearCondition": "4209, 4210",
@@ -571,7 +576,7 @@
       "TargetIngredientIcon": "ICON_DATA_PRODUCT",
       "TargetFoodIcon": "ICON_DATA_INGREDIENT",
       "StageOrder": "4",
-      "AnswerBlockAmount": 4,
+      "AnswerBlockAmount": 5,
       "ShowBlock": "101, 201, 202, 203, 301, 302, 401",
       "Show_F_Block": "3_4_A, 3_4_B",
       "StageClearCondition": "4211",
@@ -1115,7 +1120,7 @@
       "ImageName": "Cooking_Image",
       "TileType": 10301,
       "Moveable": false,
-      "Pushable": false,
+      "Pushable": true,
       "Popable": true,
       "Stackable": false,
       "InventoryCount": 4

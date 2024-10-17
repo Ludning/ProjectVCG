@@ -1,23 +1,33 @@
 using System.Collections.Generic;
 using Oculus.Interaction;
+using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class InteractableManager : MonoBehaviour
 {
     private const string InteractableButtonName = "ButtonInteractable";
-    private const string FunctionInteractableButtonName = "FunctionButtonInteractable";
+    private const string GrapAndPokeObjectName = "GrapAndPokeObject";
+    private const string GrapAndPokeFunctionObjectName = "GrapAndPokeObject_Function";
 
     [SerializeField] private Transform ExerciseParent;
     [SerializeField] private Transform LogicButtonParent;
-    [SerializeField] private Transform StartParent;
+    [SerializeField] private Transform StartAndResetParent;
     [SerializeField] private Transform ClearParent;
 
     [HideInInspector]
     public InteractableUnityEventWrapper ExerciseButton;
-    public Dictionary<BlockLogicType, InteractableUnityEventWrapper> InteractableButtons = new Dictionary<BlockLogicType, InteractableUnityEventWrapper>();
-    public Dictionary<int, InteractableUnityEventWrapper> FunctionInteractableButtons = new Dictionary<int, InteractableUnityEventWrapper>();
-    public Dictionary<int, InteractableUnityEventWrapper> RepeatInteractableButtons = new Dictionary<int, InteractableUnityEventWrapper>();
+    [HideInInspector]
+    public InteractableUnityEventWrapper StartButton;
+    [HideInInspector]
+    public InteractableUnityEventWrapper ResetButton;
+    [HideInInspector]
+    public InteractableUnityEventWrapper ClearButton;
+    
+    public Dictionary<BlockLogicType, GrapAndPokeObject> GrapAndPokeObjects = new Dictionary<BlockLogicType, GrapAndPokeObject>();
+    public Dictionary<int, GrapAndPokeObject> FunctionGrapAndPokeObjects = new Dictionary<int, GrapAndPokeObject>();
+    public Dictionary<int, GrapAndPokeObject> RepeatGrapAndPokeObjects = new Dictionary<int, GrapAndPokeObject>();
     private int _sheetIndex;
 
     //public void Init(string showBlockString)
@@ -25,10 +35,13 @@ public class InteractableManager : MonoBehaviour
     {
         _sheetIndex = 1;
         
-        GameObject buttonPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(InteractableButtonName);
-        GameObject functionButtonPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(FunctionInteractableButtonName);
+        GameObject buttonPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(GrapAndPokeObjectName);
+        GameObject functionButtonPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(GrapAndPokeFunctionObjectName);
 
-        InstantiateExerciseButton(buttonPrefab, ExerciseParent);
+        InstantiateControlButton(BlockLogicType.Exercise);
+        InstantiateControlButton(BlockLogicType.Start);
+        InstantiateControlButton(BlockLogicType.Reset);
+        InstantiateControlButton(BlockLogicType.Clear);
 
         List<string> blockList = new List<string>(stageData.ShowBlock.Split(", "));
         foreach (var blockIndex in blockList)
@@ -46,56 +59,80 @@ public class InteractableManager : MonoBehaviour
                 InstantiateFunctionButton(functionButtonPrefab, LogicButtonParent, functionData.Type, functionData.Name, functionData.FunctionAmount);
             }
         }
-        
-        InstantiateButton(buttonPrefab, StartParent, BlockLogicType.Start);
-        InstantiateButton(buttonPrefab, StartParent, BlockLogicType.Reset);
-        InstantiateButton(buttonPrefab, ClearParent, BlockLogicType.Clear);
-
-        InteractableButtons[BlockLogicType.Reset].gameObject.SetActive(false);
+        ResetButton.gameObject.SetActive(false);
     }
 
-    private void InstantiateExerciseButton(GameObject prefab, Transform parent)
+    private void InstantiateControlButton(BlockLogicType type)
     {
+        GameObject prefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(InteractableButtonName);;
+        Transform parent = null;
+        Material mat = null;
+        
+        switch (type)
+        {
+            case BlockLogicType.Start:
+                mat = ResourceManager.Instance.LoadResourceWithCaching<Material>("StartMat");
+                parent = StartAndResetParent;
+                break;
+            case BlockLogicType.Clear:
+                mat = ResourceManager.Instance.LoadResourceWithCaching<Material>("ClearMat");
+                parent = ClearParent;
+                break;
+            case BlockLogicType.Reset:
+                mat = ResourceManager.Instance.LoadResourceWithCaching<Material>("ResetMat");
+                parent = StartAndResetParent;
+                break;
+            case BlockLogicType.Exercise:
+                mat = ResourceManager.Instance.LoadResourceWithCaching<Material>("MemoMat");
+                parent = ExerciseParent;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(type), type, null);
+        }
         GameObject button = Instantiate(prefab, parent);
-        Material mat = ResourceManager.Instance.LoadResourceWithCaching<Material>("MemoMat");
         button.GetComponent<CodeBlockMaterial>().SetMaterial(mat);
         InteractableUnityEventWrapper interactableUnityEventWrapper = button.GetComponent<InteractableUnityEventWrapper>();
-
-        ExerciseButton = interactableUnityEventWrapper;
+        
+        switch (type)
+        {
+            case BlockLogicType.Start:
+                StartButton = interactableUnityEventWrapper;
+                break;
+            case BlockLogicType.Clear:
+                ClearButton = interactableUnityEventWrapper;
+                break;
+            case BlockLogicType.Reset:
+                ResetButton = interactableUnityEventWrapper;
+                break;
+            case BlockLogicType.Exercise:
+                ExerciseButton = interactableUnityEventWrapper;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(type), type, null);
+        }
     }
+
     private void InstantiateButton(GameObject prefab, Transform parent, BlockLogicType type)
     {
         //Debug.Log(type);
         GameObject button = Instantiate(prefab, parent);
         button.GetComponent<CodeBlockMaterial>().Init(type);
-        InteractableUnityEventWrapper interactableUnityEventWrapper = button.GetComponent<InteractableUnityEventWrapper>();
-        InteractableButtons[type] = interactableUnityEventWrapper;
-        /*switch (type)
-        {
-            case BlockLogicType.Function:
-                FunctionInteractableButtons.Add(GetNextSheetIndex(), interactableUnityEventWrapper);
-                break;
-            case BlockLogicType.Repeat:
-                RepeatInteractableButtons.Add(GetNextSheetIndex(), interactableUnityEventWrapper);
-                break;
-            default:
-                InteractableButtons[type] = interactableUnityEventWrapper;
-                break;
-        }*/
+        GrapAndPokeObject grapAndPoke = button.GetComponent<GrapAndPokeObject>();
+        GrapAndPokeObjects[type] = grapAndPoke;
     }
     private void InstantiateFunctionButton(GameObject prefab, Transform parent, BlockLogicType type, string functionName, int functionLimit)
     {
         GameObject button = Instantiate(prefab, parent);
         button.GetComponent<FunctionBlockData>().Init(functionName, functionLimit);
-        InteractableUnityEventWrapper interactableUnityEventWrapper = button.GetComponent<InteractableUnityEventWrapper>();
+        GrapAndPokeObject grapAndPoke = button.GetComponent<GrapAndPokeObject>();
 
         switch (type)
         {
             case BlockLogicType.Function:
-                FunctionInteractableButtons.Add(GetNextSheetIndex(), interactableUnityEventWrapper);
+                FunctionGrapAndPokeObjects.Add(GetNextSheetIndex(), grapAndPoke);
                 break;
             case BlockLogicType.Repeat:
-                RepeatInteractableButtons.Add(GetNextSheetIndex(), interactableUnityEventWrapper);
+                RepeatGrapAndPokeObjects.Add(GetNextSheetIndex(), grapAndPoke);
                 break;
         }
     }
@@ -103,17 +140,17 @@ public class InteractableManager : MonoBehaviour
     {
         Destroy(ExerciseButton.gameObject);
         
-        foreach (var interactableButton in InteractableButtons.Values)
+        foreach (var interactableButton in GrapAndPokeObjects.Values)
             Destroy(interactableButton.gameObject);
-        InteractableButtons.Clear();
+        GrapAndPokeObjects.Clear();
         
-        foreach (var interactableButton in FunctionInteractableButtons.Values)
+        foreach (var interactableButton in FunctionGrapAndPokeObjects.Values)
             Destroy(interactableButton.gameObject);
-        FunctionInteractableButtons.Clear();
+        FunctionGrapAndPokeObjects.Clear();
         
-        foreach (var interactableButton in RepeatInteractableButtons.Values)
+        foreach (var interactableButton in RepeatGrapAndPokeObjects.Values)
             Destroy(interactableButton.gameObject);
-        RepeatInteractableButtons.Clear();
+        RepeatGrapAndPokeObjects.Clear();
     }
     
     private int GetNextSheetIndex()

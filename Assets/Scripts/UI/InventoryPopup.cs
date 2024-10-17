@@ -9,17 +9,12 @@ public class InventoryPopup : MonoBehaviour, IUIBase
     [SerializeField] private Transform Context;
     private List<Image> ItemList = new List<Image>();
 
-    private void Awake()
-    {
-        Init();
-    }
 
     public void Init()
     {
         Clear();
         PcData pcData = DataManager.Instance.GetGameData<PcData>("0");
-        if (ItemList.Count != 0)
-            return;
+        
         for (int i = 0; i < pcData.InventoryMax; i++)
         {
             // 새로운 빈 게임 오브젝트 생성
@@ -47,12 +42,14 @@ public class InventoryPopup : MonoBehaviour, IUIBase
         foreach (var image in ItemList)
         {
             image.sprite = null;
+            Destroy(image.gameObject);
         }
+        ItemList.Clear();
     }
     
-    public void AddItem(string ItemIndex)
+    public void AddItem(ItemType type)
     {
-        FoodData foodData = DataManager.Instance.GetGameData<FoodData>(ItemIndex);
+        FoodData foodData = DataManager.Instance.GetGameData<FoodData>(((int)type).ToString());
         Sprite foodSprite = ResourceManager.Instance.LoadResourceWithCaching<Sprite>(foodData.Icon);
         
         // 리스트가 비어 있지 않을 경우 기존 이미지들을 뒤로 이동

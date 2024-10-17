@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public enum PositionType
 {
@@ -13,6 +14,7 @@ public enum PositionType
 public class TableManager : MonoBehaviour
 {
     [SerializeField] private Transform tableParent;
+    [SerializeField] private Transform tileParent;
     [SerializeField] private Transform itemParent;
     [SerializeField] private Transform npcParent;
     
@@ -24,11 +26,13 @@ public class TableManager : MonoBehaviour
 
     public void InitTable(TableData tableData)
     {
+        tableParent.position = new Vector3((-tableData.Size.x + 1) / 2f, 0, 2);
+        
         foreach (var tileData in tableData.Table)
         {
             Vector2Int position = Vector2IntConverter.IntToVec2(tableData.Size, tileData.Key);
             GameObject tilePrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>("Tile");
-            GameObject tile = Instantiate(tilePrefab, tableParent);
+            GameObject tile = Instantiate(tilePrefab, tileParent);
             tile.transform.localPosition = new Vector3(position.x, 0, position.y);
             TileBase tileBase = tile.GetComponent<TileBase>();
             string levelKey = tableData.LevelDataDictionary.GetValueOrDefault(tileData.Key);
@@ -63,22 +67,12 @@ public class TableManager : MonoBehaviour
         Clear();
         InitTable(tableData);
     }
-    /// <summary>
-    ///아이템이 없는지 체크하는 함수
-    /// </summary>
-    /*public bool CheakTileInventoryEmpty(Vector2Int position)
-    {
-        if (TryGetTile(position, out TileBase tile))
-        {
-            return tile.CheakTileAttribute(AttributeCheakType.InventoryEmpty);
-        }
-        return true;
-    }*/
 
     public TileBase PeekTile(Vector2Int position)
     {
         return TryGetTile(position, out TileBase tile) ? tile : null;
     }
+    
     /// <summary>
     ///타일 타입을 가져오는 함수
     /// </summary>
@@ -90,6 +84,7 @@ public class TableManager : MonoBehaviour
         }
         return TileType.EMPTY;
     }
+    
     /// <summary>
     /// 타일 위치를 반환받는 함수
     /// </summary>
@@ -150,6 +145,7 @@ public class TableManager : MonoBehaviour
         itemTypeList = null;
         return false;
     }
+    
     /// <summary>
     /// 타일에 아이템을 넣는 함수
     /// </summary>
@@ -158,6 +154,13 @@ public class TableManager : MonoBehaviour
         Map[position].SetItem(item);
         item.transform.position = GetTilePosition(position, PositionType.Item);
     }
+
+    public void RotateTable(Quaternion quaternion)
+    {
+        //Vector3 angle = new Vector3(0, 90f, -38.445f);
+        tableParent.rotation = quaternion;
+    }
+    
     public void Clear()
     {
         foreach (var tileBase in map.Values)

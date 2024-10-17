@@ -40,6 +40,7 @@ public class ItemHintUI : MonoBehaviour
 
     public void Clear()
     {
+        RemoveImage();
         Destroy(gameObject);
     }
 }
