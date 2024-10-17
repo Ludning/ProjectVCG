@@ -4,17 +4,11 @@ using UnityEngine;
 
 public class BlockSlot : MonoBehaviour
 {
-    private GameObject BlockLogic;
-    
+    [SerializeField] private Transform BlockParent;
     public void SetBlockLogic(BlockLogicBase blockLogic)
     {
-        blockLogic.transform.SetParent(transform, false);
+        blockLogic.transform.SetParent(BlockParent, false);
         blockLogic.transform.localPosition = Vector3.zero;
-    }
-
-    public void ClearBlockLogic()
-    {
-        if (BlockLogic != null)
-            Destroy(BlockLogic);
+        
     }
 }

@@ -15,11 +15,11 @@ public enum NpcType
 public enum CookingPropertyType
 {
     NULL,
-    CUT = 30000,
-    POT = 30001,
-    FAN = 30002,
-    FRYER = 30003,
-    TRAY = 30004,
+    CUT = 30000, //도마
+    POT = 30001, //냄비
+    FAN = 30002, //프라이팬
+    FRYER = 30003, //튀김기
+    TRAY = 30004, //쟁반
 }
 
 public enum SortClearType

@@ -64,8 +64,8 @@ public class StageManager : MonoBehaviour
         //NPCManager.Clear();
         UIContainer.InitGame();
         
-        InteractableManager.GrapAndPokeObjects[BlockLogicType.Start].gameObject.SetActive(true);
-        InteractableManager.GrapAndPokeObjects[BlockLogicType.Reset].gameObject.SetActive(false);
+        InteractableManager.StartButton.gameObject.SetActive(true);
+        InteractableManager.ResetButton.gameObject.SetActive(false);
     }
     
     //스테이지 비우기

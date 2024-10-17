@@ -13,7 +13,6 @@ public enum PositionType
 
 public class TableManager : MonoBehaviour
 {
-    [SerializeField] private Transform tablePivot;
     [SerializeField] private Transform tableParent;
     [SerializeField] private Transform tileParent;
     [SerializeField] private Transform itemParent;

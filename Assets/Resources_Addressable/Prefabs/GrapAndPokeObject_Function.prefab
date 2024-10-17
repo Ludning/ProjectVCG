@@ -248,7 +248,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0.15, y: 0.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &246063704840322823
 MonoBehaviour:
@@ -264,6 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handGrabInteractable: {fileID: 2011865435811973688}
   pokeInteractable: {fileID: 1083834706768199900}
+  _grapBlock: {fileID: 0}
 --- !u!114 &8854780177721115008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -711,6 +712,7 @@ GameObject:
   - component: {fileID: 3633253910295573988}
   - component: {fileID: 7966529469037162903}
   - component: {fileID: 2011865435811973688}
+  - component: {fileID: 328140950448982726}
   m_Layer: 0
   m_Name: GrapObject
   m_TagString: Untagged
@@ -838,6 +840,20 @@ MonoBehaviour:
   _whenSelectingInteractorViewRemoved:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &328140950448982726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4716329748310965316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f0439a86ad1b2468ce292e40c54cd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetSheet: {fileID: 0}
+  BlockIndex: -1
 --- !u!1 &4860052220639002192
 GameObject:
   m_ObjectHideFlags: 0

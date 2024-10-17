@@ -45,10 +45,10 @@ public class TileBase : MonoBehaviour
         InventoryCount = tileData.InventoryCount;
        
         //TileLogic 설치
-        InitTileMesh(tileData.PrefabName);
+        InitTileMesh(tileData.PrefabName, nodeData);
     }
 
-    public void InitTileMesh(string tileName)
+    public void InitTileMesh(string tileName, NodeData nodeData)
     {
         if (TileType == TileType.EMPTY)
             return;
@@ -66,6 +66,13 @@ public class TileBase : MonoBehaviour
         }
 
         go.transform.localPosition = Vector3.zero;
+
+        if (nodeData.TileType == TileType.COOKING)
+        {
+            CookingPropertyData data = DataManager.Instance.GetGameData<CookingPropertyData>(((int)nodeData.CookingPropertyType).ToString());
+            GameObject prefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>(data.PrefabName);
+            GameObject cookingObject = Instantiate(prefab, go.transform);
+        }
     }
 
     public TileAttributeType GetTileAttributes(bool walkable, bool pushable, bool popable, bool stackable)

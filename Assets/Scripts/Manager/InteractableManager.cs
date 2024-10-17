@@ -25,9 +25,9 @@ public class InteractableManager : MonoBehaviour
     [HideInInspector]
     public InteractableUnityEventWrapper ClearButton;
     
-    public Dictionary<BlockLogicType, GrapAndPoke> GrapAndPokeObjects = new Dictionary<BlockLogicType, GrapAndPoke>();
-    public Dictionary<int, GrapAndPoke> FunctionGrapAndPokeObjects = new Dictionary<int, GrapAndPoke>();
-    public Dictionary<int, GrapAndPoke> RepeatGrapAndPokeObjects = new Dictionary<int, GrapAndPoke>();
+    public Dictionary<BlockLogicType, GrapAndPokeObject> GrapAndPokeObjects = new Dictionary<BlockLogicType, GrapAndPokeObject>();
+    public Dictionary<int, GrapAndPokeObject> FunctionGrapAndPokeObjects = new Dictionary<int, GrapAndPokeObject>();
+    public Dictionary<int, GrapAndPokeObject> RepeatGrapAndPokeObjects = new Dictionary<int, GrapAndPokeObject>();
     private int _sheetIndex;
 
     //public void Init(string showBlockString)
@@ -117,14 +117,14 @@ public class InteractableManager : MonoBehaviour
         //Debug.Log(type);
         GameObject button = Instantiate(prefab, parent);
         button.GetComponent<CodeBlockMaterial>().Init(type);
-        GrapAndPoke grapAndPoke = button.GetComponent<GrapAndPoke>();
+        GrapAndPokeObject grapAndPoke = button.GetComponent<GrapAndPokeObject>();
         GrapAndPokeObjects[type] = grapAndPoke;
     }
     private void InstantiateFunctionButton(GameObject prefab, Transform parent, BlockLogicType type, string functionName, int functionLimit)
     {
         GameObject button = Instantiate(prefab, parent);
         button.GetComponent<FunctionBlockData>().Init(functionName, functionLimit);
-        GrapAndPoke grapAndPoke = button.GetComponent<GrapAndPoke>();
+        GrapAndPokeObject grapAndPoke = button.GetComponent<GrapAndPokeObject>();
 
         switch (type)
         {

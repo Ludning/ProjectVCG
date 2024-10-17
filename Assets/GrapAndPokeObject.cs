@@ -1,14 +1,18 @@
 using Oculus.Interaction;
 using Oculus.Interaction.HandGrab;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrapAndPoke : MonoBehaviour
+public class GrapAndPokeObject : MonoBehaviour
 {
     public InteractableUnityEventWrapper handGrabInteractable;
     public InteractableUnityEventWrapper pokeInteractable;
 
+    [SerializeField] private GrapBlock _grapBlock;
+    public event Action<GrapAndPokeObject, SheetBase, int> OnGrapReleasedAddBlock;
+    
     private void OnEnable()
     {
         // HandGrab과 Poke 이벤트를 구독
@@ -34,6 +38,8 @@ public class GrapAndPoke : MonoBehaviour
     private void OnGrabReleased()
     {
         // HandGrab이 해제되면 Poke 다시 활성화
+        OnGrapReleasedAddBlock?.Invoke(this, _grapBlock.TargetSheet, _grapBlock.BlockIndex);
+        
         StartCoroutine(Coroutine_ResetPosition());
         Debug.Log("handGrab OFF");
     }

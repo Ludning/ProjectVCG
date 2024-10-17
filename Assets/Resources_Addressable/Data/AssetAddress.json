@@ -57,7 +57,11 @@
     "OutLine": "Assets/Resources_Addressable/Prefabs/Tiles/OutLine/OutLine.prefab",
     "BlockSlot": "Assets/Resources_Addressable/Prefabs/BlockSlot.prefab",
     "GrapAndPokeObject": "Assets/Resources_Addressable/Prefabs/GrapAndPokeObject.prefab",
-    "GrapAndPokeObject_Function": "Assets/Resources_Addressable/Prefabs/GrapAndPokeObject_Function.prefab"
+    "GrapAndPokeObject_Function": "Assets/Resources_Addressable/Prefabs/GrapAndPokeObject_Function.prefab",
+    "Cooking_Tile_Cut": "Assets/Resources_Addressable/Prefabs/Tiles/Elements/Cooking_Tile_Cut.prefab",
+    "Cooking_Tile_Pot": "Assets/Resources_Addressable/Prefabs/Tiles/Elements/Cooking_Tile_Pot.prefab",
+    "Cooking_Tile_Frier": "Assets/Resources_Addressable/Prefabs/Tiles/Elements/Cooking_Tile_Frier.prefab",
+    "Cooking_Tile_Tray": "Assets/Resources_Addressable/Prefabs/Tiles/Elements/Cooking_Tile_Tray.prefab"
   },
   "Material": {
     "TempMat": "Assets/Resources_Addressable/Materials/Logic/TempMat.mat",

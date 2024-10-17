@@ -10,9 +10,4 @@ public class MainSheet : SheetBase
     {
         SheetManager.ChoiceSheet(0);
     }
-
-    private async UniTask UniTask_SheetShifting()
-    {
-        await UniTask.Delay(1000);
-    }
 }
