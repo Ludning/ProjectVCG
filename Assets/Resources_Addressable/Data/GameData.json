@@ -850,6 +850,17 @@
       "Sort_Clear": 0,
       "Tile_Index": "10001",
       "Recipe_Index": "",
+      "Tile_Key": "2",
+      "Contents_Key": "",
+      "Contents_Count": ""
+    },
+    "4002": {
+      "Index": "4002",
+      "Description": "목적지 타일",
+      "DisplayContext": "주인 할아버지가 포키를 부르셔! 빛나는 칸에 도달해보자!",
+      "Sort_Clear": 0,
+      "Tile_Index": "10001",
+      "Recipe_Index": "",
       "Tile_Key": "3",
       "Contents_Key": "",
       "Contents_Count": ""

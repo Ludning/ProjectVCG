@@ -353,9 +353,14 @@ public class SheetManager : MonoBehaviour
 
     public void ClearAllBlockLogic()
     {
+        if(cancelToken_RunSheetBlock != null)
+            cancelToken_RunSheetBlock.Cancel();
+        
         ClearMainBlockLogic();
         ClearRepeatBlockLogic();
         ClearExBlockLogic();
+        
+        _isLogicRunning = false;
     }
     public void ClearMainBlockLogic()
     {
@@ -385,9 +390,12 @@ public class SheetManager : MonoBehaviour
             Debug.Log("IsStartResetWaiting");
             return;
         }
-        
+        if(cancelToken_RunSheetBlock != null)
+            cancelToken_RunSheetBlock.Cancel();
         StartResetWaiting().Forget();
         StageManager.ResetStage();
+
+        _isLogicRunning = false;
     }
 
     public async void RunSheetBlock()
@@ -419,7 +427,10 @@ public class SheetManager : MonoBehaviour
         StageManager.Controller.SetAnimationState(AnimationState.IsIdle, true);
         StageManager.Controller.SetAnimationState(AnimationState.IsCarry, false);
         
-        ErrorType result = await RunBlockLogics(0);
+        if(cancelToken_RunSheetBlock != null)
+            cancelToken_RunSheetBlock.Cancel();
+        cancelToken_RunSheetBlock = new CancellationTokenSource();
+        ErrorType result = await RunBlockLogics(0, cancelToken_RunSheetBlock.Token);
         Debug.Log(result);
         OnTaskCompleted(result);
     }
@@ -456,7 +467,8 @@ public class SheetManager : MonoBehaviour
     }
 
     #region BlockLogic 구동부
-    async UniTask<ErrorType> RunBlockLogics(int sheetIndex)
+    private CancellationTokenSource cancelToken_RunSheetBlock;
+    async UniTask<ErrorType> RunBlockLogics(int sheetIndex, CancellationToken token)
     {
         StageManager.Controller.LogicHint.HideLogicHint();
         int tempLenght = 0;
@@ -464,7 +476,7 @@ public class SheetManager : MonoBehaviour
         foreach (var blockLogic in _sheetDictionary[sheetIndex]._blockLogicBases)
         {
             ActiveHint(blockLogic);
-            ErrorType result = await RunBlockLogic(blockLogic);
+            ErrorType result = await RunBlockLogic(blockLogic, token);
             
             if (result == ErrorType.StageClear)
             {
@@ -497,18 +509,18 @@ public class SheetManager : MonoBehaviour
         return ErrorType.NoError;
     }
 
-    async UniTask<ErrorType> RunBlockLogic(BlockLogicBase blockLogic)
+    async UniTask<ErrorType> RunBlockLogic(BlockLogicBase blockLogic, CancellationToken token)
     {
         Debug.Log($"CurrentLogicType : {blockLogic.GetType()}");
         if (blockLogic is FunctionBlockLogic functionBlockLogic)
         {
-            return await RunBlockLogics(functionBlockLogic.SheetIndex);
+            return await RunBlockLogics(functionBlockLogic.SheetIndex, token);
         }
         if (blockLogic is RepeatBlockLogic repeatBlockLogic)
         {
             for (int i = 0; i < _repeatCountDictionary[repeatBlockLogic.SheetIndex]; i++)
             {
-                ErrorType repeatResult = await RunBlockLogics(repeatBlockLogic.SheetIndex);
+                ErrorType repeatResult = await RunBlockLogics(repeatBlockLogic.SheetIndex, token);
                 if (repeatResult != ErrorType.NoError)
                     return repeatResult;
             }
@@ -536,7 +548,7 @@ public class SheetManager : MonoBehaviour
                 blockLogic.CheakClear(StageManager);
                 return (StageManager.levelManager.IsAllComplete == true) ? ErrorType.StageClear : ErrorType.NoError;
             }
-            await UniTask.NextFrame();
+            await UniTask.NextFrame(token);
         }
     }
     #endregion

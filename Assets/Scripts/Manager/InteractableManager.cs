@@ -140,6 +140,9 @@ public class InteractableManager : MonoBehaviour
     }
     public void Clear()
     {
+        Destroy(StartButton.gameObject);
+        Destroy(ResetButton.gameObject);
+        Destroy(ClearButton.gameObject);
         Destroy(ExerciseButton.gameObject);
         
         foreach (var interactableButton in GrapAndPokeObjects.Values)
