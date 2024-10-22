@@ -3301,7 +3301,7 @@
         "magnitude": 1.0,
         "sqrMagnitude": 1
       },
-      "PlayerDirection": 4,
+      "PlayerDirection": 3,
       "Table": {
         "0": {
           "TileType": 10110,
