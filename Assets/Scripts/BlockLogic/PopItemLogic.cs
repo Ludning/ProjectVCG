@@ -40,6 +40,8 @@ public class PopItemLogic : BlockLogicBase
         var item = owner.Inventory.PopItem(position);
         owner.TableManager.PushTileItem(position, item);
         
+        owner.UIContainer.InventoryPopup.RemoveItem();
+        
         owner.Controller.SetAnimationState(AnimationState.IsPuttingDown, false);
         owner.Controller.SetAnimationState(AnimationState.IsCarry, false);
         return LogicState.Success;

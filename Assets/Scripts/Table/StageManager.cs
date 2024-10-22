@@ -43,8 +43,6 @@ public class StageManager : MonoBehaviour
         TableData tableData = DataManager.Instance.GetTableData(stageData.Index);
         
         TableManager.InitTable(tableData);
-        /*Vector3 playerPosition = TableManager.GetTilePosition(tableData.PlayerPosition, PositionType.Player);
-        Controller.Init(tableData.PlayerPosition, playerPosition, tableData.PlayerDirection);*/
         InteractableManager.Init(stageData);
         SheetManager.Init();
         UIContainer.InitGame();
@@ -64,8 +62,8 @@ public class StageManager : MonoBehaviour
         //NPCManager.Clear();
         UIContainer.InitGame();
         
-        InteractableManager.InteractableButtons[BlockLogicType.Start].gameObject.SetActive(true);
-        InteractableManager.InteractableButtons[BlockLogicType.Reset].gameObject.SetActive(false);
+        InteractableManager.StartButton.gameObject.SetActive(true);
+        InteractableManager.ResetButton.gameObject.SetActive(false);
     }
     
     //스테이지 비우기

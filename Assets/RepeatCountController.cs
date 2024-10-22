@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,6 +8,12 @@ public class RepeatCountController : MonoBehaviour
 {
     [SerializeField] private RepeatSheet RepeatSheet;
     [SerializeField] private TextMeshProUGUI DisplayRepeatCount;
+
+    private void Awake()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void OnClickSetRepeatCount(int count)
     {
         RepeatSheet.SetRepeatCount(count);

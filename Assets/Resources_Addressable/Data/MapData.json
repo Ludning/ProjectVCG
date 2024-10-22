@@ -1410,18 +1410,18 @@
     },
     "3002": {
       "Size": {
-        "x": 3,
-        "y": 2,
-        "magnitude": 3.60555124,
-        "sqrMagnitude": 13
+        "x": 1,
+        "y": 3,
+        "magnitude": 3.1622777,
+        "sqrMagnitude": 10
       },
       "PlayerPosition": {
-        "x": 2,
+        "x": 0,
         "y": 0,
-        "magnitude": 2.0,
-        "sqrMagnitude": 4
+        "magnitude": 0.0,
+        "sqrMagnitude": 0
       },
-      "PlayerDirection": 4,
+      "PlayerDirection": 3,
       "Table": {
         "0": {
           "TileType": 10000,
@@ -1440,40 +1440,17 @@
           "SpawnObjectType": 0
         },
         "2": {
-          "TileType": 10000,
+          "TileType": 10001,
           "CookingPropertyType": 0,
           "IsSpawnNPC": false,
           "SpawnNpcType": 0,
           "IsSpawnObject": false,
           "SpawnObjectType": 0
-        },
-        "3": {
-          "TileType": 10111,
-          "CookingPropertyType": 0,
-          "IsSpawnNPC": true,
-          "SpawnNpcType": 15,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "4": {
-          "TileType": 10100,
-          "CookingPropertyType": 0,
-          "IsSpawnNPC": false,
-          "SpawnNpcType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "5": {
-          "TileType": 10110,
-          "CookingPropertyType": 0,
-          "IsSpawnNPC": false,
-          "SpawnNpcType": 0,
-          "IsSpawnObject": true,
-          "SpawnObjectType": 15502
         }
       },
       "LevelDataDictionary": {
-        "3": "3"
+        "3": "3",
+        "2": "3"
       }
     },
     "3301": {
@@ -1923,98 +1900,6 @@
     },
     "3010": {
       "Size": {
-        "x": 3,
-        "y": 3,
-        "magnitude": 4.2426405,
-        "sqrMagnitude": 18
-      },
-      "PlayerPosition": {
-        "x": 0,
-        "y": 1,
-        "magnitude": 1.0,
-        "sqrMagnitude": 1
-      },
-      "PlayerDirection": 2,
-      "Table": {
-        "0": {
-          "TileType": 10100,
-          "CookingPropertyType": 0,
-          "IsSpawnNPC": false,
-          "SpawnNpcType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "1": {
-          "TileType": 10100,
-          "CookingPropertyType": 0,
-          "IsSpawnNPC": false,
-          "SpawnNpcType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "2": {
-          "TileType": 10100,
-          "CookingPropertyType": 0,
-          "IsSpawnNPC": false,
-          "SpawnNpcType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "3": {
-          "TileType": 10000,
-          "CookingPropertyType": 0,
-          "IsSpawnNPC": false,
-          "SpawnNpcType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "4": {
-          "TileType": 10000,
-          "CookingPropertyType": 0,
-          "IsSpawnNPC": false,
-          "SpawnNpcType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "5": {
-          "TileType": 10110,
-          "CookingPropertyType": 0,
-          "IsSpawnNPC": false,
-          "SpawnNpcType": 0,
-          "IsSpawnObject": true,
-          "SpawnObjectType": 15504
-        },
-        "6": {
-          "TileType": 10100,
-          "CookingPropertyType": 0,
-          "IsSpawnNPC": false,
-          "SpawnNpcType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "7": {
-          "TileType": 10111,
-          "CookingPropertyType": 0,
-          "IsSpawnNPC": true,
-          "SpawnNpcType": 16,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        },
-        "8": {
-          "TileType": 10100,
-          "CookingPropertyType": 0,
-          "IsSpawnNPC": false,
-          "SpawnNpcType": 0,
-          "IsSpawnObject": false,
-          "SpawnObjectType": 0
-        }
-      },
-      "LevelDataDictionary": {
-        "7": "4"
-      }
-    },
-    "3011": {
-      "Size": {
         "x": 4,
         "y": 3,
         "magnitude": 5.0,
@@ -2128,6 +2013,75 @@
       "LevelDataDictionary": {
         "10": "5",
         "11": "6"
+      }
+    },
+    "3011": {
+      "Size": {
+        "x": 2,
+        "y": 3,
+        "magnitude": 3.60555124,
+        "sqrMagnitude": 13
+      },
+      "PlayerPosition": {
+        "x": 0,
+        "y": 1,
+        "magnitude": 1.0,
+        "sqrMagnitude": 1
+      },
+      "PlayerDirection": 3,
+      "Table": {
+        "0": {
+          "TileType": 10110,
+          "CookingPropertyType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
+          "IsSpawnObject": true,
+          "SpawnObjectType": 15503
+        },
+        "1": {
+          "TileType": 10100,
+          "CookingPropertyType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "2": {
+          "TileType": 10000,
+          "CookingPropertyType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "3": {
+          "TileType": 10000,
+          "CookingPropertyType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "4": {
+          "TileType": 10111,
+          "CookingPropertyType": 0,
+          "IsSpawnNPC": true,
+          "SpawnNpcType": 12,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "5": {
+          "TileType": 10111,
+          "CookingPropertyType": 0,
+          "IsSpawnNPC": true,
+          "SpawnNpcType": 11,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        }
+      },
+      "LevelDataDictionary": {
+        "4": "7",
+        "5": "8"
       }
     },
     "3020": {
@@ -2808,7 +2762,7 @@
           "SpawnObjectType": 0
         },
         "10": {
-          "TileType": 10401,
+          "TileType": 10100,
           "CookingPropertyType": 0,
           "IsSpawnNPC": false,
           "SpawnNpcType": 0,
@@ -3043,9 +2997,9 @@
         }
       },
       "LevelDataDictionary": {
-        "21": "7",
-        "19": "8",
-        "3": "9"
+        "21": "11",
+        "19": "12",
+        "3": "13"
       }
     },
     "3041": {
@@ -3265,6 +3219,143 @@
         }
       },
       "LevelDataDictionary": {}
+    },
+    "3003": {
+      "Size": {
+        "x": 3,
+        "y": 2,
+        "magnitude": 3.60555124,
+        "sqrMagnitude": 13
+      },
+      "PlayerPosition": {
+        "x": 2,
+        "y": 0,
+        "magnitude": 2.0,
+        "sqrMagnitude": 4
+      },
+      "PlayerDirection": 4,
+      "Table": {
+        "0": {
+          "TileType": 10000,
+          "CookingPropertyType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "1": {
+          "TileType": 10000,
+          "CookingPropertyType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "2": {
+          "TileType": 10000,
+          "CookingPropertyType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "3": {
+          "TileType": 10111,
+          "CookingPropertyType": 0,
+          "IsSpawnNPC": true,
+          "SpawnNpcType": 15,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "4": {
+          "TileType": 10100,
+          "CookingPropertyType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "5": {
+          "TileType": 10110,
+          "CookingPropertyType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
+          "IsSpawnObject": true,
+          "SpawnObjectType": 15502
+        }
+      },
+      "LevelDataDictionary": {
+        "3": "4"
+      }
+    },
+    "3012": {
+      "Size": {
+        "x": 2,
+        "y": 3,
+        "magnitude": 3.60555124,
+        "sqrMagnitude": 13
+      },
+      "PlayerPosition": {
+        "x": 0,
+        "y": 1,
+        "magnitude": 1.0,
+        "sqrMagnitude": 1
+      },
+      "PlayerDirection": 3,
+      "Table": {
+        "0": {
+          "TileType": 10110,
+          "CookingPropertyType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
+          "IsSpawnObject": true,
+          "SpawnObjectType": 15503
+        },
+        "1": {
+          "TileType": 10111,
+          "CookingPropertyType": 0,
+          "IsSpawnNPC": true,
+          "SpawnNpcType": 15,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "2": {
+          "TileType": 10000,
+          "CookingPropertyType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "3": {
+          "TileType": 10000,
+          "CookingPropertyType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        },
+        "4": {
+          "TileType": 10110,
+          "CookingPropertyType": 0,
+          "IsSpawnNPC": false,
+          "SpawnNpcType": 0,
+          "IsSpawnObject": true,
+          "SpawnObjectType": 15512
+        },
+        "5": {
+          "TileType": 10111,
+          "CookingPropertyType": 0,
+          "IsSpawnNPC": true,
+          "SpawnNpcType": 16,
+          "IsSpawnObject": false,
+          "SpawnObjectType": 0
+        }
+      },
+      "LevelDataDictionary": {
+        "1": "9",
+        "5": "10"
+      }
     }
   }
 }

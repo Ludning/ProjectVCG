@@ -72,6 +72,17 @@ public class PlayerController : MonoBehaviour
     
     public void Init(Vector2Int position, Vector3 worldPosition, Direction forwardType)
     {
+        PlayerAnimator.SetBool(IsIdle, true);
+        PlayerAnimator.SetBool(IsMove, false);
+        PlayerAnimator.SetBool(IsDash, false);
+        PlayerAnimator.SetBool(IsLeftTurn, false);
+        PlayerAnimator.SetBool(IsRightTurn, false);
+        PlayerAnimator.SetBool(IsTurnBack, false);
+        PlayerAnimator.SetBool(IsCook, false);
+        PlayerAnimator.SetBool(IsPuttingDown, false);
+        PlayerAnimator.SetBool(IsLifting, false);
+        PlayerAnimator.SetBool(IsCarry, false);
+        
         transform.position = worldPosition;
         transform.position += transform.up * GameManager.Instance.PlayerPositionAdditive;
         

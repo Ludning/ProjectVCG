@@ -94,6 +94,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         Vector2Int chapterStage = new Vector2Int(SelectedChapterIndex, SelectedStageIndex + 1);
         return stageDatas.ContainsKey(chapterStage);
+        
     }
 
     public int GetFirstStageIndex(int chapterIndex)

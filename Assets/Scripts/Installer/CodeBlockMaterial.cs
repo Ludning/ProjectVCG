@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class CodeBlockMaterial : MonoBehaviour
 {
-    [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] private MeshRenderer PokeMeshRenderer;
+    [SerializeField] private MeshRenderer GrapMeshRenderer;
     
     public void Init(BlockLogicType type)
     {
@@ -12,10 +13,14 @@ public class CodeBlockMaterial : MonoBehaviour
         if (tempMat == null)
             tempMat = ResourceManager.Instance.LoadResourceWithCaching<Material>("TempLogicMat");
         
-        meshRenderer.materials = new[] { tempMat };
+        PokeMeshRenderer.materials = new[] { tempMat };
+        if(GrapMeshRenderer!= null)
+            GrapMeshRenderer.materials = new[] { tempMat };
     }
     public void SetMaterial(Material mat)
     {
-        meshRenderer.materials = new[] { mat };
+        PokeMeshRenderer.materials = new[] { mat };
+        if(GrapMeshRenderer!= null)
+            GrapMeshRenderer.materials = new[] { mat };
     }
 }
