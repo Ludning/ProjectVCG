@@ -26,7 +26,10 @@ public class TableManager : MonoBehaviour
 
     public void InitTable(TableData tableData)
     {
-        tableParent.position = new Vector3((-tableData.Size.x + 1) / 2f, 0, 2);
+        //tableParent.localPosition = new Vector3((-tableData.Size.x + 1) / 2f, 0, 2);
+
+        Rect mapRect = new Rect(Vector2.zero, tableData.Size);
+        tableParent.position = new Vector3(-mapRect.center.x * 1.2f, mapRect.center.y + 2.5f, 0);
         
         foreach (var tileData in tableData.Table)
         {
