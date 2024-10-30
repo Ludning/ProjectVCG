@@ -106,6 +106,7 @@ public enum TileAttributeCheckType
 
 public enum BlockLogicType
 {
+    Empty,
     Cook,
     Move,
     Dash,

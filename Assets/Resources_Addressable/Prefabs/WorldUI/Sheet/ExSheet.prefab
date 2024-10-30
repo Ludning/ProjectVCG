@@ -1393,6 +1393,7 @@ MonoBehaviour:
   BlockSlots: []
   _blockLogicBases: []
   _boxCollider: {fileID: 0}
+  backgroundImage: {fileID: 19794899021691917}
 --- !u!1 &8384454710236293819
 GameObject:
   m_ObjectHideFlags: 0

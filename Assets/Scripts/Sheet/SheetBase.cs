@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SheetBase : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class SheetBase : MonoBehaviour
     private float _moveDuration = 0.3f;
 
     [SerializeField] private BoxCollider _boxCollider;
+
+    [SerializeField] private Image backgroundImage;
     
     public void Init(int sheetLimit)
     {
@@ -60,6 +63,11 @@ public class SheetBase : MonoBehaviour
             Destroy(blockLogic.gameObject);
         }
         _blockLogicBases.Clear();
+    }
+
+    public void SetBackgroundColor(Color color)
+    {
+        backgroundImage.color = color;
     }
 
     public void Push(BlockLogicBase blockLogic)

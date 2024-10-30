@@ -42,6 +42,9 @@ public class SheetManager : MonoBehaviour
     //private int _sheetIndex;
     private Dictionary<GrapAndPokeObject, int> _sheetIndexDictionary = new Dictionary<GrapAndPokeObject, int>();
 
+    [SerializeField] private Color selectSheetColor;
+    [SerializeField] private Color unSelectSheetColor;
+
     //임시 코드
     private void Update()
     {
@@ -185,6 +188,10 @@ public class SheetManager : MonoBehaviour
     {
         _isExBlockLogic = (index == -1) ? true : false;
         _currentSheet = _sheetDictionary[index];
+        foreach (var sheet in _sheetDictionary.Values)
+        {
+            sheet.SetBackgroundColor(sheet == _currentSheet ? selectSheetColor : unSelectSheetColor);
+        }
     }
 
     #region 블록로직 오브젝트 생성
@@ -243,37 +250,41 @@ public class SheetManager : MonoBehaviour
         if (blockIndex == -1)
             return;
         
-        BlockLogicType? type = null;
-        foreach (var typeGrapAndPokeObject in InteractableManager.GrapAndPokeObjects)
+        BlockLogicType type = grapAndPoke.Type;
+        /*foreach (var typeGrapAndPokeObject in InteractableManager.GrapAndPokeObjects)
         {
             if (typeGrapAndPokeObject.Value == grapAndPoke)
             {
                 type = typeGrapAndPokeObject.Key;
                 break;
             }
-        }
-        if (type == null)
+        }*/
+
+        if (type == BlockLogicType.Empty)
             return;
         
         if (sheet.SheetLimit != -1 && sheet.SheetLimit <= sheet.BlockCount)
             return;
         
         //함수 시트에 함수가 들어가지 못하게 막기용 기능
-        if (sheet is not global::MainSheet)
+        if (sheet != MainSheet)
         {
             if (type == BlockLogicType.Repeat || type == BlockLogicType.Function)
+            {
+                Debug.LogWarning("메인시트가 아닙니다");
                 return;
+            }
         }
         
         GameObject tempPrefab = ResourceManager.Instance.LoadResourceWithCaching<GameObject>($"{type.ToString()}BlockLogic");
         AddOutlineComponent(tempPrefab);
 
         BlockLogicBase logicBase = Instantiate(tempPrefab).GetComponent<BlockLogicBase>();
-        SetBlockLogicData(logicBase, grapAndPoke, type.Value);
+        SetBlockLogicData(logicBase, grapAndPoke, type);
         
         if (logicBase != null)
         {
-            AddBlockLogicByOrderIndex(logicBase, blockIndex);
+            AddBlockLogicByOrderIndex(sheet, logicBase, blockIndex);
             if (logicBase is RepeatBlockLogic rBlockLogic)
                 if (_sheetIndexDictionary.TryGetValue(grapAndPoke, out int index))
                     rBlockLogic.SheetIndex = index;
@@ -285,7 +296,7 @@ public class SheetManager : MonoBehaviour
             sheet.BlockCount++;
         cancelToken_RevertPosition?.Cancel();
         cancelToken_RevertPosition = new CancellationTokenSource();
-        _currentSheet.UniTask_RevertPosition(cancelToken_RevertPosition.Token).Forget();
+        sheet.UniTask_RevertPosition(cancelToken_RevertPosition.Token).Forget();
     }
 
     private void SetBlockLogicData(BlockLogicBase logicBase, GrapAndPokeObject grapAndPoke, BlockLogicType type)
@@ -346,9 +357,9 @@ public class SheetManager : MonoBehaviour
     {
         _currentSheet.Push(blockLogic);
     }
-    public void AddBlockLogicByOrderIndex(BlockLogicBase blockLogic, int orderIndex)
+    public void AddBlockLogicByOrderIndex(SheetBase sheet,BlockLogicBase blockLogic, int orderIndex)
     {
-        _currentSheet.InsertBlockLogicAtIndex(blockLogic, orderIndex);
+        sheet.InsertBlockLogicAtIndex(blockLogic, orderIndex);
     }
 
     public void ClearAllBlockLogic()

@@ -1036,6 +1036,7 @@ MonoBehaviour:
   BlockSlots: []
   _blockLogicBases: []
   _boxCollider: {fileID: 2468641527632069127}
+  backgroundImage: {fileID: 7688836071864076598}
   TMP_SheetName: {fileID: 8086193248455405309}
 --- !u!65 &2468641527632069127
 BoxCollider:

@@ -12,6 +12,8 @@ public class GrapAndPokeObject : MonoBehaviour
 
     [SerializeField] private GrapBlock _grapBlock;
     public event Action<GrapAndPokeObject, SheetBase, int> OnGrapReleasedAddBlock;
+
+    public BlockLogicType Type;
     
     private void OnEnable()
     {

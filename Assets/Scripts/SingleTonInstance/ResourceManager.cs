@@ -12,11 +12,11 @@ public class ResourceManager : Singleton<ResourceManager>
     
     public T LoadResource<T>(string resourceName) where T : Object
     {
-        //Debug.Log($"resourceName: {resourceName}");
+        Debug.LogWarning($"resourceName: {resourceName}");
         
         string resourcePath = DataManager.Instance.GetAssetAddress<T>(resourceName);
 
-        //Debug.Log($"resourcePath: {resourcePath}");
+        Debug.LogWarning($"resourcePath: {resourcePath}");
 
         T resource = Addressables.LoadAssetAsync<T>(resourcePath).WaitForCompletion();
         

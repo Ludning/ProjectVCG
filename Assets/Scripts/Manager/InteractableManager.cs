@@ -47,6 +47,17 @@ public class InteractableManager : MonoBehaviour
         foreach (var blockIndex in blockList)
         {
             CodingBlockData data = DataManager.Instance.GetGameData<CodingBlockData>(blockIndex);
+            /*Debug.LogWarning("block Data");
+            
+            Debug.LogWarning(blockIndex);
+            Debug.LogWarning(data.Index);
+            Debug.LogWarning(data.Description);
+            Debug.LogWarning(data.Type);
+            Debug.LogWarning(data.IconBlock);
+            Debug.LogWarning(data.AnimationKey);
+            Debug.LogWarning(data.MoveDistance);
+            Debug.LogWarning(data.Angle);
+            Debug.LogWarning(data.Distance);*/
             InstantiateButton(buttonPrefab, LogicButtonParent, data.Type);
         }
 
@@ -116,10 +127,11 @@ public class InteractableManager : MonoBehaviour
 
     private void InstantiateButton(GameObject prefab, Transform parent, BlockLogicType type)
     {
-        //Debug.Log(type);
         GameObject button = Instantiate(prefab, parent);
         button.GetComponent<CodeBlockMaterial>().Init(type);
         GrapAndPokeObject grapAndPoke = button.GetComponent<GrapAndPokeObject>();
+        grapAndPoke.Type = type;
+        
         GrapAndPokeObjects[type] = grapAndPoke;
     }
     private void InstantiateFunctionButton(GameObject prefab, Transform parent, BlockLogicType type, string functionName, int functionLimit)
@@ -127,7 +139,8 @@ public class InteractableManager : MonoBehaviour
         GameObject button = Instantiate(prefab, parent);
         button.GetComponent<FunctionBlockData>().Init(functionName, functionLimit);
         GrapAndPokeObject grapAndPoke = button.GetComponent<GrapAndPokeObject>();
-
+        grapAndPoke.Type = type;
+        
         switch (type)
         {
             case BlockLogicType.Function:
